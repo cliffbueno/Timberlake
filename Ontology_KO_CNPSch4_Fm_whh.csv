@@ -1,0 +1,528 @@
+Index,L1,L2,L3,L4,KO,gene,fxn,EC,sm_name,mid_name
+0,Carbon ,Sugars,C_sug_sucr,,K00847,scrK,fructokinase,[EC:2.7.1.4],K00847 C_sug_sucr scrK,K00847 C_sug_sucr ( scrK ) fructokinase
+1,Carbon ,Sugars,C_sug_sucr,,K00012,"UGDH, ugd",UDPglucose 6-dehydrogenase,[EC:1.1.1.22],K00012 C_sug_sucr UGDH,K00012 C_sug_sucr ( UGDH ) UDPglucose 6-dehyd
+2,Carbon ,Sugars,C_sug_sucr,,K12447,USP,UDP-sugar pyrophosphorylase,[EC:2.7.7.64],K12447 C_sug_sucr USP,K12447 C_sug_sucr ( USP ) UDP-sugar pyrophos
+3,Carbon ,Sugars,C_sug_sucr,,K06859,pgi1,"glucose-6-phosphate isomerase, archaeal",[EC:5.3.1.9],K06859 C_sug_sucr pgi1,K06859 C_sug_sucr ( pgi1 ) glucose-6-phosphat
+4,Carbon ,Sugars,C_sug_sucr,,K01835,pgm,phosphoglucomutase,[EC:5.4.2.2],K01835 C_sug_sucr pgm,K01835 C_sug_sucr ( pgm ) phosphoglucomutase
+5,Carbon ,Sugars,C_sug_sucr,,K01810,"GPI, pgi",glucose-6-phosphate isomerase,[EC:5.3.1.9],"K01810 C_sug_sucr GPI,","K01810 C_sug_sucr ( GPI, ) glucose-6-phosphat"
+6,Carbon ,Sugars,C_sug_sucr,,K01835,pgm,phosphoglucomutase,[EC:5.4.2.2],K01835 C_sug_sucr pgm,K01835 C_sug_sucr ( pgm ) phosphoglucomutase
+7,Carbon ,Sugars,C_sug_sucr,,K00846,KHK,ketohexokinase,[EC:2.7.1.3],K00846 C_sug_sucr KHK,K00846 C_sug_sucr ( KHK ) ketohexokinase
+8,Carbon ,Sugars,C_sug_sucr,,K04041,fbp3,"fructose-1,6-bisphosphatase III",[EC:3.1.3.11],K04041 C_sug_sucr fbp3,"K04041 C_sug_sucr ( fbp3 ) fructose-1,6-bisph"
+9,Carbon ,Sugars,C_sug_sucr,,K01623,ALDO,"fructose-bisphosphate aldolase, class I",[EC:4.1.2.13],K01623 C_sug_sucr ALDO,K01623 C_sug_sucr ( ALDO ) fructose-bisphosph
+10,Carbon ,Sugars,C_sug_sucr,,K11645,fbaB,"fructose-bisphosphate aldolase, class I",[EC:4.1.2.13],K11645 C_sug_sucr fbaB,K11645 C_sug_sucr ( fbaB ) fructose-bisphosph
+11,Carbon ,Sugars,C_sug_sucr,,K01624,"FBA, fbaA","fructose-bisphosphate aldolase, class II",[EC:4.1.2.13],"K01624 C_sug_sucr FBA,","K01624 C_sug_sucr ( FBA, ) fructose-bisphosph"
+12,Carbon ,Sugars,C_sug_lact,,K12308,"bgaB, lacA",beta-galactosidase,[EC:3.2.1.23],K12308 C_sug_lact bgaB,K12308 C_sug_lact ( bgaB ) beta-galactosidase
+13,Carbon ,Sugars,C_sug_lact,,K01819,"lacA, lacB",galactose-6-phosphate isomerase,[EC:5.3.1.26],K01819 C_sug_lact lacA,K01819 C_sug_lact ( lacA ) galactose-6-phosph
+14,Carbon ,Sugars,C_sug_lact,,K00917,lacC,tagatose 6-phosphate kinase,[EC:2.7.1.144],K00917 C_sug_lact lacC,K00917 C_sug_lact ( lacC ) tagatose 6-phospha
+15,Carbon ,Sugars,C_sug_lact,,K01635,lacD,"tagatose 1,6-diphosphate aldolase",[EC:4.1.2.40],K01635 C_sug_lact lacD,"K01635 C_sug_lact ( lacD ) tagatose 1,6-dipho"
+16,Carbon ,Sugars,C_sug_lact,,K01190,lacZ,beta-galactosidase,[EC:3.2.1.23],K01190 C_sug_lact lacZ,K01190 C_sug_lact ( lacZ ) beta-galactosidase
+17,Carbon ,Sugars,C_sug_gal,,K01785,"galM, GALM",aldose 1-epimerase,[EC:5.1.3.3],K01785 C_sug_gal galM,K01785 C_sug_gal ( galM ) aldose 1-epimerase
+18,Carbon ,Sugars,C_sug_gal,,K00849,galK,galactokinase,[EC:2.7.1.6],K00849 C_sug_gal galK,K00849 C_sug_gal ( galK ) galactokinase
+19,Carbon ,Sugars,C_sug_gal,,K00965,"galT, GALT",UDPglucose--hexose-1-phosphate uridylyltransferase,[EC:2.7.7.12],K00965 C_sug_gal galT,K00965 C_sug_gal ( galT ) UDPglucose--hexose
+20,Carbon ,Sugars,C_sug_gal,,K01784,"galE, GALE",UDP-glucose 4-epimerase,[EC:5.1.3.2],K01784 C_sug_gal galE,K01784 C_sug_gal ( galE ) UDP-glucose 4-epim
+21,Carbon ,Sugars,C_sug_gal,,K01835,pgm,phosphoglucomutase,[EC:5.4.2.2],K01835 C_sug_gal pgm,K01835 C_sug_gal ( pgm ) phosphoglucomutase
+22,Carbon ,Sugars,C_sug_gal,,K00035,gal,D-galactose 1-dehydrogenase,[EC:1.1.1.48],K00035 C_sug_gal gal,K00035 C_sug_gal ( gal ) D-galactose 1-dehy
+23,Carbon ,Sugars,C_sug_treh,,K01194,"treA, treF","alpha,alpha-trehalase",[EC:3.2.1.28],K01194 C_sug_treh treA,"K01194 C_sug_treh ( treA ) alpha,alpha-trehal"
+24,Carbon ,Sugars,C_sug_treh,,K01226,treC,trehalose-6-phosphate hydrolase,[EC:3.2.1.93],K01226 C_sug_treh treC,K01226 C_sug_treh ( treC ) trehalose-6-phosph
+25,Carbon ,Sugars,C_sug_treh,,K00845,glk,glucokinase,[EC:2.7.1.2],K00845 C_sug_treh glk,K00845 C_sug_treh ( glk ) glucokinase
+26,Carbon ,Sugars,C_sug_rham,,K01820,rhaA,L-rhamnose isomerase / sugar isomerase,[EC:5.3.1.14 5.3.1.-],K01820 C_sug_rham rhaA,K01820 C_sug_rham ( rhaA ) L-rhamnose isomera
+27,Carbon ,Sugars,C_sug_rham,,K00848,rhaB,rhamnulokinase,[EC:2.7.1.5],K00848 C_sug_rham rhaB,K00848 C_sug_rham ( rhaB ) rhamnulokinase
+28,Carbon ,Sugars,C_sug_rham,,K01629,rhaD,rhamnulose-1-phosphate aldolase,[EC:4.1.2.19],K01629 C_sug_rham rhaD,K01629 C_sug_rham ( rhaD ) rhamnulose-1-phosp
+29,Carbon ,Sugars,C_sug_rham,,K18337,LRA1,L-rhamnose 1-dehydrogenase,[EC:1.1.1.173],K18337 C_sug_rham LRA1,K18337 C_sug_rham ( LRA1 ) L-rhamnose 1-dehyd
+30,Carbon ,Sugars,C_sug_rham,,K18338,LRA2,"L-rhamnono-1,4-lactonase",[EC:3.1.1.65],K18338 C_sug_rham LRA2,"K18338 C_sug_rham ( LRA2 ) L-rhamnono-1,4-lac"
+31,Carbon ,Sugars,C_sug_rham,,K12661,"LRA3, yfaW",L-rhamnonate dehydratase,[EC:4.2.1.90],K12661 C_sug_rham LRA3,K12661 C_sug_rham ( LRA3 ) L-rhamnonate dehyd
+32,Carbon ,Sugars,C_sug_rham,,K18339,LRA4,2-keto-3-deoxy-L-rhamnonate aldolase,[EC:4.1.2.53],K18339 C_sug_rham LRA4,K18339 C_sug_rham ( LRA4 ) 2-keto-3-deoxy-L-r
+33,Carbon ,Sugars,C_sug_rham,,K01813,rhaA,L-rhamnose isomerase,[EC:5.3.1.14],K01813 C_sug_rham rhaA,K01813 C_sug_rham ( rhaA ) L-rhamnose isomera
+34,Carbon ,Sugars,C_sug_arab,,K05305     ,FUK,fucokinase,[EC:2.7.1.52],K05305 C_sug_arab FUK,K05305 C_sug_arab ( FUK ) fucokinase
+35,Carbon ,Sugars,C_sug_arab,,K01818,fucI,L-fucose isomerase,[EC:5.3.1.25],K01818 C_sug_arab fucI,K01818 C_sug_arab ( fucI ) L-fucose isomerase
+36,Carbon ,Sugars,C_sug_arab,,K00879,fucK,L-fuculokinase,[EC:2.7.1.51],K00879 C_sug_arab fucK,K00879 C_sug_arab ( fucK ) L-fuculokinase
+37,Carbon ,Sugars,C_sug_arab,,K01628,fucA,L-fuculose-phosphate aldolase,[EC:4.1.2.17],K01628 C_sug_arab fucA,K01628 C_sug_arab ( fucA ) L-fuculose-phospha
+38,Carbon ,Sugars,C_sug_arab,,K18334,fucD,L-fuconate dehydratase,[EC:4.2.1.68],K18334 C_sug_arab fucD,K18334 C_sug_arab ( fucD ) L-fuconate dehydra
+39,Carbon ,Sugars,C_sug_arab,,K18335,K18335,2-keto-3-deoxy-L-fuconate dehydrogenase,[EC:1.1.1.-],K18335 C_sug_arab K183,K18335 C_sug_arab ( K183 ) 2-keto-3-deoxy-L-f
+40,Carbon ,Sugars,C_sug_arab,,K18336,K18336,"2,4-diketo-3-deoxy-L-fuconate hydrolase",,K18336 C_sug_arab K183,"K18336 C_sug_arab ( K183 ) 2,4-diketo-3-deoxy"
+41,Carbon ,Sugars,C_sug_arab,,K01804,araA,L-arabinose isomerase,[EC:5.3.1.4],K01804 C_sug_arab araA,K01804 C_sug_arab ( araA ) L-arabinose isomer
+42,Carbon ,Sugars,C_sug_arab,,K00853,araB,L-ribulokinase,[EC:2.7.1.16],K00853 C_sug_arab araB,K00853 C_sug_arab ( araB ) L-ribulokinase
+43,Carbon ,Sugars,C_sug_arab,,K13875,araC,L-arabonate dehydrase,[EC:4.2.1.25],K13875 C_sug_arab araC,K13875 C_sug_arab ( araC ) L-arabonate dehydr
+44,Carbon ,Sugars,C_sug_arab,,K17738,ARD,D-arabinitol 2-dehydrogenase,[EC:1.1.1.250],K17738 C_sug_arab ARD,K17738 C_sug_arab ( ARD ) D-arabinitol 2-deh
+45,Carbon ,Sugars,C_sug_arab,,K17818,ARD1,D-arabinitol dehydrogenase (NADP+),[EC:1.1.1.287],K17818 C_sug_arab ARD1,K17818 C_sug_arab ( ARD1 ) D-arabinitol dehyd
+46,Carbon ,Sugars,C_sug_arab,,K00007,dalD,D-arabinitol 4-dehydrogenase,[EC:1.1.1.11],K00007 C_sug_arab dalD,K00007 C_sug_arab ( dalD ) D-arabinitol 4-deh
+47,Carbon ,Sugars,C_sug_arab,,K18124,"gdh2, gdhA",glucose/galactose 1-dehydrogenase (NADP+),[EC:1.1.1.360],K18124 C_sug_arab gdh2,K18124 C_sug_arab ( gdh2 ) glucose/galactose 
+48,Carbon ,Polymers,C_poly_starch,,K01176,"amyA, malS",alpha-amylase,[EC:3.2.1.1],K01176 C_poly_starch amyA,K01176 C_poly_starch ( amyA ) alpha-amylase
+49,Carbon ,Polymers,C_poly_starch,,K07405,E3.2.1.1A,alpha-amylase,[EC:3.2.1.1],K07405 C_poly_starch E3.2,K07405 C_poly_starch ( E3.2 ) alpha-amylase
+50,Carbon ,Polymers,C_poly_starch,,K01177,E3.2.1.2,beta-amylase,[EC:3.2.1.2],K01177 C_poly_starch E3.2,K01177 C_poly_starch ( E3.2 ) beta-amylase
+51,Carbon ,Polymers,C_poly_starch,,K01178,E3.2.1.3,glucoamylase,[EC:3.2.1.3],K01178 C_poly_starch E3.2,K01178 C_poly_starch ( E3.2 ) glucoamylase
+52,Carbon ,Polymers,C_poly_starch,,K01182,E3.2.1.10,"oligo-1,6-glucosidase",[EC:3.2.1.10],K01182 C_poly_starch E3.2,"K01182 C_poly_starch ( E3.2 ) oligo-1,6-glucosid"
+53,Carbon ,Polymers,C_poly_starch,,K01196,AGL,glycogen debranching enzyme,[EC:2.4.1.25 3.2.1.33],K01196 C_poly_starch AGL,K01196 C_poly_starch ( AGL ) glycogen debranchi
+54,Carbon ,Polymers,C_poly_cellul,,K01225,E3.2.1.91,"cellulose 1,4-beta-cellobiosidase",[EC:3.2.1.91],K01225 C_poly_cellul E3.2,"K01225 C_poly_cellul ( E3.2 ) cellulose 1,4-beta"
+55,Carbon ,Polymers,C_poly_cellul,,K01179,E3.2.1.4,endoglucanase,[EC:3.2.1.4],K01179 C_poly_cellul E3.2,K01179 C_poly_cellul ( E3.2 ) endoglucanase
+56,Carbon ,Polymers,C_poly_cellul,,K19356,EGLD,cellulase,[EC:3.2.1.4],K19356 C_poly_cellul EGLD,K19356 C_poly_cellul ( EGLD ) cellulase
+57,Carbon ,Polymers,C_poly_cellul,,K19357,CELB,cellulase,[EC:3.2.1.4],K19357 C_poly_cellul CELB,K19357 C_poly_cellul ( CELB ) cellulase
+58,Carbon ,Polymers,C_poly_hemi,,K15920,XYL4,beta-D-xylosidase 4,[EC:3.2.1.37],K15920 C_poly_hemi XYL4,K15920 C_poly_hemi ( XYL4 ) beta-D-xylosidase 
+59,Carbon ,Polymers,C_poly_hemi,,K01198,xynB,"xylan 1,4-beta-xylosidase",[EC:3.2.1.37],K01198 C_poly_hemi xynB,"K01198 C_poly_hemi ( xynB ) xylan 1,4-beta-xyl"
+60,Carbon ,Polymers,C_poly_hemi,,K15921,xynD,arabinoxylan arabinofuranohydrolase,[EC:3.2.1.55],K15921 C_poly_hemi xynD,K15921 C_poly_hemi ( xynD ) arabinoxylan arabi
+61,Carbon ,Polymers,C_poly_xylos,,K00854,"xylB, XYLB",xylulokinase,[EC:2.7.1.17],K00854 C_poly_xylos xylB,K00854 C_poly_xylos ( xylB ) xylulokinase
+62,Carbon ,Polymers,C_poly_xylos,,K01805,xylA,xylose isomerase,[EC:5.3.1.5],K01805 C_poly_xylos xylA,K01805 C_poly_xylos ( xylA ) xylose isomerase
+63,Carbon ,Polymers,C_poly_xylos,,K17743,XR,D-xylose reductase,[EC:1.1.1.307],K17743 C_poly_xylos XR,K17743 C_poly_xylos ( XR ) D-xylose reductase
+64,Carbon ,Polymers,C_poly_xylos,,K03331,DCXR,L-xylulose reductase,[EC:1.1.1.10],K03331 C_poly_xylos DCXR,K03331 C_poly_xylos ( DCXR ) L-xylulose reducta
+65,Carbon ,Polymers,C_poly_xylos,,K00880,lyxK,L-xylulokinase,[EC:2.7.1.53],K00880 C_poly_xylos lyxK,K00880 C_poly_xylos ( lyxK ) L-xylulokinase
+66,Carbon ,Polymers,C_poly_xylos,,K05351,E1.1.1.9,D-xylulose reductase,[EC:1.1.1.9],K05351 C_poly_xylos E1.1,K05351 C_poly_xylos ( E1.1 ) D-xylulose reducta
+67,Carbon ,Polymers,C_poly_xylos,,K14273,xdh,xylose dehydrogenase (NAD/NADP),,K14273 C_poly_xylos xdh,K14273 C_poly_xylos ( xdh ) xylose dehydrogena
+68,Carbon ,Polymers,C_poly_xylos,,K14274,K14274,D-xylonolactonase,,K14274 C_poly_xylos K142,K14274 C_poly_xylos ( K142 ) D-xylonolactonase
+69,Carbon ,Polymers,C_poly_xylos,,K14275,xad,D-xylonate dehydratase,,K14275 C_poly_xylos xad,K14275 C_poly_xylos ( xad ) D-xylonate dehydra
+70,Carbon ,Polymers,C_poly_chitin,,K01183,E3.2.1.14,chitinase,[EC:3.2.1.14],K01183 C_poly_chitin E3.2,K01183 C_poly_chitin ( E3.2 ) chitinase
+71,Carbon ,Polymers,C_poly_chitin,,K13381,chiA,bifunctional chitinase/lysozyme,[EC:3.2.1.14 3.2.1.17],K13381 C_poly_chitin chiA,K13381 C_poly_chitin ( chiA ) bifunctional chiti
+72,Carbon ,Polymers,C_poly_chitin,,K18675,chbP,"N,N'-diacetylchitobiose phosphorylase",[EC:2.4.1.280],K18675 C_poly_chitin chbP,"K18675 C_poly_chitin ( chbP ) N,N'-diacetylchito"
+73,Carbon ,Polymers,C_poly_chitin,,K01452,E3.5.1.41,chitin deacetylase,[EC:3.5.1.41],K01452 C_poly_chitin E3.5,K01452 C_poly_chitin ( E3.5 ) chitin deacetylase
+74,Carbon ,Polymers,C_poly_chitin,,K01233,csn,chitosanase,[EC:3.2.1.132],K01233 C_poly_chitin csn,K01233 C_poly_chitin ( csn ) chitosanase
+75,Carbon ,Polymers,C_poly_chitin,,K01443,"nagA, AMDHD2",N-acetylglucosamine-6-phosphate deacetylase,[EC:3.5.1.25],K01443 C_poly_chitin nagA,K01443 C_poly_chitin ( nagA ) N-acetylglucosamin
+76,Carbon ,Polymers,C_poly_chitin,,K18676,gspK,glucosamine kinase,[EC:2.7.1.8],K18676 C_poly_chitin gspK,K18676 C_poly_chitin ( gspK ) glucosamine kinase
+77,Carbon ,Polymers,C_poly_pectin,,K01051,E3.1.1.11,pectinesterase,[EC:3.1.1.11],K01051 C_poly_pectin E3.1,K01051 C_poly_pectin ( E3.1 ) pectinesterase
+78,Carbon ,Polymers,C_poly_pectin,,K01728,pel,pectate lyase,[EC:4.2.2.2],K01728 C_poly_pectin pel,K01728 C_poly_pectin ( pel ) pectate lyase
+79,Carbon ,Polymers,C_poly_pectin,,K01731,pelW,pectate disaccharide-lyase,[EC:4.2.2.9],K01731 C_poly_pectin pelW,K01731 C_poly_pectin ( pelW ) pectate disacchari
+80,Carbon ,Polymers,C_poly_pectin,,K19551,pelC,pectate lyase C,[EC:4.2.2.2 4.2.2.10],K19551 C_poly_pectin pelC,K19551 C_poly_pectin ( pelC ) pectate lyase C
+81,Carbon ,Polymers,C_poly_pectin,,K01730,ogl,oligogalacturonide lyase,[EC:4.2.2.6],K01730 C_poly_pectin ogl,K01730 C_poly_pectin ( ogl ) oligogalacturonide
+82,Carbon ,Polymers,C_poly_pectin,,K01812,uxaC,glucuronate isomerase,[EC:5.3.1.12],K01812 C_poly_pectin uxaC,K01812 C_poly_pectin ( uxaC ) glucuronate isomer
+83,Carbon ,Polymers,C_poly_lignin,,K15060,ligX,"5,5'-dehydrodivanillate O-demethylase",,K15060 C_poly_lignin ligX,"K15060 C_poly_lignin ( ligX ) 5,5'-dehydrodivani"
+84,Carbon ,Polymers,C_poly_lignin,,K15061,ligZ,OH-DDVA oxygenase,,K15061 C_poly_lignin ligZ,K15061 C_poly_lignin ( ligZ ) OH-DDVA oxygenase
+85,Carbon ,Polymers,C_poly_lignin,,K15062,ligY,OH-DDVA meta-cleavage compound hydrolase,,K15062 C_poly_lignin ligY,K15062 C_poly_lignin ( ligY ) OH-DDVA meta-cleav
+86,Carbon ,Polymers,C_poly_lignin,,K15063,ligW,5-carboxyvanillate decarboxylase,,K15063 C_poly_lignin ligW,K15063 C_poly_lignin ( ligW ) 5-carboxyvanillate
+87,Carbon ,Polymers,C_poly_lignin,,K03862,vanA,vanillate O-demethylase monooxygenase subunit,[EC:1.14.13.82],K03862 C_poly_lignin vanA,K03862 C_poly_lignin ( vanA ) vanillate O-demeth
+88,Carbon ,Polymers,C_poly_lignin,,K03863,vanB,vanillate O-demethylase ferredoxin subunit,[EC:1.14.13.82],K03863 C_poly_lignin vanB,K03863 C_poly_lignin ( vanB ) vanillate O-demeth
+89,Carbon ,Polymers,C_poly_lignin,,K04100,ligA,"protocatechuate 4,5-dioxygenase, alpha chain",[EC:1.13.11.8],K04100 C_poly_lignin ligA,"K04100 C_poly_lignin ( ligA ) protocatechuate 4,"
+90,Carbon ,Polymers,C_poly_lignin,,K04101,ligB,"protocatechuate 4,5-dioxygenase, beta chain",[EC:1.13.11.8],K04101 C_poly_lignin ligB,"K04101 C_poly_lignin ( ligB ) protocatechuate 4,"
+91,Carbon ,Polymers,C_poly_lignin,,K10219,ligC,2-hydroxy-4-carboxymuconate semialdehyde hemiacetal dehydrogenase,[EC:1.1.1.312],K10219 C_poly_lignin ligC,K10219 C_poly_lignin ( ligC ) 2-hydroxy-4-carbox
+92,Carbon ,Polymers,C_poly_lignin,,K10221,ligI,"2-pyrone-4,6-dicarboxylate lactonase",[EC:3.1.1.57],K10221 C_poly_lignin ligI,"K10221 C_poly_lignin ( ligI ) 2-pyrone-4,6-dicar"
+93,Carbon ,Aromatic,C_arom_carbox,,K04110,badA,benzoate-CoA ligase,[EC:6.2.1.25],K04110 C_arom_carbox badA,K04110 C_arom_carbox ( badA ) benzoate-CoA ligas
+94,Carbon ,Aromatic,C_arom_carbox,,K05549,benA-xylX,"benzoate/toluate 1,2-dioxygenase alpha subunit",[EC:1.14.12.10 1.14.12.-],K05549 C_arom_carbox benA,K05549 C_arom_carbox ( benA ) benzoate/toluate 1
+95,Carbon ,Aromatic,C_arom_carbox,,K07824,E1.14.13.12,benzoate 4-monooxygenase,[EC:1.14.13.12],K07824 C_arom_carbox E1.1,K07824 C_arom_carbox ( E1.1 ) benzoate 4-monooxy
+96,Carbon ,Aromatic,C_arom_carbox,,K01586,lysA,diaminopimelate decarboxylase,[EC:4.1.1.20],K01586 C_arom_carbox lysA,K01586 C_arom_carbox ( lysA ) diaminopimelate de
+97,Carbon ,Aromatic,C_arom_carbox,,K01572,oadB,"oxaloacetate decarboxylase, beta subunit",[EC:4.1.1.3],K01572 C_arom_carbox oadB,K01572 C_arom_carbox ( oadB ) oxaloacetate decar
+98,Carbon ,Aromatic,C_arom_carbox,,K00252,"GCDH, gcdH",glutaryl-CoA dehydrogenase,[EC:1.3.8.6],K00252 C_arom_carbox GCDH,K00252 C_arom_carbox ( GCDH ) glutaryl-CoA dehyd
+99,Carbon ,Aromatic,C_arom_carbox,,K12526,lysAC,bifunctional diaminopimelate decarboxylase / aspartate kinase,[EC:4.1.1.20 2.7.2.4],K12526 C_arom_carbox lysA,K12526 C_arom_carbox ( lysA ) bifunctional diami
+100,Carbon ,Aromatic,C_arom_carbox,,K01590,"hdc, HDC",histidine decarboxylase,[EC:4.1.1.22],"K01590 C_arom_carbox hdc,","K01590 C_arom_carbox ( hdc, ) histidine decarbox"
+101,Carbon ,Aromatic,C_arom_carbox,,K05550,benB-xylY,"benzoate/toluate 1,2-dioxygenase beta subunit",[EC:1.14.12.10 1.14.12.-],K05550 C_arom_carbox benB,K05550 C_arom_carbox ( benB ) benzoate/toluate 1
+102,Carbon ,Aromatic,C_arom_carbox,,K05711,hcaB,"2,3-dihydroxy-2,3-dihydrophenylpropionate dehydrogenase",[EC:1.3.1.87],K05711 C_arom_carbox hcaB,"K05711 C_arom_carbox ( hcaB ) 2,3-dihydroxy-2,3-"
+103,Carbon ,Aromatic,C_arom_carbox,,K00451,"HGD, hmgA","homogentisate 1,2-dioxygenase",[EC:1.13.11.5],"K00451 C_arom_carbox HGD,","K00451 C_arom_carbox ( HGD, ) homogentisate 1,2-"
+104,Carbon ,Aromatic,C_arom_carbox,,K01555,"FAH, fahA",fumarylacetoacetase,[EC:3.7.1.2],"K01555 C_arom_carbox FAH,","K01555 C_arom_carbox ( FAH, ) fumarylacetoacetas"
+105,Carbon ,Aromatic,C_arom_carbox,,K01800,"maiA, GSTZ1",maleylacetoacetate isomerase,[EC:5.2.1.2],K01800 C_arom_carbox maiA,K01800 C_arom_carbox ( maiA ) maleylacetoacetate
+106,Carbon ,Aromatic,C_arom_carbox,,K01781,mdlA,mandelate racemase,[EC:5.1.2.2],K01781 C_arom_carbox mdlA,K01781 C_arom_carbox ( mdlA ) mandelate racemase
+107,Carbon ,Aromatic,C_arom_carbox,,K15054,mdlB,(S)-mandelate dehydrogenase,[EC:1.1.99.31],K15054 C_arom_carbox mdlB,K15054 C_arom_carbox ( mdlB ) (S)-mandelate dehy
+108,Carbon ,Aromatic,C_arom_carbox,,K01576,mdlC,benzoylformate decarboxylase,[EC:4.1.1.7],K01576 C_arom_carbox mdlC,K01576 C_arom_carbox ( mdlC ) benzoylformate dec
+109,Carbon ,Aromatic,C_arom_carbox,,K05712,mhpA,3-(3-hydroxy-phenyl)propionate hydroxylase,[EC:1.14.13.127],K05712 C_arom_carbox mhpA,K05712 C_arom_carbox ( mhpA ) 3-(3-hydroxy-pheny
+110,Carbon ,Aromatic,C_arom_carbox,,K00450,E1.13.11.4,"gentisate 1,2-dioxygenase",[EC:1.13.11.4],K00450 C_arom_carbox E1.1,"K00450 C_arom_carbox ( E1.1 ) gentisate 1,2-diox"
+111,Carbon ,Aromatic,C_arom_carbox,,K01557,FAHD1,acylpyruvate hydrolase,[EC:3.7.1.5],K01557 C_arom_carbox FAHD,K01557 C_arom_carbox ( FAHD ) acylpyruvate hydro
+112,Carbon ,Aromatic,C_arom_carbox,,K05709,"hcaF, hcaA2",3-phenylpropionate/trans-cinnamate dioxygenase beta subunit,[EC:1.14.12.19],K05709 C_arom_carbox hcaF,K05709 C_arom_carbox ( hcaF ) 3-phenylpropionate
+113,Carbon ,Aromatic,C_arom_carbox,,K05708,"hcaE, hcaA1",3-phenylpropionate/trans-cinnamate dioxygenase alpha subunit,[EC:1.14.12.19],K05708 C_arom_carbox hcaE,K05708 C_arom_carbox ( hcaE ) 3-phenylpropionate
+114,Carbon ,Aromatic,C_arom_carbox,,K04102,pht5,"4,5-dihydroxyphthalate decarboxylase",[EC:4.1.1.55],K04102 C_arom_carbox pht5,"K04102 C_arom_carbox ( pht5 ) 4,5-dihydroxyphtha"
+115,Carbon ,Aromatic,C_arom_carbox,,K00023,phbB,acetoacetyl-CoA reductase,[EC:1.1.1.36],K00023 C_arom_carbox phbB,K00023 C_arom_carbox ( phbB ) acetoacetyl-CoA re
+116,Carbon ,Aromatic,C_arom_carbox,,K00481,pobA,p-hydroxybenzoate 3-monooxygenase,[EC:1.14.13.2],K00481 C_arom_carbox pobA,K00481 C_arom_carbox ( pobA ) p-hydroxybenzoate 
+117,Carbon ,Aromatic,C_arom_other,,K11066,amiD,N-acetylmuramoyl-L-alanine amidase,[EC:3.5.1.28],K11066 C_arom_other amiD,K11066 C_arom_other ( amiD ) N-acetylmuramoyl-L
+118,Carbon ,Aromatic,C_arom_other,,K01426,amiE,amidase,[EC:3.5.1.4],K01426 C_arom_other amiE,K01426 C_arom_other ( amiE ) amidase
+119,Carbon ,Aromatic,C_arom_other,,K00055,E1.1.1.90,aryl-alcohol dehydrogenase,[EC:1.1.1.90],K00055 C_arom_other E1.1,K00055 C_arom_other ( E1.1 ) aryl-alcohol dehyd
+120,Carbon ,Aromatic,C_arom_other,,K03381,catA,"catechol 1,2-dioxygenase",[EC:1.13.11.1],K03381 C_arom_other catA,"K03381 C_arom_other ( catA ) catechol 1,2-dioxy"
+121,Carbon ,Aromatic,C_arom_other,,K00446,"dmpB, xylE","catechol 2,3-dioxygenase",[EC:1.13.11.2],K00446 C_arom_other dmpB,"K00446 C_arom_other ( dmpB ) catechol 2,3-dioxy"
+122,Carbon ,Aromatic,C_arom_other,,K01501,E3.5.5.1,nitrilase,[EC:3.5.5.1],K01501 C_arom_other E3.5,K01501 C_arom_other ( E3.5 ) nitrilase
+123,Carbon ,Aromatic,C_arom_other,,K03380,E1.14.13.7,phenol 2-monooxygenase,[EC:1.14.13.7],K03380 C_arom_other E1.1,K03380 C_arom_other ( E1.1 ) phenol 2-monooxyge
+124,Carbon ,Aromatic,C_arom_other,,K14603,flnD2,"2'-carboxy-2,3-dihydroxybiphenyl 1,2-dioxygenase small subunit and ferredoxin fusion protein",,K14603 C_arom_other flnD,"K14603 C_arom_other ( flnD ) 2'-carboxy-2,3-dih"
+125,Carbon ,Aromatic,C_arom_other,,K03379,E1.14.13.22,cyclohexanone monooxygenase,[EC:1.14.13.22],K03379 C_arom_other E1.1,K03379 C_arom_other ( E1.1 ) cyclohexanone mono
+126,Carbon ,Aromatic,C_arom_other,,K00128,E1.2.1.3,aldehyde dehydrogenase (NAD+),[EC:1.2.1.3],K00128 C_arom_other E1.2,K00128 C_arom_other ( E1.2 ) aldehyde dehydroge
+127,Carbon ,Aromatic,C_arom_other,,K00149,ALDH9A1,aldehyde dehydrogenase family 9 member A1,[EC:1.2.1.47 1.2.1.3],K00149 C_arom_other ALDH,K00149 C_arom_other ( ALDH ) aldehyde dehydroge
+128,Carbon ,Aromatic,C_arom_nitro,,K04098,chqB,"hydroxyquinol 1,2-dioxygenase",[EC:1.13.11.37],K04098 C_arom_nitro chqB,"K04098 C_arom_nitro ( chqB ) hydroxyquinol 1,2-"
+129,Carbon ,Aromatic,C_arom_nitro,,K00452,HAAO,"3-hydroxyanthranilate 3,4-dioxygenase",[EC:1.13.11.6],K00452 C_arom_nitro HAAO,K00452 C_arom_nitro ( HAAO ) 3-hydroxyanthranil
+130,Carbon ,Aromatic,C_arom_nitro,,K01721,E4.2.1.84,nitrile hydratase,[EC:4.2.1.84],K01721 C_arom_nitro E4.2,K01721 C_arom_nitro ( E4.2 ) nitrile hydratase
+131,Carbon ,Aromatic,C_arom_nitro,,K00492,E1.14.13.-,xylenol methylhydroxylase,[EC:1.14.13.-],K00492 C_arom_nitro E1.1,K00492 C_arom_nitro ( E1.1 ) xylenol methylhydr
+132,Carbon ,Aromatic,C_arom_nitro,,K01617,"dmpH, xylI, nahK",2-oxo-3-hexenedioate decarboxylase,[EC:4.1.1.77],K01617 C_arom_nitro dmpH,K01617 C_arom_nitro ( dmpH ) 2-oxo-3-hexenedioa
+133,Carbon ,Aromatic,C_arom_nitro,,K06912,tfdA,"alpha-ketoglutarate-dependent 2,4-dichlorophenoxyacetate dioxygenase",[EC:1.14.11.-],K06912 C_arom_nitro tfdA,K06912 C_arom_nitro ( tfdA ) alpha-ketoglutarat
+134,Carbon ,Aromatic,C_arom_nitro,,K10676,tfdB,"2,4-dichlorophenol 6-monooxygenase",[EC:1.14.13.20],K10676 C_arom_nitro tfdB,"K10676 C_arom_nitro ( tfdB ) 2,4-dichlorophenol"
+135,Carbon ,Aromatic,C_arom_BTEX,,K10217,"dmpC, xylG",aminomuconate-semialdehyde/2-hydroxymuconate-6-semialdehyde dehydrogenase,[EC:1.2.1.32 1.2.1.85],K10217 C_arom_BTEX dmpC,K10217 C_arom_BTEX ( dmpC ) aminomuconate-semi
+136,Carbon ,Aromatic,C_arom_BTEX,,K05823,E3.5.1.47,N-acetyldiaminopimelate deacetylase,[EC:3.5.1.47],K05823 C_arom_BTEX E3.5,K05823 C_arom_BTEX ( E3.5 ) N-acetyldiaminopim
+137,Carbon ,Aromatic,C_arom_BTEX,,K01452,E3.5.1.41,chitin deacetylase,[EC:3.5.1.41],K01452 C_arom_BTEX E3.5,K01452 C_arom_BTEX ( E3.5 ) chitin deacetylase
+138,Carbon ,Aromatic,C_arom_BTEX,,K01473,hyuA,N-methylhydantoinase A,[EC:3.5.2.14],K01473 C_arom_BTEX hyuA,K01473 C_arom_BTEX ( hyuA ) N-methylhydantoina
+139,Carbon ,Aromatic,C_arom_BTEX,,K07546,bbsH,E-phenylitaconyl-CoA hydratase,[EC:4.2.1.-],K07546 C_arom_BTEX bbsH,K07546 C_arom_BTEX ( bbsH ) E-phenylitaconyl-C
+140,Carbon ,Aromatic,C_arom_BTEX,,K01856,catB,muconate cycloisomerase,[EC:5.5.1.1],K01856 C_arom_BTEX catB,K01856 C_arom_BTEX ( catB ) muconate cycloisom
+141,Carbon ,Aromatic,C_arom_BTEX,,K05797,E1.17.99.1,4-cresol dehydrogenase (hydroxylating),[EC:1.17.99.1],K05797 C_arom_BTEX E1.1,K05797 C_arom_BTEX ( E1.1 ) 4-cresol dehydroge
+142,Carbon ,Aromatic,C_arom_BTEX,,K14269,,glutarate semialdehyde dehydrogenase ,[EC:1.2.1.20],,
+143,Carbon ,Aromatic,C_arom_BTEX,,K00141,xylC,benzaldehyde dehydrogenase (NAD),[EC:1.2.1.28],K00141 C_arom_BTEX xylC,K00141 C_arom_BTEX ( xylC ) benzaldehyde dehyd
+144,Carbon ,Aromatic,C_arom_PAH,,K04099,"desB, galA",gallate dioxygenase,[EC:1.13.11.57],K04099 C_arom_PAH desB,K04099 C_arom_PAH ( desB ) gallate dioxygenas
+145,Carbon ,Aromatic,C_arom_PAH,,K08689,"bphAa, bphA1, bphA","biphenyl 2,3-dioxygenase alpha subunit",[EC:1.14.12.18],K08689 C_arom_PAH bphA,"K08689 C_arom_PAH ( bphA ) biphenyl 2,3-dioxy"
+146,Carbon ,Aromatic,C_arom_PAH,,K01619,"deoC, DERA",deoxyribose-phosphate aldolase,[EC:4.1.2.4],K01619 C_arom_PAH deoC,K01619 C_arom_PAH ( deoC ) deoxyribose-phosph
+147,Carbon ,Aromatic,C_arom_PAH,,K00132,E1.2.1.10,acetaldehyde dehydrogenase (acetylating),[EC:1.2.1.10],K00132 C_arom_PAH E1.2,K00132 C_arom_PAH ( E1.2 ) acetaldehyde dehyd
+148,Carbon ,Aromatic,C_arom_PAH,,K00120,EC:1.1.-.-,bis(4-hydroxyphenyl)methanol dehydrogenase,[EC:1.1.-.-],K00120 C_arom_PAH EC:1,K00120 C_arom_PAH ( EC:1 ) bis(4-hydroxypheny
+149,Carbon ,Aromatic,C_arom_PAH,,K00224,E1.3.1.-,"3,4-dihydroxy-3,4-dihydrofluorene dehydrogenase",[EC:1.3.1.-],K00224 C_arom_PAH E1.3,"K00224 C_arom_PAH ( E1.3 ) 3,4-dihydroxy-3,4-"
+150,Carbon ,Aromatic,C_arom_PAH,,K00448,pcaG,"protocatechuate 3,4-dioxygenase, alpha subunit",[EC:1.13.11.3],K00448 C_arom_PAH pcaG,"K00448 C_arom_PAH ( pcaG ) protocatechuate 3,"
+151,Carbon ,Aromatic,C_arom_PAH,,K00449,pcaH,"protocatechuate 3,4-dioxygenase, beta subunit",[EC:1.13.11.3],K00449 C_arom_PAH pcaH,"K00449 C_arom_PAH ( pcaH ) protocatechuate 3,"
+152,Carbon ,Aromatic,C_arom_PAH,,K00465,E1.13.11.-,"2,3-dihydroxy DDT 1,2-dioxygenase",[EC:1.13.11.-],K00465 C_arom_PAH E1.1,"K00465 C_arom_PAH ( E1.1 ) 2,3-dihydroxy DDT "
+153,Carbon ,Aromatic,C_arom_PAH,,K00480,E1.14.13.1,salicylate hydroxylase,[EC:1.14.13.1],K00480 C_arom_PAH E1.1,K00480 C_arom_PAH ( E1.1 ) salicylate hydroxy
+154,Carbon ,Aromatic,C_arom_PAH,,K00517,CYP81F,indol-3-yl-methylglucosinolate hydroxylase,[EC:1.14.-.-],K00517 C_arom_PAH CYP8,K00517 C_arom_PAH ( CYP8 ) indol-3-yl-methylg
+155,Carbon ,Aromatic,C_arom_PAH,,K00599,E2.1.1.-,3-hydroxyanthranilate O-methyltransferase,[EC:2.1.1.-],K00599 C_arom_PAH E2.1,K00599 C_arom_PAH ( E2.1 ) 3-hydroxyanthranil
+156,Carbon ,Aromatic,C_arom_PAH,,K03384,E1.14.12.-,fluorobenzene dioxygenase,[EC:1.14.12.-],K03384 C_arom_PAH E1.1,K03384 C_arom_PAH ( E1.1 ) fluorobenzene diox
+157,Carbon ,Aromatic,C_arom_PAH,,K04100,ligA,"protocatechuate 4,5-dioxygenase, alpha chain",[EC:1.13.11.8],K04100 C_arom_PAH ligA,"K04100 C_arom_PAH ( ligA ) protocatechuate 4,"
+158,Carbon ,Aromatic,C_arom_PAH,,K04101,ligB,"protocatechuate 4,5-dioxygenase, beta chain",[EC:1.13.11.8],K04101 C_arom_PAH ligB,"K04101 C_arom_PAH ( ligB ) protocatechuate 4,"
+159,Carbon ,Aromatic,C_arom_PAH,,K07519,E1.14.12.7  ,"phthalate 4,5-dioxygenase",[EC 1.14.12.7],K07519 C_arom_PAH E1.1,"K07519 C_arom_PAH ( E1.1 ) phthalate 4,5-diox"
+160,Carbon ,Aromatic,C_arom_PAH,,K11943,nidA,PAH dioxygenase large subunit,[EC:1.13.11.-],K11943 C_arom_PAH nidA,K11943 C_arom_PAH ( nidA ) PAH dioxygenase la
+161,Carbon ,Aromatic,C_arom_PAH,,K11944,nidB,PAH dioxygenase small subunit,[EC:1.13.11.-],K11944 C_arom_PAH nidB,K11944 C_arom_PAH ( nidB ) PAH dioxygenase sm
+162,Carbon ,Aromatic,C_arom_PAH,,K11945,phdF,extradiol dioxygenase,[EC:1.13.11.-],K11945 C_arom_PAH phdF,K11945 C_arom_PAH ( phdF ) extradiol dioxygen
+163,Carbon ,Aromatic,C_arom_PAH,,K11946,phdG,hydratase-aldolase,[EC:4.1.2.-],K11946 C_arom_PAH phdG,K11946 C_arom_PAH ( phdG ) hydratase-aldolase
+164,Carbon ,Aromatic,C_arom_PAH,,K11947,nidD,aldehyde dehydrogenase,[EC:1.2.1.-],K11947 C_arom_PAH nidD,K11947 C_arom_PAH ( nidD ) aldehyde dehydroge
+165,Carbon ,Aromatic,C_arom_PAH,,K11948,phdI,1-hydroxy-2-naphthoate dioxygenase,[EC:1.13.11.38],K11948 C_arom_PAH phdI,K11948 C_arom_PAH ( phdI ) 1-hydroxy-2-naphth
+166,Carbon ,Aromatic,C_arom_PAH,,K11949,phdJ,4-(2-carboxyphenyl)-2-oxobut-3-enoate aldolase,[EC:4.1.2.34],K11949 C_arom_PAH phdJ,K11949 C_arom_PAH ( phdJ ) 4-(2-carboxyphenyl
+167,Carbon ,Aromatic,C_arom_PAH,,K14578,"nahAb, nagAb, ndoA","naphthalene 1,2-dioxygenase system ferredoxin subunit",,K14578 C_arom_PAH nahA,"K14578 C_arom_PAH ( nahA ) naphthalene 1,2-di"
+168,Carbon ,Aromatic,C_arom_PAH,,K14579,"nahAc, ndoB","naphthalene 1,2-dioxygenase subunit alpha",[EC:1.14.12.12],K14579 C_arom_PAH nahA,"K14579 C_arom_PAH ( nahA ) naphthalene 1,2-di"
+169,Carbon ,Aromatic,C_arom_PAH,,K14580,"nahAd, ndoC","naphthalene 1,2-dioxygenase subunit beta",[EC:1.14.12.12],K14580 C_arom_PAH nahA,"K14580 C_arom_PAH ( nahA ) naphthalene 1,2-di"
+170,Carbon ,Aromatic,C_arom_PAH,,K14581,"nahAa, nagAa, ndoR",ferredoxin-NAD(P)+ reductase (naphthalene dioxygenase ferredoxin-specific),[EC:1.18.1.7],K14581 C_arom_PAH nahA,K14581 C_arom_PAH ( nahA ) ferredoxin-NAD(P)+
+171,Carbon ,Aromatic,C_arom_PAH,,K14582,"nahB, doxE","cis-1,2-dihydro-1,2-dihydroxynaphthalene/dibenzothiophene dihydrodiol dehydrogenase",[EC:1.3.1.29 1.3.1.60],K14582 C_arom_PAH nahB,"K14582 C_arom_PAH ( nahB ) cis-1,2-dihydro-1,"
+172,Carbon ,Aromatic,C_arom_PAH,,K14599,dbfA1,dibenzofuran dioxygenase alpha subunit,[EC:1.14.12.-],K14599 C_arom_PAH dbfA,K14599 C_arom_PAH ( dbfA ) dibenzofuran dioxy
+173,Carbon ,Aromatic,C_arom_PAH,,K14600,dbfA2,dibenzofuran dioxygenase beta subunit,[EC:1.14.12.-],K14600 C_arom_PAH dbfA,K14600 C_arom_PAH ( dbfA ) dibenzofuran dioxy
+174,Carbon ,Aromatic,C_arom_PAH,,K14601,flnB,"1,1a-dihydroxy-1-hydro-9-fluorenone dehydrogenase",,K14601 C_arom_PAH flnB,"K14601 C_arom_PAH ( flnB ) 1,1a-dihydroxy-1-h"
+175,Carbon ,Aromatic,C_arom_PAH,,K14602,flnD1,"2'-carboxy-2,3-dihydroxybiphenyl 1,2-dioxygenase large subunit",,K14602 C_arom_PAH flnD,"K14602 C_arom_PAH ( flnD ) 2'-carboxy-2,3-dih"
+176,Nitrogen,Denitrification,N_DNT,,K00368,nirK,nitrite reductase (NO-forming),[EC:1.7.2.1],K00368 N_DNT nirK,K00368 N_DNT ( nirK ) nitrite reductase 
+177,Nitrogen,Denitrification,N_DNT,,K15864,nirS,nitrite reductase (NO-forming) / hydroxylamine reductase,[EC:1.7.2.1 1.7.99.1],K15864 N_DNT nirS,K15864 N_DNT ( nirS ) nitrite reductase 
+178,Nitrogen,Denitrification,N_DNT,,K04561,norB,nitric oxide reductase subunit B,[EC:1.7.2.5],K04561 N_DNT norB,K04561 N_DNT ( norB ) nitric oxide reduc
+179,Nitrogen,Denitrification,N_DNT,,K02305,norC,nitric oxide reductase subunit C,,K02305 N_DNT norC,K02305 N_DNT ( norC ) nitric oxide reduc
+180,Nitrogen,Denitrification,N_DNT,,K15877,CYP55,fungal nitric oxide reductase,[EC:1.7.1.14],K15877 N_DNT CYP5,K15877 N_DNT ( CYP5 ) fungal nitric oxid
+181,Nitrogen,Denitrification,N_DNT,,K00376,nosZ,nitrous-oxide reductase,[EC:1.7.2.4],K00376 N_DNT nosZ,K00376 N_DNT ( nosZ ) nitrous-oxide redu
+182,Nitrogen,Denitrification,N_DNT,,K00370,"narG, narZ, nxrA","nitrate reductase / nitrite oxidoreductase, alpha subunit",[EC:1.7.5.1 1.7.99.4],K00370 N_DNT narG,K00370 N_DNT ( narG ) nitrate reductase 
+183,Nitrogen,NO3_reduction,NO3_red,,K00371,"narH, narY, nxrB","nitrate reductase / nitrite oxidoreductase, beta subunit",[EC:1.7.5.1 1.7.99.4],K00371 NO3_red narH,K00371 NO3_red ( narH ) nitrate reductase 
+184,Nitrogen,NO3_reduction,NO3_red,,K00374,"narI, narV",nitrate reductase gamma subunit,[EC:1.7.5.1 1.7.99.4],K00374 NO3_red narI,K00374 NO3_red ( narI ) nitrate reductase 
+185,Nitrogen,NO3_reduction,NO3_red,,K00373,"narJ, narW",nitrate reductase delta subunit,,K00373 NO3_red narJ,K00373 NO3_red ( narJ ) nitrate reductase 
+186,Nitrogen,NO3_reduction,NO3_red,,K02567,napA,periplasmic nitrate reductase NapA,[EC:1.7.99.4],K02567 NO3_red napA,K02567 NO3_red ( napA ) periplasmic nitrat
+187,Nitrogen,NO3_reduction,NO3_red,,K02568,napB,cytochrome c-type protein NapB,,K02568 NO3_red napB,K02568 NO3_red ( napB ) cytochrome c-type 
+188,Nitrogen,NO3_reduction,NO3_D.red,,K00362,nirB,nitrite reductase (NADH) large subunit,[EC:1.7.1.15],K00362 NO3_D.red nirB,K00362 NO3_D.red ( nirB ) nitrite reductase 
+189,Nitrogen,NO3_reduction,NO3_D.red,,K00363,nirD,nitrite reductase (NADH) small subunit,[EC:1.7.1.15],K00363 NO3_D.red nirD,K00363 NO3_D.red ( nirD ) nitrite reductase 
+190,Nitrogen,NO3_reduction,NO3_D.red,,K03385,nrfA,nitrite reductase (cytochrome c-552),[EC:1.7.2.2],K03385 NO3_D.red nrfA,K03385 NO3_D.red ( nrfA ) nitrite reductase 
+191,Nitrogen,NO3_reduction,NO3_D.red,,K15876,nrfH,cytochrome c nitrite reductase small subunit,,K15876 NO3_D.red nrfH,K15876 NO3_D.red ( nrfH ) cytochrome c nitri
+192,Nitrogen,NH3_oxidation,NH3_oxid,,K10944,pmoA-amoA,methane/ammonia monooxygenase subunit A,[EC:1.14.18.3 1.14.99.39],K10944 NH3_oxid pmoA,K10944 NH3_oxid ( pmoA ) methane/ammonia mo
+193,Nitrogen,NH3_oxidation,NH3_oxid,,K10945,pmoB-amoB,methane/ammonia monooxygenase subunit B,,K10945 NH3_oxid pmoB,K10945 NH3_oxid ( pmoB ) methane/ammonia mo
+194,Nitrogen,NH3_oxidation,NH3_oxid,,K10946,pmoC-amoC,methane/ammonia monooxygenase subunit C,,K10946 NH3_oxid pmoC,K10946 NH3_oxid ( pmoC ) methane/ammonia mo
+195,Nitrogen,NH3_oxidation,NH3_oxid,,K10535,hao,hydroxylamine dehydrogenase,[EC:1.7.2.6],K10535 NH3_oxid hao,K10535 NH3_oxid ( hao ) hydroxylamine dehy
+196,Nitrogen,NO3_A.reduction,NO3_A.red,,K00367,narB,ferredoxin-nitrate reductase,[EC:1.7.7.2],K00367 NO3_A.red narB,K00367 NO3_A.red ( narB ) ferredoxin-nitrate
+197,Nitrogen,NO3_A.reduction,NO3_A.red,,K10534,NR,nitrate reductase (NAD(P)H),[EC:1.7.1.1 1.7.1.2 1.7.1.3],K10534 NO3_A.red NR,K10534 NO3_A.red ( NR ) nitrate reductase 
+198,Nitrogen,NO3_A.reduction,NO3_A.red,,K00372,nasA,assimilatory nitrate reductase catalytic subunit,[EC:1.7.99.4],K00372 NO3_A.red nasA,K00372 NO3_A.red ( nasA ) assimilatory nitra
+199,Nitrogen,NO3_A.reduction,NO3_A.red,,K00360,nasB,assimilatory nitrate reductase electron transfer subunit,[EC:1.7.99.4],K00360 NO3_A.red nasB,K00360 NO3_A.red ( nasB ) assimilatory nitra
+200,Nitrogen,NO3_A.reduction,NO3_A.red,,K00366,nirA,ferredoxin-nitrite reductase,[EC:1.7.7.1],K00366 NO3_A.red nirA,K00366 NO3_A.red ( nirA ) ferredoxin-nitrite
+201,Nitrogen,NO3_A.reduction,NO3_A.red,,K17877,NIT-6,nitrite reductase (NAD(P)H),[EC:1.7.1.4],K17877 NO3_A.red NIT-,K17877 NO3_A.red ( NIT- ) nitrite reductase 
+202,Nitrogen,NH4_assimilation,NH4_asim,,K00260,"gudB, rocG",glutamate dehydrogenase,[EC:1.4.1.2],K00260 NH4_asim gudB,K00260 NH4_asim ( gudB ) glutamate dehydrog
+203,Nitrogen,NH4_assimilation,NH4_asim,,K00261,"GLUD1_2, gdhA",glutamate dehydrogenase (NAD(P)+),[EC:1.4.1.3],K00261 NH4_asim GLUD,K00261 NH4_asim ( GLUD ) glutamate dehydrog
+204,Nitrogen,NH4_assimilation,NH4_asim,,K00262,"E1.4.1.4, gdhA",glutamate dehydrogenase (NADP+),[EC:1.4.1.4],K00262 NH4_asim E1.4,K00262 NH4_asim ( E1.4 ) glutamate dehydrog
+205,Nitrogen,NH4_assimilation,NH4_asim,,K00264,GLT1,glutamate synthase (NADPH/NADH),[EC:1.4.1.13 1.4.1.14],K00264 NH4_asim GLT1,K00264 NH4_asim ( GLT1 ) glutamate synthase
+206,Nitrogen,NH4_assimilation,NH4_asim,,K00265,gltB,glutamate synthase (NADPH/NADH) large chain,[EC:1.4.1.13 1.4.1.14],K00265 NH4_asim gltB,K00265 NH4_asim ( gltB ) glutamate synthase
+207,Nitrogen,NH4_assimilation,NH4_asim,,K00266,gltD,glutamate synthase (NADPH/NADH) small chain,[EC:1.4.1.13 1.4.1.14],K00266 NH4_asim gltD,K00266 NH4_asim ( gltD ) glutamate synthase
+208,Nitrogen,NH4_assimilation,NH4_asim,,K00284,E1.4.7.1,glutamate synthase (ferredoxin),[EC:1.4.7.1],K00284 NH4_asim E1.4,K00284 NH4_asim ( E1.4 ) glutamate synthase
+209,Nitrogen,NH4_assimilation,NH4_asim,,K01425,"glsA, GLS",glutaminase,[EC:3.5.1.2],K01425 NH4_asim glsA,K01425 NH4_asim ( glsA ) glutaminase
+210,Nitrogen,NH4_assimilation,NH4_asim,,K01915,"glnA, GLUL",glutamine synthetase,[EC:6.3.1.2],K01915 NH4_asim glnA,K01915 NH4_asim ( glnA ) glutamine syntheta
+211,Nitrogen,NH4_assimilation,NH4_asim,,K01953,"asnB, ASNS",asparagine synthase (glutamine-hydrolysing),[EC:6.3.5.4],K01953 NH4_asim asnB,K01953 NH4_asim ( asnB ) asparagine synthas
+212,Nitrogen,NH4_assimilation,NH4_asim,,K05597,"aspQ, ansB, ansA",glutamin-(asparagin-)ase,[EC:3.5.1.38],K05597 NH4_asim aspQ,K05597 NH4_asim ( aspQ ) glutamin-(asparagi
+213,Nitrogen,NH4_assimilation,NH4_asim,,K15371,GDH2,glutamate dehydrogenase,[EC:1.4.1.2],K15371 NH4_asim GDH2,K15371 NH4_asim ( GDH2 ) glutamate dehydrog
+214,Nitrogen,N2_fixation,N2_fix,,K02588,nifH,nitrogenase iron protein NifH,[EC:1.18.6.1],K02588 N2_fix nifH,K02588 N2_fix ( nifH ) nitrogenase iron p
+215,Nitrogen,N2_fixation,N2_fix,,K02586,nifD,nitrogenase molybdenum-iron protein alpha chain,[EC:1.18.6.1],K02586 N2_fix nifD,K02586 N2_fix ( nifD ) nitrogenase molybd
+216,Nitrogen,N2_fixation,N2_fix,,K02591,nifK,nitrogenase molybdenum-iron protein beta chain,[EC:1.18.6.1],K02591 N2_fix nifK,K02591 N2_fix ( nifK ) nitrogenase molybd
+217,Nitrogen,N2_fixation,N2_fix,,K00531,anfG,nitrogenase delta subunit,[EC:1.18.6.1],K00531 N2_fix anfG,K00531 N2_fix ( anfG ) nitrogenase delta 
+218,Phosphorus,P_transport,P_transp,,K02040,pstS,phosphate transport system substrate-binding protein,,K02040 P_transp pstS,K02040 P_transp ( pstS ) phosphate transpor
+219,Phosphorus,P_transport,P_transp,,K02037,pstC,phosphate transport system permease protein,,K02037 P_transp pstC,K02037 P_transp ( pstC ) phosphate transpor
+220,Phosphorus,P_transport,P_transp,,K02038,pstA,phosphate transport system permease protein,,K02038 P_transp pstA,K02038 P_transp ( pstA ) phosphate transpor
+221,Phosphorus,P_transport,P_transp,,K02036,pstB,phosphate transport system ATP-binding protein,[EC:3.6.3.27],K02036 P_transp pstB,K02036 P_transp ( pstB ) phosphate transpor
+222,Phosphorus,P_transport,P_transp,,K03324,yjbB,phosphate:Na+ symporter,,K03324 P_transp yjbB,K03324 P_transp ( yjbB ) phosphate:Na+ symp
+223,Phosphorus,P_transport,P_transp,,K03306,pit,"inorganic phosphate transporter, PiT family",,K03306 P_transp pit,K03306 P_transp ( pit ) inorganic phosphat
+224,Phosphorus,P_transport,P_transp,,K07221,oprO_P,phosphate-selective porin OprO and OprP,,K07221 P_transp oprO,K07221 P_transp ( oprO ) phosphate-selectiv
+225,Phosphorus,P_regulation,P_regulat,,K07636,phoR,"two-component system, OmpR family, phosphate regulon sensor histidine kinase PhoR",[EC:2.7.13.3],K07636 P_regulat phoR,K07636 P_regulat ( phoR ) two-component syst
+226,Phosphorus,P_regulation,P_regulat,,K07657,phoB,"two-component system, OmpR family, phosphate regulon response regulator PhoB",,K07657 P_regulat phoB,K07657 P_regulat ( phoB ) two-component syst
+227,Phosphorus,P_regulation,P_regulat,,K07658,"phoB1, phoP","two-component system, OmpR family, alkaline phosphatase synthesis response regulator PhoP",,K07658 P_regulat phoB,K07658 P_regulat ( phoB ) two-component syst
+228,Phosphorus,P_regulation,P_regulat,,K07768,senX3,"two-component system, OmpR family, sensor histidine kinase SenX3",[EC:2.7.13.3],K07768 P_regulat senX,K07768 P_regulat ( senX ) two-component syst
+229,Phosphorus,P_regulation,P_regulat,,K07776,regX3,"two-component system, OmpR family, response regulator RegX3",,K07776 P_regulat regX,K07776 P_regulat ( regX ) two-component syst
+230,Phosphorus,P_regulation,P_regulat,,K06217,"phoH, phoL",phosphate starvation-inducible protein PhoH and related proteins,,K06217 P_regulat phoH,K06217 P_regulat ( phoH ) phosphate starvati
+231,Phosphorus,P_regulation,P_regulat,,K07175,phoH2,PhoH-like ATPase,,K07175 P_regulat phoH,K07175 P_regulat ( phoH ) PhoH-like ATPase
+232,Phosphorus,P_regulation,P_regulat,,K07637,phoQ,"two-component system, OmpR family, sensor histidine kinase PhoQ",,K07637 P_regulat phoQ,K07637 P_regulat ( phoQ ) two-component syst
+233,Phosphorus,PolyP-ases ,P_PyroP,,K00937 ,ppk,polyphosphate kinase,[EC:2.7.4.1],K00937  P_PyroP ppk,K00937  P_PyroP ( ppk ) polyphosphate kina
+234,Phosphorus,PolyP-ases ,P_PyroP,,K01507,ppa,inorganic pyrophosphatase,,K01507 P_PyroP ppa,K01507 P_PyroP ( ppa ) inorganic pyrophos
+235,Phosphorus,PolyP-ases ,P_PyroP,,K15986,ppaC,manganese-dependent inorganic pyrophosphatase,,K15986 P_PyroP ppaC,K15986 P_PyroP ( ppaC ) manganese-dependen
+236,Phosphorus,PolyP-ases ,P_PyroP,,K06019,ppaX,pyrophosphatase PpaX,[EC:3.6.1.1],K06019 P_PyroP ppaX,K06019 P_PyroP ( ppaX ) pyrophosphatase Pp
+237,Phosphorus,PolyP-ases ,P_PolyPase,,K01514,"PRUNE, PPX1",exopolyphosphatase,[EC:3.6.1.11],K01514 P_PolyPase PRUN,K01514 P_PolyPase ( PRUN ) exopolyphosphatase
+238,Phosphorus,PolyP-ases ,P_PolyPase,,K01524,ppx-gppA,"exopolyphosphatase / guanosine-5'-triphosphate,3'-diphosphate pyrophosphatase",[EC:3.6.1.11 3.6.1.40],K01524 P_PolyPase ppx-,K01524 P_PolyPase ( ppx- ) exopolyphosphatase
+239,Phosphorus,Phosphatases ,P_P-ase,,K01077,"phoA, phoB",alkaline phosphatase,[EC:3.1.3.1],K01077 P_P-ase phoA,K01077 P_P-ase ( phoA ) alkaline phosphata
+240,Phosphorus,Phosphatases ,P_P-ase,,K01113,phoD,alkaline phosphatase D,[EC:3.1.3.1],K01113 P_P-ase phoD,K01113 P_P-ase ( phoD ) alkaline phosphata
+241,Phosphorus,Phosphatases ,P_P-ase,,K01083,E3.1.3.8,3-phytase,[EC:3.1.3.8],K01083 P_P-ase E3.1,K01083 P_P-ase ( E3.1 ) 3-phytase
+242,Phosphorus,Phosphatases ,P_P-ase,,K01093,appA,4-phytase / acid phosphatase,[EC:3.1.3.26 3.1.3.2],K01093 P_P-ase appA,K01093 P_P-ase ( appA ) 4-phytase / acid p
+243,Phosphorus,Phn_transport,P_Phn,,K02044,phnD,phosphonate transport system substrate-binding protein,,K02044 P_Phn phnD,K02044 P_Phn ( phnD ) phosphonate transp
+244,Phosphorus,Phn_transport,P_Phn,,K02042,phnE,phosphonate transport system permease protein,,K02042 P_Phn phnE,K02042 P_Phn ( phnE ) phosphonate transp
+245,Phosphorus,Phn_transport,P_Phn,,K02041,phnC,phosphonate transport system ATP-binding protein,[EC:3.6.3.28],K02041 P_Phn phnC,K02041 P_Phn ( phnC ) phosphonate transp
+246,Phosphorus,Phn_transport,P_Phn,,K11081,phnS,2-aminoethylphosphonate transport system substrate-binding protein,,K11081 P_Phn phnS,K11081 P_Phn ( phnS ) 2-aminoethylphosph
+247,Phosphorus,Phn_transport,P_Phn,,K11082,phnV,2-aminoethylphosphonate transport system permease protein,,K11082 P_Phn phnV,K11082 P_Phn ( phnV ) 2-aminoethylphosph
+248,Phosphorus,Phn_transport,P_Phn,,K11083,phnU,2-aminoethylphosphonate transport system permease protein,,K11083 P_Phn phnU,K11083 P_Phn ( phnU ) 2-aminoethylphosph
+249,Phosphorus,Phn_transport,P_Phn,,K11084,phnT,2-aminoethylphosphonate transport system ATP-binding protein,,K11084 P_Phn phnT,K11084 P_Phn ( phnT ) 2-aminoethylphosph
+250,Phosphorus,Phn_transport,P_Phn,,K05306,phnX,phosphonoacetaldehyde hydrolase,[EC:3.11.1.1],K05306 P_Phn phnX,K05306 P_Phn ( phnX ) phosphonoacetaldeh
+251,Phosphorus,CH3-phosphonate,P_Phn,,K06193,phnA,phosphonoacetate hydrolase,[EC:3.11.1.2],K06193 P_Phn phnA,K06193 P_Phn ( phnA ) phosphonoacetate h
+252,Phosphorus,CH3-phosphonate,P_Phn,,K03430,phnW,2-aminoethylphosphonate-pyruvate transaminase,[EC:2.6.1.37],K03430 P_Phn phnW,K03430 P_Phn ( phnW ) 2-aminoethylphosph
+253,Phosphorus,CH3-phosphonate,P_CH3_Phn,,K06164,phnI,alpha-D-ribose 1-methylphosphonate 5-triphosphate synthase subunit PhnI,[EC:2.7.8.37],K06164 P_CH3_Phn phnI,K06164 P_CH3_Phn ( phnI ) alpha-D-ribose 1-m
+254,Phosphorus,CH3-phosphonate,P_CH3_Phn,,K06166,phnG,alpha-D-ribose 1-methylphosphonate 5-triphosphate synthase subunit PhnG,[EC:2.7.8.37],K06166 P_CH3_Phn phnG,K06166 P_CH3_Phn ( phnG ) alpha-D-ribose 1-m
+255,Phosphorus,CH3-phosphonate,P_CH3_Phn,,K06165,phnH,alpha-D-ribose 1-methylphosphonate 5-triphosphate synthase subunit PhnH,[EC:2.7.8.37],K06165 P_CH3_Phn phnH,K06165 P_CH3_Phn ( phnH ) alpha-D-ribose 1-m
+256,Phosphorus,CH3-phosphonate,P_CH3_Phn,,K05780,phnL,alpha-D-ribose 1-methylphosphonate 5-triphosphate synthase subunit PhnL,[EC:2.7.8.37],K05780 P_CH3_Phn phnL,K05780 P_CH3_Phn ( phnL ) alpha-D-ribose 1-m
+257,Phosphorus,CH3-phosphonate,P_CH3_Phn,,K06162,phnM,alpha-D-ribose 1-methylphosphonate 5-triphosphate diphosphatase,[EC:3.6.1.63],K06162 P_CH3_Phn phnM,K06162 P_CH3_Phn ( phnM ) alpha-D-ribose 1-m
+258,Phosphorus,CH3-phosphonate,P_CH3_Phn,,K06163,phnJ,alpha-D-ribose 1-methylphosphonate 5-phosphate C-P lyase,[EC:4.7.1.1],K06163 P_CH3_Phn phnJ,K06163 P_CH3_Phn ( phnJ ) alpha-D-ribose 1-m
+259,Phosphorus,CH3-phosphonate,P_CH3_Phn,,K06167,phnP,"phosphoribosyl 1,2-cyclic phosphate phosphodiesterase",[EC:3.1.4.55],K06167 P_CH3_Phn phnP,"K06167 P_CH3_Phn ( phnP ) phosphoribosyl 1,2"
+260,Sulfur,S2O3_oxidation,S2O3_ox,,K17222,soxA,sulfur-oxidizing protein SoxA,,K17222 S2O3_ox soxA,K17222 S2O3_ox ( soxA ) sulfur-oxidizing p
+261,Sulfur,S2O3_oxidation,S2O3_ox,,K17223,soxX,sulfur-oxidizing protein SoxX,,K17223 S2O3_ox soxX,K17223 S2O3_ox ( soxX ) sulfur-oxidizing p
+262,Sulfur,S2O3_oxidation,S2O3_ox,,K17224,soxB,sulfur-oxidizing protein SoxB,,K17224 S2O3_ox soxB,K17224 S2O3_ox ( soxB ) sulfur-oxidizing p
+263,Sulfur,S2O3_oxidation,S2O3_ox,,K17225,soxC,sulfane dehydrogenase subunit SoxC,,K17225 S2O3_ox soxC,K17225 S2O3_ox ( soxC ) sulfane dehydrogen
+264,Sulfur,S2O3_oxidation,S2O3_ox,,K17226,soxY,sulfur-oxidizing protein SoxY,,K17226 S2O3_ox soxY,K17226 S2O3_ox ( soxY ) sulfur-oxidizing p
+265,Sulfur,S2O3_oxidation,S2O3_ox,,K08738,CYC,cytochrome c,,K08738 S2O3_ox CYC,K08738 S2O3_ox ( CYC ) cytochrome c
+266,Sulfur,SO4_D.reduction,SO4_D.red,,K00956,cysN,sulfate adenylyltransferase subunit 1,[EC:2.7.7.4],K00956 SO4_D.red cysN,K00956 SO4_D.red ( cysN ) sulfate adenylyltr
+267,Sulfur,SO4_D.reduction,SO4_D.red,,K00957,cysD,sulfate adenylyltransferase subunit 2,[EC:2.7.7.4],K00957 SO4_D.red cysD,K00957 SO4_D.red ( cysD ) sulfate adenylyltr
+268,Sulfur,SO4_D.reduction,SO4_D.red,,K00958,"sat, met3",sulfate adenylyltransferase,[EC:2.7.7.4],"K00958 SO4_D.red sat,","K00958 SO4_D.red ( sat, ) sulfate adenylyltr"
+269,Sulfur,SO4_D.reduction,SO4_D.red,,K00394,aprA,"adenylylsulfate reductase, subunit A",[EC:1.8.99.2],K00394 SO4_D.red aprA,K00394 SO4_D.red ( aprA ) adenylylsulfate re
+270,Sulfur,SO4_D.reduction,SO4_D.red,,K00395,aprB,"adenylylsulfate reductase, subunit B",[EC:1.8.99.2],K00395 SO4_D.red aprB,K00395 SO4_D.red ( aprB ) adenylylsulfate re
+271,Sulfur,SO4_D.reduction,SO4_D.red,,K11180,dsrA,sulfite reductase alpha subunit,[EC:1.8.99.3 1.8.99.5],K11180 SO4_D.red dsrA,K11180 SO4_D.red ( dsrA ) sulfite reductase 
+272,Sulfur,SO4_D.reduction,SO4_D.red,,K11181,dsrB,sulfite reductase beta subunit,[EC:1.8.99.3 1.8.99.5],K11181 SO4_D.red dsrB,K11181 SO4_D.red ( dsrB ) sulfite reductase 
+273,Sulfur,SO4_A.reduction,SO4_A.red,,K13811,PAPSS,3'-phosphoadenosine 5'-phosphosulfate synthase,[EC:2.7.7.4 2.7.1.25],K13811 SO4_A.red PAPS,K13811 SO4_A.red ( PAPS ) 3'-phosphoadenosin
+274,Sulfur,SO4_A.reduction,SO4_A.red,,K00958,"sat, met3",sulfate adenylyltransferase,[EC:2.7.7.4],"K00958 SO4_A.red sat,","K00958 SO4_A.red ( sat, ) sulfate adenylyltr"
+275,Sulfur,SO4_A.reduction,SO4_A.red,,K00860,cysC,adenylylsulfate kinase,[EC:2.7.1.25],K00860 SO4_A.red cysC,K00860 SO4_A.red ( cysC ) adenylylsulfate ki
+276,Sulfur,SO4_A.reduction,SO4_A.red,,K00955,cysNC,bifunctional enzyme CysN/CysC,[EC:2.7.7.4 2.7.1.25],K00955 SO4_A.red cysN,K00955 SO4_A.red ( cysN ) bifunctional enzym
+277,Sulfur,SO4_A.reduction,SO4_A.red,,K00957,cysD,sulfate adenylyltransferase subunit 2,[EC:2.7.7.4],K00957 SO4_A.red cysD,K00957 SO4_A.red ( cysD ) sulfate adenylyltr
+278,Sulfur,SO4_A.reduction,SO4_A.red,,K00956,cysN,sulfate adenylyltransferase subunit 1,[EC:2.7.7.4],K00956 SO4_A.red cysN,K00956 SO4_A.red ( cysN ) sulfate adenylyltr
+279,Sulfur,SO4_A.reduction,SO4_A.red,,K00390,cysH,phosphoadenosine phosphosulfate reductase,[EC:1.8.4.8 1.8.4.10],K00390 SO4_A.red cysH,K00390 SO4_A.red ( cysH ) phosphoadenosine p
+280,Sulfur,SO4_A.reduction,SO4_A.red,,K00380,cysJ,sulfite reductase (NADPH) flavoprotein alpha-component,[EC:1.8.1.2],K00380 SO4_A.red cysJ,K00380 SO4_A.red ( cysJ ) sulfite reductase 
+281,Sulfur,SO4_A.reduction,SO4_A.red,,K00381,cysI,sulfite reductase (NADPH) hemoprotein beta-component,[EC:1.8.1.2],K00381 SO4_A.red cysI,K00381 SO4_A.red ( cysI ) sulfite reductase 
+282,Sulfur,SO4_A.reduction,SO4_A.red,,K00392,sir,sulfite reductase (ferredoxin),[EC:1.8.7.1],K00392 SO4_A.red sir,K00392 SO4_A.red ( sir ) sulfite reductase 
+283,CH4_cycling,CH4_oxidation,CH4_ox,,K10944,pmoA-amoA,methane/ammonia monooxygenase subunit A,[EC:1.14.18.3 1.14.99.39],K10944 CH4_ox pmoA,K10944 CH4_ox ( pmoA ) methane/ammonia mo
+284,CH4_cycling,CH4_oxidation,CH4_ox,,K10945,pmoB-amoB,methane/ammonia monooxygenase subunit B,,K10945 CH4_ox pmoB,K10945 CH4_ox ( pmoB ) methane/ammonia mo
+285,CH4_cycling,CH4_oxidation,CH4_ox,,K10946,pmoC-amoC,methane/ammonia monooxygenase subunit C,,K10946 CH4_ox pmoC,K10946 CH4_ox ( pmoC ) methane/ammonia mo
+286,CH4_cycling,CH4_oxidation,CH4_ox,,K16157,mmoX,methane monooxygenase component A alpha chain,[EC:1.14.13.25],K16157 CH4_ox mmoX,K16157 CH4_ox ( mmoX ) methane monooxygen
+287,CH4_cycling,CH4_oxidation,CH4_ox,,K16158,mmoY,methane monooxygenase component A beta chain,[EC:1.14.13.25],K16158 CH4_ox mmoY,K16158 CH4_ox ( mmoY ) methane monooxygen
+288,CH4_cycling,CH4_oxidation,CH4_ox,,K16159,mmoZ,methane monooxygenase component A gamma chain,[EC:1.14.13.25],K16159 CH4_ox mmoZ,K16159 CH4_ox ( mmoZ ) methane monooxygen
+289,CH4_cycling,CH4_oxidation,CH4_ox,,K16160,mmoB,methane monooxygenase regulatory protein B,,K16160 CH4_ox mmoB,K16160 CH4_ox ( mmoB ) methane monooxygen
+290,CH4_cycling,CH4_oxidation,CH4_ox,,K16161,mmoC,methane monooxygenase component C,[EC:1.14.13.25],K16161 CH4_ox mmoC,K16161 CH4_ox ( mmoC ) methane monooxygen
+291,CH4_cycling,CH4_oxidation,CH4_ox,,K16162,mmoD,methane monooxygenase component D,,K16162 CH4_ox mmoD,K16162 CH4_ox ( mmoD ) methane monooxygen
+292,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K00200,"fwdA, fmdA",formylmethanofuran dehydrogenase subunit A,[EC:1.2.99.5],K00200 CH4_H2.red fwdA,K00200 CH4_H2.red ( fwdA ) formylmethanofuran
+293,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K00201,"fwdB, fmdB",formylmethanofuran dehydrogenase subunit B,[EC:1.2.99.5],K00201 CH4_H2.red fwdB,K00201 CH4_H2.red ( fwdB ) formylmethanofuran
+294,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K00202,"fwdC, fmdC",formylmethanofuran dehydrogenase subunit C,[EC:1.2.99.5],K00202 CH4_H2.red fwdC,K00202 CH4_H2.red ( fwdC ) formylmethanofuran
+295,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K00203,"fwdD, fmdD",formylmethanofuran dehydrogenase subunit D,[EC:1.2.99.5],K00203 CH4_H2.red fwdD,K00203 CH4_H2.red ( fwdD ) formylmethanofuran
+296,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K11261,"fwdE, fmdE",formylmethanofuran dehydrogenase subunit E,[EC:1.2.99.5],K11261 CH4_H2.red fwdE,K11261 CH4_H2.red ( fwdE ) formylmethanofuran
+297,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K00205,"fwdF, fmdF",4Fe-4S ferredoxin,,K00205 CH4_H2.red fwdF,K00205 CH4_H2.red ( fwdF ) 4Fe-4S ferredoxin
+298,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K11260,fwdG,4Fe-4S ferredoxin,,K11260 CH4_H2.red fwdG,K11260 CH4_H2.red ( fwdG ) 4Fe-4S ferredoxin
+299,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K00204,fwdH,4Fe-4S ferredoxin,,K00204 CH4_H2.red fwdH,K00204 CH4_H2.red ( fwdH ) 4Fe-4S ferredoxin
+300,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K00672,ftr,formylmethanofuran--tetrahydromethanopterin N-formyltransferase,[EC:2.3.1.101],K00672 CH4_H2.red ftr,K00672 CH4_H2.red ( ftr ) formylmethanofuran
+301,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K01499,mch,methenyltetrahydromethanopterin cyclohydrolase,[EC:3.5.4.27],K01499 CH4_H2.red mch,K01499 CH4_H2.red ( mch ) methenyltetrahydro
+302,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K00319,mtd,methylenetetrahydromethanopterin dehydrogenase,[EC:1.5.98.1],K00319 CH4_H2.red mtd,K00319 CH4_H2.red ( mtd ) methylenetetrahydr
+303,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K13942,hmd,"5,10-methenyltetrahydromethanopterin hydrogenase",[EC:1.12.98.2],K13942 CH4_H2.red hmd,"K13942 CH4_H2.red ( hmd ) 5,10-methenyltetra"
+304,CH4_cycling,CH4_H2_reduction,CH4_H2.red,,K00320,mer,"5,10-methylenetetrahydromethanopterin reductase",[EC:1.5.98.2],K00320 CH4_H2.red mer,"K00320 CH4_H2.red ( mer ) 5,10-methylenetetr"
+305,CH4_cycling,CH4_acetate,CH4_acetat,,K00925,ackA,acetate kinase,[EC:2.7.2.1],K00925 CH4_acetat ackA,K00925 CH4_acetat ( ackA ) acetate kinase
+306,CH4_cycling,CH4_acetate,CH4_acetat,,K00625,"E2.3.1.8, pta",phosphate acetyltransferase,[EC:2.3.1.8],K00625 CH4_acetat E2.3,K00625 CH4_acetat ( E2.3 ) phosphate acetyltr
+307,CH4_cycling,CH4_acetate,CH4_acetat,,K13788,pta,phosphate acetyltransferase,[EC:2.3.1.8],K13788 CH4_acetat pta,K13788 CH4_acetat ( pta ) phosphate acetyltr
+308,CH4_cycling,CH4_acetate,CH4_acetat,,K01895,"ACSS, acs",acetyl-CoA synthetase,[EC:6.2.1.1],K01895 CH4_acetat ACSS,K01895 CH4_acetat ( ACSS ) acetyl-CoA synthet
+309,CH4_cycling,CH4_acetate,CH4_acetat,,K00193,cdhC,acetyl-CoA decarbonylase/synthase complex subunit beta,[EC:2.3.1.-],K00193 CH4_acetat cdhC,K00193 CH4_acetat ( cdhC ) acetyl-CoA decarbo
+310,CH4_cycling,CH4_acetate,CH4_acetat,,K00197,"cdhE, acsC",acetyl-CoA decarbonylase/synthase complex subunit gamma,[EC:2.1.1.245],K00197 CH4_acetat cdhE,K00197 CH4_acetat ( cdhE ) acetyl-CoA decarbo
+311,CH4_cycling,CH4_acetate,CH4_acetat,,K00194,"cdhD, acsD",acetyl-CoA decarbonylase/synthase complex subunit delta,[EC:2.1.1.245],K00194 CH4_acetat cdhD,K00194 CH4_acetat ( cdhD ) acetyl-CoA decarbo
+312,CH4_cycling,CH4_methylotroph,CH4_methanol,,K14080,mtaA,[methyl-Co(III) methanol-specific corrinoid protein]:coenzyme M methyltransferase,[EC:2.1.1.246],K14080 CH4_methanol mtaA,K14080 CH4_methanol ( mtaA ) [methyl-Co(III) me
+313,CH4_cycling,CH4_methylotroph,CH4_methanol,,K04480,mtaB,methanol---5-hydroxybenzimidazolylcobamide Co-methyltransferase,[EC:2.1.1.90],K04480 CH4_methanol mtaB,K04480 CH4_methanol ( mtaB ) methanol---5-hydro
+314,CH4_cycling,CH4_methylotroph,CH4_methanol,,K14081,mtaC,methanol corrinoid protein,,K14081 CH4_methanol mtaC,K14081 CH4_methanol ( mtaC ) methanol corrinoid
+315,CH4_cycling,CH4_methylotroph,CH4_methylam,,K14082,mtbA,[methyl-Co(III) methylamine-specific corrinoid protein]:coenzyme M methyltransferase,[EC:2.1.1.247],K14082 CH4_methylam mtbA,K14082 CH4_methylam ( mtbA ) [methyl-Co(III) me
+316,CH4_cycling,CH4_methylotroph,CH4_methylam,,K16177,mtmC,monomethylamine corrinoid protein,,K16177 CH4_methylam mtmC,K16177 CH4_methylam ( mtmC ) monomethylamine co
+317,CH4_cycling,CH4_methylotroph,CH4_methylam,,K16176,mtmB,methylamine---corrinoid protein Co-methyltransferase,[EC:2.1.1.248],K16176 CH4_methylam mtmB,K16176 CH4_methylam ( mtmB ) methylamine---corr
+318,CH4_cycling,CH4_methylotroph,CH4_methylam,,K16179,mtbC,dimethylamine corrinoid protein,,K16179 CH4_methylam mtbC,K16179 CH4_methylam ( mtbC ) dimethylamine corr
+319,CH4_cycling,CH4_methylotroph,CH4_methylam,,K16178,mtbB,dimethylamine---corrinoid protein Co-methyltransferase,[EC:2.1.1.249],K16178 CH4_methylam mtbB,K16178 CH4_methylam ( mtbB ) dimethylamine---co
+320,CH4_cycling,CH4_methylotroph,CH4_methylam,,K14084,mttC,trimethylamine corrinoid protein,,K14084 CH4_methylam mttC,K14084 CH4_methylam ( mttC ) trimethylamine cor
+321,CH4_cycling,CH4_methylotroph,CH4_methylam,,K14083,mttB,trimethylamine---corrinoid protein Co-methyltransferase,[EC:2.1.1.250],K14083 CH4_methylam mttB,K14083 CH4_methylam ( mttB ) trimethylamine---c
+322,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00577,mtrA,tetrahydromethanopterin S-methyltransferase subunit A,[EC:2.1.1.86],K00577 CH4_Archa mtrA,K00577 CH4_Archa ( mtrA ) tetrahydromethanop
+323,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00578,mtrB,tetrahydromethanopterin S-methyltransferase subunit B,[EC:2.1.1.86],K00578 CH4_Archa mtrB,K00578 CH4_Archa ( mtrB ) tetrahydromethanop
+324,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00579,mtrC,tetrahydromethanopterin S-methyltransferase subunit C,[EC:2.1.1.86],K00579 CH4_Archa mtrC,K00579 CH4_Archa ( mtrC ) tetrahydromethanop
+325,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00580,mtrD,tetrahydromethanopterin S-methyltransferase subunit D,[EC:2.1.1.86],K00580 CH4_Archa mtrD,K00580 CH4_Archa ( mtrD ) tetrahydromethanop
+326,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00581,mtrE,tetrahydromethanopterin S-methyltransferase subunit E,[EC:2.1.1.86],K00581 CH4_Archa mtrE,K00581 CH4_Archa ( mtrE ) tetrahydromethanop
+327,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00582,mtrF,tetrahydromethanopterin S-methyltransferase subunit F,[EC:2.1.1.86],K00582 CH4_Archa mtrF,K00582 CH4_Archa ( mtrF ) tetrahydromethanop
+328,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00583,mtrG,tetrahydromethanopterin S-methyltransferase subunit G,[EC:2.1.1.86],K00583 CH4_Archa mtrG,K00583 CH4_Archa ( mtrG ) tetrahydromethanop
+329,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00584,mtrH,tetrahydromethanopterin S-methyltransferase subunit H,[EC:2.1.1.86],K00584 CH4_Archa mtrH,K00584 CH4_Archa ( mtrH ) tetrahydromethanop
+330,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00399,mcrA,methyl-coenzyme M reductase alpha subunit,[EC:2.8.4.1],K00399 CH4_Archa mcrA,K00399 CH4_Archa ( mcrA ) methyl-coenzyme M 
+331,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00401,mcrB,methyl-coenzyme M reductase beta subunit,[EC:2.8.4.1],K00401 CH4_Archa mcrB,K00401 CH4_Archa ( mcrB ) methyl-coenzyme M 
+332,CH4_cycling,CH4_Archaeal,CH4_Archa,,K00402,mcrG,methyl-coenzyme M reductase gamma subunit,[EC:2.8.4.1],K00402 CH4_Archa mcrG,K00402 CH4_Archa ( mcrG ) methyl-coenzyme M 
+333,CH4_cycling,CH4_Archaeal,CH4_Archa,,K03388,hdrA,heterodisulfide reductase subunit A,[EC:1.8.98.1],K03388 CH4_Archa hdrA,K03388 CH4_Archa ( hdrA ) heterodisulfide re
+334,CH4_cycling,CH4_Archaeal,CH4_Archa,,K03389,hdrB,heterodisulfide reductase subunit B,[EC:1.8.98.1],K03389 CH4_Archa hdrB,K03389 CH4_Archa ( hdrB ) heterodisulfide re
+335,CH4_cycling,CH4_Archaeal,CH4_Archa,,K03390,hdrC,heterodisulfide reductase subunit C,[EC:1.8.98.1],K03390 CH4_Archa hdrC,K03390 CH4_Archa ( hdrC ) heterodisulfide re
+336,CH4_cycling,CH3_Phosphonate,CH3_Phn,,K06163,phnJ,alpha-D-ribose 1-methylphosphonate 5-phosphate C-P lyase [EC:4.7.1.1],,K06163 CH3_Phn phnJ,K06163 CH3_Phn ( phnJ ) alpha-D-ribose 1-m
+337,Fermentation,H2_oxidation,H2_oxid,,K06281,"hyaB, hybC",hydrogenase large subunit,[EC:1.12.99.6],K06281 H2_oxid hyaB,K06281 H2_oxid ( hyaB ) hydrogenase large 
+338,Fermentation,H2_oxidation,H2_oxid,,K06282,"hyaA, hybO",hydrogenase small subunit,[EC:1.12.99.6],K06282 H2_oxid hyaA,K06282 H2_oxid ( hyaA ) hydrogenase small 
+339,Fermentation,H2_oxidation,H2_oxid,,K00436,hoxH,NAD-reducing hydrogenase large subunit,[EC:1.12.1.2],K00436 H2_oxid hoxH,K00436 H2_oxid ( hoxH ) NAD-reducing hydro
+340,Fermentation,H2_production,H2_prod,,K00532,E1.12.7.2,ferredoxin hydrogenase,[EC:1.12.7.2],K00532 H2_prod E1.1,K00532 H2_prod ( E1.1 ) ferredoxin hydroge
+341,Fermentation,H2_production,H2_prod,,K00533,E1.12.7.2L,ferredoxin hydrogenase large subunit ,[EC:1.12.7.2],K00533 H2_prod E1.1,K00533 H2_prod ( E1.1 ) ferredoxin hydroge
+342,Fermentation,H2_production,H2_prod,,K00534,E1.12.7.2S,ferredoxin hydrogenase small subunit,[EC:1.12.7.2],K00534 H2_prod E1.1,K00534 H2_prod ( E1.1 ) ferredoxin hydroge
+343,Fermentation,H2_production,H2_prod,,K06441,E1.12.7.2G,ferredoxin hydrogenase gamma subunit,[EC:1.12.7.2],K06441 H2_prod E1.1,K06441 H2_prod ( E1.1 ) ferredoxin hydroge
+344,Fermentation,H2_production,H2_prod,,K00192,cdhA,acetyl-CoA decarbonylase/synthase complex subunit alpha,[EC:1.2.7.4],K00192 H2_prod cdhA,K00192 H2_prod ( cdhA ) acetyl-CoA decarbo
+345,Fermentation,H2_production,H2_prod,,K00198,"cooS, acsA",carbon-monoxide dehydrogenase catalytic subunit,[EC:1.2.99.2 1.2.7.4],K00198 H2_prod cooS,K00198 H2_prod ( cooS ) carbon-monoxide de
+346,Fermentation,H2_production,H2_prod,,K03518,coxS,carbon-monoxide dehydrogenase small subunit,[EC:1.2.99.2],K03518 H2_prod coxS,K03518 H2_prod ( coxS ) carbon-monoxide de
+347,Fermentation,H2_production,H2_prod,,K03519,"coxM, cutM",carbon-monoxide dehydrogenase medium subunit,[EC:1.2.99.2],K03519 H2_prod coxM,K03519 H2_prod ( coxM ) carbon-monoxide de
+348,Fermentation,H2_production,H2_prod,,K03520,"coxL, cutL",carbon-monoxide dehydrogenase large subunit,[EC:1.2.99.2],K03520 H2_prod coxL,K03520 H2_prod ( coxL ) carbon-monoxide de
+349,Fermentation,H2_production,H2_prod,,K14138,acsB,acetyl-CoA synthase,[EC:2.3.1.169],K14138 H2_prod acsB,K14138 H2_prod ( acsB ) acetyl-CoA synthas
+350,Fermentation,H2_production,H2_prod,,K00355,NQO1,NAD(P)H dehydrogenase (quinone),[EC:1.6.5.2],K00355 H2_prod NQO1,K00355 H2_prod ( NQO1 ) NAD(P)H dehydrogen
+351,Fermentation,H2_production,H2_prod,,K00532,hydA,hydrogenase I,[EC:1.18.99.1],K00532 H2_prod hydA,K00532 H2_prod ( hydA ) hydrogenase I
+352,Fermentation,H2_production,H2_prod,,K02636,petC,cytochrome b6-f complex iron-sulfur subunit,[EC:1.10.9.1],K02636 H2_prod petC,K02636 H2_prod ( petC ) cytochrome b6-f co
+353,Fermentation,Fermentation,Fm_acetoin,,K00615,"tktA, tktB",transketolase,[EC:2.2.1.1],K00615 Fm_acetoin tktA,K00615 Fm_acetoin ( tktA ) transketolase
+354,Fermentation,Fermentation,Fm_acetoin,,K00616,"talA, talB",transaldolase,[EC:2.2.1.2],K00616 Fm_acetoin talA,K00616 Fm_acetoin ( talA ) transaldolase
+355,Fermentation,Fermentation,Fm_acetoin,,K01656,TRP3,anthranilate synthase / indole-3-glycerol phosphate synthase,[EC:4.1.3.27 4.1.1.48],K01656 Fm_acetoin TRP3,K01656 Fm_acetoin ( TRP3 ) anthranilate synth
+356,Fermentation,Fermentation,Fm_acetoin,,K13043,argF,N-succinyl-L-ornithine transcarbamylase,[EC:2.1.3.11],K13043 Fm_acetoin argF,K13043 Fm_acetoin ( argF ) N-succinyl-L-ornit
+357,Fermentation,Fermentation,Fm_Bif_shnt,,K00603,fctD,glutamate formiminotransferase,[EC:2.1.2.5],K00603 Fm_Bif_shnt fctD,K00603 Fm_Bif_shnt ( fctD ) glutamate formimin
+358,Fermentation,Fermentation,Fm_Bif_shnt,,K01624,"FBA, fbaA","fructose-bisphosphate aldolase, class II",[EC:4.1.2.13],"K01624 Fm_Bif_shnt FBA,","K01624 Fm_Bif_shnt ( FBA, ) fructose-bisphosph"
+359,Fermentation,Fermentation,Fm_Bif_shnt,,K01713,pheC,cyclohexadienyl dehydratase,[EC:4.2.1.51 4.2.1.91],K01713 Fm_Bif_shnt pheC,K01713 Fm_Bif_shnt ( pheC ) cyclohexadienyl de
+360,Fermentation,Fermentation,Fm_Bif_shnt,,K03416,E2.1.3.1-5S,methylmalonyl-CoA carboxyltransferase 5S subunit,[EC:2.1.3.1],K03416 Fm_Bif_shnt E2.1,K03416 Fm_Bif_shnt ( E2.1 ) methylmalonyl-CoA 
+361,Fermentation,Fermentation,Fm_Bif_shnt,,K06040,E5.3.1.3,D-arabinose aldose-ketose-isomerase,[EC:5.3.1.3],K06040 Fm_Bif_shnt E5.3,K06040 Fm_Bif_shnt ( E5.3 ) D-arabinose aldose
+362,Fermentation,Fermentation,Fm_Bif_shnt,,K13831,hps-phi,3-hexulose-6-phosphate synthase / 6-phospho-3-hexuloisomerase,[EC:4.1.2.43 5.3.1.27],K13831 Fm_Bif_shnt hps-,K13831 Fm_Bif_shnt ( hps- ) 3-hexulose-6-phosp
+363,Fermentation,Fermentation,Fm_Bif_shnt,,K13990,FTCD,glutamate formiminotransferase / formiminotetrahydrofolate cyclodeaminase,[EC:2.1.2.5 4.3.1.4],K13990 Fm_Bif_shnt FTCD,K13990 Fm_Bif_shnt ( FTCD ) glutamate formimin
+364,Fermentation,Fermentation,Fm_butyr_acet,,K00023,"E1.1.1.36, phbB",acetoacetyl-CoA reductase,[EC:1.1.1.36],K00023 Fm_butyr_acet E1.1,K00023 Fm_butyr_acet ( E1.1 ) acetoacetyl-CoA re
+365,Fermentation,Fermentation,Fm_butyr_acet,,K01809,"manA, MPI",mannose-6-phosphate isomerase,[EC:5.3.1.8],K01809 Fm_butyr_acet manA,K01809 Fm_butyr_acet ( manA ) mannose-6-phosphat
+366,Fermentation,Fermentation,Fm_butyr_acet,,K01835,pgm,phosphoglucomutase,[EC:5.4.2.2],K01835 Fm_butyr_acet pgm,K01835 Fm_butyr_acet ( pgm ) phosphoglucomutase
+367,Fermentation,Fermentation,Fm_butyr_acet,,K03431,glmM,phosphoglucosamine mutase,[EC:5.4.2.10],K03431 Fm_butyr_acet glmM,K03431 Fm_butyr_acet ( glmM ) phosphoglucosamine
+368,Fermentation,Fermentation,Fm_butyr_acet,,K13832,"aroDE, DHQ-SDH",3-dehydroquinate dehydratase / shikimate dehydrogenase,[EC:4.2.1.10 1.1.1.25],K13832 Fm_butyr_acet aroD,K13832 Fm_butyr_acet ( aroD ) 3-dehydroquinate d
+369,Fermentation,Fermentation,Fm_butyr_acet,,K15038,K15038,succinyl-CoA reductase,[EC:1.2.1.76],K15038 Fm_butyr_acet K150,K15038 Fm_butyr_acet ( K150 ) succinyl-CoA reduc
+370,Fermentation,Fermentation,Fm_lact_pyru,,K00024,mdh,malate dehydrogenase,[EC:1.1.1.37],K00024 Fm_lact_pyru mdh,K00024 Fm_lact_pyru ( mdh ) malate dehydrogena
+371,Fermentation,Fermentation,Fm_lact_pyru,,K00025,MDH1,malate dehydrogenase,[EC:1.1.1.37],K00025 Fm_lact_pyru MDH1,K00025 Fm_lact_pyru ( MDH1 ) malate dehydrogena
+372,Fermentation,Fermentation,Fm_lact_pyru,,K00026,MDH2,malate dehydrogenase,[EC:1.1.1.37],K00026 Fm_lact_pyru MDH2,K00026 Fm_lact_pyru ( MDH2 ) malate dehydrogena
+373,Fermentation,Fermentation,Fm_lact_pyru,,K00061,RDH5,11-cis-retinol dehydrogenase,[EC:1.1.1.315],K00061 Fm_lact_pyru RDH5,K00061 Fm_lact_pyru ( RDH5 ) 11-cis-retinol deh
+374,Fermentation,Fermentation,Fm_lact_pyru,,K00634,ptb,phosphate butyryltransferase,[EC:2.3.1.19],K00634 Fm_lact_pyru ptb,K00634 Fm_lact_pyru ( ptb ) phosphate butyrylt
+375,Fermentation,Fermentation,Fm_lact_pyru,,K01089,hisB,imidazoleglycerol-phosphate dehydratase / histidinol-phosphatase,[EC:4.2.1.19 3.1.3.15],K01089 Fm_lact_pyru hisB,K01089 Fm_lact_pyru ( hisB ) imidazoleglycerol-
+376,Fermentation,Fermentation,Fm_lact_pyru,,K01693,hisB,imidazoleglycerol-phosphate dehydratase,[EC:4.2.1.19],K01693 Fm_lact_pyru hisB,K01693 Fm_lact_pyru ( hisB ) imidazoleglycerol-
+377,Fermentation,Fermentation,Fm_lact_pyru,,K02472,wecC,UDP-N-acetyl-D-mannosaminuronic acid dehydrogenase,[EC:1.1.1.336],K02472 Fm_lact_pyru wecC,K02472 Fm_lact_pyru ( wecC ) UDP-N-acetyl-D-man
+378,Fermentation,Fermentation,Fm_lact_pyru,,K02474,wbpO,UDP-N-acetyl-D-galactosamine dehydrogenase,[EC:1.1.1.-],K02474 Fm_lact_pyru wbpO,K02474 Fm_lact_pyru ( wbpO ) UDP-N-acetyl-D-gal
+379,Fermentation,Fermentation,Fm_lact_pyru,,K03777,dld,D-lactate dehydrogenase,[EC:1.1.1.28],K03777 Fm_lact_pyru dld,K03777 Fm_lact_pyru ( dld ) D-lactate dehydrog
+380,Fermentation,Fermentation,Fm_lact_pyru,,K06607,iolS,myo-inositol catabolism protein IolS,[EC:1.1.1.-],K06607 Fm_lact_pyru iolS,K06607 Fm_lact_pyru ( iolS ) myo-inositol catab
+381,Fermentation,Fermentation,Fm_lact_pyru,,K07535,badH,2-hydroxycyclohexanecarboxyl-CoA dehydrogenase,[EC:1.1.1.-],K07535 Fm_lact_pyru badH,K07535 Fm_lact_pyru ( badH ) 2-hydroxycyclohexa
+382,Fermentation,Fermentation,Fm_lact_pyru,,K07538,had,6-hydroxycyclohex-1-ene-1-carbonyl-CoA dehydrogenase,[EC:1.1.1.368],K07538 Fm_lact_pyru had,K07538 Fm_lact_pyru ( had ) 6-hydroxycyclohex-
+383,Fermentation,Fermentation,Fm_lact_pyru,,K08322,rspB,L-gulonate 5-dehydrogenase,[EC:1.1.1.380],K08322 Fm_lact_pyru rspB,K08322 Fm_lact_pyru ( rspB ) L-gulonate 5-dehyd
+384,Fermentation,Fermentation,Fm_lact_pyru,,K10251,"HSD17B12, KAR, IFA38",beta-estradiol 17-dehydrogenase / very-long-chain 3-oxoacyl-CoA reductase,[EC:1.1.1.62 1.1.1.330],K10251 Fm_lact_pyru HSD1,K10251 Fm_lact_pyru ( HSD1 ) beta-estradiol 17-
+385,Fermentation,Fermentation,Fm_lact_pyru,,K10703,"PHS1, PAS2",very-long-chain (3R)-3-hydroxyacyl-CoA dehydratase,[EC:4.2.1.134],K10703 Fm_lact_pyru PHS1,K10703 Fm_lact_pyru ( PHS1 ) very-long-chain (3
+386,Fermentation,Fermentation,Fm_lact_pyru,,K10978,aksF,methanogen homoisocitrate dehydrogenase,[EC:1.1.1.87 1.1.1.-],K10978 Fm_lact_pyru aksF,K10978 Fm_lact_pyru ( aksF ) methanogen homoiso
+387,Fermentation,Fermentation,Fm_lact_pyru,,K11150,RDH8,retinol dehydrogenase 8,[EC:1.1.1.-],K11150 Fm_lact_pyru RDH8,K11150 Fm_lact_pyru ( RDH8 ) retinol dehydrogen
+388,Fermentation,Fermentation,Fm_lact_pyru,,K11151,RDH10,retinol dehydrogenase 10,[EC:1.1.1.-],K11151 Fm_lact_pyru RDH1,K11151 Fm_lact_pyru ( RDH1 ) retinol dehydrogen
+389,Fermentation,Fermentation,Fm_lact_pyru,,K11152,RDH11,retinol dehydrogenase 11,[EC:1.1.1.300],K11152 Fm_lact_pyru RDH1,K11152 Fm_lact_pyru ( RDH1 ) retinol dehydrogen
+390,Fermentation,Fermentation,Fm_lact_pyru,,K11153,RDH12,retinol dehydrogenase 12,[EC:1.1.1.300],K11153 Fm_lact_pyru RDH1,K11153 Fm_lact_pyru ( RDH1 ) retinol dehydrogen
+391,Fermentation,Fermentation,Fm_lact_pyru,,K11154,RDH16,retinol dehydrogenase 16,[EC:1.1.1.-],K11154 Fm_lact_pyru RDH1,K11154 Fm_lact_pyru ( RDH1 ) retinol dehydrogen
+392,Fermentation,Fermentation,Fm_lact_pyru,,K11161,RDH13,retinol dehydrogenase 13,[EC:1.1.1.300],K11161 Fm_lact_pyru RDH1,K11161 Fm_lact_pyru ( RDH1 ) retinol dehydrogen
+393,Fermentation,Fermentation,Fm_lact_pyru,,K11162,RDH14,retinol dehydrogenase 14,[EC:1.1.1.-],K11162 Fm_lact_pyru RDH1,K11162 Fm_lact_pyru ( RDH1 ) retinol dehydrogen
+394,Fermentation,Fermentation,Fm_lact_pyru,,K11336,bchF,3-vinyl bacteriochlorophyllide hydratase,[EC:4.2.1.-],K11336 Fm_lact_pyru bchF,K11336 Fm_lact_pyru ( bchF ) 3-vinyl bacterioch
+395,Fermentation,Fermentation,Fm_lact_pyru,,K11539,CBR4,carbonyl reductase 4 ,[EC:1.1.1.-],K11539 Fm_lact_pyru CBR4,K11539 Fm_lact_pyru ( CBR4 ) carbonyl reductase
+396,Fermentation,Fermentation,Fm_lact_pyru,,K12420,"actIII, oxyJ, snoaD, aknA",ketoreductase,[EC:1.1.1.-],K12420 Fm_lact_pyru actI,K12420 Fm_lact_pyru ( actI ) ketoreductase
+397,Fermentation,Fermentation,Fm_lact_pyru,,K12451,UER1,"3,5-epimerase/4-reductase",[EC:5.1.3.- 1.1.1.-],K12451 Fm_lact_pyru UER1,"K12451 Fm_lact_pyru ( UER1 ) 3,5-epimerase/4-re"
+398,Fermentation,Fermentation,Fm_lact_pyru,,K13015,wbpA,UDP-N-acetyl-D-glucosamine dehydrogenase,[EC:1.1.1.136],K13015 Fm_lact_pyru wbpA,K13015 Fm_lact_pyru ( wbpA ) UDP-N-acetyl-D-glu
+399,Fermentation,Fermentation,Fm_lact_pyru,,K13016,wbpB,UDP-N-acetyl-2-amino-2-deoxyglucuronate dehydrogenase,[EC:1.1.1.335],K13016 Fm_lact_pyru wbpB,K13016 Fm_lact_pyru ( wbpB ) UDP-N-acetyl-2-ami
+400,Fermentation,Fermentation,Fm_lact_pyru,,K13020,"wlbA, bplA",UDP-N-acetyl-2-amino-2-deoxyglucuronate dehydrogenase,[EC:1.1.1.335],K13020 Fm_lact_pyru wlbA,K13020 Fm_lact_pyru ( wlbA ) UDP-N-acetyl-2-ami
+401,Fermentation,Fermentation,Fm_lact_pyru,,K13548,"neoA, kanK",2-deoxy-scyllo-inosamine dehydrogenase,[EC:1.1.1.329],K13548 Fm_lact_pyru neoA,K13548 Fm_lact_pyru ( neoA ) 2-deoxy-scyllo-ino
+402,Fermentation,Fermentation,Fm_lact_pyru,,K13574,ybiC,uncharacterized oxidoreductase,[EC:1.1.1.-],K13574 Fm_lact_pyru ybiC,K13574 Fm_lact_pyru ( ybiC ) uncharacterized ox
+403,Fermentation,Fermentation,Fm_lact_pyru,,K13767,fadB,enoyl-CoA hydratase,[EC:4.2.1.17],K13767 Fm_lact_pyru fadB,K13767 Fm_lact_pyru ( fadB ) enoyl-CoA hydratas
+404,Fermentation,Fermentation,Fm_lact_pyru,,K14248,oxyJ,ketoreductase,[EC:1.1.1.-],K14248 Fm_lact_pyru oxyJ,K14248 Fm_lact_pyru ( oxyJ ) ketoreductase
+405,Fermentation,Fermentation,Fm_lact_pyru,,K14465,K14465,succinate semialdehyde reductase (NADPH),[EC:1.1.1.-],K14465 Fm_lact_pyru K144,K14465 Fm_lact_pyru ( K144 ) succinate semialde
+406,Fermentation,Fermentation,Fm_lact_pyru,,K14633,"gra6, RED2",ketoreductase RED2,[EC:1.1.1.-],K14633 Fm_lact_pyru gra6,K14633 Fm_lact_pyru ( gra6 ) ketoreductase RED2
+407,Fermentation,Fermentation,Fm_multiple,,K00001,"E1.1.1.1, adh",alcohol dehydrogenase,[EC:1.1.1.1],K00001 Fm_multiple E1.1,K00001 Fm_multiple ( E1.1 ) alcohol dehydrogen
+408,Fermentation,Fermentation,Fm_multiple,,K00004,"BDH, butB","(R,R)-butanediol dehydrogenase / meso-butanediol dehydrogenase / diacetyl reductase",[EC:1.1.1.4 1.1.1.- 1.1.1.303],"K00004 Fm_multiple BDH,","K00004 Fm_multiple ( BDH, ) (R,R)-butanediol d"
+409,Fermentation,Fermentation,Fm_multiple,,K00016,"LDH, ldh",L-lactate dehydrogenase,[EC:1.1.1.27],"K00016 Fm_multiple LDH,","K00016 Fm_multiple ( LDH, ) L-lactate dehydrog"
+410,Fermentation,Fermentation,Fm_multiple,,K00121,"frmA, ADH5, adhC",S-(hydroxymethyl)glutathione dehydrogenase / alcohol dehydrogenase,[EC:1.1.1.284 1.1.1.1],K00121 Fm_multiple frmA,K00121 Fm_multiple ( frmA ) S-(hydroxymethyl)g
+411,Fermentation,Fermentation,Fm_multiple,,K00132,E1.2.1.10,acetaldehyde dehydrogenase (acetylating),[EC:1.2.1.10],K00132 Fm_multiple E1.2,K00132 Fm_multiple ( E1.2 ) acetaldehyde dehyd
+412,Fermentation,Fermentation,Fm_multiple,,K00134,"GAPDH, gapA",glyceraldehyde 3-phosphate dehydrogenase,[EC:1.2.1.12],K00134 Fm_multiple GAPD,K00134 Fm_multiple ( GAPD ) glyceraldehyde 3-p
+413,Fermentation,Fermentation,Fm_multiple,,K00169,porA,pyruvate ferredoxin oxidoreductase alpha subunit,[EC:1.2.7.1],K00169 Fm_multiple porA,K00169 Fm_multiple ( porA ) pyruvate ferredoxi
+414,Fermentation,Fermentation,Fm_multiple,,K00170,porB,pyruvate ferredoxin oxidoreductase beta subunit,[EC:1.2.7.1],K00170 Fm_multiple porB,K00170 Fm_multiple ( porB ) pyruvate ferredoxi
+415,Fermentation,Fermentation,Fm_multiple,,K00171,porD,pyruvate ferredoxin oxidoreductase delta subunit,[EC:1.2.7.1],K00171 Fm_multiple porD,K00171 Fm_multiple ( porD ) pyruvate ferredoxi
+416,Fermentation,Fermentation,Fm_multiple,,K00232,"E1.3.3.6, ACOX1, ACOX3",acyl-CoA oxidase,[EC:1.3.3.6],K00232 Fm_multiple E1.3,K00232 Fm_multiple ( E1.3 ) acyl-CoA oxidase
+417,Fermentation,Fermentation,Fm_multiple,,K00625,"E2.3.1.8, pta",phosphate acetyltransferase,[EC:2.3.1.8],K00625 Fm_multiple E2.3,K00625 Fm_multiple ( E2.3 ) phosphate acetyltr
+418,Fermentation,Fermentation,Fm_multiple,,K00640,cysE,serine O-acetyltransferase,[EC:2.3.1.30],K00640 Fm_multiple cysE,K00640 Fm_multiple ( cysE ) serine O-acetyltra
+419,Fermentation,Fermentation,Fm_multiple,,K00872,thrB1,homoserine kinase,[EC:2.7.1.39],K00872 Fm_multiple thrB,K00872 Fm_multiple ( thrB ) homoserine kinase
+420,Fermentation,Fermentation,Fm_multiple,,K00918,pfkC,ADP-dependent phosphofructokinase/glucokinase,[EC:2.7.1.146 2.7.1.147],K00918 Fm_multiple pfkC,K00918 Fm_multiple ( pfkC ) ADP-dependent phos
+421,Fermentation,Fermentation,Fm_multiple,,K00928,lysC,aspartate kinase,[EC:2.7.2.4],K00928 Fm_multiple lysC,K00928 Fm_multiple ( lysC ) aspartate kinase
+422,Fermentation,Fermentation,Fm_multiple,,K01026,pct,propionate CoA-transferase,[EC:2.8.3.1],K01026 Fm_multiple pct,K01026 Fm_multiple ( pct ) propionate CoA-tra
+423,Fermentation,Fermentation,Fm_multiple,,K01039,gctA,"glutaconate CoA-transferase, subunit A",[EC:2.8.3.12],K01039 Fm_multiple gctA,K01039 Fm_multiple ( gctA ) glutaconate CoA-tr
+424,Fermentation,Fermentation,Fm_multiple,,K01658,trpG,anthranilate synthase component II,[EC:4.1.3.27],K01658 Fm_multiple trpG,K01658 Fm_multiple ( trpG ) anthranilate synth
+425,Fermentation,Fermentation,Fm_multiple,,K01776,murI,glutamate racemase,[EC:5.1.1.3],K01776 Fm_multiple murI,K01776 Fm_multiple ( murI ) glutamate racemase
+426,Fermentation,Fermentation,Fm_multiple,,K01805,xylA,xylose isomerase,[EC:5.3.1.5],K01805 Fm_multiple xylA,K01805 Fm_multiple ( xylA ) xylose isomerase
+427,Fermentation,Fermentation,Fm_multiple,,K01807,rpiA,ribose 5-phosphate isomerase A,[EC:5.3.1.6],K01807 Fm_multiple rpiA,K01807 Fm_multiple ( rpiA ) ribose 5-phosphate
+428,Fermentation,Fermentation,Fm_multiple,,K01808,rpiB,ribose 5-phosphate isomerase B,[EC:5.3.1.6],K01808 Fm_multiple rpiB,K01808 Fm_multiple ( rpiB ) ribose 5-phosphate
+429,Fermentation,Fermentation,Fm_multiple,,K01825,fadB,3-hydroxyacyl-CoA dehydrogenase / enoyl-CoA hydratase / 3-hydroxybutyryl-CoA epimerase / enoyl-CoA isomerase,[EC:1.1.1.35 4.2.1.17 5.1.2.3 5.3.3.8],K01825 Fm_multiple fadB,K01825 Fm_multiple ( fadB ) 3-hydroxyacyl-CoA 
+430,Fermentation,Fermentation,Fm_multiple,,K02203,thrH,phosphoserine / homoserine phosphotransferase,[EC:3.1.3.3 2.7.1.39],K02203 Fm_multiple thrH,K02203 Fm_multiple ( thrH ) phosphoserine / ho
+431,Fermentation,Fermentation,Fm_multiple,,K02372,fabZ,3-hydroxyacyl-[acyl-carrier-protein] dehydratase,[EC:4.2.1.59],K02372 Fm_multiple fabZ,K02372 Fm_multiple ( fabZ ) 3-hydroxyacyl-[acy
+432,Fermentation,Fermentation,Fm_multiple,,K02509,hpaH,"2-oxo-hept-3-ene-1,7-dioate hydratase",[EC:4.2.1.-],K02509 Fm_multiple hpaH,K02509 Fm_multiple ( hpaH ) 2-oxo-hept-3-ene-1
+433,Fermentation,Fermentation,Fm_multiple,,K03366,"butA, budC","meso-butanediol dehydrogenase / (S,S)-butanediol dehydrogenase / diacetyl reductase",[EC:1.1.1.- 1.1.1.76 1.1.1.304],K03366 Fm_multiple butA,K03366 Fm_multiple ( butA ) meso-butanediol de
+434,Fermentation,Fermentation,Fm_multiple,,K03778,ldhA,D-lactate dehydrogenase,[EC:1.1.1.28],K03778 Fm_multiple ldhA,K03778 Fm_multiple ( ldhA ) D-lactate dehydrog
+435,Fermentation,Fermentation,Fm_multiple,,K04072,adhE,acetaldehyde dehydrogenase / alcohol dehydrogenase,[EC:1.2.1.10 1.1.1.1],K04072 Fm_multiple adhE,K04072 Fm_multiple ( adhE ) acetaldehyde dehyd
+436,Fermentation,Fermentation,Fm_multiple,,K04073,mhpF,acetaldehyde dehydrogenase,[EC:1.2.1.10],K04073 Fm_multiple mhpF,K04073 Fm_multiple ( mhpF ) acetaldehyde dehyd
+437,Fermentation,Fermentation,Fm_multiple,,K05554,actVII,aromatase,[EC:4.2.1.-],K05554 Fm_multiple actV,K05554 Fm_multiple ( actV ) aromatase
+438,Fermentation,Fermentation,Fm_multiple,,K05556,"actVI1, RED1",ketoreductase RED1,[EC:1.1.1.-],K05556 Fm_multiple actV,K05556 Fm_multiple ( actV ) ketoreductase RED1
+439,Fermentation,Fermentation,Fm_multiple,,K05715,2PGK,2-phosphoglycerate kinase,[EC:2.7.2.-],K05715 Fm_multiple 2PGK,K05715 Fm_multiple ( 2PGK ) 2-phosphoglycerate
+440,Fermentation,Fermentation,Fm_multiple,,K07514,EHHADH,"enoyl-CoA hydratase / 3-hydroxyacyl-CoA dehydrogenase / 3,2-trans-enoyl-CoA isomerase",[EC:4.2.1.17 1.1.1.35 5.3.3.8],K07514 Fm_multiple EHHA,K07514 Fm_multiple ( EHHA ) enoyl-CoA hydratas
+441,Fermentation,Fermentation,Fm_multiple,,K07534,badK,cyclohex-1-ene-1-carboxyl-CoA hydratase,[EC:4.2.1.-],K07534 Fm_multiple badK,K07534 Fm_multiple ( badK ) cyclohex-1-ene-1-c
+442,Fermentation,Fermentation,Fm_multiple,,K07546,bbsH,E-phenylitaconyl-CoA hydratase,[EC:4.2.1.-],K07546 Fm_multiple bbsH,K07546 Fm_multiple ( bbsH ) E-phenylitaconyl-C
+443,Fermentation,Fermentation,Fm_multiple,,K08074,ADPGK,ADP-dependent glucokinase,[EC:2.7.1.147],K08074 Fm_multiple ADPG,K08074 Fm_multiple ( ADPG ) ADP-dependent gluc
+444,Fermentation,Fermentation,Fm_multiple,,K08299,caiD,crotonobetainyl-CoA hydratase,[EC:4.2.1.149],K08299 Fm_multiple caiD,K08299 Fm_multiple ( caiD ) crotonobetainyl-Co
+445,Fermentation,Fermentation,Fm_multiple,,K08302,gatY-kbaY,"tagatose 1,6-diphosphate aldolase GatY/KbaY",[EC:4.1.2.40],K08302 Fm_multiple gatY,"K08302 Fm_multiple ( gatY ) tagatose 1,6-dipho"
+446,Fermentation,Fermentation,Fm_multiple,,K09483,quiC,3-dehydroshikimate dehydratase,[EC:4.2.1.118],K09483 Fm_multiple quiC,K09483 Fm_multiple ( quiC ) 3-dehydroshikimate
+447,Fermentation,Fermentation,Fm_multiple,,K10527,MFP2,enoyl-CoA hydratase/3-hydroxyacyl-CoA dehydrogenase,[EC:4.2.1.17 1.1.1.35 1.1.1.211],K10527 Fm_multiple MFP2,K10527 Fm_multiple ( MFP2 ) enoyl-CoA hydratas
+448,Fermentation,Fermentation,Fm_multiple,,K10705,GAPDHS,"glyceraldehyde-3-phosphate dehydrogenase, spermatogenic",[EC:1.2.1.12],K10705 Fm_multiple GAPD,K10705 Fm_multiple ( GAPD ) glyceraldehyde-3-p
+449,Fermentation,Fermentation,Fm_multiple,,K11440,gbsB,choline dehydrogenase,[EC:1.1.1.1],K11440 Fm_multiple gbsB,K11440 Fm_multiple ( gbsB ) choline dehydrogen
+450,Fermentation,Fermentation,Fm_multiple,,K13497,trpGD,anthranilate synthase/phosphoribosyltransferase,[EC:4.1.3.27 2.4.2.18],K13497 Fm_multiple trpG,K13497 Fm_multiple ( trpG ) anthranilate synth
+451,Fermentation,Fermentation,Fm_multiple,,K13501,TRP1,anthranilate synthase / indole-3-glycerol phosphate synthase / phosphoribosylanthranilate isomerase,[EC:4.1.3.27 4.1.1.48 5.3.1.24],K13501 Fm_multiple TRP1,K13501 Fm_multiple ( TRP1 ) anthranilate synth
+452,Fermentation,Fermentation,Fm_multiple,,K13503,trpEG,anthranilate synthase,[EC:4.1.3.27],K13503 Fm_multiple trpE,K13503 Fm_multiple ( trpE ) anthranilate synth
+453,Fermentation,Fermentation,Fm_multiple,,K13598,ntrY,"two-component system, NtrC family, nitrogen regulation sensor histidine kinase NtrY",[EC:2.7.13.3],K13598 Fm_multiple ntrY,K13598 Fm_multiple ( ntrY ) two-component syst
+454,Fermentation,Fermentation,Fm_multiple,,K13830,ARO1,pentafunctional AROM polypeptide,[EC:4.2.3.4 4.2.1.10 1.1.1.25 2.7.1.71 2.5.1.19],K13830 Fm_multiple ARO1,K13830 Fm_multiple ( ARO1 ) pentafunctional AR
+455,Fermentation,Fermentation,Fm_multiple,,K13951,ADH1_7,alcohol dehydrogenase 1/7,[EC:1.1.1.1],K13951 Fm_multiple ADH1,K13951 Fm_multiple ( ADH1 ) alcohol dehydrogen
+456,Fermentation,Fermentation,Fm_multiple,,K13952,ADH6,alcohol dehydrogenase 6,[EC:1.1.1.1],K13952 Fm_multiple ADH6,K13952 Fm_multiple ( ADH6 ) alcohol dehydrogen
+457,Fermentation,Fermentation,Fm_multiple,,K13953,adhP,"alcohol dehydrogenase, propanol-preferring",[EC:1.1.1.1],K13953 Fm_multiple adhP,K13953 Fm_multiple ( adhP ) alcohol dehydrogen
+458,Fermentation,Fermentation,Fm_multiple,,K13954,yiaY,alcohol dehydrogenase,[EC:1.1.1.1],K13954 Fm_multiple yiaY,K13954 Fm_multiple ( yiaY ) alcohol dehydrogen
+459,Fermentation,Fermentation,Fm_multiple,,K13980,ADH4,alcohol dehydrogenase 4,[EC:1.1.1.1],K13980 Fm_multiple ADH4,K13980 Fm_multiple ( ADH4 ) alcohol dehydrogen
+460,Fermentation,Fermentation,Fm_multiple,,K14085,ALDH7A1,aldehyde dehydrogenase family 7 member A1,[EC:1.2.1.31 1.2.1.8 1.2.1.3],K14085 Fm_multiple ALDH,K14085 Fm_multiple ( ALDH ) aldehyde dehydroge
+461,Fermentation,Fermentation,Fm_multiple,,K14472,smtB,succinyl-CoA:(S)-malate CoA-transferase subunit B,[EC:2.8.3.22],K14472 Fm_multiple smtB,K14472 Fm_multiple ( smtB ) succinyl-CoA:(S)-m
+462,Fermentation,Fermentation,Fm_glutam,,K00109,E1.1.99.2,2-hydroxyglutarate dehydrogenase,[EC:1.1.99.2],K00109 Fm_glutam E1.1,K00109 Fm_glutam ( E1.1 ) 2-hydroxyglutarate
+463,Fermentation,Fermentation,Fm_glutam,,K01040,gctB,"glutaconate CoA-transferase, subunit B",[EC:2.8.3.12],K01040 Fm_glutam gctB,K01040 Fm_glutam ( gctB ) glutaconate CoA-tr
+464,Fermentation,Fermentation,Fm_glutam,,K01610,"E4.1.1.49, pckA",phosphoenolpyruvate carboxykinase (ATP),[EC:4.1.1.49],K01610 Fm_glutam E4.1,K01610 Fm_glutam ( E4.1 ) phosphoenolpyruvat
+465,Fermentation,Fermentation,Fm_glutam,,K03340,dapdh,diaminopimelate dehydrogenase,[EC:1.4.1.16],K03340 Fm_glutam dapd,K03340 Fm_glutam ( dapd ) diaminopimelate de
+466,Fermentation,Fermentation,Fm_lac_ac,,K00031,"IDH1, IDH2, icd",isocitrate dehydrogenase,[EC:1.1.1.42],K00031 Fm_lac_ac IDH1,K00031 Fm_lac_ac ( IDH1 ) isocitrate dehydro
+467,Fermentation,Fermentation,Fm_lac_ac,,K00033,"PGD, gnd, gntZ",6-phosphogluconate dehydrogenase,[EC:1.1.1.44 1.1.1.343],"K00033 Fm_lac_ac PGD,","K00033 Fm_lac_ac ( PGD, ) 6-phosphogluconate"
+468,Fermentation,Fermentation,Fm_lac_ac,,K00036,"G6PD, zwf",glucose-6-phosphate 1-dehydrogenase,[EC:1.1.1.49],K00036 Fm_lac_ac G6PD,K00036 Fm_lac_ac ( G6PD ) glucose-6-phosphat
+469,Fermentation,Fermentation,Fm_lac_ac,,K00043,gbd,4-hydroxybutyrate dehydrogenase,[EC:1.1.1.61],K00043 Fm_lac_ac gbd,K00043 Fm_lac_ac ( gbd ) 4-hydroxybutyrate 
+470,Fermentation,Fermentation,Fm_lac_ac,,K00844,HK,hexokinase,[EC:2.7.1.1],K00844 Fm_lac_ac HK,K00844 Fm_lac_ac ( HK ) hexokinase
+471,Fermentation,Fermentation,Fm_lac_ac,,K00865,glxK,glycerate kinase,[EC:2.7.1.31],K00865 Fm_lac_ac glxK,K00865 Fm_lac_ac ( glxK ) glycerate kinase
+472,Fermentation,Fermentation,Fm_lac_ac,,K00963,"UGP2, galU, galF",UTP--glucose-1-phosphate uridylyltransferase,[EC:2.7.7.9],K00963 Fm_lac_ac UGP2,K00963 Fm_lac_ac ( UGP2 ) UTP--glucose-1-pho
+473,Fermentation,Fermentation,Fm_lac_ac,,K01593,DDC,aromatic-L-amino-acid decarboxylase,[EC:4.1.1.28],K01593 Fm_lac_ac DDC,K01593 Fm_lac_ac ( DDC ) aromatic-L-amino-a
+474,Fermentation,Fermentation,Fm_lac_ac,,K01622,K01622,"fructose 1,6-bisphosphate aldolase/phosphatase",[EC:4.1.2.13 3.1.3.11],K01622 Fm_lac_ac K016,"K01622 Fm_lac_ac ( K016 ) fructose 1,6-bisph"
+475,Fermentation,Fermentation,Fm_lac_ac,,K01696,trpB,tryptophan synthase beta chain,[EC:4.2.1.20],K01696 Fm_lac_ac trpB,K01696 Fm_lac_ac ( trpB ) tryptophan synthas
+476,Fermentation,Fermentation,Fm_lac_ac,,K06001,trpB,tryptophan synthase beta chain,[EC:4.2.1.20],K06001 Fm_lac_ac trpB,K06001 Fm_lac_ac ( trpB ) tryptophan synthas
+477,Fermentation,Fermentation,Fm_lac_ac,,K08679,E5.1.3.6,UDP-glucuronate 4-epimerase,[EC:5.1.3.6],K08679 Fm_lac_ac E5.1,K08679 Fm_lac_ac ( E5.1 ) UDP-glucuronate 4-
+478,Fermentation,Fermentation,Fm_lac_ac,,K11395,kdpgA,2-dehydro-3-deoxy-phosphogluconate/2-dehydro-3-deoxy-6-phosphogalactonate aldolase,[EC:4.1.2.55],K11395 Fm_lac_ac kdpg,K11395 Fm_lac_ac ( kdpg ) 2-dehydro-3-deoxy-
+479,Fermentation,Fermentation,Fm_lac_ac,,K11645,fbaB,"fructose-bisphosphate aldolase, class I",[EC:4.1.2.13],K11645 Fm_lac_ac fbaB,K11645 Fm_lac_ac ( fbaB ) fructose-bisphosph
+480,Fermentation,Fermentation,Fm_lac_ac,,K11725,LHPP,phospholysine phosphohistidine inorganic pyrophosphate phosphatase,[EC:3.6.1.1 3.1.3.-],K11725 Fm_lac_ac LHPP,K11725 Fm_lac_ac ( LHPP ) phospholysine phos
+481,Fermentation,Fermentation,Fm_lac_ac,,K11946,phdG,hydratase-aldolase,[EC:4.1.2.-],K11946 Fm_lac_ac phdG,K11946 Fm_lac_ac ( phdG ) hydratase-aldolase
+482,Fermentation,Fermentation,Fm_lac_ac,,K13555,"btrP, neoI",5''-phosphoribostamycin phosphatase,[EC:3.1.3.88],K13555 Fm_lac_ac btrP,K13555 Fm_lac_ac ( btrP ) 5''-phosphoribosta
+483,Fermentation,Fermentation,Fm_lac_ac,,K14074,"PNLIPRP1, PLRP1",pancreatic lipase-related protein 1,[EC:3.1.1.3],K14074 Fm_lac_ac PNLI,K14074 Fm_lac_ac ( PNLI ) pancreatic lipase-
+484,Fermentation,Fermentation,Fm_lac_ac,,K14075,"PNLIPRP2, PLRP2",pancreatic lipase-related protein 2,[EC:3.1.1.3],K14075 Fm_lac_ac PNLI,K14075 Fm_lac_ac ( PNLI ) pancreatic lipase-
+485,Fermentation,Fermentation,Fm_lac_ac,,K14076,"PNLIPRP3, PLRP3",pancreatic lipase-related protein 3,[EC:3.1.1.3],K14076 Fm_lac_ac PNLI,K14076 Fm_lac_ac ( PNLI ) pancreatic lipase-
+486,Fermentation,Fermentation,Fm_pyruv,,K00022,HADH,3-hydroxyacyl-CoA dehydrogenase,[EC:1.1.1.35],K00022 Fm_pyruv HADH,K00022 Fm_pyruv ( HADH ) 3-hydroxyacyl-CoA 
+487,Fermentation,Fermentation,Fm_pyruv,,K00138,aldB,aldehyde dehydrogenase,[EC:1.2.1.-],K00138 Fm_pyruv aldB,K00138 Fm_pyruv ( aldB ) aldehyde dehydroge
+488,Fermentation,Fermentation,Fm_pyruv,,K00145,argC,N-acetyl-gamma-glutamyl-phosphate reductase,[EC:1.2.1.38],K00145 Fm_pyruv argC,K00145 Fm_pyruv ( argC ) N-acetyl-gamma-glu
+489,Fermentation,Fermentation,Fm_pyruv,,K00146,feaB,phenylacetaldehyde dehydrogenase,[EC:1.2.1.39],K00146 Fm_pyruv feaB,K00146 Fm_pyruv ( feaB ) phenylacetaldehyde
+490,Fermentation,Fermentation,Fm_pyruv,,K00248,"ACADS, bcd",butyryl-CoA dehydrogenase,[EC:1.3.8.1],K00248 Fm_pyruv ACAD,K00248 Fm_pyruv ( ACAD ) butyryl-CoA dehydr
+491,Fermentation,Fermentation,Fm_pyruv,,K00600,"glyA, SHMT",glycine hydroxymethyltransferase,[EC:2.1.2.1],K00600 Fm_pyruv glyA,K00600 Fm_pyruv ( glyA ) glycine hydroxymet
+492,Fermentation,Fermentation,Fm_pyruv,,K00822,E2.6.1.18,beta-alanine--pyruvate transaminase,[EC:2.6.1.18],K00822 Fm_pyruv E2.6,K00822 Fm_pyruv ( E2.6 ) beta-alanine--pyru
+493,Fermentation,Fermentation,Fm_pyruv,,K00823,puuE,4-aminobutyrate aminotransferase,[EC:2.6.1.19],K00823 Fm_pyruv puuE,K00823 Fm_pyruv ( puuE ) 4-aminobutyrate am
+494,Fermentation,Fermentation,Fm_pyruv,,K01001,ALG7,UDP-N-acetylglucosamine--dolichyl-phosphate N-acetylglucosaminephosphotransferase,[EC:2.7.8.15],K01001 Fm_pyruv ALG7,K01001 Fm_pyruv ( ALG7 ) UDP-N-acetylglucos
+495,Fermentation,Fermentation,Fm_pyruv,,K01006,ppdK,"pyruvate, orthophosphate dikinase",[EC:2.7.9.1],K01006 Fm_pyruv ppdK,"K01006 Fm_pyruv ( ppdK ) pyruvate, orthopho"
+496,Fermentation,Fermentation,Fm_pyruv,,K01007,"pps, ppsA","pyruvate, water dikinase",[EC:2.7.9.2],"K01007 Fm_pyruv pps,","K01007 Fm_pyruv ( pps, ) pyruvate, water di"
+497,Fermentation,Fermentation,Fm_pyruv,,K01011,"TST, MPST, sseA",thiosulfate/3-mercaptopyruvate sulfurtransferase,[EC:2.8.1.1 2.8.1.2],"K01011 Fm_pyruv TST,","K01011 Fm_pyruv ( TST, ) thiosulfate/3-merc"
+498,Fermentation,Fermentation,Fm_pyruv,,K01573,oadG,"oxaloacetate decarboxylase, gamma subunit",[EC:4.1.1.3],K01573 Fm_pyruv oadG,K01573 Fm_pyruv ( oadG ) oxaloacetate decar
+499,Fermentation,Fermentation,Fm_pyruv,,K01782,fadJ,3-hydroxyacyl-CoA dehydrogenase / enoyl-CoA hydratase / 3-hydroxybutyryl-CoA epimerase,[EC:1.1.1.35 4.2.1.17 5.1.2.3],K01782 Fm_pyruv fadJ,K01782 Fm_pyruv ( fadJ ) 3-hydroxyacyl-CoA 
+500,Fermentation,Fermentation,Fm_pyruv,,K01786,araD,L-ribulose-5-phosphate 4-epimerase,[EC:5.1.3.4],K01786 Fm_pyruv araD,K01786 Fm_pyruv ( araD ) L-ribulose-5-phosp
+501,Fermentation,Fermentation,Fm_pyruv,,K01843,kamA,"lysine 2,3-aminomutase",[EC:5.4.3.2],K01843 Fm_pyruv kamA,"K01843 Fm_pyruv ( kamA ) lysine 2,3-aminomu"
+502,Fermentation,Fermentation,Fm_pyruv,,K01844,kamD,"beta-lysine 5,6-aminomutase alpha subunit",[EC:5.4.3.3],K01844 Fm_pyruv kamD,"K01844 Fm_pyruv ( kamD ) beta-lysine 5,6-am"
+503,Fermentation,Fermentation,Fm_pyruv,,K01899,LSC1,succinyl-CoA synthetase alpha subunit,[EC:6.2.1.4 6.2.1.5],K01899 Fm_pyruv LSC1,K01899 Fm_pyruv ( LSC1 ) succinyl-CoA synth
+504,Fermentation,Fermentation,Fm_pyruv,,K01900,LSC2,succinyl-CoA synthetase beta subunit,[EC:6.2.1.4 6.2.1.5],K01900 Fm_pyruv LSC2,K01900 Fm_pyruv ( LSC2 ) succinyl-CoA synth
+505,Fermentation,Fermentation,Fm_pyruv,,K01902,sucD,succinyl-CoA synthetase alpha subunit,[EC:6.2.1.5],K01902 Fm_pyruv sucD,K01902 Fm_pyruv ( sucD ) succinyl-CoA synth
+506,Fermentation,Fermentation,Fm_pyruv,,K01903,sucC,succinyl-CoA synthetase beta subunit,[EC:6.2.1.5],K01903 Fm_pyruv sucC,K01903 Fm_pyruv ( sucC ) succinyl-CoA synth
+507,Fermentation,Fermentation,Fm_pyruv,,K01905,E6.2.1.13,acetyl-CoA synthetase (ADP-forming),[EC:6.2.1.13],K01905 Fm_pyruv E6.2,K01905 Fm_pyruv ( E6.2 ) acetyl-CoA synthet
+508,Fermentation,Fermentation,Fm_pyruv,,K05343,treS,maltose alpha-D-glucosyltransferase/ alpha-amylase,[EC:5.4.99.16 3.2.1.1],K05343 Fm_pyruv treS,K05343 Fm_pyruv ( treS ) maltose alpha-D-gl
+509,Fermentation,Fermentation,Fm_pyruv,,K06044,"treY, glgY",(1->4)-alpha-D-glucan 1-alpha-D-glucosylmutase,[EC:5.4.99.15],K06044 Fm_pyruv treY,K06044 Fm_pyruv ( treY ) (1->4)-alpha-D-glu
+510,Fermentation,Fermentation,Fm_pyruv,,K07516,fadN,3-hydroxyacyl-CoA dehydrogenase,[EC:1.1.1.35],K07516 Fm_pyruv fadN,K07516 Fm_pyruv ( fadN ) 3-hydroxyacyl-CoA 
+511,Fermentation,Fermentation,Fm_pyruv,,K07547,bbsC,2-[hydroxy(phenyl)methyl]-succinyl-CoA dehydrogenase BbsC subunit,[EC:1.1.1.35],K07547 Fm_pyruv bbsC,K07547 Fm_pyruv ( bbsC ) 2-[hydroxy(phenyl)
+512,Fermentation,Fermentation,Fm_pyruv,,K07548,bbsD,2-[hydroxy(phenyl)methyl]-succinyl-CoA dehydrogenase BbsD subunit,[EC:1.1.1.35],K07548 Fm_pyruv bbsD,K07548 Fm_pyruv ( bbsD ) 2-[hydroxy(phenyl)
+513,Fermentation,Fermentation,Fm_pyruv,,K08298,caiB,L-carnitine CoA-transferase,[EC:2.8.3.21],K08298 Fm_pyruv caiB,K08298 Fm_pyruv ( caiB ) L-carnitine CoA-tr
+514,Fermentation,Fermentation,Fm_pyruv,,K08324,sad,succinate-semialdehyde dehydrogenase,[EC:1.2.1.16 1.2.1.24],K08324 Fm_pyruv sad,K08324 Fm_pyruv ( sad ) succinate-semialde
+515,Fermentation,Fermentation,Fm_pyruv,,K08683,HSD17B10,3-hydroxyacyl-CoA dehydrogenase / 3-hydroxy-2-methylbutyryl-CoA dehydrogenase,[EC:1.1.1.35 1.1.1.178],K08683 Fm_pyruv HSD1,K08683 Fm_pyruv ( HSD1 ) 3-hydroxyacyl-CoA 
+516,Fermentation,Fermentation,Fm_pyruv,,K09472,"puuC, aldH",gamma-glutamyl-gamma-aminobutyraldehyde dehydrogenase,[EC:1.2.1.-],K09472 Fm_pyruv puuC,K09472 Fm_pyruv ( puuC ) gamma-glutamyl-gam
+517,Fermentation,Fermentation,Fm_pyruv,,K11947,nidD,aldehyde dehydrogenase,[EC:1.2.1.-],K11947 Fm_pyruv nidD,K11947 Fm_pyruv ( nidD ) aldehyde dehydroge
+518,Fermentation,Fermentation,Fm_pyruv,,K12254,kauB,4-guanidinobutyraldehyde dehydrogenase / NAD-dependent aldehyde dehydrogenase,[EC:1.2.1.54 1.2.1.-],K12254 Fm_pyruv kauB,K12254 Fm_pyruv ( kauB ) 4-guanidinobutyral
+519,Fermentation,Fermentation,Fm_pyruv,,K12405,HSD17B4,"3-hydroxyacyl-CoA dehydrogenase / 3a,7a,12a-trihydroxy-5b-cholest-24-enoyl-CoA hydratase",[EC:1.1.1.35 4.2.1.107],K12405 Fm_pyruv HSD1,K12405 Fm_pyruv ( HSD1 ) 3-hydroxyacyl-CoA 
+520,Fermentation,Fermentation,Fm_pyruv,,K13356,FAR,fatty acyl-CoA reductase,[EC:1.2.1.-],K13356 Fm_pyruv FAR,K13356 Fm_pyruv ( FAR ) fatty acyl-CoA red
+521,Fermentation,Fermentation,Fm_pyruv,,K14471,smtA1,succinyl-CoA:(S)-malate CoA-transferase subunit A,[EC:2.8.3.22],K14471 Fm_pyruv smtA,K14471 Fm_pyruv ( smtA ) succinyl-CoA:(S)-m
+522,Fermentation,Acetate,Acetogen,,K00925      ,ackA,acetate_kinase,[EC:2.7.2.1],K00925 Acetogen ackA,K00925 Acetogen ( ackA ) acetate_kinase
+523,Fermentation,Acetate,Acetogen,,K04020 ,eutD,phosphotransacetylase,,K04020 Acetogen eutD,K04020 Acetogen ( eutD ) phosphotransacetyl
+524,Fermentation,Acetate,Acetogen,,K00640,cysE,serine O-acetyltransferase,[EC:2.3.1.30],K00640 Acetogen cysE,K00640 Acetogen ( cysE ) serine O-acetyltra
+525,Fermentation,Acetate,Acetogen,,K13598,ntrY,"two-component system, NtrC family, nitrogen regulation sensor histidine kinase NtrY",[EC:2.7.13.3],K13598 Acetogen ntrY,K13598 Acetogen ( ntrY ) two-component syst
+526,Fermentation,Acetate,Acetogen,,K01905,E6.2.1.13,acetyl-CoA synthetase (ADP-forming),[EC:6.2.1.13],K01905 Acetogen E6.2,K01905 Acetogen ( E6.2 ) acetyl-CoA synthet
