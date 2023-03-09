@@ -1,4 +1,5 @@
-# Timberlake 16S data analysis
+# Timberlake 16S rRNA marker gene iTag data analysis
+# PCR amplicons. For metagenomic derived 16S, see Timberlake16S_mTAG.R
 # by Cliff Bueno de Mesquita, Tringe Lab, JGI, Summer/Fall 2022
 
 
@@ -958,7 +959,7 @@ t <- emmeans(object = m, specs = "Treatment") %>%
          y = max(nc$map_loaded$MG_MT)+(max(nc$map_loaded$MG_MT)-min(nc$map_loaded$MG_MT))/2)
 
 png("Figures/MG_MT.png", width = 7, height = 5, units = "in", res = 300)
-ggplot(input$map_loaded, aes(reorder(Treatment, MG_MT, mean), MG_MT)) +
+ggplot(nc$map_loaded, aes(reorder(Treatment, MG_MT, mean), MG_MT)) +
   geom_hline(yintercept = 1, linetype = "dotted") +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
   geom_jitter(size = 3, width = 0.2, aes(colour = Treatment, shape = Depth)) + 
@@ -1065,7 +1066,7 @@ barsMT <- barsMT %>%
   mutate(taxon = fct_rev(taxon))
 nb.cols <- 19
 mycolors <- colorRampPalette(brewer.pal(12, "Paired"))(nb.cols)
-png("Figures/Methanotrophs", width = 6.5, height = 6, units = "in", res = 300)
+png("Figures/Methanotrophs.png", width = 6.5, height = 6, units = "in", res = 300)
 ggplot(barsMT, aes(group_by, mean_value, fill = taxon)) +
   geom_bar(stat = "identity", colour = NA, size = 0.25) +
   labs(x = "Sample", y = "% Abundance", fill = "Genus") +
