@@ -1,0 +1,415 @@
+---
+title: An R Markdown document converted from "~/Documents/GitHub/Timberlake/Timberlake_KO_Deseq2_tests.ipynb"
+output: html_document
+---
+
+# DESeq2 testing of Timberlake KOs via phyloseq, Dev
+2nd major draft, here normalize all genes, deprioritize FC and volcano plots.  Incorporates more of DESeq2 vignette along with Phyloseq tutorial materials. Here dropping source soil data entirely.
+
+```{r}
+library(phyloseq)
+library(ggplot2)
+library(RColorBrewer)
+library(stringr)
+
+suppressMessages(library(vegan))
+suppressMessages(library(DESeq2))
+suppressMessages(library(gplots))
+```
+
+## Import and pre-process files
+
+```{r}
+## KO table import, filter samples                           
+TL_KO_raw0 <- read.csv("Timberlake_MG_KO_data.csv", header=TRUE)     # Raw KO table w. Fxn as taxon)        #, row.names=1)
+keep_samps <- names(TL_KO_raw0[1:19])                                # Get colnames for Incubated Samples   # keep_samps
+TL_KO_raw <- TL_KO_raw0[, colnames(TL_KO_raw0) %in% keep_samps]      # Filter DF columns to keep            
+TL_KO_raw$Fxn <- TL_KO_raw0$Fxn                                      # Replace Fxn column (last)            #names(TL_KO_raw)
+
+# df of KO gene fxns
+TL_KO_fxn <-data.frame(fxn = TL_KO_raw0$Fxn)                         # Get Fxn df 
+row.names(TL_KO_fxn)<-TL_KO_raw0$KO                                  # KO as rowname                                        # head(TL_KO_raw)  # head(TL_KO_fxn)
+
+# KO fxns as Phyloseq object
+suppressWarnings(KOTaxTable<-tax_table(TL_KO_fxn))                   # Fxn as PHYLOSEQ tax table 
+colnames(KOTaxTable) <- colnames(TL_KO_fxn)                          # Add back colnames
+row.names(KOTaxTable) <- row.names(TL_KO_fxn)                        # Add back rownames                                    # KOTaxTable
+```
+
+```{r}
+# Gene Ontology and fxn Colors import
+BGC_ont <- read.csv("Ontology_KO_CNPSch4_Fm_whh.csv", header=TRUE)   # Ontology
+BGC_colors <- read.csv("Ontol_KO_L2_Color_KEY_whh.csv")              # Colors                       # head(BGC_ont)  # head(BGC_colors) # dim(BGC_ont)
+BGC_ont_col <- merge(BGC_ont, BGC_colors, by = "L2", all.x =TRUE)    # Merge ont & colors           # BGC_ont_col # BGC_colors
+
+# Drop FERMENTATION (?) for clarity
+BGC_ont_col <-BGC_ont_col[order(BGC_ont_col$Index.x),]               # Sort (readability only)
+BGC_ont_col <- subset(BGC_ont_col, L2 != "Fermentation")             # Drop ferment  # BGC_ont_col
+```
+
+```{r}
+# Only CNPSch4 genes from Ontology
+bgc_KOu <- unique(data.frame(KO=BGC_ont$KO))                         # only KOs from BGC_ont
+TL_bgc_KO <- merge(bgc_KOu, TL_KO_raw)                               # Merge with TL KO                     #dim(bgc_KO) # head(bgc_KO) # dim(TL_bgc_KO) #head(TL_bgc_KO) # TL_bgc_KO 
+```
+
+```{r}
+# Sample Mapping import
+map_both <-read.table("Timberlake_sample_map_both.txt", sep="\t", header=TRUE)            # head(map_both) # dim(map_both) # 50 x 11  - note iTag dropouts
+map_MG <-map_both[!(is.na(map_both$MG_name)),]                                            # drop NA in MG samps   
+map_MG <- map_MG[order(map_MG$itag_meta_order2),]                                         # sort by index (itag intentional)
+map_MG_only <- data.frame(Sample=map_MG$MG_name, Treat=map_MG$Treat, Depth=map_MG$Depth)  # keep only relevant cols 
+# map_MG # map_MG_only
+
+### Finalize Sample MAP for Deseq
+row.names(map_MG_only) <- map_MG_only$Sample                         # Sample as row names
+map_MG_PhyloDESeq <- map_MG_only[,2:3]                               # Drop sample col
+map = map_MG_PhyloDESeq[1:18,]                                       # Drop SAMPLES HERE, incubations only       #rownames(map)
+```
+
+## Phyloseq to DESeq2
+
+```{r}
+# Prep KO count data for OTU table 
+KOin <- data.frame(unique(TL_KO_raw))                                # DF for KOin, unique used to drop redund.
+row.names(KOin)<-KOin$KO                                             # Make rownames KO numbers
+No_fxn <- as.matrix(KOin[,3:ncol(KOin)-1])                           # Drop KO, fxn, why does it makes me drop first two cols, not one?
+                                                                     # KOin # No_fxn
+# make PHYLOSEQ KO ->"OTU Table"
+class(No_fxn)<-"numeric"                                             # Make numeric for phyloseq
+KO_otu <-otu_table(No_fxn, taxa_are_rows=TRUE, errorIfNULL = TRUE)   # Make OTU table phyloseq object    #head(OTU_ko) # OTU_ko # KOin #head(KO_otu)
+```
+
+```{r}
+# Make Phyloseq sample data
+Map<-sample_data(map)          # map
+```
+
+```{r}
+### Make combined Phyloseq OBJECT
+physeq = phyloseq(KO_otu, Map, KOTaxTable)
+# INSPECT: # physeq
+```
+
+```{r}
+# Assign CONTROL treatment 
+# phyloseq patch before DESeq
+sample_data(physeq)$Treat <- relevel(as.factor(get_variable(physeq, "Treat")), ref="Control")
+```
+
+```{r}
+# EXPORT phyloseq TO deseq
+KO_phy2des <- phyloseq_to_deseq2(physeq, ~ Treat)
+# INSPECT: # KO_phy2des 
+```
+
+## DESeq2 for Diff abund
+
+```{r}
+# Wald test
+KO_phy2des <- DESeq(KO_phy2des, test="Wald", fitType="parametric") # Test
+```
+
+```{r}
+# INSPECT DESeq fmt data set, includes estimated dispersions
+# KO_phy2des
+```
+
+```{r}
+# Overall results  -- why nothing sig when contrasts are?
+# res <- results(KO_phy2des)
+# resultsNames(KO_phy2des)
+# summary(res)
+```
+
+```{r}
+# options(repr.plot.width=4, repr.plot.height=4)
+# plotMA(res) #, ylim=c(-2,2))  
+```
+
+```{r}
+# Likelihood ratio test, "ANOVA - like" for mulitple factors 
+# -- note here some are sig again, unlike above Wald test
+lrt <- DESeq(KO_phy2des, test="LRT", reduced=~1)
+res_LRT <- results(lrt)
+res_LRT
+```
+
+```{r}
+options(repr.plot.width=4, repr.plot.height=4)
+plotMA(res_LRT) #, ylim=c(-2,2))
+```
+
+## DESeq2 Linear contrasts
+
+### Function for linear contrasts with p > filter, FC cutoff
+
+```{r}
+# Function for linear contrasts, results cutoff and merge with Ontology
+DSq_cntrstF = function(Treat_col, Treat1, Treat2) {                      # Treat_col: column with treatment data
+    alpha = 0.05                                                         # Treat1: for increase compared with Ref
+    FC = 1                                                               # Treat2: Ref for comparison  
+
+    T1_T2_De <- results(KO_phy2des,contrast = c(Treat_col, Treat1, Treat2),independentFiltering = FALSE) # DESeq2 results
+    T1_T2_DeS <- T1_T2_De[which(T1_T2_De$padj < alpha), ]                # filter by alpha 
+    T1_T2_DeSQ <-data.frame(T1_T2_DeS)                                   # make df 
+    T1_T2_DeSQ$KO <-row.names(T1_T2_DeSQ)                                # add KO as rownames
+
+    # Merge with CNP ontology, filter FC > 1 
+    T1_T2_DeSQ <- merge(T1_T2_DeSQ, BGC_ont_col, by ='KO')               # merge w Ontology
+    T1_T2_DeSQ_FC1 <- T1_T2_DeSQ[abs(T1_T2_DeSQ$log2FoldChange) > FC,]   # filter FC > 1 
+    return(T1_T2_DeSQ_FC1)
+}
+```
+
+```{r}
+# Test contrasts fxn: 
+ASW_Ctrl_DeSQ_FC <- DSq_cntrstF("Treat", "ASW", "Control")                # ASW_Ctrl_DeSQ_FC
+```
+
+```{r}
+# Create ALL Contrasts results sets
+ASW_Ctrl_FC <- DSq_cntrstF("Treat", "ASW", "Control")
+ASW0S_Ctrl_FC <- DSq_cntrstF("Treat", "ASW_noS", "Control")
+SO4_Ctrl_FC <- DSq_cntrstF("Treat", "SO4", "Control")
+ASW_SO4_FC <- DSq_cntrstF("Treat", "ASW", "SO4")
+ASW_ASW0S_FC <- DSq_cntrstF("Treat","ASW", "ASW_noS")
+ASW0S_SO4_FC <- DSq_cntrstF("Treat","ASW_noS","SO4")                       #ASW0S_SO4_FC
+```
+
+```{r}
+ASW_Ctrl_DeSQ_FC
+```
+
+```{r}
+SO4_Ctrl_FC
+```
+
+### Collect significnant KOs, all treats
+
+```{r}
+# gather KO lists
+ASW_Ctrl_KO <- data.frame(KO=ASW_Ctrl_FC$KO)
+ASW0S_Ctrl_KO <- data.frame(KO=ASW0S_Ctrl_FC$KO)
+SO4_Ctrl_KO <- data.frame(KO=SO4_Ctrl_FC$KO)
+ASW_SO4_KO <- data.frame(KO=ASW_SO4_FC$KO)
+ASW_ASW0S_KO <- data.frame(KO=ASW_ASW0S_FC$KO)
+ASW0S_SO4_KO <- data.frame(KO=ASW0S_SO4_FC$KO)
+
+# Combine lists, make unique
+Resp_KO <- (rbind(ASW_Ctrl_KO, ASW0S_Ctrl_KO, SO4_Ctrl_KO, ASW_SO4_KO, ASW_ASW0S_KO, ASW0S_SO4_KO))
+Resp_KOu <- unique(Resp_KO)                                               # Resp_KO #length(Resp_KO)   # dim(Resp_KO) # dim(Resp_KOu)
+row.names(Resp_KOu) <-Resp_KOu$KO                                         # Resp_KOu
+```
+
+## Get DESeq2 variance stablized data and Counts
+
+```{r}
+# From updated phyloseq to Deseq2 tutorial at https://github/Joey711/phyloseq/issues/283
+# Adding size factors and dispersion estimates before variance stabilization, as instructed
+
+KO_phy2des_vs <- estimateSizeFactors(KO_phy2des)
+KO_phy2des_vs <- estimateDispersions(KO_phy2des)
+KO_phy2des_VST <- getVarianceStabilizedData(KO_phy2des)
+# KO_phy2des_VST
+
+KO_table_VST <- data.frame(KO_phy2des_VST)    # shorten name
+KO_table_VST$KO <- row.names(KO_table_VST)    # index rows 
+```
+
+```{r}
+# CHECK VST df 
+#head(KO_table_VST)
+```
+
+```{r}
+## REPLACE VST data with COUNTS
+KO_vs_counts <- counts(KO_phy2des_vs, normalized=TRUE)     # get counts                       #head(KO_vs_counts) 
+KO_table_VST <- data.frame(KO_vs_counts)                   # make df, shorten name
+# KO_table_VST$KO <- row.names(KO_vs_counts)                 # index rows                       # 
+# head(KO_table_VST)
+# colSums(KO_table_VST[,1:ncol(KO_table_VST)-1])
+```
+
+```{r}
+# Scale OTU VST table counts to CPM (Counts per million)
+sampTots<-colSums(KO_table_VST)                          # Get sample totals   #[,1:ncol(OTU_table_VST)-1]) 
+KO_VST_CPM<-sweep(KO_table_VST*1000000,2,sampTots,'/')   # Sweep matrix by:[div. by samp total * 1e+06]    
+KO_VST_CPM$KO <- row.names(KO_VST_CPM)                   # Add KO as column for later merges    # head(KO_VST_CPM) # colSums(KO_VST_CPM) # KO_VST_CPM
+```
+
+# Prep heatmap - Count data w only responsive KOs
+
+```{r}
+# get KO Counts from DE KOs by MERGE
+KO_table_VST_resp <- merge(Resp_KOu, KO_VST_CPM, by="KO")     # merge                #dim(KO_table_VST_resp0)  # dim(Resp_KOu)
+KO_table_VST_respM <- KO_table_VST_resp[,-1]                     # Drop KO
+row.names(KO_table_VST_respM)<-KO_table_VST_resp$KO              # add KO as ind     # KO_table_VST_respM 
+KO_table_VST_respM[KO_table_VST_respM==0] <-0.5                  # Replace 0 values with psuedo counts for LOG transf.  #KO_table_VST_respM # KO_table_VST_respM
+
+# Get z-score data, here of log10
+KO_table_VST_respZ <- data.frame(t(scale(t(log10(KO_table_VST_respM)), center=TRUE, scale=TRUE)))     # z-scores, log10 
+KO_table_VST_respZ$KO <-row.names(KO_table_VST_respZ)                                                 # KO as rowname  #KO_table_VST_respZ
+```
+
+### Add Ontology hier / colors
+
+```{r}
+## Add in ONTOLOGY              # BGC_colors # BGC_ont
+# Merge colors with Ontology
+BGC_ont_colors <- merge(BGC_colors[,-1], BGC_ont, by="L2", all.x = TRUE)       # merge
+BGC_ont_colors <- BGC_ont_colors[order(BGC_ont_colors$KO),]                    # Sort by KO       #BGC_ont$Index
+
+# Merge Ontology with Responsive KO z-scores
+KO_table_VSTrespZc <- merge(BGC_ont_colors, KO_table_VST_respZ, by='KO')       # merge
+KO_table_VSTrespZc <- KO_table_VSTrespZc[order(KO_table_VSTrespZc$Index),]     # sort by index    # head(KO_table_VSTrespZc) # dim(KO_table_VSTrespZc) # attributes(KO_table_VSTrespZc[1,]) # KO_table_VSTrespZc[80:120,]
+
+# get only data, add names to rows
+KO_Resp_HeatDS0 <-KO_table_VSTrespZc                    # rename
+KO_Resp_HeatDS <-KO_Resp_HeatDS0[,13:30]                # data only
+KO_Resp_HeatDSt<-t(KO_Resp_HeatDS)                      # transpose (non-unique rows)
+colnames(KO_Resp_HeatDSt) <- KO_Resp_HeatDS0$sm_name    # add sm names for FXN 
+KO_Resp_HeatDStt <-t(KO_Resp_HeatDSt)                   # retranspose, keeps non-unique rownames 
+# KO_Resp_HeatDStt
+
+# get colors for heat
+L2_colors <- as.character(KO_Resp_HeatDS0$color)
+```
+
+```{r}
+# Make heatmap -- ALL vertical
+#trt_colors <- c('green', 'green','green','green','green','blue','blue','blue','blue','blue','purple','purple','purple','purple','purple','red','red','red')
+trt_colors <- c('#cccccc','#cccccc','#cccccc','#cccccc','#cccccc', '#fabe58', '#fabe58','#fabe58','#fabe58','#fabe58','#6bb96d','#6bb96d','#6bb96d','#6bb96d','#6bb96d', '#9ac5e0','#9ac5e0','#9ac5e0')
+# trt_colors <- c('#7ec377','#7ec377','#7ec377','#7ec377','#7ec377','#9ac5e0','#9ac5e0','#9ac5e0','#9ac5e0','#9ac5e0','#7e75b6','#7e75b6','#7e75b6','#7e75b6','#7e75b6','#f88f74','#f88f74','#f88f74')
+
+options(repr.plot.width=5, repr.plot.height=8)
+heatmap.2(KO_Resp_HeatDStt, Rowv=F, Colv=F, ColSideColors=trt_colors, RowSideColors = L2_colors,trace="none", key=TRUE, density.info="none",scale="column", margins = c(10, 10), col = rev(brewer.pal(11,"RdYlBu")))
+
+## HORIZONTAL PLOT
+# options(repr.plot.width=8, repr.plot.height=4)
+# heatmap.2(KO_Resp_HeatDSt[,1:60], Rowv=F, Colv=F, trace="none", key=TRUE, ColSideColors = L2_colors[1:60], density.info="none",scale="column", margins = c(8, 6), col = rev(brewer.pal(11,"RdYlBu")))
+```
+
+## NMDS PLOTS
+
+### Define plotting function
+
+```{r}
+biom_plot_cats_nmds <- function(biom, group, env){
+  biomT<-t(biom)    # Transpose so cols are vars
+  
+  # Test ADONIS models, extract params
+  bT_adonis <- adonis(biomT  ~ group, permutations=99, method="bray");
+  R2 <- round(bT_adonis$aov.tab$R2[1], digits=3)
+  P <- bT_adonis$aov.tab$"Pr(>F)"[1]
+  
+  # NMDS
+  bT_mds<-suppressMessages(metaMDS(biomT[,-1], distance="bray",k=3, trymax=10));                  # run NMDS
+  bT_mds_DF = data.frame(MDS1=bT_mds$points[,1], MDS2=bT_mds$points[,2], group)  # Make data frame
+  stress=round(bT_mds$stress, digits = 3)                                      # get NMDS stress
+  
+  # Plot NMDS by assembly group
+  pA <- ggplot(bT_mds_DF,aes(x=MDS1, y=MDS2, color=group))+geom_point()+stat_ellipse(level=0.95);
+  pB <-pA + annotate("text", x = (0.9*(max(bT_mds_DF$MDS1))), y = max(bT_mds_DF$MDS2), label = paste("italic(R) ^ 2 ==", R2),
+                     parse = TRUE);
+  pC <-pB + annotate("text", x = (0.7*(min(bT_mds_DF$MDS1))), y = min(bT_mds_DF$MDS2), label = paste("italic(Stress):", stress),
+                     parse = TRUE);
+  pD <- pC + theme(legend.title=element_blank())
+  
+  return(pD)
+}
+```
+
+###  New Adaptation
+
+```{r}
+## ALL GENES
+
+# Get counts per sample,  from # KO_VST_CPM  not  KO_table_VST
+KO_table_VST_nk <- KO_VST_CPM[, 1:(ncol(KO_VST_CPM)-1)]  # Drop KO column, previously needed for merge  # KO_table_VST_nk
+#KO_table_VST_nk <- KO_table_VST[, 1:(ncol(KO_table_VST)-1)]  # Drop KO column, previously needed for merge  # KO_table_VST_nk
+
+# Get treatment vector
+Treat <-map_MG_only$Treat[1:ncol(KO_table_VST_nk)]      # Treat
+
+## PLOT
+options(repr.plot.width=5, repr.plot.height=3)
+#suppressWarnings(biom_plot_cats_nmds(KO_table_VST_nk, Treat))
+suppressMessages(biom_plot_cats_nmds(KO_table_VST_nk, Treat)) 
+```
+
+```{r}
+# MANY attempts to supress STD OUT coming from metaMDS
+# bT_mds<-metaMDS(t(KO_table_VST_nk), distance="bray",k=3, trymax=10); #  run NMDS 
+# bT_mds<-suppressMessages(metaMDS(t(KO_table_VST_nk), distance="bray",k=3, trymax=10))                  # run NMDS
+# bT_mds<-suppressWarnings(metaMDS(t(KO_table_VST_nk), distance="bray",k=3, trymax=10))
+#{r, echo=FALSE,results='hide',fig.keep='all'}
+# bT_mds<-invisible(metaMDS(t(KO_table_VST_nk), distance="bray",k=3, trymax=10))   
+# bT_mds<-invisible(metaMDS(t(KO_table_VST_nk), distance="bray",k=3, trymax=10))   
+```
+
+## Fold change and volcano plots:
+## Define Functions
+
+```{r}
+# Plot fold change by organism, ontology colors
+fold_plot = function(sigtab){
+
+    # L2 order
+    x = tapply(sigtab$log2FoldChange, sigtab$L2, function(x) max(x))
+    x = sort(x, TRUE)
+    sigtab$L2 <- factor(as.character(sigtab$L2), levels = names(x))
+    # sm_name order
+    x = tapply(sigtab$log2FoldChange, sigtab$sm_name, function(x) max(x))
+    x = sort(x, TRUE)
+    sigtab$sm_name <- factor(as.character(sigtab$sm_name), levels = names(x))
+    
+    sigtab <- sigtab[order(sigtab$Index.y),]                                           # Sort Table by factor ordering index
+    sigtab$L2 <- factor(sigtab$L2, levels = unique(sigtab$L2[order(sigtab$Index.y)]))  # Reorder factor levels
+
+    # Get factor colors as vector
+    colmat <-unique(data.frame(L2=sigtab$L2, color=sigtab$color))
+    w = c(unlist(as.character(colmat$color)))
+    
+        
+    #pt_size = (sigtab$baseMean/100)
+    p <- ggplot(sigtab, aes(x=sm_name, y=log2FoldChange, color=L2)) + geom_point(size = 2) +
+        theme(axis.text.x = element_text(angle = 90)) +
+        scale_color_manual(values=w) 
+    p + geom_point(aes(size = baseMean))
+    }
+```
+
+```{r}
+# Volcano FC plot, colored by ontology
+volc_plot = function(sigtab){
+    sigtab <- sigtab[order(sigtab$Index.y),]                                           # Sort Table by factor ordering index
+    sigtab$L2 <- factor(sigtab$L2, levels = unique(sigtab$L2[order(sigtab$Index.y)]))  # Reorder factor levels
+
+    # Get factor colors as vector
+    colmat <-unique(data.frame(L2=sigtab$L2, color=sigtab$color))
+    w = c(unlist(as.character(colmat$color)))
+    
+    # PLOT
+    ggplot(sigtab, aes(x=log2FoldChange, y=baseMean, group=L2, color=L2)) + geom_point(size=2) + 
+    scale_color_manual(values=w)
+}
+```
+
+```{r}
+#TEST fold_plot FUNCTION
+options(repr.plot.width=9, repr.plot.height=7)
+fold_plot(ASW_Ctrl_DeSQ_FC) # [1:50,])
+# fold_plot(ASW_Ctrl_DeSeQ) # [1:50,])
+```
+
+```{r}
+# TEST volc_plot FUNCTION
+options(repr.plot.width=6, repr.plot.height=4)
+volc_plot(ASW_Ctrl_DeSQ_FC)
+```
+
+```{r}
+# vignette("DESeq2")
+```
+

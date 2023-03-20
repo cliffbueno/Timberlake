@@ -221,7 +221,12 @@ mean(depth_info$Bacteria.Archaea)
 mean(depth_info$Eukaryota)
 mean(depth_info$Unclassified)
 mean(depth_info$Unaligned)
+depth_info_rel <- depth_info %>%
+  mutate(Total = Bacteria.Archaea + Eukaryota + Unclassified + Unaligned) %>%
+  mutate(BacArcRel = round(Bacteria.Archaea/Total*100, digits = 2),
+         EukRel = round(Eukaryota/Total*100, digits = 2))
 depth_info_long <- melt(depth_info, id.vars = c("sampleID", "Treatment"))
+png("Figures/mTAG_info.png", width = 6, height = 3, units = "in", res = 300)
 ggplot(depth_info_long, aes(sampleID, value, fill = variable)) +
   geom_bar(stat = "identity") +
   labs(x = NULL,
@@ -230,6 +235,7 @@ ggplot(depth_info_long, aes(sampleID, value, fill = variable)) +
   facet_grid(~ Treatment, space = "free", scales = "free_x") +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+dev.off()
 
 # Check and write files
 sum(names(p) %in% depth_info$sampleID)
@@ -362,6 +368,9 @@ nc$map_loaded <- nc$map_loaded %>%
                          rep("Field", 5),
                          rep("+SO4", 5))) %>%
   mutate(Treatment = factor(Treatment, levels = c("Field", "Control", "+SO4", "+ASW-SO4", "+ASW")))
+nc$map_loaded$sampleID <- rownames(nc$map_loaded)
+nc$map_loaded$sampleID[5] <- "TL_inc_d2_ASW_2"
+nc$map_loaded$sampleID[10] <- "TL_inc_d2_DI_ctrl_2"
 
 
 
@@ -438,7 +447,7 @@ vec.df_nc <- as.data.frame(ef_nc$vectors$arrows*sqrt(ef_nc$vectors$r)) %>%
   mutate(variables = rownames(.)) %>%
   filter(ef_nc$vectors$pvals < 0.1) %>%
   filter(variables != "Cl_mgL") %>%
-  mutate(shortnames = c("Salinity", "N2O_ug_m2_h", "pH", "Br"))
+  mutate(shortnames = c("Salinity", "N2O", "pH", "Br"))
 pcoaA1 <- round((eigenvals(nc_pcoa)/sum(eigenvals(nc_pcoa)))[1]*100, digits = 1)
 pcoaA2 <- round((eigenvals(nc_pcoa)/sum(eigenvals(nc_pcoa)))[2]*100, digits = 1)
 nc$map_loaded$Axis01 <- scores(nc_pcoa)[,1]
@@ -1182,8 +1191,8 @@ ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
         legend.position = c(0,1),
         legend.justification = c(0,1),
         legend.background = element_blank(),
-        legend.key.size = unit(0.3, "cm"),
-        legend.text = element_text(size = 8))
+        legend.key.size = unit(0.25, "cm"),
+        legend.text = element_text(size = 6))
 dev.off()
 
 

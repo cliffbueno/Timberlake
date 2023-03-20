@@ -1,20 +1,20 @@
-Bin Name	Marker Lineage	# Genomes	# Markers	# Marker Sets	0	1	2	3	4	5+	Completeness	Contamination	Rename
-ASW_4_concoct_bin.030.fasta	o__Actinomycetales	455	311	187	18	287	6	0	0	0	94.17	1.96	Bin1
-ASW_4_concoct_bin.031.fasta	o__Rhizobiales	238	513	244	52	440	21	0	0	0	95.51	3.83	Bin2
-ASW_4_maxbin_Bin.002.fasta	o__Actinomycetales	488	310	185	3	305	2	0	0	0	98.38	0.81	Bin3
-ASW_4_metabat_bin.013.fasta	o__Actinomycetales	274	388	214	13	372	3	0	0	0	95.14	0.93	Bin4
-ASW_4_metabat_bin.014.fasta	o__Actinomycetales	580	288	173	6	282	0	0	0	0	98.03	0	Bin5
-ASW_4_metabat_bin.015.fasta	c__Alphaproteobacteria	564	349	230	3	345	1	0	0	0	99.2	0.22	Bin6
-ASW_4_metabat_bin.019.fasta	o__Rhodospirillales	63	336	201	35	286	15	0	0	0	90.41	3.8	Bin7
-ASW_4_metabat_bin.020.fasta	p__Firmicutes	830	241	127	5	236	0	0	0	0	96.98	0	Bin8
-ASW_5_maxbin_Bin.002.fasta	c__Alphaproteobacteria	564	349	230	13	333	3	0	0	0	95.65	0.74	Bin9
-ASW_5_maxbin_Bin.010.fasta	k__Bacteria	88	230	148	16	207	7	0	0	0	91.22	4.39	Bin10
-ASW_5_metabat_bin.007.fasta	p__Euryarchaeota	90	234	153	6	228	0	0	0	0	96.93	0	Bin11
-ASW-SO4_2_metabat_bin.010.fasta	k__Bacteria	433	270	179	2	265	3	0	0	0	98.88	1.17	Bin12
-ASW-SO4_5_concoct_bin.006.fasta	f__Xanthomonadaceae	55	659	290	92	542	25	0	0	0	90.52	2.8	Bin13
-ASW-SO4_5_maxbin_Bin.001.fasta	f__Xanthomonadaceae	55	659	290	20	619	20	0	0	0	97.22	2.45	Bin14
-Control_3_metabat_bin.016.fasta	c__Alphaproteobacteria	564	349	230	14	332	3	0	0	0	95.07	1.09	Bin15
-Field_2_concoct_bin.002.fasta	k__Bacteria	2258	188	117	20	166	2	0	0	0	95.48	1.28	Bin16
-Field_4_metabat_bin.012.fasta	k__Bacteria	2993	147	91	11	130	6	0	0	0	90.66	4.56	Bin17
-SO4_2_metabat_bin.024.fasta	o__Rhizobiales	356	413	248	33	367	13	0	0	0	91.02	2.38	Bin18
-SO4_4_metabat_bin.017.fasta	o__Rhizobiales	107	485	316	34	427	22	2	0	0	92.63	4	Bin19
+Bin Name	Rename	Order	Marker Lineage	# Genomes	# Markers	# Marker Sets	0	1	2	3	4	5+	Completeness	Contamination
+ASW_4_concoct_bin.030.fasta	Bin1	5	o__Actinomycetales	455	311	187	18	287	6	0	0	0	94.17	1.96
+ASW_4_concoct_bin.031.fasta	Bin2	9	o__Rhizobiales	238	513	244	52	440	21	0	0	0	95.51	3.83
+ASW_4_maxbin_Bin.002.fasta	Bin3	7	o__Actinomycetales	488	310	185	3	305	2	0	0	0	98.38	0.81
+ASW_4_metabat_bin.013.fasta	Bin4	4	o__Actinomycetales	274	388	214	13	372	3	0	0	0	95.14	0.93
+ASW_4_metabat_bin.014.fasta	Bin5	6	o__Actinomycetales	580	288	173	6	282	0	0	0	0	98.03	0
+ASW_4_metabat_bin.015.fasta	Bin6	13	c__Alphaproteobacteria	564	349	230	3	345	1	0	0	0	99.2	0.22
+ASW_4_metabat_bin.019.fasta	Bin7	15	o__Rhodospirillales	63	336	201	35	286	15	0	0	0	90.41	3.8
+ASW_4_metabat_bin.020.fasta	Bin8	3	p__Firmicutes	830	241	127	5	236	0	0	0	0	96.98	0
+ASW_5_maxbin_Bin.002.fasta	Bin9	12	c__Alphaproteobacteria	564	349	230	13	333	3	0	0	0	95.65	0.74
+ASW_5_maxbin_Bin.010.fasta	Bin10	18	k__Bacteria	88	230	148	16	207	7	0	0	0	91.22	4.39
+ASW_5_metabat_bin.007.fasta	Bin11	19	p__Euryarchaeota	90	234	153	6	228	0	0	0	0	96.93	0
+ASW-SO4_2_metabat_bin.010.fasta	Bin12	1	k__Bacteria	433	270	179	2	265	3	0	0	0	98.88	1.17
+ASW-SO4_5_concoct_bin.006.fasta	Bin13	16	f__Xanthomonadaceae	55	659	290	92	542	25	0	0	0	90.52	2.8
+ASW-SO4_5_maxbin_Bin.001.fasta	Bin14	17	f__Xanthomonadaceae	55	659	290	20	619	20	0	0	0	97.22	2.45
+Control_3_metabat_bin.016.fasta	Bin15	14	c__Alphaproteobacteria	564	349	230	14	332	3	0	0	0	95.07	1.09
+Field_2_concoct_bin.002.fasta	Bin16	2	k__Bacteria	2258	188	117	20	166	2	0	0	0	95.48	1.28
+Field_4_metabat_bin.012.fasta	Bin17	8	k__Bacteria	2993	147	91	11	130	6	0	0	0	90.66	4.56
+SO4_2_metabat_bin.024.fasta	Bin18	11	o__Rhizobiales	356	413	248	33	367	13	0	0	0	91.02	2.38
+SO4_4_metabat_bin.017.fasta	Bin19	10	o__Rhizobiales	107	485	316	34	427	22	2	0	0	92.63	4

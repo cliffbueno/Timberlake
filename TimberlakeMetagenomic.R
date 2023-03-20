@@ -1,2 +1,557 @@
 # Timberlake Laboratory Incubations - Metagenomic Analysis
 # By Cliff Bueno de Mesquita, JGI, Spring 2023
+# Using code by Wyatt Hartman, JGI, 2018
+# Wyatt's original code here: "~/Documents/GitHub/Timberlake/Timberlake_KO_Deseq2_tests.ipynb"
+
+# DESeq2 testing of Timberlake KOs via phyloseq, Dev
+# 2nd major draft, here normalize all genes, deprioritize FC and volcano plots.
+# Incorporates more of DESeq2 vignette along with Phyloseq tutorial materials. 
+# Here dropping source soil data entirely.
+
+
+
+#### 1. Setup ####
+# Libraries
+library(phyloseq)
+library(plyr)
+library(tidyverse)
+library(RColorBrewer)
+library(stringr)
+library(scales)
+library(cowplot)
+library(plotly)
+suppressMessages(library(vegan))
+suppressMessages(library(DESeq2))
+suppressMessages(library(gplots))
+library(pheatmap)
+setwd("~/Documents/GitHub/Timberlake/")
+
+# Functions
+find_hull <- function(df) df[chull(df$Axis01, df$Axis02),]
+find_hullj <- function(df) df[chull(df$Axis01j, df$Axis02j),]
+
+# Import and pre-process files
+## KO table import, filter out field samples                           
+TL_KO_raw <- read.csv("Timberlake_MG_KO_data.csv", header=TRUE) %>%
+  select(1:19, Fxn)
+  
+# df of KO gene fxns
+TL_KO_fxn <- TL_KO_raw %>%
+  select(KO, Fxn) %>%
+  column_to_rownames(var = "KO")
+
+# KO fxns as Phyloseq object
+suppressWarnings(KOTaxTable <- tax_table(TL_KO_fxn)) # Fxn as PHYLOSEQ tax table 
+colnames(KOTaxTable) <- colnames(TL_KO_fxn) # Add back colnames
+row.names(KOTaxTable) <- row.names(TL_KO_fxn) # Add back rownames
+
+# Gene Ontology and fxn Colors import
+BGC_ont <- read.csv("Ontology_KO_CNPSch4_Fm_whh.csv", header=TRUE) # Ontology
+BGC_colors <- read.csv("Ontol_KO_L2_Color_KEY_whh.csv") # Colors
+BGC_ont_col <- merge(BGC_ont, BGC_colors, by = "L2", all.x =TRUE) %>% # Merge
+  arrange(Index.x) %>% # Sort for readability
+  filter(L2 != "Fermentation") # Drop fermentation
+
+# Only CNPSch4 genes from Ontology
+bgc_KOu <- unique(data.frame(KO = BGC_ont$KO)) # only KOs from BGC_ont
+TL_bgc_KO <- merge(bgc_KOu, TL_KO_raw) # Merge with TL KO
+
+# Sample Mapping import
+map_MG_only <- read.table("Timberlake_sample_map_both.txt", sep="\t", header = T) %>%
+  drop_na(MG_name) %>% # drop NA in MG samps 
+  arrange(itag_meta_order2) %>% # sort by index (itag intentional)
+  select(MG_name, Treat, Depth) %>% # keep only relevant cols
+  column_to_rownames(var = "MG_name") %>% # Sample as row names, # Drop sample col
+  filter(Treat != "SourceSoil") # Drop field samples, incubations only
+
+## Phyloseq to DESeq2
+# Prep KO count data for OTU table 
+No_fxn <- data.frame(unique(TL_KO_raw)) %>% # DF for KOin, unique used to drop redund.
+  column_to_rownames(var = "KO") %>% # Make rownames KO numbers, Drop KO column
+  select(-Fxn) %>% # Drop Fxn
+  as.matrix()
+
+# Make PHYLOSEQ KO -> "OTU Table"
+class(No_fxn) <- "numeric" # Make numeric for phyloseq
+KO_otu <- otu_table(No_fxn, taxa_are_rows = TRUE, errorIfNULL = TRUE) # Make OTU table phyloseq object
+
+# Make Phyloseq sample data
+Map <- sample_data(map_MG_only) # map
+
+### Make combined Phyloseq OBJECT
+physeq = phyloseq(KO_otu, Map, KOTaxTable)
+
+# phyloseq patch before DESeq
+sample_data(physeq)$Treat <- relevel(as.factor(get_variable(physeq, "Treat")), 
+                                     ref="Control")
+
+# Export phyloseq to DESeq
+KO_phy2des <- phyloseq_to_deseq2(physeq, ~ Treat)
+
+## DESeq2 for Diff abund
+# Wald test
+KO_phy2des <- DESeq(KO_phy2des, 
+                    test = "Wald", 
+                    fitType = "parametric") # Test
+
+# Inspect DESeq fmt data set, includes estimated dispersions
+KO_phy2des
+
+# Overall results  -- why nothing sig when contrasts are?
+res <- results(KO_phy2des)
+resultsNames(KO_phy2des)
+summary(res)
+plotMA(res)
+
+# Likelihood ratio test, "ANOVA - like" for multiple factors 
+# Note here some are sig again, unlike above Wald test
+lrt <- DESeq(KO_phy2des, 
+             test = "LRT", 
+             reduced = ~1)
+res_LRT <- results(lrt)
+res_LRT
+plotMA(res_LRT)
+
+
+
+#### 2. DESeq2 Linear contrasts ####
+### Function for linear contrasts with p > filter, FC cutoff
+# Function for linear contrasts, results cutoff and merge with Ontology
+DSq_cntrstF = function(Treat_col, Treat1, Treat2) {                      # Treat_col: column with treatment data
+    alpha = 0.05                                                         # Treat1: for increase compared with Ref
+    FC = 1                                                               # Treat2: Ref for comparison  
+
+    T1_T2_De <- results(KO_phy2des,
+                        contrast = c(Treat_col, Treat1, Treat2),
+                        independentFiltering = FALSE) # DESeq2 results
+    T1_T2_DeS <- T1_T2_De[which(T1_T2_De$padj < alpha), ]                # filter by alpha 
+    T1_T2_DeSQ <- data.frame(T1_T2_DeS)                                   # make df 
+    T1_T2_DeSQ$KO <- row.names(T1_T2_DeSQ)                                # add KO as rownames
+
+    # Merge with CNP ontology, filter FC > 1 
+    T1_T2_DeSQ <- merge(T1_T2_DeSQ, BGC_ont_col, by ='KO')               # merge w Ontology
+    T1_T2_DeSQ_FC1 <- T1_T2_DeSQ[abs(T1_T2_DeSQ$log2FoldChange) > FC,]   # filter FC > 1 
+    return(T1_T2_DeSQ_FC1)
+}
+
+# Test contrasts fxn: 
+ASW_Ctrl_DeSQ_FC <- DSq_cntrstF("Treat", "ASW", "Control")
+
+# Create ALL Contrasts results sets
+ASW_Ctrl_FC <- DSq_cntrstF("Treat", "ASW", "Control")
+ASW0S_Ctrl_FC <- DSq_cntrstF("Treat", "ASW_noS", "Control")
+SO4_Ctrl_FC <- DSq_cntrstF("Treat", "SO4", "Control")
+ASW_SO4_FC <- DSq_cntrstF("Treat", "ASW", "SO4")
+ASW_ASW0S_FC <- DSq_cntrstF("Treat","ASW", "ASW_noS")
+ASW0S_SO4_FC <- DSq_cntrstF("Treat","ASW_noS","SO4")
+
+### Collect significnant KOs, all treats
+# gather KO lists
+ASW_Ctrl_KO <- data.frame(KO = ASW_Ctrl_FC$KO)
+ASW0S_Ctrl_KO <- data.frame(KO = ASW0S_Ctrl_FC$KO)
+SO4_Ctrl_KO <- data.frame(KO = SO4_Ctrl_FC$KO)
+ASW_SO4_KO <- data.frame(KO = ASW_SO4_FC$KO)
+ASW_ASW0S_KO <- data.frame(KO = ASW_ASW0S_FC$KO)
+ASW0S_SO4_KO <- data.frame(KO = ASW0S_SO4_FC$KO)
+
+# Combine lists, make unique
+Resp_KO <- (rbind(ASW_Ctrl_KO, ASW0S_Ctrl_KO, SO4_Ctrl_KO, ASW_SO4_KO, ASW_ASW0S_KO, ASW0S_SO4_KO))
+Resp_KOu <- unique(Resp_KO)
+row.names(Resp_KOu) <- Resp_KOu$KO
+
+## Get DESeq2 variance stablized data and Counts
+# From updated phyloseq to DESeq2 tutorial at https://github/Joey711/phyloseq/issues/283
+# Adding size factors and dispersion estimates before variance stabilization, as instructed
+KO_phy2des_vs <- estimateSizeFactors(KO_phy2des)
+KO_phy2des_vs <- estimateDispersions(KO_phy2des)
+KO_phy2des_VST <- getVarianceStabilizedData(KO_phy2des)
+KO_table_VST <- data.frame(KO_phy2des_VST)    # shorten name
+KO_table_VST$KO <- row.names(KO_table_VST)    # index rows 
+
+# Check VST df 
+head(KO_table_VST)
+
+## Replace VST data with COUNTS
+KO_vs_counts <- counts(KO_phy2des_vs, normalized = TRUE)     # get counts
+KO_table_VST <- data.frame(KO_vs_counts)                   # make df, shorten name
+head(KO_table_VST)
+colSums(KO_table_VST[,1:ncol(KO_table_VST)-1])
+
+# Scale OTU VST table counts to CPM (Counts per million)
+sampTots <- colSums(KO_table_VST)                          # Get sample totals   #[,1:ncol(OTU_table_VST)-1]) 
+KO_VST_CPM <- sweep(KO_table_VST*1000000, 2, sampTots, '/')   # Sweep matrix by:[div. by samp total * 1e+06]    
+KO_VST_CPM$KO <- row.names(KO_VST_CPM)                   # Add KO as column for later merges
+
+
+
+#### 3. Heatmap ####
+# Prep heatmap - Count data w only responsive KOs
+
+# get KO Counts from DE KOs by MERGE
+KO_table_VST_respM <- merge(Resp_KOu, KO_VST_CPM, by = "KO") %>%   # merge
+  column_to_rownames(var = "KO") # Drop KO and add as rowname
+
+# Correlations of responsive KOs and CH4 flux
+nc_mg <- readRDS("input_filt_rare_mTAGs.rds")
+CH4 <- nc_mg$map_loaded %>%
+  select(Treatment, CH4_ug_m2_h) %>%
+  filter(Treatment != "Field") %>%
+  select(-Treatment) %>%
+  rownames_to_column(var = "sampleID")
+map_MG_only <- map_MG_only %>%
+  mutate(sampleID = rownames(.)) %>%
+  left_join(., CH4, by = "sampleID")
+KO_table_VST_respM_t <- as.data.frame(t(KO_table_VST_respM))
+sum(map_MG_only$sampleID != rownames(KO_table_VST_respM_t))
+cor_df <- as.data.frame(matrix(NA, ncol(KO_table_VST_respM_t), 7)) %>%
+  set_names(c("KO", "r", "PearsonP", "rho", "SpearmanP", "tau", "KendallP"))
+for (i in 1:ncol(KO_table_VST_respM_t)) {
+  m <- cor.test(map_MG_only$CH4_ug_m2_h, KO_table_VST_respM_t[,i], method = "pearson", na.rm = T)
+  m1 <- cor.test(map_MG_only$CH4_ug_m2_h, KO_table_VST_respM_t[,i], method = "spearman", na.rm = T)
+  m2 <- cor.test(map_MG_only$CH4_ug_m2_h, KO_table_VST_respM_t[,i], method = "kendall", na.rm = T)
+  cor_df$KO[i] <- names(KO_table_VST_respM_t)[i]
+  cor_df$r[i] <- m$estimate
+  cor_df$PearsonP[i] <- m$p.value
+  cor_df$rho[i] <- m1$estimate
+  cor_df$SpearmanP[i] <- m1$p.value
+  cor_df$tau[i] <- m2$estimate
+  cor_df$KendallP[i] <- m2$p.value
+}
+cor_df <- cor_df %>%
+  mutate(Pearsonfdr = p.adjust(PearsonP, method = "fdr")) %>%
+  mutate(Spearmanfdr = p.adjust(SpearmanP, method = "fdr")) %>%
+  mutate(Kendallfdr = p.adjust(KendallP, method = "fdr")) %>%
+  mutate(PearsonPcut = factor(ifelse(Pearsonfdr < 0.05, 
+                                     "Pfdr < 0.05", "Pfdr > 0.05"),
+                              levels = c("Pfdr < 0.05","Pfdr > 0.05"))) %>%
+  mutate(SpearmanPcut = factor(ifelse(Spearmanfdr < 0.05, 
+                                     "Pfdr < 0.05", "Pfdr > 0.05"),
+                              levels = c("Pfdr < 0.05","Pfdr > 0.05"))) %>%
+  mutate(KendallPcut = factor(ifelse(Kendallfdr < 0.05, 
+                                     "Pfdr < 0.05", "Pfdr > 0.05"),
+                              levels = c("Pfdr < 0.05","Pfdr > 0.05"))) %>%
+  mutate(CH4_dir = ifelse(rho < 0, "Negative", "Positive")) %>%
+  mutate(CH4_sig = ifelse(SpearmanPcut == "Pfdr < 0.05", "Significant", "NS")) %>%
+  mutate(CH4_cor = paste(CH4_dir, CH4_sig, sep = "")) %>%
+  mutate(CH4_cor = as.factor(CH4_cor)) %>%
+  mutate(CH4_cor = recode(CH4_cor, "NegativeSignificant" = "Negative", "NegativeNS" = "None",
+                           "PositiveSignificant" = "Positive", "PositiveNS" = "None"))
+hist(map_MG_only$CH4_ug_m2_h) # Normal
+hist(KO_table_VST_respM_t$K00192) # Not Normal
+# Use Spearman and KOs aren't normal. Pearson yielded only 1 significant correlation anyway
+
+# Get z-score data, here of log10
+KO_table_VST_respM[KO_table_VST_respM == 0] <- 0.5           # Replace 0 values with psuedo counts for LOG transf
+KO_table_VST_respZ <- data.frame(t(scale(t(log10(KO_table_VST_respM)), 
+                                         center = TRUE, 
+                                         scale = TRUE))) # z-scores, log10 
+KO_table_VST_respZ$KO <-row.names(KO_table_VST_respZ) # KO as rowname
+
+## Add Ontology hier / colors
+# Merge colors with Ontology
+BGC_ont_colors <- merge(BGC_colors[,-1], BGC_ont, by = "L2", all.x = TRUE) # merge
+BGC_ont_colors <- BGC_ont_colors[order(BGC_ont_colors$KO),]              # Sort by KO
+
+# Merge Ontology with Responsive KO z-scores
+KO_table_VSTrespZc <- merge(BGC_ont_colors, KO_table_VST_respZ, by = 'KO') %>%       # merge
+  arrange(Index) # sort by index
+
+# Merge Ontology with Spearman correlations
+cor_table <- merge(BGC_ont_colors, cor_df, by = 'KO') %>%       # merge
+  arrange(Index) # sort by index
+
+# Get only data, add names to rows
+KO_Resp_HeatDS0 <- KO_table_VSTrespZc                   # rename
+KO_Resp_HeatDS <- KO_Resp_HeatDS0[,13:30]               # data only
+KO_Resp_HeatDSt <- t(KO_Resp_HeatDS)                    # transpose (non-unique rows)
+colnames(KO_Resp_HeatDSt) <- KO_Resp_HeatDS0$sm_name    # add sm names for FXN 
+KO_Resp_HeatDStt <- t(KO_Resp_HeatDSt)                  # retranspose, keeps non-unique rownames
+
+# Get colors for heatmaps
+L2_colors <- as.character(KO_Resp_HeatDS0$color)
+
+# Make heatmap
+trt_colors <- c('#cccccc','#cccccc','#cccccc','#cccccc','#cccccc', 
+                '#fabe58', '#fabe58','#fabe58','#fabe58','#fabe58',
+                '#6bb96d','#6bb96d','#6bb96d','#6bb96d','#6bb96d', 
+                '#9ac5e0','#9ac5e0','#9ac5e0')
+
+# Vertical
+heatmap.2(KO_Resp_HeatDStt, 
+          dendrogram = "none",
+          Rowv = F, 
+          Colv = F, 
+          ColSideColors = trt_colors, 
+          RowSideColors = L2_colors,
+          trace = "none", 
+          key = TRUE, 
+          density.info = "none",
+          scale = "column", 
+          margins = c(10, 10), 
+          col = rev(brewer.pal(11,"RdYlBu")))
+
+# Horizontal
+heatmap.2(KO_Resp_HeatDSt, 
+          Rowv = F, 
+          Colv = F, 
+          trace = "none", 
+          key = TRUE, 
+          ColSideColors = L2_colors, 
+          density.info = "none",
+          scale = "column", 
+          margins = c(8, 6), 
+          col = rev(brewer.pal(11,"RdYlBu")))
+
+## pheatmap
+# Put ASW on the right
+KO_Resp_HeatDStt <- as.data.frame(KO_Resp_HeatDStt) %>%
+  select(-ASW_1, ASW_1) %>%
+  select(-ASW_2, ASW_2) %>%
+  select(-ASW_3, ASW_3) %>%
+  select(-ASW_4, ASW_4) %>%
+  select(-ASW_5, ASW_5) %>%
+  as.matrix()
+L2_cols <- KO_Resp_HeatDS0 %>%
+  select(L2, color) %>%
+  group_by(L2) %>%
+  dplyr::slice(1) %>%
+  mutate(L2 = factor(L2,
+                     levels = L2))
+print(L2_cols, n = 22)
+ann_cols <- data.frame(row.names = colnames(KO_Resp_HeatDStt),
+                       "Treatment" = c(rep("Control", 5),
+                                       rep("SO4", 5),
+                                       rep("ASW-SO4", 3), 
+                                       rep("ASW", 5)))
+ann_rows <- data.frame(row.names = rownames(KO_Resp_HeatDStt),
+                       "CH4_cor" = cor_table$CH4_cor,
+                       "L2" = KO_Resp_HeatDS0$L2,
+                       "L1" = KO_Resp_HeatDS0$L1)
+ann_colors <- list(Treatment = c(Control = "#3B528BFF", 
+                                 SO4 = "#21908CFF",
+                                 `ASW-SO4` = "#5DC863FF",
+                                 ASW = "#FDE725FF"),
+                   CH4_cor = c(Positive = "red", Negative = "blue", None = "grey95"),
+                   L1 = c(`Carbon ` = "brown", 
+                          Nitrogen = "forestgreen", 
+                          Phosphorus = "deepskyblue3", 
+                          Sulfur = "magenta", 
+                          CH4_cycling = "grey40", 
+                          Fermentation = "darkorange"),
+                   L2 = c(Sugars = L2_cols$color[22],
+                          Polymers = L2_cols$color[18],
+                          Aromatic = L2_cols$color[1],
+                          NO3_reduction = L2_cols$color[14],
+                          NH3_oxidation = L2_cols$color[11],
+                          `NO3_A.reduction` = L2_cols$color[13],
+                          NH4_assimilation = L2_cols$color[12],
+                          N2_fixation = L2_cols$color[10],
+                          P_regulation = L2_cols$color[15],
+                          `PolyP-ases ` = L2_cols$color[17],
+                          Phn_transport = L2_cols$color[16],
+                          `CH3-phosphonate` = L2_cols$color[2],
+                          S2O3_oxidation = L2_cols$color[19],
+                          SO4_A.reduction = L2_cols$color[20],
+                          SO4_D.reduction = L2_cols$color[21],
+                          CH4_oxidation = L2_cols$color[7],
+                          CH4_H2_reduction = L2_cols$color[4],
+                          CH4_acetate = L2_cols$color[5],
+                          CH4_methylotroph = L2_cols$color[6],
+                          CH4_Archaeal = L2_cols$color[3],
+                          H2_production = L2_cols$color[9],
+                          Fermentation = L2_cols$color[8]))
+pheatmap(KO_Resp_HeatDStt,
+         legend = T,
+         legend_breaks = c(-2, -1, 0, 1, 2, max(KO_Resp_HeatDStt)),
+         legend_labels = c("-2","-1","0","1","2","Abund.\n"),
+         main = "",
+         border_color = NA,
+         scale = "none",
+         angle_col = 315,
+         fontsize = 8,
+         annotation_col = ann_cols,
+         annotation_row = ann_rows,
+         annotation_colors = ann_colors,
+         cluster_rows = F,
+         cluster_cols = F,
+         gaps_row = c(12, 19, 25, 31, 50),
+         gaps_col = c(5, 10, 13),
+         filename = "Figures/KO_heatmap.png",
+         width = 7,
+         height = 7)
+dev.off()
+dev.set(dev.next())
+dev.set(dev.next())
+
+
+
+#### 4. NMDS ####
+# Define plotting function
+biom_plot_cats_nmds <- function(biom, group, env) {
+  biomT <- t(biom)    # Transpose so cols are vars
+  
+  # Test ADONIS models, extract params
+  bT_adonis <- adonis(biomT  ~ group, permutations = 999, method = "bray");
+  R2 <- round(bT_adonis$aov.tab$R2[1], digits=3)
+  P <- bT_adonis$aov.tab$"Pr(>F)"[1]
+  
+  # NMDS
+  bT_mds <- suppressMessages(metaMDS(biomT[,-1], 
+                                     distance = "bray", 
+                                     k = 3, 
+                                     trymax = 10)); # run NMDS
+  bT_mds_DF = data.frame(MDS1 = bT_mds$points[,1], MDS2 = bT_mds$points[,2], group)  # Make data frame
+  stress = round(bT_mds$stress, digits = 3)                                      # get NMDS stress
+  
+  # Plot NMDS by assembly group
+  pA <- ggplot(bT_mds_DF, aes(x = MDS1, y = MDS2, color = group)) + 
+    geom_point() +
+    stat_ellipse(level=0.95);
+  pB <-pA + annotate("text", 
+                     x = (0.9*(max(bT_mds_DF$MDS1))), 
+                     y = max(bT_mds_DF$MDS2), 
+                     label = paste("italic(R) ^ 2 ==", R2),
+                     parse = TRUE);
+  pC <-pB + annotate("text", 
+                     x = (0.7*(min(bT_mds_DF$MDS1))), 
+                     y = min(bT_mds_DF$MDS2), 
+                     label = paste("italic(Stress):", stress),
+                     parse = TRUE);
+  pD <- pC + theme(legend.title = element_blank())
+  
+  return(pD)
+}
+
+###  New Adaptation
+## ALL GENES
+# Get counts per sample, from KO_VST_CPM  not  KO_table_VST
+KO_table_VST_nk <- KO_VST_CPM[, 1:(ncol(KO_VST_CPM)-1)]  # Drop KO column, previously needed for merge  # 
+#KO_table_VST_nk <- KO_table_VST[, 1:(ncol(KO_table_VST)-1)]  # Drop KO column, previously needed for merge  # 
+
+# Get treatment vector
+Treat <- map_MG_only$Treat[1:ncol(KO_table_VST_nk)] # Treat
+
+## PLOT
+#suppressWarnings(biom_plot_cats_nmds(KO_table_VST_nk, Treat))
+suppressMessages(biom_plot_cats_nmds(KO_table_VST_nk, Treat)) 
+
+
+
+#### 5. PCoA ####
+# All genes
+# Bray-Curtis and Jaccard
+ko_meta <- map_MG_only %>%
+  mutate(Treat = factor(Treat,
+                        levels = c("Control", "SO4", "ASW_noS", "ASW"))) %>%
+  mutate(Treat = recode(Treat, "ASW_noS" = "ASW-SO4"))
+biomT <- t(KO_table_VST_nk)
+sum(rownames(ko_meta) != rownames(biomT))
+bc_ko <- vegdist(biomT, method = "bray")
+pcoa_ko <- cmdscale(bc_ko, k = nrow(ko_meta) - 1, eig = T)
+pcoaA1 <- round((eigenvals(pcoa_ko)/sum(eigenvals(pcoa_ko)))[1]*100, digits = 1)
+pcoaA2 <- round((eigenvals(pcoa_ko)/sum(eigenvals(pcoa_ko)))[2]*100, digits = 1)
+ko_meta$Axis01 <- scores(pcoa_ko)[,1]
+ko_meta$Axis02 <- scores(pcoa_ko)[,2]
+micro.hulls <- ddply(ko_meta, c("Treat"), find_hull)
+g1_ko <- ggplot(ko_meta, aes(Axis01, Axis02, colour = Treat)) +
+  geom_polygon(data = micro.hulls, aes(colour = Treat, fill = Treat),
+               alpha = 0.1, show.legend = F) +
+  geom_point(size = 3, alpha = 1) +
+  scale_fill_manual(values = viridis_pal()(5)[2:5]) +
+  scale_colour_manual(values = viridis_pal()(5)[2:5]) +
+  labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
+       y = paste("PC2: ", pcoaA2, "%", sep = ""),
+       colour = "Treatment",
+       title = "KO Bray-Curtis") +
+  theme_bw() +  
+  theme(legend.position = "none",
+        axis.title = element_text(face = "bold", size = 14), 
+        axis.text = element_text(size = 12),
+        plot.title = element_text(vjust = 0))
+g1_ko
+
+jac_ko <- vegdist(biomT, method = "jaccard")
+pcoa1_ko <- cmdscale(jac_ko, k = nrow(ko_meta) - 1, eig = T)
+pcoa1A1 <- round((eigenvals(pcoa1_ko)/sum(eigenvals(pcoa1_ko)))[1]*100, digits = 1)
+pcoa1A2 <- round((eigenvals(pcoa1_ko)/sum(eigenvals(pcoa1_ko)))[2]*100, digits = 1)
+ko_meta$Axis01j <- scores(pcoa1_ko)[,1]
+ko_meta$Axis02j <- scores(pcoa1_ko)[,2]
+micro.hullsj <- ddply(ko_meta, c("Treat"), find_hullj)
+g2_ko <- ggplot(ko_meta, aes(Axis01j, Axis02j, colour = Treat)) +
+  geom_polygon(data = micro.hullsj, aes(colour = Treat, fill = Treat),
+               alpha = 0.1, show.legend = F) +
+  geom_point(size = 3, alpha = 1) +
+  scale_fill_manual(values = viridis_pal()(5)[2:5]) +
+  scale_colour_manual(values = viridis_pal()(5)[2:5]) +
+  labs(x = paste("PC1: ", pcoa1A1, "%", sep = ""), 
+       y = paste("PC2: ", pcoa1A2, "%", sep = ""),
+       colour = "Treatment",
+       title = "KO Jaccard") +
+  theme_bw() +  
+  theme(legend.position = "right",
+        axis.title = element_text(face = "bold", size = 14), 
+        axis.text = element_text(size = 12),
+        plot.title = element_text(vjust = 0))
+g2_ko
+
+plot_grid(g1_ko, g2_ko, ncol = 2, rel_widths = c(1,1.515))
+ggplotly(g1_ko)
+
+
+
+#### 6. FC Plot ####
+# Plot fold change by organism, ontology colors
+fold_plot = function(sigtab){
+
+    # L2 order
+    x = tapply(sigtab$log2FoldChange, sigtab$L2, function(x) max(x))
+    x = sort(x, TRUE)
+    sigtab$L2 <- factor(as.character(sigtab$L2), levels = names(x))
+    # sm_name order
+    x = tapply(sigtab$log2FoldChange, sigtab$sm_name, function(x) max(x))
+    x = sort(x, TRUE)
+    sigtab$sm_name <- factor(as.character(sigtab$sm_name), levels = names(x))
+    
+    sigtab <- sigtab[order(sigtab$Index.y),]                                     # Sort Table by factor ordering index
+    sigtab$L2 <- factor(sigtab$L2, levels = unique(sigtab$L2[order(sigtab$Index.y)]))  # Reorder factor levels
+
+    # Get factor colors as vector
+    colmat <-unique(data.frame(L2=sigtab$L2, color=sigtab$color))
+    w = c(unlist(as.character(colmat$color)))
+    
+        
+    #pt_size = (sigtab$baseMean/100)
+    p <- ggplot(sigtab, aes(x = sm_name, y = log2FoldChange, color = L2)) + 
+      geom_point(aes(size = baseMean)) +
+      labs(x = "KO", y = "log2 fold change", 
+           size = "Mean count", color = "Gene class") +
+      scale_color_manual(values = w) +
+      theme_bw() +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+    p
+}
+
+fold_plot(ASW_Ctrl_DeSQ_FC)
+
+
+
+#### 7. Volcano FC Plot ####
+# Volcano FC plot, colored by ontology
+volc_plot = function(sigtab) {
+    sigtab <- sigtab[order(sigtab$Index.y),]                                  # Sort Table by factor ordering index
+    sigtab$L2 <- factor(sigtab$L2, levels = unique(sigtab$L2[order(sigtab$Index.y)]))  # Reorder factor levels
+
+    # Get factor colors as vector
+    colmat <-unique(data.frame(L2=sigtab$L2, color=sigtab$color))
+    w = c(unlist(as.character(colmat$color)))
+    
+    # PLOT
+    ggplot(sigtab, aes(x = log2FoldChange, y = baseMean, group = L2, color = L2)) + 
+      geom_point(size = 2) + 
+      scale_color_manual(values = w)
+}
+
+# TEST volc_plot FUNCTION
+volc_plot(ASW_Ctrl_DeSQ_FC)
+
+# vignette("DESeq2")
