@@ -24,6 +24,7 @@ suppressMessages(library(vegan))
 suppressMessages(library(DESeq2))
 suppressMessages(library(gplots))
 library(pheatmap)
+library(reshape2)
 setwd("~/Documents/GitHub/Timberlake/")
 
 # Functions
@@ -34,6 +35,40 @@ find_hullj <- function(df) df[chull(df$Axis01j, df$Axis02j),]
 ## KO table import, filter out field samples                           
 TL_KO_raw <- read.csv("Timberlake_MG_KO_data.csv", header=TRUE) %>%
   select(1:19, Fxn)
+
+# Check pmoABC trends (this was an issue in SF Salinity Gradient)
+checkPMO <- TL_KO_raw %>%
+  select(-Fxn) %>%
+  column_to_rownames(var = "KO") %>%
+  t() %>%
+  as.data.frame() %>%
+  select(K10944, K10945, K10946)
+ggplot(checkPMO, aes(K10944, K10945)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted") +
+  geom_point() +
+  geom_smooth(method = "lm", alpha = 0.2) +
+  labs(x = "pmoA", y = "pmoB") +
+  theme_classic()
+ggplot(checkPMO, aes(K10944, K10946)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted") +
+  geom_point() +
+  geom_smooth(method = "lm", alpha = 0.2) +
+  labs(x = "pmoA", y = "pmoC") +
+  theme_classic()
+ggplot(checkPMO, aes(K10945, K10946)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted") +
+  geom_point() +
+  geom_smooth(method = "lm", alpha = 0.2) +
+  labs(x = "pmoB", y = "pmoC") +
+  theme_classic()
+hist(checkPMO$K10944)
+hist(checkPMO$K10945)
+hist(checkPMO$K10946)
+checkPMO_long <- melt(checkPMO, measure.vars = c("K10944", "K10945", "K10946"))
+ggplot(checkPMO_long, aes(x = value, colour = variable)) +
+  geom_density() +
+  labs(x = "Count", y = "Density", colour = "KO") +
+  theme_classic()
   
 # df of KO gene fxns
 TL_KO_fxn <- TL_KO_raw %>%

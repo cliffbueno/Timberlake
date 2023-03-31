@@ -77,6 +77,8 @@ library(ggh4x) # graphs
 library(dendextend) # graphs
 library(corrplot) # correlation plots
 library(pheatmap) # heatmaps
+library(zCompositions) # CLR
+library(compositions) # Aitchison
 
 # Functions
 find_hull <- function(df) df[chull(df$Axis01, df$Axis02),]
@@ -144,7 +146,7 @@ Guild_cols <- read.table("~/Documents/GitHub/SF_microbe_methane/data/colors/Guil
 # Need to make mctoolsr object from the merged mTAGs output
 # Input file and reformat everything
 # Separate euks and proks
-p <- read.delim("merged_profile.otu.tsv") %>%
+p <- read.delim("data/merged_profile.otu.tsv") %>%
   set_names(substr(names(.), 1, nchar(names(.))-5)) %>%
   rename(taxonomy = X.ta) %>%
   filter(., !grepl("Eukaryota", taxonomy)) %>%
@@ -169,7 +171,7 @@ names(p) <- gsub("ASW.", "ASW_", names(p))
 names(p) <- gsub("Control", "Control_", names(p))
 names(p) <- gsub("Field", "Field_", names(p))
 
-e <- read.delim("merged_profile.otu.tsv") %>%
+e <- read.delim("data/merged_profile.otu.tsv") %>%
   set_names(substr(names(.), 1, nchar(names(.))-5)) %>%
   rename(taxonomy = X.ta) %>%
   filter(., grepl("Eukaryota", taxonomy)) %>%
@@ -195,7 +197,7 @@ names(e) <- gsub("Control", "Control_", names(e))
 names(e) <- gsub("Field", "Field_", names(e))
 
 # Sequencing info
-mtag_output <- read.delim("merged_profile.otu.tsv") %>%
+mtag_output <- read.delim("data/merged_profile.otu.tsv") %>%
   set_names(substr(names(.), 1, nchar(names(.))-5)) %>%
   rename(taxonomy = X.ta)
 mtag_output_t <- mtag_output %>%
@@ -226,7 +228,7 @@ depth_info_rel <- depth_info %>%
   mutate(BacArcRel = round(Bacteria.Archaea/Total*100, digits = 2),
          EukRel = round(Eukaryota/Total*100, digits = 2))
 depth_info_long <- melt(depth_info, id.vars = c("sampleID", "Treatment"))
-png("Figures/mTAG_info.png", width = 6, height = 3, units = "in", res = 300)
+png("InitialFigs/mTAG_info.png", width = 6, height = 3, units = "in", res = 300)
 ggplot(depth_info_long, aes(sampleID, value, fill = variable)) +
   geom_bar(stat = "identity") +
   labs(x = NULL,
@@ -254,9 +256,9 @@ suppressWarnings(write.table(e, out_fp, sep = "\t", row.names = FALSE, append = 
 # iTags (to compare). Also make mapping file for mTAGs. 
 # NB: Metagenomes are from D2!
 # NB: Use Wyatt's mapping file
-nc <- readRDS("nc.rds")
+nc <- readRDS("data/nc.rds")
 
-wyatt_map <- read.delim("Timberlake_sample_map_both.txt") %>%
+wyatt_map <- read.delim("data/Timberlake_sample_map_both.txt") %>%
   dplyr::select(Itag_sample, MG_name) %>%
   filter(., !grepl("d1", Itag_sample))
 wyatt_map <- wyatt_map[rowSums(is.na(wyatt_map)) != ncol(wyatt_map),]
@@ -279,8 +281,8 @@ mTAGs_map <- nc$map_loaded %>%
 # https://www.ldeo.columbia.edu/edu/k12/snapshotday/activities/2011/Classroom%20HS%20activity/chloride%20conversion/Chloride%20and%20Salinity.pdf
 
 # Import Data (n = 23), Filter, Rarefy, Calc richness
-tax_table_fp <- "seqtab_wTax_mctoolsr_mtagProk.txt"
-map_fp <- "mtags_metadata.txt"
+tax_table_fp <- "data/seqtab_wTax_mctoolsr_mtagProk.txt"
+map_fp <- "data/mtags_metadata.txt"
 input = load_taxa_table(tax_table_fp, map_fp)
 
 # Filter chloroplast, mitochondria, eukaryotes, unassigned at domain
@@ -295,6 +297,14 @@ input_filt <- filter_taxa_from_input(input_filt,
                                      taxa_to_remove = "NA",
                                      at_spec_level = 1) # none 
 # (those were already filtered by mTAGs as "Unclassified)
+
+# Remove singletons and doubletons
+singdoub <- data.frame("count" = rowSums(input_filt$data_loaded)) %>%
+  filter(count < 3) %>%
+  mutate(ASV = rownames(.))
+
+input_filt <- filter_taxa_from_input(input_filt,
+                                     taxa_IDs_to_remove = singdoub$ASV)
 
 # Guilds
 # Use updated Wyatt guild calling script
@@ -336,7 +346,7 @@ input_filt$taxonomy_loaded <- input_filt$taxonomy_loaded %>%
 rownames(input_filt$taxonomy_loaded) <- input_filt$taxonomy_loaded$taxonomy8
 
 # Save
-saveRDS(input_filt, "input_filt_mTAGs.rds")
+#saveRDS(input_filt, "data/input_filt_mTAGs.rds")
 
 # Rarefy at minimum (4271)
 sort(colSums(input_filt$data_loaded))
@@ -357,10 +367,10 @@ input_filt_rare$map_loaded$shannon <- diversity(input_filt_rare$data_loaded,
                                                 MARGIN = 2)
 
 # Save
-saveRDS(input_filt_rare, "input_filt_rare_mTAGs.rds")
+#saveRDS(input_filt_rare, "data/input_filt_rare_mTAGs.rds")
 
 # Start here
-nc <- readRDS("input_filt_rare_mTAGs.rds")
+nc <- readRDS("data/input_filt_rare_mTAGs.rds")
 nc$map_loaded <- nc$map_loaded %>%
   mutate("Treatment" = c(rep("+ASW-SO4", 3), 
                          rep("+ASW", 5),
@@ -396,7 +406,7 @@ facet_df <- c("rich" = "(a) Richness",
               "shannon" = "(b) Shannon")
 alpha_long <- nc$map_loaded %>%
   pivot_longer(cols = c("rich", "shannon"))
-png("Figures/Alpha_mTAG.png", width = 6, height = 3, units = "in", res = 300)
+png("InitialFigs/Alpha_mTAG.png", width = 6, height = 3, units = "in", res = 300)
 ggplot(alpha_long, aes(reorder(Treatment, value, mean), value, 
                        colour = Treatment)) +
   geom_boxplot(outlier.shape = NA) +
@@ -427,6 +437,75 @@ env_nc <- nc$map_loaded %>%
 env_nona_nc <- na.omit(env_nc)
 nrow(env_nona_nc) # n = 14
 
+
+
+#### _Aitch ####
+# Use non-rarefied data, do CLR transformation, Aitchison, PCA
+sum(rownames(nc$map_loaded) != rownames(input_filt$map_loaded))
+input_filt$map_loaded <- nc$map_loaded
+dim(input_filt$data_loaded)
+
+# CLT transformation
+otu_czm <- cmultRepl(t((input_filt$data_loaded)), label = 0, method = "CZM")
+otu_clr <- clr(otu_czm)
+aclr <- compositions::dist(otu_clr)
+
+set.seed(1150)
+adonis2(aclr ~ nc$map_loaded$Treatment) # R2 = 0.41, p = 0.001
+anova(betadisper(aclr, nc$map_loaded$Treatment)) # Dispersion homogeneous
+
+# PCA with vectors
+d.pcx <- prcomp(aclr)
+set.seed(100)
+ef_nc <- envfit(d.pcx, env_nc, permutations = 999, na.rm = TRUE)
+ef_nc
+ordiplot(d.pcx)
+plot(ef_nc, p.max = 0.075, cex = 0.5)
+manual_factor_nc <- 0.3
+vec.df_nc <- as.data.frame(ef_nc$vectors$arrows*sqrt(ef_nc$vectors$r)) %>%
+  mutate(PC1 = PC1 * manual_factor_nc,
+         PC2 = PC2 * manual_factor_nc) %>%
+  mutate(variables = rownames(.)) %>%
+  filter(ef_nc$vectors$pvals < 0.075) %>%
+  filter(variables != "Cl_mgL") %>%
+  mutate(shortnames = c("Salinity", "N2O", "CO2", "NH4", "pH", "Br"))
+d.mvar <- sum(d.pcx$sdev^2)
+PC1 <- paste("PC1: ", round((sum(d.pcx$sdev[1]^2)/d.mvar)*100, 1), "%")
+PC2 <- paste("PC2: ", round((sum(d.pcx$sdev[2]^2)/d.mvar)*100, 1), "%")
+nc$map_loaded$Axis01 <- d.pcx$rotation[,1]
+nc$map_loaded$Axis02 <- d.pcx$rotation[,2]
+micro.hulls <- ddply(nc$map_loaded, c("Treatment"), find_hull)
+png("InitialFigs/BetaAitch_mTAG.png", width = 7, height = 5, units = "in", res = 300)
+ggplot(nc$map_loaded, aes(Axis01, Axis02)) +
+  geom_polygon(data = micro.hulls, 
+               aes(colour = Treatment, fill = Treatment),
+               alpha = 0.1, show.legend = F) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_segment(data = vec.df_nc,
+               aes(x = 0, xend = -PC1, y = 0, yend = -PC2),
+               arrow = arrow(length = unit(0.35, "cm")),
+               colour = "gray", alpha = 0.6,
+               inherit.aes = FALSE) + 
+  geom_text(data = vec.df_nc,
+            aes(x = -PC1, y = -PC2, label = shortnames),
+            size = 3, color = "black") +
+  labs(x = PC1, 
+       y = PC2) +
+  scale_colour_viridis_d() +
+  scale_fill_viridis_d() +
+  guides(colour = guide_legend(override.aes = list(shape = 15),
+                               order = 1)) +
+  theme_bw() +  
+  theme(legend.position = c(0,0),
+        legend.justification = c(0,0),
+        legend.background = element_blank(),
+        axis.title = element_text(face = "bold", size = 12), 
+        axis.text = element_text(size = 10),
+        plot.margin = margin(5, 5, 5, 5, "pt"))
+dev.off()
+
+
+
 #### _Bray ####
 nc_bc <- calc_dm(nc$data_loaded)
 set.seed(1150)
@@ -453,7 +532,7 @@ pcoaA2 <- round((eigenvals(nc_pcoa)/sum(eigenvals(nc_pcoa)))[2]*100, digits = 1)
 nc$map_loaded$Axis01 <- scores(nc_pcoa)[,1]
 nc$map_loaded$Axis02 <- scores(nc_pcoa)[,2]
 micro.hulls <- ddply(nc$map_loaded, c("Treatment"), find_hull)
-png("Figures/Beta_mTAG.png", width = 7, height = 5, units = "in", res = 300)
+png("InitialFigs/Beta_mTAG.png", width = 7, height = 5, units = "in", res = 300)
 ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
@@ -663,7 +742,7 @@ g6 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
 
 p1 <- plot_grid(g1, g2, g3, g4, g5, g6, ncol = 3)
 
-png("Figures/Beta_allLevels_mTAG.png", width = 8, height = 6, units = "in", res = 300)
+png("InitialFigs/Beta_allLevels_mTAG.png", width = 8, height = 6, units = "in", res = 300)
 plot_grid(p1, leg, rel_widths = c(0.85, 0.15))
 dev.off()
 
@@ -695,7 +774,7 @@ pcoaA2 <- round((eigenvals(nc_pcoa)/sum(eigenvals(nc_pcoa)))[2]*100, digits = 1)
 nc$map_loaded$Axis01 <- scores(nc_pcoa)[,1]
 nc$map_loaded$Axis02 <- scores(nc_pcoa)[,2]
 micro.hulls <- ddply(nc$map_loaded, c("Treatment"), find_hull)
-png("Figures/Beta_Jac_mTAG.png", width = 7, height = 5, units = "in", res = 300)
+png("InitialFigs/Beta_Jac_mTAG.png", width = 7, height = 5, units = "in", res = 300)
 ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
@@ -896,7 +975,7 @@ g6 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
 
 p1 <- plot_grid(g1, g2, g3, g4, g5, g6, ncol = 3)
 
-png("Figures/Beta_allLevels_Jac_mTAG.png", width = 8, height = 6, units = "in", res = 300)
+png("InitialFigs/Beta_allLevels_Jac_mTAG.png", width = 8, height = 6, units = "in", res = 300)
 plot_grid(p1, leg, rel_widths = c(0.85, 0.15))
 dev.off()
 
@@ -987,7 +1066,7 @@ gui <- ggplot(barsG, aes(group_by, mean_value, fill = taxon)) +
 
 plot_grid(phy, gui, ncol = 1, rel_heights = c(0.45, 0.55), align = "v", axis = "trbl")
 
-png("Figures/PhylaGuilds_mTAG.png", width = 8, height = 6, units = "in", res = 300)
+png("InitialFigs/PhylaGuilds_mTAG.png", width = 8, height = 6, units = "in", res = 300)
 plot_grid(phy, gui, ncol = 1, rel_heights = c(0.45, 0.55), align = "v", axis = "trbl")
 dev.off()
 
@@ -1108,7 +1187,7 @@ b <- ggplot(nc$map_loaded, aes(AO_NOB, MT*100)) +
   theme(legend.position = "none",
         axis.title = element_text(size = 10))
 
-png("Figures/Ratios_mTAG.png", width = 8, height = 4, units = "in", res = 300)
+png("InitialFigs/Ratios_mTAG.png", width = 8, height = 4, units = "in", res = 300)
 plot_grid(a, b, l, ncol = 3, rel_widths = c(0.43, 0.43, 0.14), labels = c("a", "b", ""))
 dev.off()
 
@@ -1124,7 +1203,7 @@ t <- emmeans(object = m, specs = "Treatment") %>%
   mutate(name = "MG_MT",
          y = max(nc$map_loaded$MG_MT)+(max(nc$map_loaded$MG_MT)-min(nc$map_loaded$MG_MT))/2)
 
-png("Figures/MG_MT_mTAG.png", width = 7, height = 5, units = "in", res = 300)
+png("InitialFigs/MG_MT_mTAG.png", width = 7, height = 5, units = "in", res = 300)
 ggplot(nc$map_loaded, aes(reorder(Treatment, MG_MT, mean), MG_MT)) +
   geom_hline(yintercept = 1, linetype = "dotted") +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
@@ -1171,7 +1250,7 @@ topmg <- barsMG %>%
 barsMG <- barsMG %>%
   mutate(taxon = factor(taxon, levels = topmg$taxon)) %>%
   mutate(taxon = fct_rev(taxon))
-png("Figures/Methanogens_mTAG.png", width = 7, height = 5, units = "in", res = 300)
+png("InitialFigs/Methanogens_mTAG.png", width = 7, height = 5, units = "in", res = 300)
 ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
   geom_bar(stat = "identity", colour = NA, size = 0.25) +
   labs(x = "Sample", y = "% Abundance", fill = "Phylum; Class; Order; Family") +
@@ -1228,7 +1307,7 @@ barsMT <- barsMT %>%
   mutate(taxon = fct_rev(taxon))
 nb.cols <- 21
 mycolors <- colorRampPalette(brewer.pal(12, "Paired"))(nb.cols)
-png("Figures/Methanotrophs_mTAG.png", width = 6.5, height = 6, units = "in", res = 300)
+png("InitialFigs/Methanotrophs_mTAG.png", width = 6.5, height = 6, units = "in", res = 300)
 ggplot(barsMT, aes(group_by, mean_value, fill = taxon)) +
   geom_bar(stat = "identity", colour = NA, size = 0.25) +
   labs(x = "Sample", y = "% Abundance", fill = "Genus") +
@@ -1335,7 +1414,7 @@ pheatmap(simper_mat,
          cluster_cols = F,
          display_numbers = T,
          gaps_row = c(10, 20),
-         filename = "Figures/Simper_mTAG.png",
+         filename = "InitialFigs/Simper_mTAG.png",
          width = 8,
          height = 7)
 dev.off()
@@ -1353,7 +1432,7 @@ mp <- multipatt(t(nc$data_loaded),
                 control = how(nperm=999))
 summary(mp) # 697 associated to 1 group
 
-png("Figures/Multipatt_mTAG.png", width = 6, height = 8, units = "in", res = 300)
+png("InitialFigs/Multipatt_mTAG.png", width = 6, height = 8, units = "in", res = 300)
 plot_multipatt(mp_obj = mp, 
                input = nc,
                tax_sum = tax_sum_OTU,
@@ -1385,7 +1464,7 @@ mp <- multipatt(t(nc_abund$data_loaded),
                 control = how(nperm=999))
 summary(mp) # Number of species associated to 1 group: 81 
 
-png("Figures/Multipatt_abund_mTAG.png", width = 6, height = 8, units = "in", res = 300)
+png("InitialFigs/Multipatt_abund_mTAG.png", width = 6, height = 8, units = "in", res = 300)
 plot_multipatt(mp_obj = mp, 
                input = nc,
                tax_sum = tax_sum_OTU,
@@ -1406,7 +1485,7 @@ env_nona <- env_nona_nc %>%
   dplyr::select(-Cl_mgL)
 
 # Plot correlations for different taxonomic levels at a given % relative abundance threshold
-png("Figures/CH4_Phyla_mTAG.png", width = 7, height = 5, units = "in", res = 300)
+png("InitialFigs/CH4_Phyla_mTAG.png", width = 7, height = 5, units = "in", res = 300)
 meth_corr_by_taxonomy(input = nc, level = 2, threshold = 0.5, data = "No")
 dev.off()
 meth_corr_by_taxonomy(input = nc, level = 3, threshold = 0.5, data = "No")
@@ -1414,7 +1493,7 @@ meth_corr_by_taxonomy(input = nc, level = 4, threshold = 0.5, data = "No")
 meth_corr_by_taxonomy(input = nc, level = 5, threshold = 0.5, data = "No")
 meth_corr_by_taxonomy(input = nc, level = 6, threshold = 0.5, data = "No")
 meth_corr_by_taxonomy(input = nc, level = 8, threshold = 0.5, data = "No")
-png("Figures/CH4_Guilds_mTAG.png", width = 7, height = 5, units = "in", res = 300)
+png("InitialFigs/CH4_Guilds_mTAG.png", width = 7, height = 5, units = "in", res = 300)
 meth_corr_by_taxonomy(input = nc, level = 9, threshold = 0, data = "No")
 dev.off()
 # Note not as many sig phyla and no sig guilds, perhaps due to lower n because only D2
@@ -1505,7 +1584,7 @@ for (i in 1:length(names_p)) {
   p[[i]] <- compare_abund(data = Combined_phyla, taxon = names_p[i])
 }
 
-png("Figures/CompareMethodsPhyla.png", width = 8, height = 6, units = "in", res = 300)
+png("InitialFigs/CompareMethodsPhyla.png", width = 8, height = 6, units = "in", res = 300)
 grid.arrange(p[[1]], p[[2]], p[[3]], p[[4]],
              p[[5]], p[[6]], p[[7]], p[[8]],
              p[[9]], p[[10]], p[[11]], p[[12]],
@@ -1555,7 +1634,7 @@ for (i in 1:length(names_g)) {
   g[[i]] <- compare_abund(data = Combined_guilds, taxon = names_g[i])
 }
 
-png("Figures/CompareMethodsGuilds.png", width = 8, height = 6, units = "in", res = 300)
+png("InitialFigs/CompareMethodsGuilds.png", width = 8, height = 6, units = "in", res = 300)
 grid.arrange(g[[1]], g[[2]], g[[3]], g[[4]],
              g[[5]], g[[6]], g[[7]], g[[8]],
              g[[9]], g[[10]], g[[11]],
