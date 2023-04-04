@@ -1,0 +1,26 @@
+V	Defense mechanisms
+R	General function prediction only
+G	Carbohydrate transport and metabolism
+K	Transcription
+L	Replication, recombination and repair
+H	Coenzyme transport and metabolism
+N	Cell motility
+C	Energy production and conversion
+T	Signal transduction mechanisms
+O	Posttranslational modification, protein turnover, chaperones
+P	Inorganic ion transport and metabolism
+Z	Cytoskeleton
+S	Function unknown
+D	Cell cycle control, cell division, chromosome partitioning
+Y	Nuclear structure
+J	Translation, ribosomal structure and biogenesis
+M	Cell wall/membrane/envelope biogenesis
+U	Intracellular trafficking, secretion, and vesicular transport
+B	Chromatin structure and dynamics
+Q	Secondary metabolites biosynthesis, transport and catabolism
+W	Extracellular structures
+E	Amino acid transport and metabolism
+F	Nucleotide transport and metabolism
+I	Lipid transport and metabolism
+X	Mobilome: prophages, transposons
+A	RNA processing and modification

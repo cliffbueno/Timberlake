@@ -1,0 +1,19 @@
+{
+   "files" : [
+      "Timberlake_Field",
+      "Timberlake_Lab"
+   ],
+   "currDateTime" : "2023/03/31 12:13:43",
+   "program" : "analysisStats",
+   "measurement" : "geneCount",
+   "function" : "pfamCat",
+   "comparison" : "absolute",
+   "comment" : "",
+   "display" : "all",
+   "analysis_selected_job_name" : "TL_PFam_cat",
+   "analysis_save_mode" : "save",
+   "jobname" : "TL_PFam_cat",
+   "contact_oid" : "123426",
+   "method" : "default",
+   "files3" : ""
+}

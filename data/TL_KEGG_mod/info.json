@@ -1,0 +1,19 @@
+{
+   "files" : [
+      "Timberlake_Field",
+      "Timberlake_Lab"
+   ],
+   "method" : "default",
+   "program" : "analysisStats",
+   "jobname" : "TL_KEGG_mod",
+   "display" : "all",
+   "files3" : "",
+   "analysis_save_mode" : "save",
+   "function" : "keggMod",
+   "comparison" : "absolute",
+   "analysis_selected_job_name" : "TL_KEGG_mod",
+   "measurement" : "geneCount",
+   "currDateTime" : "2023/03/31 12:14:59",
+   "contact_oid" : "123426",
+   "comment" : ""
+}

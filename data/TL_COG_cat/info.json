@@ -1,0 +1,19 @@
+{
+   "contact_oid" : "123426",
+   "comparison" : "absolute",
+   "function" : "cogCat",
+   "files3" : "",
+   "jobname" : "TL_COG_cat",
+   "analysis_selected_job_name" : "TL_COG_cat",
+   "display" : "all",
+   "currDateTime" : "2023/03/31 12:11:27",
+   "measurement" : "geneCount",
+   "program" : "analysisStats",
+   "files" : [
+      "Timberlake_Field",
+      "Timberlake_Lab"
+   ],
+   "method" : "default",
+   "analysis_save_mode" : "save",
+   "comment" : ""
+}

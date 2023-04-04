@@ -76,6 +76,8 @@ library(corrplot) # correlation plots
 library(pheatmap) # heatmaps
 library(zCompositions) # CLR
 library(compositions) # Aitchison
+library(mobr) # rarefaction curves
+library(plotly) # interactive graphs
 
 # Functions
 find_hull <- function(df) df[chull(df$Axis01, df$Axis02),]
@@ -118,6 +120,7 @@ input_filt_nc <- filter_data(input_filt,
                              filter_cat = "Estuary",
                              keep_vals = "Alligator")
 # Remove extra samples
+# Keep 5A and 5B - careful about assigning env data though, or don't assign env data
 input_filt_nc <- filter_data(input_filt_nc,
                              filter_cat = "sampleID",
                              filter_vals = c("TL_nw_d1_DI_ctrl_AF1",
@@ -125,11 +128,12 @@ input_filt_nc <- filter_data(input_filt_nc,
                                              "TL_nw_d1_DI_ctrl_AF4",
                                              "TL_nw_d1_ASW_noS_BF3",
                                              "TL_nw_d1_ASW_noS_BF4",
-                                             "TL_nw_d1_ASW_noS_BF5",
-                                             "TL_inc_d1_SO4_5A",
-                                             "TL_inc_d1_SO4_5B",
-                                             "TL_inc_d2_SO4_5A",
-                                             "TL_inc_d2_SO4_5B"))
+                                             "TL_nw_d1_ASW_noS_BF5"#,
+                                             #"TL_inc_d1_SO4_5A",
+                                             #"TL_inc_d1_SO4_5B",
+                                             #"TL_inc_d2_SO4_5A",
+                                             #"TL_inc_d2_SO4_5B"
+                                             ))
 # Remove unneeded columns from metadata and format factors
 input_filt_nc$map_loaded <- input_filt_nc$map_loaded %>%
   dplyr::select(-Site, -Estuary, -Info, -Conductivity_uS_cm, -CH4_pw_air_ppmv, -NEE_mgC_m2_m,
@@ -155,13 +159,22 @@ singdoub <- data.frame("count" = rowSums(input_filt_nc$data_loaded)) %>%
 input_filt_nc <- filter_taxa_from_input(input_filt_nc,
                                         taxa_IDs_to_remove = singdoub$ASV)
 
+# Rarefaction curves
+rarecurve(t(input_filt_nc$data_loaded), step = 5000)
+rarecurve(t(input_filt_nc$data_loaded), step = 5000, sample = 82312)
+inv_mob_in <- make_mob_in(t(input_filt_nc$data_loaded), 
+                         input_filt_nc$map_loaded)
+plot_rarefaction(inv_mob_in, 'Treatment', 'Field', 'SBR',
+                 pooled = TRUE, leg_loc = 'bottomright')
+plot_rarefaction(inv_mob_in, 'Treatment', 'Field', 'IBR',
+                 pooled = TRUE, leg_loc = 'bottomright') # Not enough memory
 
-# Rarefy at 82312
+# Rarefy at 82316
 sort(colSums(input_filt_nc$data_loaded))
-mean(colSums(input_filt_nc$data_loaded)) # 115566.5
-se(colSums(input_filt_nc$data_loaded)) # 2419.465
+mean(colSums(input_filt_nc$data_loaded)) # 115744.3
+se(colSums(input_filt_nc$data_loaded)) # 2279.646
 set.seed(530)
-nc <- single_rarefy(input_filt_nc, 82312) # Now n = 343
+nc <- single_rarefy(input_filt_nc, 82316) # n = 43 still
 sort(colSums(nc$data_loaded))
 
 # Add MG:MT ratio and AO:NOB ratio to metadata
@@ -183,11 +196,11 @@ nc$map_loaded$sampleID_clean <- c("Field_10_D1", "Field_19_D1", "Field_36_D1", "
                             "+ASW_3_D1", "+ASW_4_D1", "+ASW_5_D1",
                             "+ASW-SO4_1_D1","+ASW-SO4_2_D1","+ASW-SO4_3_D1","+ASW-SO4_4_D1","+ASW-SO4_5_D1",
                             "Control_2_D1", "Control_3_D1", "Control_4_D1", "Control_5_D1",
-                            "+SO4_3_D1", "+SO4_4_D1",
+                            "+SO4_3_D1", "+SO4_4_D1", "+SO4_5A_D1", "+SO4_5B_D1",
                             "+ASW_1_D2", "+ASW_3_D2", "+ASW_4_D2", "+ASW_5_D2",
                             "+ASW-SO4_2_D2","+ASW-SO4_3_D2","+ASW-SO4_4_D2","+ASW-SO4_5_D2",
                             "Control_1_D2", "Control_3_D2", "Control_4_D2", "Control_5_D2",
-                            "+SO4_2_D2", "+SO4_3_D2", "+SO4_4_D2")
+                            "+SO4_2_D2", "+SO4_3_D2", "+SO4_4_D2", "+SO4_5A_D2", "+SO4_5B_D2")
 
 # Update richness and Shannon
 nc$map_loaded$rich <- specnumber(nc$data_loaded, MARGIN = 2)
@@ -204,6 +217,55 @@ nc$map_loaded <- nc$map_loaded %>%
 # Start here
 nc <- readRDS("data/nc.rds")
 
+# Add C, N, C:N data (was received later)
+nc_cn <- read_excel("~/Documents/GitHub/EastCoast/Copy of CHN data.xls", sheet = 2) %>%
+  slice(12:91) %>%
+  dplyr::select(Name, `%N`, `%C`, `C:N`) %>%
+  mutate(Name = gsub("bottom", "bot", Name)) %>%
+  separate(Name, into = c("ID", "Depth"), sep = " ", remove = F) %>%
+  mutate(Treatment = substr(ID, start = 1, stop = 1),
+         Hydro = substr(ID, start = 2, stop = 2),
+         Replicate = substr(ID, start = 3, stop = 3)) %>%
+  filter(Hydro == "F") %>%
+  mutate(Treatment = recode_factor(Treatment,
+                                   "A" = "Control",
+                                   "B" = "ASW",
+                                   "C" = "ASW_noS",
+                                   "D" = "SO4")) %>%
+  mutate(Treatment = factor(Treatment,
+                            levels = c("ASW", "ASW_noS", "Control", "SO4"))) %>%
+  arrange(desc(Depth), Treatment) %>%
+  filter(Name %notin% c("BF1 top", "BF2 top", "AF1 top", "DF2 top", "BF2 bot", "CF1 bot", "AF2 bot"))
+rownames(nc$map_loaded)[11:43]
+nc$map_loaded$sed_per_C[11:43] <- nc_cn$`%C`
+nc$map_loaded$sed_per_N[11:43] <- nc_cn$`%N`
+nc$map_loaded$sed_CN[11:43] <- nc_cn$`C:N`
+
+# After looking at microbial alpha and beta diversity it is clear SO4 5B D1 and D2 are switched!
+# Fix
+for (i in 1:nrow(nc$map_loaded)) {
+  if (nc$map_loaded$sampleID[i] == "TL_inc_d1_SO4_5B") {
+    nc$map_loaded$Depth[i] <- "10-15 cm"
+    nc$map_loaded$sampleID_clean[i] <- "+SO4_5B_D2"
+  }
+}
+for (i in 1:nrow(nc$map_loaded)) {
+  if (nc$map_loaded$sampleID[i] == "TL_inc_d2_SO4_5B") {
+    nc$map_loaded$Depth[i] <- "0-5 cm"
+    nc$map_loaded$sampleID_clean[i] <- "+SO4_5B_D1"
+  }
+}
+
+# Add +SO4 core 5 data to 5A and 5B
+new_dat <- read_excel("data/Soil pH-Jessie.xls", sheet = 3, na = "NA")
+# rows 25, 26, 42, 43
+# columns 10 - 24
+nc$map_loaded[25, 10:24] <- new_dat[1, 2:16]
+nc$map_loaded[26, 10:24] <- new_dat[2, 2:16]
+nc$map_loaded[42, 10:24] <- new_dat[3, 2:16]
+nc$map_loaded[43, 10:24] <- new_dat[4, 2:16]
+# To recap, C, N, CN, pH have 5A D1 D2, 5B D1 D2. Porewater just has 5 D1 D2. GHG just 5
+
 
 
 #### 3. Alpha ####
@@ -211,7 +273,8 @@ leveneTest(nc$map_loaded$rich ~ nc$map_loaded$Treatment) # Homogeneous
 m <- aov(rich ~ Treatment + Depth, data = nc$map_loaded)
 Anova(m, type = "II") # Treatment and Depth
 m <- aov(rich ~ Treatment, data = nc$map_loaded)
-shapiro.test(m$residuals) # Normal
+shapiro.test(m$residuals) # Almost normal
+hist(m$residuals)
 summary(m)
 t <- emmeans(object = m, specs = "Treatment") %>%
   cld(object = ., adjust = "Tukey", Letters = letters, alpha = 0.05) %>%
@@ -222,6 +285,7 @@ m1 <- aov(shannon ~ Treatment + Depth, data = nc$map_loaded)
 Anova(m1, type = "II") # Treatment and Depth
 m1 <- aov(shannon ~ Treatment, data = nc$map_loaded)
 shapiro.test(m1$residuals) # Normal
+hist(m1$residuals)
 summary(m1)
 t1 <- emmeans(object = m1, specs = "Treatment") %>%
   cld(object = ., adjust = "Tukey", Letters = letters, alpha = 0.05) %>%
@@ -259,7 +323,7 @@ dev.off()
 #### 4. Beta ####
 # Get env. vars with no NA
 env_nc <- nc$map_loaded %>%
-  dplyr::select(10:24)
+  dplyr::select(10:27)
 env_nona_nc <- na.omit(env_nc)
 nrow(env_nona_nc) # n = 25
 
@@ -287,16 +351,17 @@ d.pcx <- prcomp(aclr)
 set.seed(100)
 ef_nc <- envfit(d.pcx, env_nc, permutations = 999, na.rm = TRUE)
 ef_nc
+biplot(d.pcx)
 ordiplot(d.pcx)
 plot(ef_nc, p.max = 0.075, cex = 0.5)
-manual_factor_nc <- 0.3
+manual_factor_nc <- 0.25
 vec.df_nc <- as.data.frame(ef_nc$vectors$arrows*sqrt(ef_nc$vectors$r)) %>%
   mutate(PC1 = PC1 * manual_factor_nc,
          PC2 = PC2 * manual_factor_nc) %>%
   mutate(variables = rownames(.)) %>%
   filter(ef_nc$vectors$pvals < 0.075) %>%
   filter(variables != "Cl_mgL") %>%
-  mutate(shortnames = c("Salinity", "CH4", "N2O", "CO2", "NH4", "pH", "Br"))
+  mutate(shortnames = c("Salinity", "N2O", "CO2", "NH4", "pH", "Br", "C:N"))
 d.mvar <- sum(d.pcx$sdev^2)
 PC1 <- paste("PC1: ", round((sum(d.pcx$sdev[1]^2)/d.mvar)*100, 1), "%")
 PC2 <- paste("PC2: ", round((sum(d.pcx$sdev[2]^2)/d.mvar)*100, 1), "%")
@@ -332,6 +397,22 @@ ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
         axis.text = element_text(size = 10),
         plot.margin = margin(5, 5, 5, 5, "pt"))
 dev.off()
+ggplotly(ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
+           geom_point(size = 3, alpha = 1, aes(colour = sampleID_clean, shape = Depth)) +
+           labs(x = PC1, 
+                y = PC2,
+                shape = "Depth") +
+           scale_colour_viridis_d() +
+           scale_fill_viridis_d() +
+           guides(colour = guide_legend(override.aes = list(shape = 15),
+                                        order = 1)) +
+           theme_bw() +  
+           theme(legend.position = c(0,0),
+                 legend.justification = c(0,0),
+                 legend.background = element_blank(),
+                 axis.title = element_text(face = "bold", size = 12), 
+                 axis.text = element_text(size = 10),
+                 plot.margin = margin(5, 5, 5, 5, "pt")))
 
 
 
@@ -357,7 +438,7 @@ vec.df_nc <- as.data.frame(ef_nc$vectors$arrows*sqrt(ef_nc$vectors$r)) %>%
   mutate(variables = rownames(.)) %>%
   filter(ef_nc$vectors$pvals < 0.05) %>%
   filter(variables != "Cl_mgL") %>%
-  mutate(shortnames = c("Salinity", "CH4", "N2O", "CO2", "NH4", "pH", "Br"))
+  mutate(shortnames = c("Salinity", "CH4", "N2O", "CO2", "NH4", "pH", "Br", "C:N"))
 pcoaA1 <- round((eigenvals(nc_pcoa)/sum(eigenvals(nc_pcoa)))[1]*100, digits = 1)
 pcoaA2 <- round((eigenvals(nc_pcoa)/sum(eigenvals(nc_pcoa)))[2]*100, digits = 1)
 nc$map_loaded$Axis01 <- scores(nc_pcoa)[,1]
@@ -889,7 +970,7 @@ gui <- ggplot(barsG, aes(group_by, mean_value, fill = taxon)) +
   theme(axis.title.y = element_text(face = "bold", size = 12),
         axis.title.x = element_blank(),
         axis.text.y = element_text(size = 10),
-        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5),
+        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5, hjust = 1),
         axis.ticks.x = element_blank(),
         strip.text = element_blank(),
         strip.background = element_rect(size = 0.2),
@@ -1168,6 +1249,7 @@ dev.off()
 
 #### 6. Indicators ####
 #### _Simper ####
+nc$map_loaded$TrtDepth <- paste(nc$map_loaded$Treatment, nc$map_loaded$Depth, sep = "")
 nc_sim <- simper(t(nc$data_loaded), 
                  nc$map_loaded$TrtDepth)
 nc_s <- summary(nc_sim)
@@ -1189,12 +1271,12 @@ nc_df3 <- head(nc_s$`+ASW0-5 cm_Control0-5 cm`, n = 10) %>%
          Depth = "0-5 cm") %>%
   rename("MeanControl" = avb,
          "MeanTrt" = ava)
-nc_df4 <- head(nc_s$`Control10-15 cm_+SO410-15 cm`, n = 10) %>%
+nc_df4 <- head(nc_s$`+SO410-15 cm_Control10-15 cm`, n = 10) %>%
   mutate(Comparison = "Control_+SO4",
          ASV = rownames(.),
          Depth = "10-15 cm") %>%
-  rename("MeanControl" = ava,
-         "MeanTrt" = avb)
+  rename("MeanControl" = avb,
+         "MeanTrt" = ava)
 nc_df5 <- head(nc_s$`+ASW-SO410-15 cm_Control10-15 cm`, n = 10) %>%
   mutate(Comparison = "Control_+ASW-SO4",
          ASV = rownames(.),
@@ -1275,7 +1357,6 @@ pheatmap(simper_mat,
          cluster_cols = F,
          display_numbers = T,
          gaps_row = c(10, 20, 30, 40, 50, 60),
-         
          filename = "InitialFigs/Simper.png",
          width = 8,
          height = 7)
@@ -1307,14 +1388,14 @@ plot_multipatt(mp_obj = mp,
 dev.off()
 
 # Redo with only abundant taxa. Looks like the others are rare
-# Remember rarefied to 82312
-# 0.05 percent is 82312*0.0005 = 41.156
+# Remember rarefied to 82316
+# 0.05 percent is 82316*0.0005 = 41.158
 nrow(nc$taxonomy_loaded)
 View(nc$data_loaded)
 meancounts <- data.frame(meancount = sort(rowMeans(nc$data_loaded)))
-nc_abund <- filter_taxa_from_input(nc, filter_thresh = 41.156)
+nc_abund <- filter_taxa_from_input(nc, filter_thresh = 41.158)
 nrow(nc_abund$taxonomy_loaded)
-sort(rowMeans(nc_abund$data_loaded)/82312*100)
+sort(rowMeans(nc_abund$data_loaded)/82316*100)
 # This is the top 318 taxa
 
 tax_sum_OTU <- summarize_taxonomy(nc_abund, level = 8, report_higher_tax = F, relative = T)
@@ -1324,7 +1405,7 @@ mp <- multipatt(t(nc_abund$data_loaded),
                 nc_abund$map_loaded$Treatment, 
                 func = "r.g", 
                 control = how(nperm=999))
-summary(mp) # Number of species associated to 1 group: 101
+summary(mp) # Number of species associated to 1 group: 114
 
 png("InitialFigs/Multipatt_abund.png", width = 6, height = 8, units = "in", res = 300)
 plot_multipatt(mp_obj = mp, 
@@ -1337,8 +1418,6 @@ plot_multipatt(mp_obj = mp,
                qcut = 0.05,
                rcut = 0)
 dev.off()
-
-
 
 
 
@@ -1365,13 +1444,14 @@ nc_lab <- filter_data(nc,
                       filter_vals = "Field")
 flux_data <- nc_lab$map_loaded %>%
   group_by(CH4_ug_m2_h) %>%
-  slice(n = 1)
+  slice_head(n = 1)
 
 leveneTest(flux_data$CH4_ug_m2_h ~ flux_data$Treatment) # Homogeneous
 m <- aov(CH4_ug_m2_h ~ Treatment + Depth, data = flux_data)
 Anova(m, type = "II") # Treatment
 m <- aov(CH4_ug_m2_h ~ Treatment, data = flux_data)
 shapiro.test(m$residuals) # Normal
+hist(m$residuals)
 summary(m)
 TukeyHSD(m)
 t <- emmeans(object = m, specs = "Treatment") %>%
@@ -1403,6 +1483,7 @@ m <- aov(CO2_ug_m2_h ~ Treatment + Depth, data = flux_data)
 Anova(m, type = "II") # Treatment marginal
 m <- aov(CO2_ug_m2_h ~ Treatment, data = flux_data)
 shapiro.test(m$residuals) # Almost Normal
+hist(m$residuals)
 summary(m)
 TukeyHSD(m)
 t <- emmeans(object = m, specs = "Treatment") %>%
@@ -1434,6 +1515,7 @@ m <- aov(N2O_ug_m2_h ~ Treatment + Depth, data = flux_data)
 Anova(m, type = "II") # Treatment
 m <- aov(N2O_ug_m2_h ~ Treatment, data = flux_data)
 shapiro.test(m$residuals) # Not Normal
+hist(m$residuals)
 summary(m)
 TukeyHSD(m)
 t <- emmeans(object = m, specs = "Treatment") %>%
@@ -1525,10 +1607,11 @@ dev.off()
 bgc <- nc_lab$map_loaded %>%
   dplyr::select(Treatment, Depth,
                 Salinity, Br_mgL, SO4_mgL, 
-                TOC_mgL, NH4_mgL, NO3_mgL, DIN_mgL, DON_mgL, TN_mgL, PO4_mgL, pH)
+                TOC_mgL, NH4_mgL, NO3_mgL, DIN_mgL, DON_mgL, TN_mgL, PO4_mgL, pH,
+                sed_per_C, sed_per_N, sed_CN)
 bgc_long <- melt(bgc,
                  id.vars = c("Treatment", "Depth"),
-                 measure.vars = c(names(bgc)[3:13]))
+                 measure.vars = c(names(bgc)[3:16]))
 bgc_only <- bgc %>%
   dplyr::select(-Treatment, -Depth)
 m <- list()
@@ -1545,6 +1628,20 @@ for (i in 1:ncol(bgc_only)) {
 t_df <- do.call(rbind.data.frame, t) %>%
   mutate(variable = factor(variable, levels = levels(bgc_long$variable)))
 
+facet_names <- c("Salinity" = "Salinity (ppt)",
+                 "Br_mgL" = "Br (mg/L)",
+                 "SO4_mgL" = "SO4 (mg/L)",
+                 "TOC_mgL" = "TOC (mg/L)",
+                 "NH4_mgL" = "NH4 (mg/L)",
+                 "NO3_mgL" = "NO3 (mg/L)",
+                 "DIN_mgL" = "DIN (mg/L)",
+                 "DON_mgL" = "DON (mg/L)",
+                 "TN_mgL" = "TN (mg/L)",
+                 "PO4_mgL" = "PO4 (mg/L)",
+                 "pH" = "pH",
+                 "sed_per_C" = "% C",
+                 "sed_per_N" = "% N",
+                 "sed_CN" = "C:N")
 png("InitialFigs/BGC.png", width = 8, height = 6, units = "in", res = 300)
 ggplot(bgc_long, aes(Treatment, value)) +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
@@ -1554,7 +1651,7 @@ ggplot(bgc_long, aes(Treatment, value)) +
   labs(x = "Treatment",
        y = NULL) +
   scale_colour_manual(values = viridis_pal()(5)[2:5]) +
-  facet_wrap(~ variable, scales = "free_y") +
+  facet_wrap(~ variable, scales = "free_y", ncol = 3, labeller = as_labeller(facet_names)) +
   guides(colour = "none") +
   theme_bw() +
   theme(axis.title.y = element_text(size = 12),
@@ -1562,7 +1659,7 @@ ggplot(bgc_long, aes(Treatment, value)) +
         axis.text.y = element_text(size = 10),
         axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
         legend.position = c(1,0),
-        legend.justification = c(1,0))
+        legend.justification = c(1,0.5))
 dev.off()
 
 # Plot correlations for different taxonomic levels at a given % relative abundance threshold

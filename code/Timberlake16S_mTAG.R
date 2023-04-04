@@ -369,7 +369,7 @@ input_filt_rare$map_loaded$shannon <- diversity(input_filt_rare$data_loaded,
 # Save
 #saveRDS(input_filt_rare, "data/input_filt_rare_mTAGs.rds")
 
-# Start here
+#### _Start here ####
 nc <- readRDS("data/input_filt_rare_mTAGs.rds")
 nc$map_loaded <- nc$map_loaded %>%
   mutate("Treatment" = c(rep("+ASW-SO4", 3), 
@@ -382,12 +382,62 @@ nc$map_loaded$sampleID <- rownames(nc$map_loaded)
 nc$map_loaded$sampleID[5] <- "TL_inc_d2_ASW_2"
 nc$map_loaded$sampleID[10] <- "TL_inc_d2_DI_ctrl_2"
 
+# Fix SO4 samples according to Wyatt map
+# 1,2,3,4,5 is actually 2,3,4,5A,5B
+nc$map_loaded$sampleID[19:23] <- c("SO4_2", "SO4_3", "SO4_4", "SO4_5A", "SO4_5B")
+rownames(nc$map_loaded)[19:23] <- c("SO4_2", "SO4_3", "SO4_4", "SO4_5A", "SO4_5B")
+colnames(nc$data_loaded) <- rownames(nc$map_loaded)
 
+# Add C, N, C:N data (was received later)
+nc_cn <- read_excel("~/Documents/GitHub/EastCoast/Copy of CHN data.xls", sheet = 2) %>%
+  slice(12:91) %>%
+  dplyr::select(Name, `%N`, `%C`, `C:N`) %>%
+  mutate(Name = gsub("bottom", "bot", Name)) %>%
+  separate(Name, into = c("ID", "Depth"), sep = " ", remove = F) %>%
+  mutate(Treatment = substr(ID, start = 1, stop = 1),
+         Hydro = substr(ID, start = 2, stop = 2),
+         Replicate = substr(ID, start = 3, stop = 3)) %>%
+  filter(Hydro == "F") %>%
+  filter(Depth == "bot") %>%
+  mutate(Treatment = recode_factor(Treatment,
+                                   "A" = "Control",
+                                   "B" = "ASW",
+                                   "C" = "ASW_noS",
+                                   "D" = "SO4")) %>%
+  mutate(Treatment = factor(Treatment,
+                            levels = c("ASW_noS", "ASW", "Control", "SO4"))) %>%
+  arrange(desc(Depth), Treatment) %>%
+  filter(Name %notin% c("CF1 bot", "CF3 bot"))
+rownames(nc$map_loaded)
+nc$map_loaded$sed_per_C <- NA
+nc$map_loaded$sed_per_N <- NA
+nc$map_loaded$sed_per_CN <- NA
+nc$map_loaded$sed_per_C[1:13] <- nc_cn$`%C`[1:13]
+nc$map_loaded$sed_per_C[19:23] <- nc_cn$`%C`[14:18]
+nc$map_loaded$sed_per_N[1:13] <- nc_cn$`%N`[1:13]
+nc$map_loaded$sed_per_N[19:23] <- nc_cn$`%N`[14:18]
+nc$map_loaded$sed_per_CN[1:13] <- nc_cn$`C:N`[1:13]
+nc$map_loaded$sed_per_CN[19:23] <- nc_cn$`C:N`[14:18]
+nc$map_loaded <- nc$map_loaded %>%
+  dplyr::select(-rich, rich) %>%
+  dplyr::select(-shannon, shannon)
+  
+
+# Add +SO4 core 5 data to 5A and 5B - just depth 2 for MG!
+new_dat <- read_excel("data/Soil pH-Jessie.xls", sheet = 3, na = "NA")
+# rows 22, 23
+# columns 3 - 17
+nc$map_loaded[22, 3:17] <- new_dat[3, 2:16]
+nc$map_loaded[23, 3:17] <- new_dat[4, 2:16]
+# To recap, C, N, CN, pH have 5A D1 D2, 5B D1 D2. Porewater just has 5 D1 D2. GHG just 5
+
+           
 
 #### 3. Alpha ####
 leveneTest(nc$map_loaded$rich ~ nc$map_loaded$Treatment) # Homogeneous
 m <- aov(rich ~ Treatment, data = nc$map_loaded)
 shapiro.test(m$residuals) # Almost normal
+hist(m$residuals)
 summary(m)
 t <- emmeans(object = m, specs = "Treatment") %>%
   cld(object = ., adjust = "Tukey", Letters = letters, alpha = 0.05) %>%
@@ -396,6 +446,7 @@ t <- emmeans(object = m, specs = "Treatment") %>%
 leveneTest(nc$map_loaded$shannon ~ nc$map_loaded$Treatment) # Homogeneous
 m1 <- aov(shannon ~ Treatment, data = nc$map_loaded)
 shapiro.test(m1$residuals) # Almost normal
+hist(m1$residuals)
 summary(m1)
 t1 <- emmeans(object = m1, specs = "Treatment") %>%
   cld(object = ., adjust = "Tukey", Letters = letters, alpha = 0.05) %>%
@@ -410,7 +461,7 @@ png("InitialFigs/Alpha_mTAG.png", width = 6, height = 3, units = "in", res = 300
 ggplot(alpha_long, aes(reorder(Treatment, value, mean), value, 
                        colour = Treatment)) +
   geom_boxplot(outlier.shape = NA) +
-  geom_jitter(size = 2, alpha = 0.75, width = 0.2) +
+  geom_jitter(size = 2, alpha = 0.75, width = 0.2, shape = 17) +
   geom_text(data = label_df, aes(Treatment, y, label = str_trim(.group)), 
             size = 4, color = "black") +
   labs(x = "Site", y = "Number of OTUs", shape = "Depth (cm)") +
@@ -433,7 +484,7 @@ dev.off()
 #### 4. Beta ####
 # Get env. vars with no NA
 env_nc <- nc$map_loaded %>%
-  dplyr::select(3:17)
+  dplyr::select(3:20)
 env_nona_nc <- na.omit(env_nc)
 nrow(env_nona_nc) # n = 14
 
@@ -451,7 +502,7 @@ otu_clr <- clr(otu_czm)
 aclr <- compositions::dist(otu_clr)
 
 set.seed(1150)
-adonis2(aclr ~ nc$map_loaded$Treatment) # R2 = 0.41, p = 0.001
+adonis2(aclr ~ nc$map_loaded$Treatment) # R2 = 0.42, p = 0.001
 anova(betadisper(aclr, nc$map_loaded$Treatment)) # Dispersion homogeneous
 
 # PCA with vectors
@@ -480,14 +531,17 @@ ggplot(nc$map_loaded, aes(Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   geom_segment(data = vec.df_nc,
                aes(x = 0, xend = -PC1, y = 0, yend = -PC2),
                arrow = arrow(length = unit(0.35, "cm")),
                colour = "gray", alpha = 0.6,
                inherit.aes = FALSE) + 
-  geom_text(data = vec.df_nc,
+  geom_text(data = subset(vec.df_nc, shortnames != "NH4"),
             aes(x = -PC1, y = -PC2, label = shortnames),
+            size = 3, color = "black") +
+  geom_text(data = subset(vec.df_nc, shortnames == "NH4"),
+            aes(x = -PC1, y = -PC2 + 0.025, label = shortnames),
             size = 3, color = "black") +
   labs(x = PC1, 
        y = PC2) +
@@ -519,7 +573,7 @@ ef_nc <- envfit(nc_pcoa, env_nc, permutations = 999, na.rm = TRUE)
 ef_nc
 ordiplot(nc_pcoa)
 plot(ef_nc, p.max = 0.1, cex = 0.5)
-manual_factor_nc <- 0.45
+manual_factor_nc <- 0.35
 vec.df_nc <- as.data.frame(ef_nc$vectors$arrows*sqrt(ef_nc$vectors$r)) %>%
   mutate(Dim1 = Dim1 * manual_factor_nc,
          Dim2 = Dim2 * manual_factor_nc) %>%
@@ -537,7 +591,7 @@ ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   geom_segment(data = vec.df_nc,
                aes(x = 0, xend = -Dim1, y = 0, yend = Dim2),
                arrow = arrow(length = unit(0.35, "cm")),
@@ -584,7 +638,7 @@ g1 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
        y = paste("PC2: ", pcoaA2, "%", sep = ""),
        ) +
@@ -614,7 +668,7 @@ g2 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
        y = paste("PC2: ", pcoaA2, "%", sep = ""),
        ) +
@@ -642,7 +696,7 @@ g3 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
        y = paste("PC2: ", pcoaA2, "%", sep = ""),
        ) +
@@ -670,7 +724,7 @@ g4 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
        y = paste("PC2: ", pcoaA2, "%", sep = ""),
        ) +
@@ -698,7 +752,7 @@ g5 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
        y = paste("PC2: ", pcoaA2, "%", sep = ""),
        ) +
@@ -724,7 +778,7 @@ g6 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
        y = paste("PC2: ", pcoaA2, "%", sep = ""),
        ) +
@@ -779,7 +833,7 @@ ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   geom_segment(data = vec.df_nc,
                aes(x = 0, xend = -Dim1, y = 0, yend = Dim2),
                arrow = arrow(length = unit(0.35, "cm")),
@@ -817,10 +871,9 @@ g1 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
-       y = paste("PC2: ", pcoaA2, "%", sep = ""),
-       ) +
+       y = paste("PC2: ", pcoaA2, "%", sep = "")) +
   scale_colour_viridis_d() +
   scale_fill_viridis_d() +
   guides(colour = guide_legend(override.aes = list(shape = 15),
@@ -847,10 +900,9 @@ g2 <- ggplot(nc$map_loaded, aes(-Axis01, -Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
-       y = paste("PC2: ", pcoaA2, "%", sep = ""),
-       ) +
+       y = paste("PC2: ", pcoaA2, "%", sep = "")) +
   scale_colour_viridis_d() +
   scale_fill_viridis_d() +
   guides(colour = guide_legend(override.aes = list(shape = 15),
@@ -875,10 +927,9 @@ g3 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
-       y = paste("PC2: ", pcoaA2, "%", sep = ""),
-       ) +
+       y = paste("PC2: ", pcoaA2, "%", sep = "")) +
   scale_colour_viridis_d() +
   scale_fill_viridis_d() +
   guides(colour = guide_legend(override.aes = list(shape = 15),
@@ -903,10 +954,9 @@ g4 <- ggplot(nc$map_loaded, aes(-Axis01, -Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
-       y = paste("PC2: ", pcoaA2, "%", sep = ""),
-       ) +
+       y = paste("PC2: ", pcoaA2, "%", sep = "")) +
   scale_colour_viridis_d() +
   scale_fill_viridis_d() +
   guides(colour = guide_legend(override.aes = list(shape = 15),
@@ -920,7 +970,7 @@ g4 <- ggplot(nc$map_loaded, aes(-Axis01, -Axis02)) +
         plot.margin = margin(5, 5, 5, 5, "pt"))
 
 tax_sum_genera <- summarize_taxonomy(input = nc, level = 6, report_higher_tax = T)
-gen_ja <- calc_dm(tax_sum_genera)
+gen_ja <- calc_dm(tax_sum_genera, method = "jaccard")
 nc_pcoa <- cmdscale(gen_ja, k = nrow(nc$map_loaded) - 1, eig = T)
 pcoaA1 <- round((eigenvals(nc_pcoa)/sum(eigenvals(nc_pcoa)))[1]*100, digits = 1)
 pcoaA2 <- round((eigenvals(nc_pcoa)/sum(eigenvals(nc_pcoa)))[2]*100, digits = 1)
@@ -931,10 +981,9 @@ g5 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
-       y = paste("PC2: ", pcoaA2, "%", sep = ""),
-       ) +
+       y = paste("PC2: ", pcoaA2, "%", sep = "")) +
   scale_colour_viridis_d() +
   scale_fill_viridis_d() +
   guides(colour = guide_legend(override.aes = list(shape = 15),
@@ -957,10 +1006,9 @@ g6 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1, aes(colour = Treatment)) +
+  geom_point(size = 3, alpha = 1, aes(colour = Treatment), shape = 17) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
-       y = paste("PC2: ", pcoaA2, "%", sep = ""),
-       ) +
+       y = paste("PC2: ", pcoaA2, "%", sep = "")) +
   scale_colour_viridis_d() +
   scale_fill_viridis_d() +
   guides(colour = guide_legend(override.aes = list(shape = 15),
@@ -1055,7 +1103,7 @@ gui <- ggplot(barsG, aes(group_by, mean_value, fill = taxon)) +
   theme(axis.title.y = element_text(face = "bold", size = 12),
         axis.title.x = element_blank(),
         axis.text.y = element_text(size = 10),
-        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5),
+        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5, hjust = 1),
         axis.ticks.x = element_blank(),
         strip.text = element_blank(),
         strip.background = element_rect(size = 0.2),
@@ -1151,6 +1199,7 @@ nc_guilds <- summarize_taxonomy(input = nc, level = 9, report_higher_tax = F) %>
 sum(rownames(nc_guilds) != rownames(nc$map_loaded))
 nc$map_loaded$MG_MT <- nc_guilds$MG_MT
 nc$map_loaded$AO_NOB <- nc_guilds$AO_NOB
+nc$map_loaded$MT <- nc_guilds$MT
 
 summary(lm(log(MG_MT) ~ log(AO_NOB), data = nc$map_loaded)) # Sig +
 
@@ -1262,7 +1311,7 @@ ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
   theme(axis.title.y = element_text(face = "bold", size = 12),
         axis.title.x = element_blank(),
         axis.text.y = element_text(size = 10),
-        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5),
+        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5, hjust = 1),
         axis.ticks.x = element_blank(),
         strip.text = element_text(size = 6),
         strip.background = element_rect(size = 0.2),
@@ -1319,7 +1368,7 @@ ggplot(barsMT, aes(group_by, mean_value, fill = taxon)) +
   theme(axis.title.y = element_text(face = "bold", size = 12),
         axis.title.x = element_blank(),
         axis.text.y = element_text(size = 10),
-        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5),
+        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5, hjust = 1),
         axis.ticks.x = element_blank(),
         strip.text = element_text(size = 6),
         strip.background = element_rect(size = 0.2),
@@ -1504,8 +1553,8 @@ dev.off()
 # Compare abundances of guilds and top phyla
 
 # Input
-mtag <- readRDS("input_filt_rare_mTAGs.rds")
-itag <- readRDS("nc.rds")
+mtag <- readRDS("data/input_filt_rare_mTAGs.rds")
+itag <- readRDS("data/nc.rds")
 
 # Get same samples
 s <- mtag$map_loaded %>%
