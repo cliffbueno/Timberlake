@@ -33,7 +33,7 @@ find_hullj <- function(df) df[chull(df$Axis01j, df$Axis02j),]
 
 # Import and pre-process files
 ## KO table import, filter out field samples                           
-TL_KO_raw <- read.csv("Timberlake_MG_KO_data.csv", header=TRUE) %>%
+TL_KO_raw <- read.csv("data/Timberlake_MG_KO_data.csv", header=TRUE) %>%
   select(1:19, Fxn)
 
 # Check pmoABC trends (this was an issue in SF Salinity Gradient)
@@ -81,8 +81,8 @@ colnames(KOTaxTable) <- colnames(TL_KO_fxn) # Add back colnames
 row.names(KOTaxTable) <- row.names(TL_KO_fxn) # Add back rownames
 
 # Gene Ontology and fxn Colors import
-BGC_ont <- read.csv("Ontology_KO_CNPSch4_Fm_whh.csv", header=TRUE) # Ontology
-BGC_colors <- read.csv("Ontol_KO_L2_Color_KEY_whh.csv") # Colors
+BGC_ont <- read.csv("data/Ontology_KO_CNPSch4_Fm_whh.csv", header=TRUE) # Ontology
+BGC_colors <- read.csv("data/Ontol_KO_L2_Color_KEY_whh.csv") # Colors
 BGC_ont_col <- merge(BGC_ont, BGC_colors, by = "L2", all.x =TRUE) %>% # Merge
   arrange(Index.x) %>% # Sort for readability
   filter(L2 != "Fermentation") # Drop fermentation
@@ -92,7 +92,7 @@ bgc_KOu <- unique(data.frame(KO = BGC_ont$KO)) # only KOs from BGC_ont
 TL_bgc_KO <- merge(bgc_KOu, TL_KO_raw) # Merge with TL KO
 
 # Sample Mapping import
-map_MG_only <- read.table("Timberlake_sample_map_both.txt", sep="\t", header = T) %>%
+map_MG_only <- read.table("data/Timberlake_sample_map_both.txt", sep="\t", header = T) %>%
   drop_na(MG_name) %>% # drop NA in MG samps 
   arrange(itag_meta_order2) %>% # sort by index (itag intentional)
   select(MG_name, Treat, Depth) %>% # keep only relevant cols
@@ -227,7 +227,7 @@ KO_table_VST_respM <- merge(Resp_KOu, KO_VST_CPM, by = "KO") %>%   # merge
   column_to_rownames(var = "KO") # Drop KO and add as rowname
 
 # Correlations of responsive KOs and CH4 flux
-nc_mg <- readRDS("input_filt_rare_mTAGs.rds")
+nc_mg <- readRDS("data/input_filt_rare_mTAGs.rds")
 CH4 <- nc_mg$map_loaded %>%
   select(Treatment, CH4_ug_m2_h) %>%
   filter(Treatment != "Field") %>%
@@ -411,7 +411,7 @@ pheatmap(KO_Resp_HeatDStt,
          cluster_cols = F,
          gaps_row = c(12, 19, 25, 31, 50),
          gaps_col = c(5, 10, 13),
-         filename = "Figures/KO_heatmap.png",
+         filename = "InitialFigs/KO_heatmap.png",
          width = 7,
          height = 7)
 dev.off()
@@ -491,7 +491,7 @@ micro.hulls <- ddply(ko_meta, c("Treat"), find_hull)
 g1_ko <- ggplot(ko_meta, aes(Axis01, Axis02, colour = Treat)) +
   geom_polygon(data = micro.hulls, aes(colour = Treat, fill = Treat),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1) +
+  geom_point(size = 3, alpha = 1, shape = 17) +
   scale_fill_manual(values = viridis_pal()(5)[2:5]) +
   scale_colour_manual(values = viridis_pal()(5)[2:5]) +
   labs(x = paste("PC1: ", pcoaA1, "%", sep = ""), 
@@ -515,7 +515,7 @@ micro.hullsj <- ddply(ko_meta, c("Treat"), find_hullj)
 g2_ko <- ggplot(ko_meta, aes(Axis01j, Axis02j, colour = Treat)) +
   geom_polygon(data = micro.hullsj, aes(colour = Treat, fill = Treat),
                alpha = 0.1, show.legend = F) +
-  geom_point(size = 3, alpha = 1) +
+  geom_point(size = 3, alpha = 1, shape = 17) +
   scale_fill_manual(values = viridis_pal()(5)[2:5]) +
   scale_colour_manual(values = viridis_pal()(5)[2:5]) +
   labs(x = paste("PC1: ", pcoa1A1, "%", sep = ""), 
@@ -529,7 +529,9 @@ g2_ko <- ggplot(ko_meta, aes(Axis01j, Axis02j, colour = Treat)) +
         plot.title = element_text(vjust = 0))
 g2_ko
 
+pdf("InitialFigs/KO_PCoA.pdf", width = 7, height = 5)
 plot_grid(g1_ko, g2_ko, ncol = 2, rel_widths = c(1,1.515))
+dev.off()
 ggplotly(g1_ko)
 
 
@@ -590,3 +592,307 @@ volc_plot = function(sigtab) {
 volc_plot(ASW_Ctrl_DeSQ_FC)
 
 # vignette("DESeq2")
+
+
+#### 8. COGs ####
+# Import 
+IMG_meta <- read.delim("data/IMGmetadata.txt") %>%
+  separate(`Genome.Name...Sample.Name`, into = c("Name", "sampleID"),
+           sep = " - ", remove = F) %>%
+  mutate(sampleID = gsub("SO4_5", "SO4_5B", sampleID)) %>%
+  mutate(sampleID = gsub("SO4_4", "SO4_5A", sampleID)) %>%
+  mutate(sampleID = gsub("SO4_3", "SO4_4", sampleID)) %>%
+  mutate(sampleID = gsub("SO4_2", "SO4_3", sampleID)) %>%
+  mutate(sampleID = gsub("SO4_1", "SO4_2", sampleID)) %>%
+  separate(sampleID, into = c("Treatment", "Replicate"), sep = "_", remove = F) %>%
+  filter(Treatment != "SourceSoil") %>%
+  mutate(Treatment = factor(Treatment,
+                            levels = c("Control", "SO4", "ASW-S", "ASW"))) %>%
+  mutate(Treatment = recode_factor(Treatment, "ASW-S" = "ASW-SO4")) %>%
+  mutate(Treatment = factor(Treatment,
+                            levels = c("Control", "SO4", "ASW-SO4", "ASW"))) %>%
+  arrange(Treatment, Replicate)
+
+cog <- read.delim("data/TL_COG_cat/UI_data_output.txt") %>%
+  column_to_rownames(var = "FeatureName") %>%
+  select(9:31) %>%
+  set_names(substring(names(.), first = 1, last = 11)) %>%
+  set_names(gsub("X", "", names(.))) %>%
+  select(as.character(IMG_meta$taxon_oid)) %>%
+  t() %>%
+  as.data.frame()
+
+sum(IMG_meta$taxon_oid != rownames(cog)) # 0, good
+
+# Normalize
+dds_input_1 <- DESeqDataSetFromMatrix(countData = t(cog),
+                                      colData = IMG_meta,
+                                      design = ~ 1)
+dds_input_SF <- estimateSizeFactors(dds_input_1)
+dds_input_D <- estimateDispersions(dds_input_SF)
+cog_DESeq <- as.data.frame((counts(dds_input_D, normalized = T))) %>%
+  t() %>%
+  as.data.frame()
+sum(rownames(cog_DESeq) != IMG_meta$taxon_oid)
+
+# Test
+dds_input_da <- DESeqDataSetFromMatrix(countData = t(cog),
+                                       colData = IMG_meta,
+                                       design = ~ Treatment)
+wald <- DESeq(object = dds_input_da, test = "Wald", fitType = "parametric")
+res_w <- results(wald,
+                 contrast = c("Treatment", "ASW", "Control"),
+                 independentFiltering = FALSE,
+                 pAdjustMethod = "fdr")
+summary(res_w)
+plotMA(res_w)
+
+lrt <- DESeq(object = dds_input_da, test = "LRT", reduced = ~1)
+res_l <- results(lrt,
+                 contrast = c("Treatment", "ASW", "Control"),
+                 independentFiltering = FALSE,
+                 pAdjustMethod = "fdr")
+summary(res_l)
+plotMA(res_l)
+
+res_p <- data.frame(LRT.p = res_l$padj,
+                    Wald.p = res_w$padj) %>%
+  mutate(LRT = ifelse(LRT.p < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Wald = ifelse(Wald.p < 0.05, "Pfdr < 0.05", "Pfdr > 0.05"))
+
+# Plot
+cog_DESeq <- cog_DESeq %>%
+  t() %>%
+  as.data.frame() %>%
+  set_names(IMG_meta$sampleID)
+ann_cols <- data.frame(row.names = colnames(cog_DESeq),
+                       "Treatment" = IMG_meta$Treatment)
+ann_rows <- data.frame(row.names = rownames(cog_DESeq),
+                       "Wald" = res_p$Wald,
+                       "LRT" = res_p$LRT)
+ann_colors <- list(Treatment = c(Control = "#3B528BFF", 
+                                 SO4 = "#21908CFF",
+                                 `ASW-SO4` = "#5DC863FF",
+                                 ASW = "#FDE725FF"),
+                   Wald = c(`Pfdr < 0.05` = "black",
+                            `Pfdr > 0.05` = "white"),
+                   LRT = c(`Pfdr < 0.05` = "black",
+                           `Pfdr > 0.05` = "white"))
+pheatmap(cog_DESeq,
+         legend = T,
+         legend_breaks = c(-2, -1, 0, 1, 2, 2.5),
+         legend_labels = c("-2","-1","0","1","2","Abund.\n"),
+         main = "",
+         border_color = NA,
+         scale = "row",
+         angle_col = 315,
+         fontsize = 8,
+         fontsize_row = 6,
+         fontsize_col = 6,
+         annotation_col = ann_cols,
+         annotation_row = ann_rows,
+         annotation_colors = ann_colors,
+         cluster_rows = T,
+         cluster_cols = F,
+         gaps_col = c(5, 10, 13),
+         filename = "InitialFigs/COG_heatmap.png",
+         width = 7,
+         height = 7)
+dev.off()
+dev.set(dev.next())
+dev.set(dev.next())
+
+
+
+#### 9. Pfams ####
+pfam <- read.delim("data/TL_PFam_cat/UI_data_output.txt") %>%
+  column_to_rownames(var = "FeatureName") %>%
+  select(9:31) %>%
+  set_names(substring(names(.), first = 1, last = 11)) %>%
+  set_names(gsub("X", "", names(.))) %>%
+  select(as.character(IMG_meta$taxon_oid)) %>%
+  t() %>%
+  as.data.frame()
+
+sum(IMG_meta$taxon_oid != rownames(pfam)) # 0, good
+
+# Normalize
+dds_input_1 <- DESeqDataSetFromMatrix(countData = t(pfam),
+                                      colData = IMG_meta,
+                                      design = ~ 1)
+dds_input_SF <- estimateSizeFactors(dds_input_1)
+dds_input_D <- estimateDispersions(dds_input_SF)
+pfam_DESeq <- as.data.frame((counts(dds_input_D, normalized = T))) %>%
+  t() %>%
+  as.data.frame()
+sum(rownames(pfam_DESeq) != IMG_meta$taxon_oid)
+
+# Test
+dds_input_da <- DESeqDataSetFromMatrix(countData = t(pfam),
+                                       colData = IMG_meta,
+                                       design = ~ Treatment)
+wald <- DESeq(object = dds_input_da, test = "Wald", fitType = "parametric")
+res_w <- results(wald,
+                 contrast = c("Treatment", "ASW", "Control"),
+                 independentFiltering = FALSE,
+                 pAdjustMethod = "fdr")
+summary(res_w)
+plotMA(res_w)
+
+lrt <- DESeq(object = dds_input_da, test = "LRT", reduced = ~1)
+res_l <- results(lrt,
+                 contrast = c("Treatment", "ASW", "Control"),
+                 independentFiltering = FALSE,
+                 pAdjustMethod = "fdr")
+summary(res_l)
+plotMA(res_l)
+
+res_p <- data.frame(LRT.p = res_l$padj,
+                    Wald.p = res_w$padj) %>%
+  mutate(LRT = ifelse(LRT.p < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Wald = ifelse(Wald.p < 0.05, "Pfdr < 0.05", "Pfdr > 0.05"))
+
+# Plot
+pfam_DESeq <- pfam_DESeq %>%
+  t() %>%
+  as.data.frame() %>%
+  set_names(IMG_meta$sampleID)
+ann_cols <- data.frame(row.names = colnames(pfam_DESeq),
+                       "Treatment" = IMG_meta$Treatment)
+ann_rows <- data.frame(row.names = rownames(pfam_DESeq),
+                       "Wald" = res_p$Wald,
+                       "LRT" = res_p$LRT)
+ann_colors <- list(Treatment = c(Control = "#3B528BFF", 
+                                 SO4 = "#21908CFF",
+                                 `ASW-SO4` = "#5DC863FF",
+                                 ASW = "#FDE725FF"),
+                   Wald = c(`Pfdr < 0.05` = "black",
+                            `Pfdr > 0.05` = "white"),
+                   LRT = c(`Pfdr < 0.05` = "black",
+                           `Pfdr > 0.05` = "white"))
+pheatmap(pfam_DESeq,
+         legend = T,
+         legend_breaks = c(-3, -2, -1, 0, 1, 2, 3, 3.3),
+         legend_labels = c("-3","-2","-1","0","1","2","3","Abund.\n"),
+         main = "",
+         border_color = NA,
+         scale = "row",
+         angle_col = 315,
+         fontsize = 8,
+         fontsize_row = 6,
+         fontsize_col = 6,
+         annotation_col = ann_cols,
+         annotation_row = ann_rows,
+         annotation_colors = ann_colors,
+         cluster_rows = T,
+         cluster_cols = F,
+         gaps_col = c(5, 10, 13),
+         filename = "InitialFigs/Pfam_heatmap.png",
+         width = 7,
+         height = 7)
+dev.off()
+dev.set(dev.next())
+dev.set(dev.next())
+
+
+
+#### 10. KEGG Module ####
+mod <- read.delim("data/TL_KEGG_mod/UI_data_output.txt") %>%
+  mutate(FeatureName = paste(Feature, FeatureName, sep = " ")) %>%
+  column_to_rownames(var = "FeatureName") %>%
+  select(9:31) %>%
+  set_names(substring(names(.), first = 1, last = 11)) %>%
+  set_names(gsub("X", "", names(.))) %>%
+  select(as.character(IMG_meta$taxon_oid)) %>%
+  t() %>%
+  as.data.frame()
+sum(IMG_meta$taxon_oid != rownames(mod)) # 0, good
+
+# Normalize
+dds_input_1 <- DESeqDataSetFromMatrix(countData = t(mod),
+                                      colData = IMG_meta,
+                                      design = ~ 1)
+dds_input_SF <- estimateSizeFactors(dds_input_1)
+dds_input_D <- estimateDispersions(dds_input_SF)
+mod_DESeq <- as.data.frame((counts(dds_input_D, normalized = T))) %>%
+  t() %>%
+  as.data.frame()
+sum(rownames(mod_DESeq) != IMG_meta$taxon_oid)
+
+# Test
+dds_input_da <- DESeqDataSetFromMatrix(countData = t(mod),
+                                       colData = IMG_meta,
+                                       design = ~ Treatment)
+wald <- DESeq(object = dds_input_da, test = "Wald", fitType = "parametric")
+res_w <- results(wald,
+                 contrast = c("Treatment", "ASW", "Control"),
+                 independentFiltering = FALSE,
+                 pAdjustMethod = "fdr")
+summary(res_w)
+plotMA(res_w)
+
+lrt <- DESeq(object = dds_input_da, test = "LRT", reduced = ~1)
+res_l <- results(lrt,
+                 contrast = c("Treatment", "ASW", "Control"),
+                 independentFiltering = FALSE,
+                 pAdjustMethod = "fdr")
+summary(res_l)
+plotMA(res_l)
+
+res_p <- data.frame(mod = colnames(mod),
+                    LRT.p = res_l$padj,
+                    Wald.p = res_w$padj) %>%
+  mutate(LRT = ifelse(LRT.p < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Wald = ifelse(Wald.p < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Sig = ifelse(LRT.p < 0.05 & Wald.p < 0.05, "Sig", "NS")) %>%
+  filter(Sig == "Sig") # Subset to significant (because so many)
+
+
+
+
+# Plot
+mod_DESeq <- mod_DESeq %>%
+  t() %>%
+  as.data.frame() %>%
+  filter(rownames(.) %in% res_p$mod) %>%
+  set_names(IMG_meta$sampleID)
+ann_cols <- data.frame(row.names = colnames(mod_DESeq),
+                       "Treatment" = IMG_meta$Treatment)
+ann_rows <- data.frame(row.names = rownames(mod_DESeq),
+                       "Wald" = res_p$Wald,
+                       "LRT" = res_p$LRT)
+ann_colors <- list(Treatment = c(Control = "#3B528BFF", 
+                                 SO4 = "#21908CFF",
+                                 `ASW-SO4` = "#5DC863FF",
+                                 ASW = "#FDE725FF"),
+                   Wald = c(`Pfdr < 0.05` = "black",
+                            `Pfdr > 0.05` = "white"),
+                   LRT = c(`Pfdr < 0.05` = "black",
+                           `Pfdr > 0.05` = "white"))
+pheatmap(mod_DESeq,
+         legend = T,
+         legend_breaks = c(-3, -2, -1, 0, 1, 2, 3, 3.3),
+         legend_labels = c("-3","-2","-1","0","1","2","3","Abund.\n"),
+         main = "",
+         border_color = NA,
+         scale = "row",
+         angle_col = 315,
+         fontsize = 8,
+         fontsize_row = 6,
+         fontsize_col = 6,
+         annotation_col = ann_cols,
+         #annotation_row = ann_rows,
+         annotation_colors = ann_colors,
+         cluster_rows = T,
+         cluster_cols = F,
+         gaps_col = c(5, 10, 13),
+         filename = "InitialFigs/KEGGmod_heatmap.png",
+         width = 8,
+         height = 7)
+dev.off()
+dev.set(dev.next())
+dev.set(dev.next())
+
+
+
+#### End Script ####
