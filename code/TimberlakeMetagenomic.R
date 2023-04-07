@@ -25,6 +25,7 @@ suppressMessages(library(DESeq2))
 suppressMessages(library(gplots))
 library(pheatmap)
 library(reshape2)
+library(readxl)
 setwd("~/Documents/GitHub/Timberlake/")
 
 # Functions
@@ -305,38 +306,6 @@ KO_Resp_HeatDStt <- t(KO_Resp_HeatDSt)                  # retranspose, keeps non
 # Get colors for heatmaps
 L2_colors <- as.character(KO_Resp_HeatDS0$color)
 
-# Make heatmap
-trt_colors <- c('#cccccc','#cccccc','#cccccc','#cccccc','#cccccc', 
-                '#fabe58', '#fabe58','#fabe58','#fabe58','#fabe58',
-                '#6bb96d','#6bb96d','#6bb96d','#6bb96d','#6bb96d', 
-                '#9ac5e0','#9ac5e0','#9ac5e0')
-
-# Vertical
-heatmap.2(KO_Resp_HeatDStt, 
-          dendrogram = "none",
-          Rowv = F, 
-          Colv = F, 
-          ColSideColors = trt_colors, 
-          RowSideColors = L2_colors,
-          trace = "none", 
-          key = TRUE, 
-          density.info = "none",
-          scale = "column", 
-          margins = c(10, 10), 
-          col = rev(brewer.pal(11,"RdYlBu")))
-
-# Horizontal
-heatmap.2(KO_Resp_HeatDSt, 
-          Rowv = F, 
-          Colv = F, 
-          trace = "none", 
-          key = TRUE, 
-          ColSideColors = L2_colors, 
-          density.info = "none",
-          scale = "column", 
-          margins = c(8, 6), 
-          col = rev(brewer.pal(11,"RdYlBu")))
-
 ## pheatmap
 # Put ASW on the right
 KO_Resp_HeatDStt <- as.data.frame(KO_Resp_HeatDStt) %>%
@@ -395,6 +364,7 @@ ann_colors <- list(Treatment = c(Control = "#3B528BFF",
                           CH4_Archaeal = L2_cols$color[3],
                           H2_production = L2_cols$color[9],
                           Fermentation = L2_cols$color[8]))
+colnames(KO_Resp_HeatDStt)[6:10] <- c("SO4_2", "SO4_3", "SO4_4", "SO4_5A", "SO4_5B")
 pheatmap(KO_Resp_HeatDStt,
          legend = T,
          legend_breaks = c(-2, -1, 0, 1, 2, max(KO_Resp_HeatDStt)),
@@ -411,7 +381,8 @@ pheatmap(KO_Resp_HeatDStt,
          cluster_cols = F,
          gaps_row = c(12, 19, 25, 31, 50),
          gaps_col = c(5, 10, 13),
-         filename = "InitialFigs/KO_heatmap.png",
+         #filename = "InitialFigs/KO_heatmap.png",
+         filename = "FinalFigs/Figure3.png",
          width = 7,
          height = 7)
 dev.off()
@@ -888,6 +859,288 @@ pheatmap(mod_DESeq,
          gaps_col = c(5, 10, 13),
          filename = "InitialFigs/KEGGmod_heatmap.png",
          width = 8,
+         height = 7)
+dev.off()
+dev.set(dev.next())
+dev.set(dev.next())
+
+
+
+#### 11. Methanogenesis ####
+# Make separate heatmaps for each pathway
+# Some overlapping genes, that's okay. Can repeat them if present in multiple pathways
+# Transformed KO table DESeq + CPM + Log10 + z-score!
+KO_VST_CPM[KO_VST_CPM == 0] <- 0.5 # Replace 0 values with psuedo counts for LOG transform
+KO_VST_CPM$KO <- NULL
+KO_VST_CPM_Log_Z <- data.frame(t(scale(t(log10(KO_VST_CPM)), 
+                                         center = TRUE, 
+                                         scale = TRUE))) # z-scores, log10 
+ko_tab <- KO_VST_CPM_Log_Z %>%
+  select(-ASW_1, ASW_1) %>%
+  select(-ASW_2, ASW_2) %>%
+  select(-ASW_3, ASW_3) %>%
+  select(-ASW_4, ASW_4) %>%
+  select(-ASW_5, ASW_5) %>%
+  rownames_to_column(var = "KO")
+names(ko_tab)[7:11] <- c("SO4_2", "SO4_3", "SO4_4", "SO4_5A", "SO4_5B")
+
+# Read in pathway KOs
+mko_ace <- read_excel("data/MethanogenesisKOs.xlsx", sheet = 1) %>%
+  mutate(Name = ifelse(is.na(Name), "", Name)) %>%
+  mutate(KO_def = paste(KEGG_KO, Name, sep = " ")) %>%
+  mutate_if(is.character, as.factor) %>%
+  arrange(Pathway_Order, Reaction_Order) %>%
+  select(-ModelSeed_ID)
+mko_co2 <- read_excel("data/MethanogenesisKOs.xlsx", sheet = 2) %>%
+  mutate(Name = ifelse(is.na(Name), "", Name)) %>%
+  mutate(KO_def = paste(KEGG_KO, Name, sep = " ")) %>%
+  mutate_if(is.character, as.factor) %>%
+  arrange(Pathway_Order, Reaction_Order) %>%
+  select(-ModelSeed_ID)
+mko_metD <- read_excel("data/MethanogenesisKOs.xlsx", sheet = 3) %>%
+  mutate(Name = ifelse(is.na(Name), "", Name)) %>%
+  mutate(KO_def = paste(KEGG_KO, Name, sep = " ")) %>%
+  mutate_if(is.character, as.factor) %>%
+  arrange(Pathway_Order, Reaction_Order) %>%
+  select(-ModelSeed_ID)
+mko_metR <- read_excel("data/MethanogenesisKOs.xlsx", sheet = 4) %>%
+  mutate(Name = ifelse(is.na(Name), "", Name)) %>%
+  mutate(KO_def = paste(KEGG_KO, Name, sep = " ")) %>%
+  mutate_if(is.character, as.factor) %>%
+  arrange(Pathway_Order, Reaction_Order) %>%
+  select(-ModelSeed_ID)
+
+# Heatmap data and metadata for each
+mko_ace_mat <- left_join(mko_ace, ko_tab, by = c("KEGG_KO" = "KO")) %>%
+  select(7:25) %>%
+  column_to_rownames(var = "KO_def") %>%
+  as.matrix()
+mko_ace_meta <- left_join(mko_ace, ko_tab, by = c("KEGG_KO" = "KO")) %>%
+  select(1:7)
+
+mko_co2_mat <- left_join(mko_co2, ko_tab, by = c("KEGG_KO" = "KO")) %>%
+  select(7:25) %>%
+  column_to_rownames(var = "KO_def") %>%
+  as.matrix()
+mko_co2_meta <- left_join(mko_co2, ko_tab, by = c("KEGG_KO" = "KO")) %>%
+  select(1:7)
+
+mko_metD_mat <- left_join(mko_metD, ko_tab, by = c("KEGG_KO" = "KO")) %>%
+  select(7:25) %>%
+  column_to_rownames(var = "KO_def") %>%
+  as.matrix()
+mko_metD_meta <- left_join(mko_metD, ko_tab, by = c("KEGG_KO" = "KO")) %>%
+  select(1:7)
+
+mko_metR_mat <- left_join(mko_metR, ko_tab, by = c("KEGG_KO" = "KO")) %>%
+  select(11:29) %>%
+  column_to_rownames(var = "KO_def") %>%
+  as.matrix()
+mko_metR_meta <- left_join(mko_metR, ko_tab, by = c("KEGG_KO" = "KO")) %>%
+  select(1:11)
+
+## Heatmaps
+# Acetate
+ann_cols <- data.frame(row.names = colnames(mko_ace_mat),
+                       "Treatment" = c(rep("Control", 5),
+                                       rep("SO4", 5),
+                                       rep("ASW-SO4", 3), 
+                                       rep("ASW", 5)))
+ann_rows <- data.frame(row.names = rownames(mko_ace_mat), 
+                       Pathway = mko_ace_meta$Pathway_Specific,
+                       Process = mko_ace_meta$Pathway_General)
+ann_colors <- list(Pathway = c(`Acetate cleavage` = "forestgreen",
+                               `Wood-Ljungdahl - CO2 out` = "orange",
+                               `Na out` = "purple",
+                               "Methyl-CoM reduction" = "#21908CFF",
+                               Methanophenazine = brewer.pal(9, "YlOrRd")[1],
+                               Ferredoxin = brewer.pal(9, "YlOrRd")[2],
+                               Hydrogenase = brewer.pal(9, "YlOrRd")[3]),
+                   Process = c("Methyl-CoM formation" = "#440154FF",
+                               "Methanogenesis" = "#21908CFF",
+                               "CoB - CoM regeneration" = "#FDE725FF"),
+                   Treatment = c(Control = "#3B528BFF", 
+                                 SO4 = "#21908CFF",
+                                 `ASW-SO4` = "#5DC863FF",
+                                 ASW = "#FDE725FF"))
+pheatmap(mko_ace_mat,
+         legend = T,
+         legend_breaks = c(-3, -2, -1, 0, 1, 2, 3, max(mko_ace_mat, na.rm = T)),
+         legend_labels = c("-3","-2","-1","0","1","2","3","Abund.\n"),
+         main = "Acetoclastic Methanogenesis",
+         border_color = NA,
+         scale = "none",
+         angle_col = 315,
+         fontsize = 8,
+         annotation_col = ann_cols,
+         annotation_row = ann_rows,
+         annotation_colors = ann_colors,
+         cluster_rows = F,
+         cluster_cols = F,
+         gaps_col = c(5, 10, 13),
+         filename = "InitialFigs/KO_heatmap_acetate.png",
+         width = 7,
+         height = 7)
+dev.off()
+dev.set(dev.next())
+dev.set(dev.next())
+
+# H2/CO2
+ann_cols <- data.frame(row.names = colnames(mko_co2_mat),
+                       "Treatment" = c(rep("Control", 5),
+                                       rep("SO4", 5),
+                                       rep("ASW-SO4", 3), 
+                                       rep("ASW", 5)))
+ann_rows <- data.frame(row.names = rownames(mko_co2_mat), 
+                       Pathway = mko_co2_meta$Pathway_Specific,
+                       Process = mko_co2_meta$Pathway_General)
+ann_colors <- list(Pathway = c(`Wood-Ljungdahl - CO2 in` = "orange",
+                               `Na out` = "purple",
+                               "Methyl-CoM reduction" = "#21908CFF",
+                               F420 = brewer.pal(9, "YlOrRd")[1],
+                               Ferredoxin = brewer.pal(9, "YlOrRd")[2],
+                               "Ferredoxin-F420-H2" = brewer.pal(9, "YlOrRd")[3],
+                               H2 = brewer.pal(9, "YlOrRd")[4],
+                               `Formate-F420` = brewer.pal(9, "YlOrRd")[5]),
+                   Process = c("Methyl-CoM formation" = "#440154FF",
+                               "Methanogenesis" = "#21908CFF",
+                               "CoB - CoM regeneration" = "#FDE725FF"),
+                   Treatment = c(Control = "#3B528BFF", 
+                                 SO4 = "#21908CFF",
+                                 `ASW-SO4` = "#5DC863FF",
+                                 ASW = "#FDE725FF"))
+pheatmap(mko_co2_mat,
+         legend = T,
+         legend_breaks = c(-3, -2, -1, 0, 1, 2, 3, max(mko_ace_mat, na.rm = T)),
+         legend_labels = c("-3","-2","-1","0","1","2","3","Abund.\n"),
+         main = "Hydrogenotrophic Methanogenesis",
+         border_color = NA,
+         scale = "none",
+         angle_col = 315,
+         fontsize = 8,
+         annotation_col = ann_cols,
+         annotation_row = ann_rows,
+         annotation_colors = ann_colors,
+         cluster_rows = F,
+         cluster_cols = F,
+         gaps_col = c(5, 10, 13),
+         filename = "InitialFigs/KO_heatmap_h2_co2.png",
+         width = 7,
+         height = 7)
+dev.off()
+dev.set(dev.next())
+dev.set(dev.next())
+  
+# Methyl dismutation
+ann_cols <- data.frame(row.names = colnames(mko_metD_mat),
+                       "Treatment" = c(rep("Control", 5),
+                                       rep("SO4", 5),
+                                       rep("ASW-SO4", 3), 
+                                       rep("ASW", 5)))
+ann_rows <- data.frame(row.names = rownames(mko_metD_mat), 
+                       Pathway = mko_metD_meta$Pathway_Specific,
+                       Process = mko_metD_meta$Pathway_General)
+ann_colors <- list(Pathway = c(Trimethylamine = brewer.pal(7, "Purples")[1], 
+                               Dimethylamine = brewer.pal(7, "Purples")[2], 
+                               Methylamine = brewer.pal(7, "Purples")[3],
+                               Methylamines = brewer.pal(7, "Purples")[4],
+                               Methanol = brewer.pal(7, "Purples")[5],
+                               Betaine = brewer.pal(7, "Purples")[6],
+                               `DMS/MeSH/MMPA` = brewer.pal(7, "Purples")[7],
+                               `Wood-Ljungdahl - CO2 out` = "orange",
+                               `Na in` = "purple",
+                               "Methyl-CoM reduction" = "#21908CFF",
+                               Methanophenazine = brewer.pal(9, "YlOrRd")[1],
+                               Ferredoxin = brewer.pal(9, "YlOrRd")[2],
+                               Hydrogenase = brewer.pal(9, "YlOrRd")[3]),
+                   Process = c("Methyl-CoM formation" = "#440154FF",
+                               "Methanogenesis" = "#21908CFF",
+                               "CoB - CoM regeneration" = "#FDE725FF"),
+                   Treatment = c(Control = "#3B528BFF", 
+                                 SO4 = "#21908CFF",
+                                 `ASW-SO4` = "#5DC863FF",
+                                 ASW = "#FDE725FF"))
+pheatmap(mko_metD_mat,
+         legend = T,
+         legend_breaks = c(-3, -2, -1, 0, 1, 2, 3, max(mko_ace_mat, na.rm = T)),
+         legend_labels = c("-3","-2","-1","0","1","2","3","Abund.\n"),
+         main = "Hydrogenotrophic Methanogenesis",
+         border_color = NA,
+         scale = "none",
+         angle_col = 315,
+         fontsize = 8,
+         annotation_col = ann_cols,
+         annotation_row = ann_rows,
+         annotation_colors = ann_colors,
+         cluster_rows = F,
+         cluster_cols = F,
+         gaps_col = c(5, 10, 13),
+         filename = "InitialFigs/KO_heatmap_methylDis.png",
+         width = 7,
+         height = 7)
+dev.off()
+dev.set(dev.next())
+dev.set(dev.next())
+
+# Methyl reduction
+ann_cols <- data.frame(row.names = colnames(mko_metR_mat),
+                       "Treatment" = c(rep("Control", 5),
+                                       rep("SO4", 5),
+                                       rep("ASW-SO4", 3), 
+                                       rep("ASW", 5)))
+ann_rows <- data.frame(row.names = rownames(mko_metR_mat), 
+                       Pathway = mko_metR_meta$Pathway_Specific,
+                       Process = mko_metR_meta$Pathway_General,
+                       `M_blatticola` = mko_metR_meta$`M. blatticola`,
+                       `M_stadtmanae` = mko_metR_meta$`M. stadtmanae`,
+                       `M_luminyensis` = mko_metR_meta$`M. luminyensis`,
+                       `M_thermophilum` = mko_metR_meta$`M. thermophilum`)
+ann_colors <- list(Pathway = c(Trimethylamine = brewer.pal(7, "Purples")[1], 
+                               Dimethylamine = brewer.pal(7, "Purples")[2], 
+                               Methylamine = brewer.pal(7, "Purples")[3],
+                               Methylamines = brewer.pal(7, "Purples")[4],
+                               Methanol = brewer.pal(7, "Purples")[5],
+                               Betaine = brewer.pal(7, "Purples")[6],
+                               `DMS/MeSH/MMPA` = brewer.pal(7, "Purples")[7],
+                               `Wood-Ljungdahl - CO2 out` = "orange",
+                               `Na in` = "purple",
+                               "Methyl-CoM reduction" = "#21908CFF",
+                               Methanophenazine = brewer.pal(9, "YlOrRd")[1],
+                               Ferredoxin = brewer.pal(9, "YlOrRd")[2],
+                               Hydrogenase = brewer.pal(9, "YlOrRd")[3],
+                               Formate = brewer.pal(9, "YlOrRd")[4]),
+                   Process = c("Methyl-CoM formation" = "#440154FF",
+                               "Methanogenesis" = "#21908CFF",
+                               "CoB - CoM regeneration" = "#FDE725FF"),
+                   `M_blatticola` = c("Present" = "black",
+                                       "Absent" = "white"),
+                   `M_stadtmanae` = c("Present" = "black",
+                                       "Absent" = "white"),
+                   `M_luminyensis` = c("Present" = "black",
+                                        "Absent" = "white"),
+                   `M_thermophilum` = c("Present" = "black",
+                                         "Absent" = "white"),
+                   Treatment = c(Control = "#3B528BFF", 
+                                 SO4 = "#21908CFF",
+                                 `ASW-SO4` = "#5DC863FF",
+                                 ASW = "#FDE725FF"))
+pheatmap(mko_metR_mat,
+         legend = T,
+         legend_breaks = c(-3, -2, -1, 0, 1, 2, 3, max(mko_ace_mat, na.rm = T)),
+         legend_labels = c("-3","-2","-1","0","1","2","3","Abund.\n"),
+         main = "Hydrogenotrophic Methanogenesis",
+         border_color = NA,
+         scale = "none",
+         angle_col = 315,
+         fontsize = 8,
+         annotation_col = ann_cols,
+         annotation_row = ann_rows,
+         annotation_colors = ann_colors,
+         cluster_rows = F,
+         cluster_cols = F,
+         gaps_col = c(5, 10, 13),
+         filename = "InitialFigs/KO_heatmap_methylRed.png",
+         width = 7,
          height = 7)
 dev.off()
 dev.set(dev.next())
