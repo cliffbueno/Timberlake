@@ -78,6 +78,7 @@ library(zCompositions) # CLR
 library(compositions) # Aitchison
 library(mobr) # rarefaction curves
 library(plotly) # interactive graphs
+library(pairwiseAdonis) # pairwise permanova
 
 # Functions
 find_hull <- function(df) df[chull(df$Axis01, df$Axis02),]
@@ -87,11 +88,11 @@ find_hull <- function(df) df[chull(df$Axis01, df$Axis02),]
 source("~/Documents/GitHub/SF_microbe_methane/modules/3_OTU_subsetting_modules_v.0.4_strip.r")
 
 # Correlation functions from other repo
-source("~/Documents/GitHub/EastCoast/meth_corr_by_taxonomy.R")
-source("~/Documents/GitHub/EastCoast/meth_corr_by_bgc.R")
+source("~/Documents/GitHub/EastCoast/code/meth_corr_by_taxonomy.R")
+source("~/Documents/GitHub/EastCoast/code/meth_corr_by_bgc.R")
 
 # Plotting functions from other repo
-source("~/Documents/GitHub/EastCoast/cliffplot_taxa_bars.R")
+source("~/Documents/GitHub/EastCoast/code/cliffplot_taxa_bars.R")
 source("~/Documents/GitHub/Extremophilic_Fungi/plot_multipatt.R")
 
 # Repository path
@@ -214,11 +215,11 @@ nc$map_loaded <- nc$map_loaded %>%
 # Save
 #saveRDS(nc, "data/nc.rds")
 
-# Start here
+#### _Start here ####
 nc <- readRDS("data/nc.rds")
 
 # Add C, N, C:N data (was received later)
-nc_cn <- read_excel("~/Documents/GitHub/EastCoast/Copy of CHN data.xls", sheet = 2) %>%
+nc_cn <- read_excel("~/Documents/GitHub/EastCoast/data/Copy of CHN data.xls", sheet = 2) %>%
   slice(12:91) %>%
   dplyr::select(Name, `%N`, `%C`, `C:N`) %>%
   mutate(Name = gsub("bottom", "bot", Name)) %>%
@@ -269,7 +270,27 @@ nc$map_loaded[43, 10:24] <- new_dat[4, 2:16]
 
 
 #### 3. Alpha ####
+# Get descriptive info
+field <- filter_data(nc, "Treatment", keep_vals = "Field")
+min(field$map_loaded$rich)
+max(field$map_loaded$rich)
+lab <- filter_data(nc, "Treatment", filter_vals = "Field")
+min(lab$map_loaded$rich)
+max(lab$map_loaded$rich)
+nc$map_loaded$Treatment2 <- recode_factor(nc$map_loaded$Treatment,
+                                          "Control" = "Lab",
+                                          "+SO4" = "Lab",
+                                          "+ASW-SO4" = "Lab",
+                                          "+ASW" = "Lab")
+source("~/Documents/GitHub/EastCoast/code/plot_venn_diagram2.R")
+png("InitialFigs/Venn.png", width = 7, height = 5, units = "in", res = 300)
+plot_venn_diagram2(nc, "Treatment2", pres_thresh = 0.0000000000000000000000000001)
+dev.off()
+
+# Test and plot
 leveneTest(nc$map_loaded$rich ~ nc$map_loaded$Treatment) # Homogeneous
+m <- aov(rich ~ Treatment * Depth, data = nc$map_loaded)
+Anova(m, type = "III") # No interaction
 m <- aov(rich ~ Treatment + Depth, data = nc$map_loaded)
 Anova(m, type = "II") # Treatment and Depth
 m <- aov(rich ~ Treatment, data = nc$map_loaded)
@@ -280,7 +301,10 @@ t <- emmeans(object = m, specs = "Treatment") %>%
   cld(object = ., adjust = "Tukey", Letters = letters, alpha = 0.05) %>%
   mutate(name = "rich",
          y = max(nc$map_loaded$rich)+(max(nc$map_loaded$rich)-min(nc$map_loaded$rich))/20)
+
 leveneTest(nc$map_loaded$shannon ~ nc$map_loaded$Treatment) # Homogeneous
+m1 <- aov(shannon ~ Treatment * Depth, data = nc$map_loaded)
+Anova(m1, type = "III") # Minor interaction
 m1 <- aov(shannon ~ Treatment + Depth, data = nc$map_loaded)
 Anova(m1, type = "II") # Treatment and Depth
 m1 <- aov(shannon ~ Treatment, data = nc$map_loaded)
@@ -341,10 +365,13 @@ otu_clr <- clr(otu_czm)
 aclr <- compositions::dist(otu_clr)
 
 set.seed(1150)
-adonis2(aclr ~ nc$map_loaded$Treatment + nc$map_loaded$Depth) # Both sig
-adonis2(aclr ~ nc$map_loaded$Depth + nc$map_loaded$Treatment) # No effect of order
+adonis2(aclr ~ input_filt_nc$map_loaded$Treatment*input_filt_nc$map_loaded$Depth) # Both sig
+adonis2(aclr ~ nc$map_loaded$Depth*nc$map_loaded$Treatment) # No effect of order
 anova(betadisper(aclr, nc$map_loaded$Treatment)) # Dispersion homogeneous
 anova(betadisper(aclr, nc$map_loaded$Depth)) # Dispersion homogeneous
+
+pairwise.perm.manova(aclr, input_filt_nc$map_loaded$Treatment) # Doens't work
+pairwiseAdonis::pairwise.adonis(aclr, input_filt_nc$map_loaded$Treatment)
 
 # PCA with vectors
 d.pcx <- prcomp(aclr)
@@ -1447,8 +1474,6 @@ flux_data <- nc_lab$map_loaded %>%
   slice_head(n = 1)
 
 leveneTest(flux_data$CH4_ug_m2_h ~ flux_data$Treatment) # Homogeneous
-m <- aov(CH4_ug_m2_h ~ Treatment + Depth, data = flux_data)
-Anova(m, type = "II") # Treatment
 m <- aov(CH4_ug_m2_h ~ Treatment, data = flux_data)
 shapiro.test(m$residuals) # Normal
 hist(m$residuals)
@@ -1479,8 +1504,6 @@ g1 <- ggplot(flux_data, aes(Treatment, CH4_ug_m2_h)) +
 g1
 
 leveneTest(flux_data$CO2_ug_m2_h ~ flux_data$Treatment) # Not Homogeneous
-m <- aov(CO2_ug_m2_h ~ Treatment + Depth, data = flux_data)
-Anova(m, type = "II") # Treatment marginal
 m <- aov(CO2_ug_m2_h ~ Treatment, data = flux_data)
 shapiro.test(m$residuals) # Almost Normal
 hist(m$residuals)
@@ -1511,8 +1534,6 @@ g2 <- ggplot(flux_data, aes(Treatment, CO2_ug_m2_h)) +
 g2
 
 leveneTest(flux_data$N2O_ug_m2_h ~ flux_data$Treatment) # Almost Homogeneous
-m <- aov(N2O_ug_m2_h ~ Treatment + Depth, data = flux_data)
-Anova(m, type = "II") # Treatment
 m <- aov(N2O_ug_m2_h ~ Treatment, data = flux_data)
 shapiro.test(m$residuals) # Not Normal
 hist(m$residuals)
