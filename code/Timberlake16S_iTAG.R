@@ -79,6 +79,7 @@ library(compositions) # Aitchison
 library(mobr) # rarefaction curves
 library(plotly) # interactive graphs
 library(pairwiseAdonis) # pairwise permanova
+library(patchwork) # insets
 
 # Functions
 find_hull <- function(df) df[chull(df$Axis01, df$Axis02),]
@@ -94,6 +95,9 @@ source("~/Documents/GitHub/EastCoast/code/meth_corr_by_bgc.R")
 # Plotting functions from other repo
 source("~/Documents/GitHub/EastCoast/code/cliffplot_taxa_bars.R")
 source("~/Documents/GitHub/Extremophilic_Fungi/plot_multipatt.R")
+
+# Effect size from Jack Darcy
+source("~/Documents/GitHub/Timberlake/code/effectSize.R")
 
 # Repository path
 setwd("~/Documents/GitHub/Timberlake/")
@@ -111,6 +115,7 @@ Guild_cols <- read.table("~/Documents/GitHub/SF_microbe_methane/data/colors/Guil
   add_row(Guild = "CH4_me", Index = 16, color = "#FDC086") %>%
   add_row(Guild = "CH4_mix", Index = 17, color = "#FFFF99") %>%
   filter(Guild != "MeOB") %>%
+  filter(Guild != "Anamx") %>%
   arrange(Index)
 
 # Prepare data. Only need to do once. Then skip to start here.
@@ -267,6 +272,17 @@ nc$map_loaded[42, 10:24] <- new_dat[3, 2:16]
 nc$map_loaded[43, 10:24] <- new_dat[4, 2:16]
 # To recap, C, N, CN, pH have 5A D1 D2, 5B D1 D2. Porewater just has 5 D1 D2. GHG just 5
 
+# Add two new columns for SO4 and ASW (following N + P type experiments)
+# There's SO4, ASW, and both (just like N, P, NP)
+nc$map_loaded$SO4 <- recode_factor(nc$map_loaded$Treatment,
+                                   "+SO4" = "Sulfate",
+                                   "+ASW" = "SaltSulfate")
+nc$map_loaded$SO4 <- grepl(x = nc$map_loaded$SO4, pattern = "Sulfate")
+nc$map_loaded$ASW <- recode_factor(nc$map_loaded$Treatment,
+                                   "+ASW-SO4" = "Salt",
+                                   "+ASW" = "SaltSulfate")
+nc$map_loaded$ASW <- grepl(x = nc$map_loaded$ASW, pattern = "Salt")
+
 
 
 #### 3. Alpha ####
@@ -320,9 +336,8 @@ facet_df <- c("rich" = "(a) Richness",
               "shannon" = "(b) Shannon")
 alpha_long <- nc$map_loaded %>%
   pivot_longer(cols = c("rich", "shannon"))
-png("InitialFigs/Alpha.png", width = 6, height = 3, units = "in", res = 300)
-ggplot(alpha_long, aes(reorder(Treatment, value, mean), value, 
-                       colour = Treatment)) +
+g1 <- ggplot(alpha_long, aes(reorder(Treatment, value, mean), value, 
+                             colour = Treatment)) +
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(size = 2, alpha = 0.75, width = 0.2, aes(shape = Depth)) +
   geom_text(data = label_df, aes(Treatment, y, label = str_trim(.group)), 
@@ -340,8 +355,62 @@ ggplot(alpha_long, aes(reorder(Treatment, value, mean), value,
         axis.text.y = element_text(size = 10),
         axis.text.x = element_text(size = 6),
         strip.text = element_text(size = 10))
+png("InitialFigs/Alpha.png", width = 6, height = 3, units = "in", res = 300)
+g1
 dev.off()
-  
+
+# Test just lab with 3-way anova
+# Make pie chart with effect size
+m1 <- aov(rich ~  Depth + SO4 + ASW, data = lab$map_loaded)
+summary(m1)
+anova(m1)
+Anova(m1, type = "II") # Depth and ASW
+eta_sq_m1 <- eta_sq(m1) %>%
+  as.data.frame() %>%
+  rownames_to_column(var = "group") %>%
+  set_names(c("group", "value")) %>%
+  mutate(group = c("Depth***", "SO4", "ASW***", "Residuals")) %>%
+  arrange(desc(group)) %>%
+  mutate(ypos = cumsum(value) - 0.5*value)
+g2 <- ggplot(eta_sq_m1, aes(x = "", y = value, fill = group)) +
+  geom_bar(stat = "identity", width = 1, color = NA) +
+  coord_polar("y", start = 0) +
+  geom_text(aes(y = ypos, label = group), color = "white", size = 1.25, check_overlap = T) +
+  scale_fill_manual(values = c("#5DC863FF", "grey30", "grey70", "#21908CFF")) +
+  theme_void() + 
+  theme(legend.position = "none")
+
+m2 <- aov(shannon ~  Depth + SO4 + ASW, data = lab$map_loaded)
+summary(m2)
+anova(m2)
+Anova(m2, type = "II") # Depth and ASW
+eta_sq_m2 <- eta_sq(m2) %>%
+  as.data.frame() %>%
+  rownames_to_column(var = "group") %>%
+  set_names(c("group", "value")) %>%
+  mutate(group = c("Depth**", "SO4", "ASW**", "Residuals")) %>%
+  arrange(desc(group)) %>%
+  mutate(ypos = cumsum(value) - 0.5*value)
+g3 <- ggplot(eta_sq_m2, aes(x = "", y = value, fill = group)) +
+  geom_bar(stat = "identity", width = 1, color = NA) +
+  coord_polar("y", start = 0) +
+  geom_text(aes(y = ypos, label = group), color = "white", size = 1.25, check_overlap = T) +
+  scale_fill_manual(values = c("#5DC863FF", "grey30", "grey70", "#21908CFF")) +
+  theme_void() + 
+  theme(legend.position = "none")
+
+
+# Add as inset, save as Figure 2.
+plot.with.inset <-
+  ggdraw() +
+  draw_plot(g1) +
+  draw_plot(g2, x = 0, y = 0.56, width = 0.31, height = 0.31) +
+  draw_plot(g3, x = 0.47, y = 0.56, width = 0.31, height = 0.31)
+plot.with.inset
+png("FinalFigs/Figure2.png", width = 7, height = 4, units = "in", res = 300)
+plot.with.inset
+dev.off()
+
 
 
 #### 4. Beta ####
@@ -367,11 +436,36 @@ aclr <- compositions::dist(otu_clr)
 set.seed(1150)
 adonis2(aclr ~ input_filt_nc$map_loaded$Treatment*input_filt_nc$map_loaded$Depth) # Both sig
 adonis2(aclr ~ nc$map_loaded$Depth*nc$map_loaded$Treatment) # No effect of order
+pairwiseAdonis::pairwise.adonis(aclr, input_filt_nc$map_loaded$Treatment)
 anova(betadisper(aclr, nc$map_loaded$Treatment)) # Dispersion homogeneous
 anova(betadisper(aclr, nc$map_loaded$Depth)) # Dispersion homogeneous
 
-pairwise.perm.manova(aclr, input_filt_nc$map_loaded$Treatment) # Doens't work
-pairwiseAdonis::pairwise.adonis(aclr, input_filt_nc$map_loaded$Treatment)
+# Stats and pie for just lab
+lab_raw <- filter_data(input_filt_nc,
+                       filter_cat = "Treatment", 
+                       filter_vals = "Field")
+otu_czm_lab <- cmultRepl(t((lab_raw$data_loaded)), label = 0, method = "CZM")
+otu_clr_lab <- clr(otu_czm_lab)
+aclr_lab <- compositions::dist(otu_clr_lab)
+set.seed(1150)
+m3 <- adonis2(aclr_lab ~ lab_raw$map_loaded$Depth + lab_raw$map_loaded$SO4 + lab_raw$map_loaded$ASW)
+eta_sq_m3 <- eta_sq_adonis(m3) %>%
+  as.data.frame() %>%
+  rownames_to_column(var = "group") %>%
+  filter(group != "Total") %>%
+  set_names(c("group", "value")) %>%
+  mutate(group = c("Depth***", "SO4", "ASW***", "Residuals")) %>%
+  arrange(desc(group)) %>%
+  mutate(ypos = cumsum(value) - 0.5*value)
+g4 <- ggplot(eta_sq_m3, aes(x = "", y = value, fill = group)) +
+  geom_bar(stat = "identity", width = 1, color = NA) +
+  coord_polar("y", start = 0) +
+  geom_text(aes(y = ypos, label = group), color = "white", size = 1.5, check_overlap = T) +
+  scale_fill_manual(values = c("#5DC863FF", "grey30", "grey70", "#21908CFF")) +
+  theme_void() + 
+  theme(legend.position = "none")
+
+
 
 # PCA with vectors
 d.pcx <- prcomp(aclr)
@@ -381,7 +475,7 @@ ef_nc
 biplot(d.pcx)
 ordiplot(d.pcx)
 plot(ef_nc, p.max = 0.075, cex = 0.5)
-manual_factor_nc <- 0.25
+manual_factor_nc <- 0.23
 vec.df_nc <- as.data.frame(ef_nc$vectors$arrows*sqrt(ef_nc$vectors$r)) %>%
   mutate(PC1 = PC1 * manual_factor_nc,
          PC2 = PC2 * manual_factor_nc) %>%
@@ -395,8 +489,7 @@ PC2 <- paste("PC2: ", round((sum(d.pcx$sdev[2]^2)/d.mvar)*100, 1), "%")
 nc$map_loaded$Axis01 <- d.pcx$rotation[,1]
 nc$map_loaded$Axis02 <- d.pcx$rotation[,2]
 micro.hulls <- ddply(nc$map_loaded, c("Treatment"), find_hull)
-png("InitialFigs/BetaAitch.png", width = 7, height = 5, units = "in", res = 300)
-ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
+g5 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
@@ -423,23 +516,21 @@ ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
         axis.title = element_text(face = "bold", size = 12), 
         axis.text = element_text(size = 10),
         plot.margin = margin(5, 5, 5, 5, "pt"))
+g5
+png("InitialFigs/BetaAitch.png", width = 7, height = 5, units = "in", res = 300)
+g5
 dev.off()
-ggplotly(ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
-           geom_point(size = 3, alpha = 1, aes(colour = sampleID_clean, shape = Depth)) +
-           labs(x = PC1, 
-                y = PC2,
-                shape = "Depth") +
-           scale_colour_viridis_d() +
-           scale_fill_viridis_d() +
-           guides(colour = guide_legend(override.aes = list(shape = 15),
-                                        order = 1)) +
-           theme_bw() +  
-           theme(legend.position = c(0,0),
-                 legend.justification = c(0,0),
-                 legend.background = element_blank(),
-                 axis.title = element_text(face = "bold", size = 12), 
-                 axis.text = element_text(size = 10),
-                 plot.margin = margin(5, 5, 5, 5, "pt")))
+
+# Add as inset, save as Figure 3.
+plot.with.inset2 <-
+  ggdraw() +
+  draw_plot(g5) +
+  draw_plot(g4, x = 0.55, y = 0.7, width = 0.31, height = 0.31)
+plot.with.inset2
+png("FinalFigs/Figure3.png", width = 7, height = 5, units = "in", res = 300)
+plot.with.inset2
+dev.off()
+
 
 
 
@@ -949,7 +1040,8 @@ topphy <- barsP %>%
 phy <- ggplot(barsP, aes(group_by, mean_value, fill = taxon)) +
   geom_bar(stat = "identity", colour = NA, size = 0.25) +
   labs(x = "Sample", y = "Relative abundance", fill = "Phylum") +
-  scale_fill_manual(values = c("grey90", brewer.pal(12, "Paired")[12:1])) +
+  scale_fill_manual(values = c("grey90", brewer.pal(12, "Paired")[12:1]),
+                    labels = c("Other", phy_stats_lab$StarLab)) +
   scale_y_continuous(expand = c(0.01, 0.01)) +  
   facet_nested(~ Treatment + Depth, space = "free", scales = "free_x") +
   theme_classic() +
@@ -959,7 +1051,7 @@ phy <- ggplot(barsP, aes(group_by, mean_value, fill = taxon)) +
         axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         axis.line.x = element_blank(),
-        strip.text = element_text(size = 4),
+        strip.text = element_text(size = 7),
         strip.background = element_rect(size = 0.2),
         axis.line.y = element_blank(),
         legend.margin = margin(0, 0, 0, 5, unit = "pt"),
@@ -990,7 +1082,8 @@ topgui <- barsG %>%
 gui <- ggplot(barsG, aes(group_by, mean_value, fill = taxon)) +
   geom_bar(stat = "identity", colour = NA, size = 0.25) +
   labs(x = "Sample", y = "Relative abundance", fill = "Guild") +
-  scale_fill_manual(values = Guild_cols$color) +
+  scale_fill_manual(values = Guild_cols$color,
+                    labels = gui_stats_lab$StarLab) +
   scale_y_continuous(expand = c(max(tallest_bar$sum)/100, max(tallest_bar$sum)/100)) + 
   facet_nested(~ Treatment + Depth, space = "free", scales = "free_x") +
   theme_classic() +
@@ -1010,6 +1103,10 @@ gui <- ggplot(barsG, aes(group_by, mean_value, fill = taxon)) +
 plot_grid(phy, gui, ncol = 1, rel_heights = c(0.45, 0.55), align = "v")
 
 png("InitialFigs/PhylaGuilds.png", width = 8, height = 6, units = "in", res = 300)
+plot_grid(phy, gui, ncol = 1, rel_heights = c(0.45, 0.55), align = "v")
+dev.off()
+
+png("FinalFigs/Figure4.png", width = 8, height = 6, units = "in", res = 300)
 plot_grid(phy, gui, ncol = 1, rel_heights = c(0.45, 0.55), align = "v")
 dev.off()
 
@@ -1045,7 +1142,11 @@ phy_stats_fiecon <- taxa_summary_by_sample_type(sum_phy_fiecon,
                                                 test_type = 'MW') %>%
   filter(rownames(.) %in% barsP$taxon) %>%
   arrange(desc(rownames(.))) %>%
-  mutate(Sig = ifelse(pvalsFDR < 0.05, "Pfdr < 0.05", "Pfdr > 0.05"))
+  mutate(Sig = ifelse(pvalsFDR < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Star = ifelse(pvalsFDR < 0.05, "*", "")) %>%
+  rownames_to_column(var = "taxon") %>%
+  arrange(match(taxon, levels(barsP$taxon))) %>%
+  mutate(StarLab = paste(Guild, Star, sep = " "))
 
 sum_gui_fiecon <- summarize_taxonomy(input = fiecon, level = 9, report_higher_tax = F)
 gui_stats_fiecon <- taxa_summary_by_sample_type(sum_gui_fiecon, 
@@ -1068,7 +1169,10 @@ phy_stats_lab <- taxa_summary_by_sample_type(sum_phy_lab,
                                                 test_type = 'KW') %>%
   filter(rownames(.) %in% barsP$taxon) %>%
   arrange(desc(rownames(.))) %>%
-  mutate(Sig = ifelse(pvalsFDR < 0.05, "Pfdr < 0.05", "Pfdr > 0.05"))
+  mutate(Sig = ifelse(pvalsFDR < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Star = ifelse(pvalsFDR < 0.05, "*", "")) %>%
+  rownames_to_column(var = "taxon") %>%
+  mutate(StarLab = paste(taxon, Star, sep = " "))
 
 sum_gui_lab <- summarize_taxonomy(input = lab, level = 9, report_higher_tax = F)
 gui_stats_lab <- taxa_summary_by_sample_type(sum_gui_lab, 
@@ -1078,7 +1182,14 @@ gui_stats_lab <- taxa_summary_by_sample_type(sum_gui_lab,
                                                 test_type = 'KW') %>%
   filter(rownames(.) %in% barsG$taxon) %>%
   arrange(desc(rownames(.))) %>%
-  mutate(Sig = ifelse(pvalsFDR < 0.05, "Pfdr < 0.05", "Pfdr > 0.05"))
+  mutate(Sig = ifelse(pvalsFDR < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Star = ifelse(pvalsFDR < 0.05, "*", "")) %>%
+  rownames_to_column(var = "Guild") %>%
+  left_join(., Guild_cols, by = "Guild") %>%
+  arrange(Index) %>%
+  mutate(StarLab = paste(Guild, Star, sep = " "))
+  
+
 
 #### _Ratios ####
 MG_MT <- summarize_taxonomy(nc, 9, report_higher_tax = F) %>%
@@ -1192,7 +1303,7 @@ barsMG <- barsMG %>%
   mutate(taxon = fct_relevel(taxon, "Unclassified", after = Inf)) %>%
   mutate(taxon = fct_rev(taxon))
 png("InitialFigs/Methanogens.png", width = 7, height = 5, units = "in", res = 300)
-ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
+fig5 <- ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
   geom_bar(stat = "identity", colour = NA, size = 0.25) +
   labs(x = "Sample", y = "% Abundance", fill = "Family") +
   scale_fill_manual(values = c("grey90", brewer_pal(palette = "Paired")(8))) +
@@ -1213,7 +1324,9 @@ ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
         legend.background = element_blank(),
         legend.key.size = unit(0.3, "cm"),
         panel.spacing.x = unit(c(0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25), "lines"))
+fig5
 dev.off()
+
 
 
 
@@ -1248,11 +1361,42 @@ barsMT <- barsMT %>%
   mutate(taxon = fct_rev(taxon))
 nb.cols <- 19
 mycolors <- colorRampPalette(brewer.pal(12, "Paired"))(nb.cols)
+
+# Stats
+lab <- filter_data(nc,
+                   "Treatment",
+                   filter_vals = "Field")
+sum_gen_lab <- summarize_taxonomy(input = lab, level = 6, report_higher_tax = F)
+gen_stats_lab <- taxa_summary_by_sample_type(sum_gen_lab,
+                                             lab$map_loaded, 
+                                             type_header = 'Treatment', 
+                                             filter_level = 0, 
+                                             test_type = 'KW') %>%
+  filter(rownames(.) %in% barsMT$taxon) %>%
+  arrange(desc(rownames(.))) %>%
+  mutate(Pfdr = p.adjust(pvals, method = "fdr")) %>%
+  mutate(Sig = ifelse(Pfdr < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Star = ifelse(Pfdr < 0.05, "*", "")) %>%
+  rownames_to_column(var = "taxon") %>%
+  arrange(match(taxon, levels(barsMT$taxon))) %>%
+  mutate(StarLab = paste(taxon, Star, sep = " "))
+statsMT <- barsMT %>%
+  left_join(., gen_stats_lab, by = "taxon") %>%
+  mutate(StarLab = ifelse(is.na(StarLab), taxon, StarLab)) %>%
+  mutate(taxon = fct_relevel(taxon, "Other", after = Inf)) %>%
+  mutate(taxon = fct_relevel(taxon, "Unclassified", after = Inf)) %>%
+  mutate(taxon = fct_rev(taxon)) %>%
+  group_by(taxon) %>%
+  slice_head(n = 1)
+stats_lab <- data.frame(taxon = levels(barsMT$taxon)) %>%
+  left_join(., statsMT, by = "taxon")
+
 png("InitialFigs/Methanotrophs.png", width = 6.5, height = 6, units = "in", res = 300)
-ggplot(barsMT, aes(group_by, mean_value, fill = taxon)) +
+fig6 <- ggplot(barsMT, aes(group_by, mean_value, fill = taxon)) +
   geom_bar(stat = "identity", colour = NA, size = 0.25) +
   labs(x = "Sample", y = "% Abundance", fill = "Genus") +
-  scale_fill_manual(values = c("grey75", "grey90", mycolors)) +
+  scale_fill_manual(values = c("grey75", "grey90", mycolors),
+                    labels = stats_lab$StarLab) +
   scale_y_continuous(expand = c(0.01, 0.01)) +  
   facet_nested(~ Treatment + Depth, space = "free", scales = "free_x") +
   guides(fill = guide_legend(ncol = 1)) +
@@ -1260,9 +1404,9 @@ ggplot(barsMT, aes(group_by, mean_value, fill = taxon)) +
   theme(axis.title.y = element_text(face = "bold", size = 12),
         axis.title.x = element_blank(),
         axis.text.y = element_text(size = 10),
-        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5),
+        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5, hjust = 1),
         axis.ticks.x = element_blank(),
-        strip.text = element_text(size = 6),
+        strip.text = element_text(size = 7),
         strip.background = element_rect(size = 0.2),
         axis.line.y = element_blank(),
         legend.position = c(1,1),
@@ -1270,6 +1414,11 @@ ggplot(barsMT, aes(group_by, mean_value, fill = taxon)) +
         legend.background = element_blank(),
         legend.key.size = unit(0.3, "cm"),
         panel.spacing.x = unit(c(0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25), "lines"))
+fig6
+dev.off()
+
+png("FinalFigs/Figure6.png", width = 6.5, height = 6, units = "in", res = 300)
+fig6
 dev.off()
 
 
@@ -1479,7 +1628,7 @@ shapiro.test(m$residuals) # Normal
 hist(m$residuals)
 summary(m)
 TukeyHSD(m)
-t <- emmeans(object = m, specs = "Treatment") %>%
+t1 <- emmeans(object = m, specs = "Treatment") %>%
   cld(object = ., adjust = "Tukey", Letters = letters, alpha = 0.05) %>%
   mutate(name = "CH4_ug_m2_h",
          y = max(flux_data$CH4_ug_m2_h)+(max(flux_data$CH4_ug_m2_h)-min(flux_data$CH4_ug_m2_h)) + 1000000)
@@ -1487,7 +1636,7 @@ t <- emmeans(object = m, specs = "Treatment") %>%
 g1 <- ggplot(flux_data, aes(Treatment, CH4_ug_m2_h)) +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
   geom_jitter(size = 4, width = 0.1, aes(colour = Treatment)) + 
-  geom_text(data = t, aes(Treatment, y, label = str_trim(.group)), 
+  geom_text(data = t1, aes(Treatment, y, label = str_trim(.group)), 
             size = 4, color = "black") +
   labs(x = "Treatment",
        y = expression(""*CH[4]*" flux (µg/"*m^2*"/h)")) +
@@ -1509,7 +1658,7 @@ shapiro.test(m$residuals) # Almost Normal
 hist(m$residuals)
 summary(m)
 TukeyHSD(m)
-t <- emmeans(object = m, specs = "Treatment") %>%
+t2 <- emmeans(object = m, specs = "Treatment") %>%
   cld(object = ., adjust = "Tukey", Letters = letters, alpha = 0.05) %>%
   mutate(name = "CO2_ug_m2_h",
          y = max(flux_data$CO2_ug_m2_h)+(max(flux_data$CO2_ug_m2_h)-min(flux_data$CO2_ug_m2_h))/2)
@@ -1517,7 +1666,7 @@ t <- emmeans(object = m, specs = "Treatment") %>%
 g2 <- ggplot(flux_data, aes(Treatment, CO2_ug_m2_h)) +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
   geom_jitter(size = 4, width = 0.1, aes(colour = Treatment)) + 
-  geom_text(data = t, aes(Treatment, y, label = str_trim(.group)), 
+  geom_text(data = t2, aes(Treatment, y, label = str_trim(.group)), 
             size = 4, color = "black") +
   labs(x = "Treatment",
        y = expression(""*CO[2]*" flux (µg/"*m^2*"/h)")) +
@@ -1539,7 +1688,7 @@ shapiro.test(m$residuals) # Not Normal
 hist(m$residuals)
 summary(m)
 TukeyHSD(m)
-t <- emmeans(object = m, specs = "Treatment") %>%
+t3 <- emmeans(object = m, specs = "Treatment") %>%
   cld(object = ., adjust = "Tukey", Letters = letters, alpha = 0.05) %>%
   mutate(name = "N2O_ug_m2_h",
          y = max(flux_data$N2O_ug_m2_h)+(max(flux_data$N2O_ug_m2_h)-min(flux_data$N2O_ug_m2_h))/2)
@@ -1547,7 +1696,7 @@ t <- emmeans(object = m, specs = "Treatment") %>%
 g3 <- ggplot(flux_data, aes(Treatment, N2O_ug_m2_h)) +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
   geom_jitter(size = 4, width = 0.1, aes(colour = Treatment)) + 
-  geom_text(data = t, aes(Treatment, y, label = str_trim(.group)), 
+  geom_text(data = t3, aes(Treatment, y, label = str_trim(.group)), 
             size = 4, color = "black") +
   labs(x = "Treatment",
        y = expression(""*N[2]*"O flux (µg/"*m^2*"/h)")) +
@@ -1563,6 +1712,110 @@ g3
 png("InitialFigs/Fluxes.png", width = 6, height = 6, units = "in", res = 300)
 plot_grid(g1, g2, g3, ncol = 1, align = "v", rel_heights = c(0.32, 0.32, 0.36))
 dev.off()
+
+# Facet wrap
+flux_data_long <- melt(flux_data, measure.vars = c("CH4_ug_m2_h", "CO2_ug_m2_h", "N2O_ug_m2_h"))
+t_comb <- rbind(t1, t2, t3) %>%
+  rename(variable = name)
+facet_labels <- c("CH4_ug_m2_h" = "CH[4]",
+                  "CO2_ug_m2_h" = "CO[2]",
+                  "N2O_ug_m2_h" = "N[2]*O")
+fw <- ggplot(flux_data_long, aes(Treatment, value)) +
+  geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
+  geom_jitter(size = 4, width = 0.1, aes(colour = Treatment)) + 
+  geom_text(data = t_comb, aes(Treatment, y, label = str_trim(.group)), 
+            size = 4, color = "black") +
+  labs(x = "Treatment",
+       y = expression("Gas flux (µg/"*m^2*"/h)")) +
+  scale_y_continuous(trans = 'log10') +
+  scale_colour_manual(values = viridis_pal()(5)[2:5]) +
+  facet_wrap(~ variable, ncol = 1, scales = "free_y", labeller = as_labeller(facet_labels, default = label_parsed)) +
+  guides(colour = "none") +
+  theme_bw() +
+  theme(axis.title = element_text(size = 12),
+        axis.title.x = element_blank(),
+        axis.text = element_text(size = 10),
+        strip.text = element_text(size = 10),
+        strip.background = element_rect(fill = "white"))
+fw
+
+# Make pie charts with effect size
+m1 <- aov(CH4_ug_m2_h ~ SO4 + ASW, data = flux_data)
+summary(m1)
+anova(m1)
+Anova(m1, type = "II") # ASW
+eta_sq_m1 <- eta_sq(m1) %>%
+  as.data.frame() %>%
+  rownames_to_column(var = "group") %>%
+  set_names(c("group", "value")) %>%
+  mutate(group = c("SO4", "ASW***", "Residuals")) %>%
+  arrange(desc(group)) %>%
+  mutate(ypos = cumsum(value) - 0.5*value)
+p1 <- ggplot(eta_sq_m1, aes(x = "", y = value, fill = group)) +
+  geom_bar(stat = "identity", width = 1, color = NA) +
+  coord_polar("y", start = 0) +
+  geom_text(aes(y = ypos, label = group), color = "white", size = 2.5, check_overlap = T) +
+  scale_fill_manual(values = c("#5DC863FF", "grey70", "#21908CFF")) +
+  theme_void() + 
+  theme(legend.position = "none")
+
+m2 <- aov(CO2_ug_m2_h ~ SO4 + ASW, data = flux_data)
+summary(m2)
+anova(m2)
+Anova(m2, type = "II") # ASW
+eta_sq_m2 <- eta_sq(m2) %>%
+  as.data.frame() %>%
+  rownames_to_column(var = "group") %>%
+  set_names(c("group", "value")) %>%
+  mutate(group = c("SO4", "ASW*", "Residuals")) %>%
+  arrange(desc(group)) %>%
+  mutate(ypos = cumsum(value) - 0.5*value)
+p2 <- ggplot(eta_sq_m2, aes(x = "", y = value, fill = group)) +
+  geom_bar(stat = "identity", width = 1, color = NA) +
+  coord_polar("y", start = 0) +
+  geom_text(aes(y = ypos, label = group), color = "white", size = 2.5, check_overlap = T) +
+  scale_fill_manual(values = c("#5DC863FF", "grey70", "#21908CFF")) +
+  theme_void() + 
+  theme(legend.position = "none")
+
+m3 <- aov(N2O_ug_m2_h ~ SO4 + ASW, data = flux_data)
+summary(m3)
+anova(m3)
+Anova(m3, type = "II") # ASW
+eta_sq_m3 <- eta_sq(m3) %>%
+  as.data.frame() %>%
+  rownames_to_column(var = "group") %>%
+  set_names(c("group", "value")) %>%
+  mutate(group = c("SO4", "ASW*", "Residuals")) %>%
+  arrange(desc(group)) %>%
+  mutate(ypos = cumsum(value) - 0.5*value)
+p3 <- ggplot(eta_sq_m3, aes(x = "", y = value, fill = group)) +
+  geom_bar(stat = "identity", width = 1, color = NA) +
+  coord_polar("y", start = 0) +
+  geom_text(aes(y = ypos, label = group), color = "white", size = 2.5, check_overlap = T) +
+  scale_fill_manual(values = c("#5DC863FF", "grey70", "#21908CFF")) +
+  theme_void() + 
+  theme(legend.position = "none")
+
+plot_grid(g1, p1, g2, p2, g3, p3, ncol = 2, 
+          rel_heights = c(0.32, 0.32, 0.36), rel_widths = c(0.7, 0.3),
+          align = "hv")
+pies <- plot_grid(p1, p2, p3, NULL, ncol = 1, rel_heights = c(0.32, 0.32, 0.32, 0.04))
+pies
+graphs <- plot_grid(g1, g2, g3, ncol = 1, align = "v", rel_heights = c(0.32, 0.32, 0.36))
+graphs
+r1 <- plot_grid(g1, p1, ncol = 2, align = "h", rel_widths = c(0.7, 0.3))
+r1
+r2 <- plot_grid(g2, p2, ncol = 2, align = "h", rel_widths = c(0.7, 0.3))
+r2
+r3 <- plot_grid(g3, p3, ncol = 2, align = "h", rel_widths = c(0.7, 0.3))
+r3
+
+png("FinalFigs/Figure1.png", width = 6, height = 6, units = "in", res = 300)
+plot_grid(fw, pies, ncol = 2, rel_widths = c(0.7, 0.3))
+dev.off()
+
+
 
 # Linear regressions and scatterplots - Fluxes
 summary(lm(log(N2O_ug_m2_h) ~ log(CO2_ug_m2_h), data = flux_data)) # Sig.

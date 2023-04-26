@@ -116,11 +116,11 @@ paste_ranks = function(sm_taxa){
 }
 
 # Correlation functions from other repo
-source("~/Documents/GitHub/EastCoast/meth_corr_by_taxonomy.R")
-source("~/Documents/GitHub/EastCoast/meth_corr_by_bgc.R")
+source("~/Documents/GitHub/EastCoast/code/meth_corr_by_taxonomy.R")
+source("~/Documents/GitHub/EastCoast/code/meth_corr_by_bgc.R")
 
 # Plotting functions from other repo
-source("~/Documents/GitHub/EastCoast/cliffplot_taxa_bars.R")
+source("~/Documents/GitHub/EastCoast/code/cliffplot_taxa_bars.R")
 source("~/Documents/GitHub/Extremophilic_Fungi/plot_multipatt.R")
 
 # Repository path
@@ -389,7 +389,7 @@ rownames(nc$map_loaded)[19:23] <- c("SO4_2", "SO4_3", "SO4_4", "SO4_5A", "SO4_5B
 colnames(nc$data_loaded) <- rownames(nc$map_loaded)
 
 # Add C, N, C:N data (was received later)
-nc_cn <- read_excel("~/Documents/GitHub/EastCoast/Copy of CHN data.xls", sheet = 2) %>%
+nc_cn <- read_excel("~/Documents/GitHub/EastCoast/data/Copy of CHN data.xls", sheet = 2) %>%
   slice(12:91) %>%
   dplyr::select(Name, `%N`, `%C`, `C:N`) %>%
   mutate(Name = gsub("bottom", "bot", Name)) %>%
@@ -1277,9 +1277,13 @@ dev.off()
 
 
 #### _Methanogens ####
+nc$map_loaded$sampleID <- rownames(nc$map_loaded)
+nc$map_loaded$sampleID <- gsub("SO4", "+SO4", nc$map_loaded$sampleID)
+nc$map_loaded$sampleID <- gsub("ASW", "+ASW", nc$map_loaded$sampleID)
+nc$map_loaded$sampleID <- gsub("_S", "-SO4", nc$map_loaded$sampleID)
 nc_mg <- filter_taxa_from_input(nc,
-                                  taxa_to_keep = c("CH4_ac", "CH4_H2", "CH4_me", "CH4_mix"),
-                                  at_spec_level = 9)
+                                taxa_to_keep = c("CH4_ac", "CH4_H2", "CH4_me", "CH4_mix"),
+                                at_spec_level = 9)
 tax_sum_mg <- summarize_taxonomy(input = nc_mg, 
                                  level = 5, 
                                  report_higher_tax = T, 
@@ -1299,11 +1303,39 @@ topmg <- barsMG %>%
 barsMG <- barsMG %>%
   mutate(taxon = factor(taxon, levels = topmg$taxon)) %>%
   mutate(taxon = fct_rev(taxon))
+
+# Stats
+lab <- filter_data(nc,
+                   "Treatment",
+                   filter_vals = "Field")
+sum_fam_lab <- summarize_taxonomy(input = lab, level = 5, report_higher_tax = T)
+fam_stats_lab <- taxa_summary_by_sample_type(sum_fam_lab,
+                                             lab$map_loaded, 
+                                             type_header = 'Treatment', 
+                                             filter_level = 0, 
+                                             test_type = 'KW') %>%
+  rownames_to_column(var = "taxon") %>%
+  mutate(taxon = gsub("Archaea; ", "", taxon)) %>%
+  filter(taxon %in% barsMG$taxon) %>%
+  arrange(desc(taxon)) %>%
+  mutate(Pfdr = p.adjust(pvals, method = "fdr")) %>%
+  mutate(Sig = ifelse(Pfdr < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Star = ifelse(Pfdr < 0.05, "*", "")) %>%
+  arrange(match(taxon, levels(barsMG$taxon))) %>%
+  mutate(StarLab = paste(taxon, Star, sep = " "))
+statsMT <- barsMG %>%
+  left_join(., fam_stats_lab, by = "taxon") %>%
+  mutate(StarLab = ifelse(is.na(StarLab), taxon, StarLab)) %>%
+  group_by(taxon) %>%
+  slice_head(n = 1)
+stats_lab <- data.frame(taxon = levels(barsMG$taxon)) %>%
+  left_join(., statsMT, by = "taxon")
 png("InitialFigs/Methanogens_mTAG.png", width = 7, height = 5, units = "in", res = 300)
-ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
+fig5 <- ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
   geom_bar(stat = "identity", colour = NA, size = 0.25) +
   labs(x = "Sample", y = "% Abundance", fill = "Phylum; Class; Order; Family") +
-  scale_fill_manual(values = brewer_pal(palette = "Paired")(10)) +
+  scale_fill_manual(values = brewer_pal(palette = "Paired")(10),
+                    labels = stats_lab$StarLab) +
   scale_y_continuous(expand = c(0.01, 0.01)) +  
   facet_grid(~ Treatment, space = "free", scales = "free_x") +
   guides(fill = guide_legend(ncol = 1)) +
@@ -1313,7 +1345,7 @@ ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
         axis.text.y = element_text(size = 10),
         axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5, hjust = 1),
         axis.ticks.x = element_blank(),
-        strip.text = element_text(size = 6),
+        strip.text = element_text(size = 7),
         strip.background = element_rect(size = 0.2),
         axis.line.y = element_blank(),
         legend.position = c(0,1),
@@ -1321,6 +1353,11 @@ ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
         legend.background = element_blank(),
         legend.key.size = unit(0.25, "cm"),
         legend.text = element_text(size = 6))
+fig5
+dev.off()
+
+png("FinalFigs/Figure5.png", width = 7, height = 5, units = "in", res = 300)
+fig5
 dev.off()
 
 
