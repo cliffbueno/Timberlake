@@ -423,6 +423,12 @@ nrow(env_nona_nc) # n = 25
 
 
 #### _Aitch ####
+# Get env. vars with no NA
+env_nc2 <- input_filt_nc$map_loaded %>%
+  dplyr::select(10:27)
+env_nona_nc2 <- na.omit(env_nc2)
+nrow(env_nona_nc2) # n = 25
+
 # Use non-rarefied data, do CLR transformation, Aitchison, PCA
 sum(rownames(nc$map_loaded) != rownames(input_filt_nc$map_loaded))
 input_filt_nc$map_loaded <- nc$map_loaded
@@ -531,6 +537,14 @@ png("FinalFigs/Figure3.png", width = 7, height = 5, units = "in", res = 300)
 plot.with.inset2
 dev.off()
 
+# RDA
+comm_nona_nc <- as.data.frame(t(input_filt_nc$data_loaded)) %>%
+  filter(rownames(.) %in% rownames(env_nona_nc2))
+mod0 <- rda(comm_nona_nc ~ 1, env_nona_nc2)  # Model with intercept only
+mod1 <- rda(comm_nona_nc ~ ., env_nona_nc2)  # Model with all explanatory variables
+mod <- ordistep(mod0, scope = formula(mod1))
+mod
+mod$anova # DIN, Br, C:N
 
 
 
