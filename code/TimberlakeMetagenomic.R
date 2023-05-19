@@ -382,7 +382,7 @@ pheatmap(KO_Resp_HeatDStt,
          gaps_row = c(12, 19, 25, 31, 50),
          gaps_col = c(5, 10, 13),
          #filename = "InitialFigs/KO_heatmap.png",
-         filename = "FinalFigs/Figure3.png",
+         filename = "FinalFigs/Figure7.png",
          width = 7,
          height = 7)
 dev.off()

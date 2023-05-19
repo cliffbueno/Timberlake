@@ -1110,6 +1110,12 @@ png("FinalFigs/Figure4.png", width = 8, height = 6, units = "in", res = 300)
 plot_grid(phy, gui, ncol = 1, rel_heights = c(0.45, 0.55), align = "v")
 dev.off()
 
+# Check SRB abundance range
+srbs <- as.data.frame(t(tax_sum_guilds)) %>%
+  mutate(srbs = SRB + SRB_syn)
+min(srbs$srbs)
+max(srbs$srbs)
+
 # Stats
 # All data
 phy_stats <- taxa_summary_by_sample_type(tax_sum_phyla, 
@@ -1278,8 +1284,13 @@ dev.off()
 
 #### _Methanogens ####
 nc_mg <- filter_taxa_from_input(nc,
-                                  taxa_to_keep = c("CH4_ac", "CH4_H2", "CH4_me", "CH4_mix"),
-                                  at_spec_level = 9)
+                                taxa_to_keep = c("CH4_ac", "CH4_H2", "CH4_me", "CH4_mix"),
+                                at_spec_level = 9)
+tax_sum_mg <- summarize_taxonomy(input = nc_mg, 
+                                 level = 5, 
+                                 report_higher_tax = T, 
+                                 relative = F) %>%
+  mutate_all(funs((./82312)*100))
 tax_sum_mg <- summarize_taxonomy(input = nc_mg, 
                                  level = 5, 
                                  report_higher_tax = F, 
