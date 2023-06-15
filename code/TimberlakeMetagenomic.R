@@ -1148,4 +1148,88 @@ dev.set(dev.next())
 
 
 
+#### 12. Salt Tolerance ####
+salt_orig <- read_excel("~/Desktop/Methanolobus/SaltGenes.xlsx") %>%
+  filter(KO != "NA") %>%
+  mutate(Type = as.factor(Type),
+         Solute = as.factor(Solute)) %>%
+  group_by(KO) %>%
+  slice_head(n = 1)
+salt_orig$Order[28] <- 66.5 # Fix glutamine order
+KO_table <- KO_VST_CPM %>% # DESeq + CPM normalized KO table
+  select(-KO) %>%
+  mutate(sum = rowSums(.)) %>% # Get row sums
+  filter(sum > 0) %>% # Remove zeroes
+  mutate(KO = rownames(.)) %>%
+  select(-sum)
+s_meta <- KO_table %>%
+  filter(KO %in% salt_orig$KO) %>%
+  left_join(., salt_orig, by = "KO") %>%
+  arrange(Order) %>%
+  droplevels()
+salt <- read_excel("~/Desktop/Methanolobus/SaltGenes.xlsx") %>%
+  filter(KO != "NA") %>%
+  group_by(KO) %>%
+  slice_head(n = 1) %>%
+  ungroup() %>%
+  arrange(Order) %>%
+  select(KO, Pathway_general, Code, Order)
+salt$Order[46] <- 66.5 # fix glutamine order
+salt <- salt %>%
+  arrange(Order)
+s <- KO_table %>%
+  filter(KO %in% salt$KO) %>%
+  left_join(., salt, by = "KO") %>%
+  mutate(KO = paste(KO, Code, sep = " ")) %>%
+  mutate(KO = paste(KO, Pathway_general, sep = "; ")) %>%
+  arrange(Order)
+s_mat <- s %>%
+  select(-Pathway_general, -Code, -Order) %>%
+  column_to_rownames(var = "KO") %>%
+  select(-ASW_1, ASW_1) %>%
+  select(-ASW_2, ASW_2) %>%
+  select(-ASW_3, ASW_3) %>%
+  select(-ASW_4, ASW_4) %>%
+  select(-ASW_5, ASW_5) %>%
+  as.matrix()
+ann_rows <- data.frame(row.names = rownames(s_mat), Type = s_meta$Type, Solute = s_meta$Solute)
+ann_colors <- list(Type = c(Biosynthesis = "#440154FF", Transport = "#FDE725FF"),
+                   Solute = c(Betaine = hue_pal()(length(levels(s_meta$Solute)))[1],
+                              Cation = hue_pal()(length(levels(s_meta$Solute)))[2],
+                              Choline = hue_pal()(length(levels(s_meta$Solute)))[3],
+                              Ectoine = hue_pal()(length(levels(s_meta$Solute)))[4],
+                              Glutamate = hue_pal()(length(levels(s_meta$Solute)))[5],
+                              Glutamine = hue_pal()(length(levels(s_meta$Solute)))[6],
+                              Hydroxyectoine = hue_pal()(length(levels(s_meta$Solute)))[7],
+                              Proline = hue_pal()(length(levels(s_meta$Solute)))[8],
+                              Sucrose = hue_pal()(length(levels(s_meta$Solute)))[9],
+                              Trehalose = hue_pal()(length(levels(s_meta$Solute)))[10]))
+pheatmap(s_mat,
+         legend = T,
+         legend_breaks = c(-4,-3,-2,-1,0,1,2,3,4),
+         legend_labels = c("-4","-3","-2","-1","0","1","2","3","Abund.\n"),
+         main = "",
+         gaps_col = c(5, 10, 13),
+         gaps_row = c(16, 28, 31, 36, 41, 42, 43, 48, 49),
+         #color = bluered(100),
+         border_color = NA,
+         scale = "row",
+         angle_col = 315,
+         annotation_row = ann_rows,
+         annotation_colors = ann_colors,
+         fontsize = 8,
+         fontsize_row = 6,
+         cluster_rows = F,
+         cluster_cols = F,
+         filename = "InitialFigs/KO_heatmap_salt.png",
+         width = 8,
+         height = 8
+         )
+dev.off()
+dev.set(dev.next())
+dev.set(dev.next())
+# Note, this shows 75 KOs present in at least 1 metagenome. The list had 78, so 3 weren't present in any!
+
+
+
 #### End Script ####
