@@ -148,6 +148,10 @@ res_LRT <- results(lrt)
 res_LRT
 plotMA(res_LRT)
 
+# Store to check later
+res_LRT_df <- as.data.frame(res_LRT$padj) %>%
+  mutate(KO = rownames(KO_otu))
+
 
 
 #### 2. DESeq2 Linear contrasts ####
@@ -1149,6 +1153,14 @@ dev.set(dev.next())
 
 
 #### 12. Salt Tolerance ####
+res_LRT_df_sig <- subset(res_LRT_df, res_LRT$padj < 0.05)
+salt_sig <- read_excel("~/Desktop/Methanolobus/SaltGenes.xlsx") %>%
+  filter(KO != "NA") %>%
+  mutate(Type = as.factor(Type),
+         Solute = as.factor(Solute)) %>%
+  group_by(KO) %>%
+  slice_head(n = 1) %>%
+  filter(KO %in% res_LRT_df_sig$KO)
 salt_orig <- read_excel("~/Desktop/Methanolobus/SaltGenes.xlsx") %>%
   filter(KO != "NA") %>%
   mutate(Type = as.factor(Type),
