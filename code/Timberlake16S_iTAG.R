@@ -40,6 +40,7 @@
 ## 5. Taxa
 ## 6. Indicators
 ## 7. Correlations with BGC
+## 8. NCBI Submission
 
 
 
@@ -1974,6 +1975,61 @@ png("InitialFigs/CH4_Guilds.png", width = 7, height = 5, units = "in", res = 300
 meth_corr_by_taxonomy(input = nc, level = 9, threshold = 0, data = "No")
 dev.off()
 
+
+
+#### 8. NCBI ####
+write.csv(nc$map_loaded, "data/metadata_used.csv")
+# Repset is in EastCoast folder, then filter to these samples.
+# Also make sample-sequence map file
+library(microseq)
+f <- microseq::readFasta("~/Documents/GitHub/EastCoast/data/repset.comb.fasta") %>%
+  separate(Header, into = c("Header", "Junk"), sep = " ") %>%
+  dplyr::select(-Junk) %>%
+  filter(Header %in% rownames(nc$data_loaded))
+microseq::writeFasta(f, "data/repset_used.fasta")
+
+# Map sequences to samples - Info is in data_loaded
+# This takes a while!
+info <- nc$data_loaded
+names(info) <- nc$map_loaded$sampleID_clean
+for (i in 1:ncol(info)) {
+  for (j in 1:nrow(info)) {
+    ifelse(info[j, i] > 0, info[j, i] <- names(info)[i], info[j, i] <- "")
+  }
+}
+
+# Merge columns
+info_cat <- info
+info_cat <- info_cat %>%
+  mutate_all(na_if, "") %>%
+  mutate(unite(., "sample_name", c(names(info)), sep = ", ")) %>%
+  mutate(sample_name = gsub("NA, ", "", sample_name)) %>%
+  mutate(sample_name = gsub(", NA", "", sample_name)) %>%
+  rownames_to_column(var = "Sequence_ID") %>%
+  dplyr::select(Sequence_ID, sample_name)
+
+# They don't accept multiple samples, so make another one with just the first sample
+info_first <- info_cat %>%
+  separate(sample_name, into = c("sample_name", "Junk"), sep = ", ") %>%
+  dplyr::select(Sequence_ID, sample_name)
+
+# Save
+write_tsv(info_cat, file = "data/biosample_assignment.tsv")
+write_tsv(info_first, file = "data/biosample_assignment_first.tsv")
+
+# Filter out NCBI flagged sequences
+flagged <- read.csv("data/NCBI_filter.csv")
+f <- readFasta("data/repset_used.fasta") %>%
+  filter(Header %notin% flagged$ASV_ID)
+microseq::writeFasta(f, "data/repset_used_filtered.fasta")
+sum(f$Header %in% flagged$ASV_ID)
+
+info_cat <- read_tsv("data/biosample_assignment.tsv") %>%
+  filter(Sequence_ID %notin% flagged$ASV_ID)
+info_first <- read_tsv("data/biosample_assignment_first.tsv") %>%
+  filter(Sequence_ID %notin% flagged$ASV_ID)
+write_tsv(info_cat, file = "data/biosample_assignment_filt.tsv")
+write_tsv(info_first, file = "data/biosample_assignment_first_filt.tsv")
 
 
 #### End Script ####
