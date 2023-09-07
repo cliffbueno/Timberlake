@@ -1978,7 +1978,7 @@ dev.off()
 
 
 #### 8. NCBI ####
-write.csv(nc$map_loaded, "data/metadata_used.csv")
+#write.csv(nc$map_loaded, "data/metadata_used.csv")
 # Repset is in EastCoast folder, then filter to these samples.
 # Also make sample-sequence map file
 library(microseq)
@@ -2030,6 +2030,17 @@ info_first <- read_tsv("data/biosample_assignment_first.tsv") %>%
   filter(Sequence_ID %notin% flagged$ASV_ID)
 write_tsv(info_cat, file = "data/biosample_assignment_filt.tsv")
 write_tsv(info_first, file = "data/biosample_assignment_first_filt.tsv")
+
+# Filter a second time (ASV_32675)
+f <- readFasta("data/repset_used_filtered.fasta") %>%
+  filter(Header != "ASV_32675")
+microseq::writeFasta(f, "data/repset_used_filtered2.fasta")
+info_cat <- read_tsv("data/biosample_assignment_filt.tsv") %>%
+  filter(Sequence_ID != "ASV_32675")
+info_first <- read_tsv("data/biosample_assignment_first_filt.tsv") %>%
+  filter(Sequence_ID != "ASV_32675")
+write_tsv(info_cat, file = "data/biosample_assignment_filt2.tsv")
+write_tsv(info_first, file = "data/biosample_assignment_first_filt2.tsv")
 
 
 #### End Script ####
