@@ -95,7 +95,7 @@ source("~/Documents/GitHub/EastCoast/code/meth_corr_by_bgc.R")
 
 # Plotting functions from other repo
 source("~/Documents/GitHub/EastCoast/code/cliffplot_taxa_bars.R")
-source("~/Documents/GitHub/Extremophilic_Fungi/plot_multipatt.R")
+source("~/Documents/GitHub/Extremophilic_Fungi/code/plot_multipatt.R")
 
 # Effect size from Jack Darcy
 source("~/Documents/GitHub/Timberlake/code/effectSize.R")
@@ -119,7 +119,10 @@ Guild_cols <- read.table("~/Documents/GitHub/SF_microbe_methane/data/colors/Guil
   filter(Guild != "Anamx") %>%
   arrange(Index)
 
-# Prepare data. Only need to do once. Then skip to start here.
+
+
+#### _Prepare data ####
+# Only need to do once. Then skip to start here.
 # Read in combined dataset (with other samples)
 input_filt <- readRDS("data/input_filt_comb_wBGC.rds")
 # Get only Timberlake samples
@@ -304,6 +307,11 @@ png("InitialFigs/Venn.png", width = 7, height = 5, units = "in", res = 300)
 plot_venn_diagram2(nc, "Treatment2", pres_thresh = 0.0000000000000000000000000001)
 dev.off()
 
+# Include in manuscript as supplemental figure
+png("FinalFigs/FigureS2.png", width = 7, height = 5, units = "in", res = 300)
+plot_venn_diagram2(nc, "Treatment2", pres_thresh = 0.0000000000000000000000000001)
+dev.off()
+
 # Test and plot
 leveneTest(nc$map_loaded$rich ~ nc$map_loaded$Treatment) # Homogeneous
 m <- aov(rich ~ Treatment * Depth, data = nc$map_loaded)
@@ -416,6 +424,7 @@ dev.off()
 
 #### 4. Beta ####
 # Get env. vars with no NA
+names(nc$map_loaded)
 env_nc <- nc$map_loaded %>%
   dplyr::select(10:27)
 env_nona_nc <- na.omit(env_nc)
@@ -821,7 +830,8 @@ pcoaA2 <- round((eigenvals(nc_pcoa)/sum(eigenvals(nc_pcoa)))[2]*100, digits = 1)
 nc$map_loaded$Axis01 <- scores(nc_pcoa)[,1]
 nc$map_loaded$Axis02 <- scores(nc_pcoa)[,2]
 micro.hulls <- ddply(nc$map_loaded, c("Treatment"), find_hull)
-png("InitialFigs/Beta_Jac.png", width = 7, height = 5, units = "in", res = 300)
+#png("InitialFigs/Beta_Jac.png", width = 7, height = 5, units = "in", res = 300)
+png("FinalFigs/FigureS4.png", width = 7, height = 5, units = "in", res = 300)
 ggplot(nc$map_loaded, aes(Axis01, Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
@@ -1067,7 +1077,7 @@ phy <- ggplot(barsP, aes(group_by, mean_value, fill = taxon)) +
         axis.ticks.x = element_blank(),
         axis.line.x = element_blank(),
         strip.text = element_text(size = 7),
-        strip.background = element_rect(size = 0.2),
+        strip.background = element_rect(linewidth = 0.2),
         axis.line.y = element_blank(),
         legend.margin = margin(0, 0, 0, 5, unit = "pt"),
         legend.box.margin = margin(0, 0, 0, 5, unit = "pt"),
@@ -1108,7 +1118,7 @@ gui <- ggplot(barsG, aes(group_by, mean_value, fill = taxon)) +
         axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5, hjust = 1),
         axis.ticks.x = element_blank(),
         strip.text = element_blank(),
-        strip.background = element_rect(size = 0.2),
+        strip.background = element_rect(linewidth = 0.2),
         axis.line.y = element_blank(),
         legend.margin = margin(0, 0, 0, -10, unit = "pt"),
         legend.box.margin = margin(0, 0, 0, -10, unit = "pt"),
@@ -1122,7 +1132,7 @@ plot_grid(phy, gui, ncol = 1, rel_heights = c(0.45, 0.55), align = "v")
 dev.off()
 
 png("FinalFigs/Figure4.png", width = 8, height = 6, units = "in", res = 300)
-plot_grid(phy, gui, ncol = 1, rel_heights = c(0.45, 0.55), align = "v")
+plot_grid(phy, gui, ncol = 1, rel_heights = c(0.45, 0.55), align = "v", labels = "auto")
 dev.off()
 
 # Check SRB abundance range
@@ -1565,6 +1575,60 @@ pheatmap(simper_mat,
 dev.off()
 dev.set(dev.next())
 dev.set(dev.next())
+
+# Get % rel. abundance for the top 10 contributors of each comparison
+tax_sum_ASV <- summarize_taxonomy(input = nc, level = 8, report_higher_tax = F)
+nc_df1_abund <- tax_sum_ASV %>%
+  filter(rownames(.) %in% nc_df1$ASV) %>%
+  colSums(.) %>%
+  as.data.frame() %>%
+  set_names("RelAbund") %>%
+  rownames_to_column(var = "sampleID") %>%
+  mutate(Comparison = "Comp. 1")
+nc_df2_abund <- tax_sum_ASV %>%
+  filter(rownames(.) %in% nc_df2$ASV) %>%
+  colSums(.) %>%
+  as.data.frame() %>%
+  set_names("RelAbund") %>%
+  rownames_to_column(var = "sampleID") %>%
+  mutate(Comparison = "Comp. 2")
+nc_df3_abund <- tax_sum_ASV %>%
+  filter(rownames(.) %in% nc_df3$ASV) %>%
+  colSums(.) %>%
+  as.data.frame() %>%
+  set_names("RelAbund") %>%
+  rownames_to_column(var = "sampleID") %>%
+  mutate(Comparison = "Comp. 3")
+nc_df4_abund <- tax_sum_ASV %>%
+  filter(rownames(.) %in% nc_df4$ASV) %>%
+  colSums(.) %>%
+  as.data.frame() %>%
+  set_names("RelAbund") %>%
+  rownames_to_column(var = "sampleID") %>%
+  mutate(Comparison = "Comp. 4")
+nc_df5_abund <- tax_sum_ASV %>%
+  filter(rownames(.) %in% nc_df5$ASV) %>%
+  colSums(.) %>%
+  as.data.frame() %>%
+  set_names("RelAbund") %>%
+  rownames_to_column(var = "sampleID") %>%
+  mutate(Comparison = "Comp. 5")
+nc_df6_abund <- tax_sum_ASV %>%
+  filter(rownames(.) %in% nc_df6$ASV) %>%
+  colSums(.) %>%
+  as.data.frame() %>%
+  set_names("RelAbund") %>%
+  rownames_to_column(var = "sampleID") %>%
+  mutate(Comparison = "Comp. 6")
+check_abund <- rbind(nc_df1_abund, nc_df2_abund, nc_df3_abund,
+                     nc_df4_abund, nc_df5_abund, nc_df6_abund)
+check_abund_min_max <- check_abund %>%
+  group_by(Comparison) %>%
+  summarise(min = min(RelAbund),
+            max = max(RelAbund))
+mean(check_abund$RelAbund)
+se(check_abund$RelAbund)
+
 
 
 
