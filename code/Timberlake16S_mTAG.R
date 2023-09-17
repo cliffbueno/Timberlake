@@ -121,7 +121,7 @@ source("~/Documents/GitHub/EastCoast/code/meth_corr_by_bgc.R")
 
 # Plotting functions from other repo
 source("~/Documents/GitHub/EastCoast/code/cliffplot_taxa_bars.R")
-source("~/Documents/GitHub/Extremophilic_Fungi/plot_multipatt.R")
+source("~/Documents/GitHub/Extremophilic_Fungi/code/plot_multipatt.R")
 
 # Repository path
 setwd("~/Documents/GitHub/Timberlake/")
@@ -142,7 +142,10 @@ Guild_cols <- read.table("~/Documents/GitHub/SF_microbe_methane/data/colors/Guil
   filter(Guild != "Anamx") %>%
   arrange(Index)
 
-# Prepare data. Only need to do once. Then skip to start here
+
+
+#### _Prepare data ####
+# Only need to do once. Then skip to start here
 # Need to make mctoolsr object from the merged mTAGs output
 # Input file and reformat everything
 # Separate euks and proks
@@ -443,6 +446,25 @@ t <- emmeans(object = m, specs = "Treatment") %>%
   cld(object = ., adjust = "Tukey", Letters = letters, alpha = 0.05) %>%
   mutate(name = "rich",
          y = max(nc$map_loaded$rich)+(max(nc$map_loaded$rich)-min(nc$map_loaded$rich))/20)
+
+# Plot to check order. then manually order multipanel accordingly
+ggplot(nc$map_loaded, aes(reorder(Treatment, rich, mean), rich, 
+                       colour = Treatment)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(size = 2, alpha = 0.75, width = 0.2, shape = 17) +
+  labs(x = "Site", y = "Number of OTUs", shape = "Depth (cm)") +
+  scale_colour_viridis_d() +
+  guides(colour = "none") +
+  theme_bw() +
+  theme(legend.position = c(1,0),
+        legend.justification = c(1,0),
+        legend.background = element_blank(),
+        legend.title.align = 0.5,
+        axis.title = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.text.x = element_text(size = 6),
+        strip.text = element_text(size = 10))
+
 leveneTest(nc$map_loaded$shannon ~ nc$map_loaded$Treatment) # Homogeneous
 m1 <- aov(shannon ~ Treatment, data = nc$map_loaded)
 shapiro.test(m1$residuals) # Almost normal
