@@ -432,6 +432,7 @@ Get_16S_Guilds_alt = function(otu_V){
 
     methylo["Guild"]<-factor(methylo$Guild, levels = c("MOB_I","MOB_II", "MOB_IIa", "MeOB"))     # Reorder Guild factor
     methylo <- methylo[order(methylo$Guild),]                                                    # Sort by Guild
+    methylo <- methylo[!grepl("Methylophilaceae", methylo$Consensus.lineage),] # drop Methylotenera, not MOB
     #dim(methylo); levels(methylo$Genus); levels(methylo$Guild); unique(methylo); #methylo  #levels(MOB_II$Class);
 
     #############################################
