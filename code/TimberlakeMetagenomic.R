@@ -70,6 +70,13 @@ ggplot(checkPMO_long, aes(x = value, colour = variable)) +
   geom_density() +
   labs(x = "Count", y = "Density", colour = "KO") +
   theme_classic()
+
+# Check dsrA taxa. Downloaded dsrA from IMG 10/15/23. Present in 1252 genomes
+dsrA <- read.delim("data/dsrA_IMG_1252_10.15.23.txt") %>%
+  arrange(Domain, Genome.Name) %>%
+  separate(Genome.Name, into = c("Genus", "Species", "Strain"), sep = " ")
+table(dsrA$Domain) # 68 Archaea, 1183 Bacteria, 1 Virus
+length(table(dsrA$Genus))
   
 # df of KO gene fxns
 TL_KO_fxn <- TL_KO_raw %>%

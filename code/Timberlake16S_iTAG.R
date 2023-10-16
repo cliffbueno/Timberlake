@@ -287,6 +287,13 @@ nc$map_loaded$ASW <- recode_factor(nc$map_loaded$Treatment,
                                    "+ASW" = "SaltSulfate")
 nc$map_loaded$ASW <- grepl(x = nc$map_loaded$ASW, pattern = "Salt")
 
+# Remove Methylotenera from MOB guild
+for (i in 1:nrow(nc$taxonomy_loaded)) {
+  if (nc$taxonomy_loaded$taxonomy6[i] == "Methylotenera") {
+    nc$taxonomy_loaded$taxonomy9[i] <- "NA"
+  }
+}
+
 
 
 #### 3. Alpha ####
@@ -1269,6 +1276,10 @@ png("InitialFigs/Ratios.png", width = 8, height = 4, units = "in", res = 300)
 plot_grid(a, b, l, ncol = 3, rel_widths = c(0.43, 0.43, 0.14), labels = c("a", "b", ""))
 dev.off()
 
+png("FinalFigs/FigureS7.png", width = 8, height = 4, units = "in", res = 300)
+plot_grid(a, b, l, ncol = 3, rel_widths = c(0.43, 0.43, 0.14), labels = c("a", "b", ""))
+dev.off()
+
 # MG:MT
 leveneTest(nc$map_loaded$MG_MT ~ nc$map_loaded$Treatment) # Homogeneous
 m <- aov(MG_MT ~ Treatment + Depth, data = nc$map_loaded)
@@ -1308,6 +1319,13 @@ dev.off()
 
 
 #### _Methanogens ####
+# Need to fix SILVA typo: Halobacterota -> Halobacteriota
+for (i in 1:nrow(nc$taxonomy_loaded)) {
+  if (nc$taxonomy_loaded$taxonomy2[i] == "Halobacterota") {
+    nc$taxonomy_loaded$taxonomy2[i] <- "Halobacteriota"
+  }
+}
+
 nc_mg <- filter_taxa_from_input(nc,
                                 taxa_to_keep = c("CH4_ac", "CH4_H2", "CH4_me", "CH4_mix"),
                                 at_spec_level = 9)
@@ -1362,7 +1380,6 @@ fig5 <- ggplot(barsMG, aes(group_by, mean_value, fill = taxon)) +
         panel.spacing.x = unit(c(0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25), "lines"))
 fig5
 dev.off()
-
 
 
 
@@ -1458,6 +1475,100 @@ fig6
 dev.off()
 
 
+#### _SRB ####
+# Need to get top SRB taxa
+# Then look at cultured isolates to check salinity tolerance
+nc_srb <- filter_taxa_from_input(nc,
+                                taxa_to_keep = c("SRB", "SRB_syn"),
+                                at_spec_level = 9)
+tax_sum_srb <- summarize_taxonomy(input = nc_srb, 
+                                 level = 6, 
+                                 report_higher_tax = F, 
+                                 relative = F) %>%
+  # filter(rownames(.) != "NA") %>%
+  mutate_all(funs((./82312)*100))
+barssrb <- plot_taxa_bars(tax_sum_srb,
+                         nc_srb$map_loaded,
+                         "sampleID_clean",
+                         num_taxa = 20,
+                         data_only = TRUE) %>%
+  mutate(taxon = gsub("NA", "Unclassified", taxon)) %>%
+  mutate(taxon = fct_relevel(taxon, "Other", after = Inf)) %>%
+  mutate(taxon = fct_relevel(taxon, "Unclassified", after = Inf)) %>%
+  mutate(taxon = fct_rev(taxon)) %>%
+  left_join(., nc_srb$map_loaded, by = c("group_by" = "sampleID_clean"))
+topsrb <- barssrb %>%
+  group_by(taxon) %>%
+  summarise(mean = mean(mean_value)) %>%
+  arrange(-mean)
+barssrb <- barssrb %>%
+  mutate(taxon = factor(taxon, levels = topsrb$taxon)) %>%
+  mutate(taxon = fct_relevel(taxon, "Other", after = Inf)) %>%
+  mutate(taxon = fct_relevel(taxon, "Unclassified", after = Inf)) %>%
+  mutate(taxon = fct_rev(taxon))
+nb.cols <- 19
+mycolors <- colorRampPalette(brewer.pal(12, "Paired"))(nb.cols)
+
+# Stats
+lab <- filter_data(nc,
+                   "Treatment",
+                   filter_vals = "Field")
+sum_gen_lab <- summarize_taxonomy(input = lab, level = 6, report_higher_tax = F)
+gen_stats_lab <- taxa_summary_by_sample_type(sum_gen_lab,
+                                             lab$map_loaded, 
+                                             type_header = 'Treatment', 
+                                             filter_level = 0, 
+                                             test_type = 'KW') %>%
+  filter(rownames(.) %in% barssrb$taxon) %>%
+  arrange(desc(rownames(.))) %>%
+  mutate(Pfdr = p.adjust(pvals, method = "fdr")) %>%
+  mutate(Sig = ifelse(Pfdr < 0.05, "Pfdr < 0.05", "Pfdr > 0.05")) %>%
+  mutate(Star = ifelse(Pfdr < 0.05, "*", "")) %>%
+  rownames_to_column(var = "taxon") %>%
+  arrange(match(taxon, levels(barssrb$taxon))) %>%
+  mutate(StarLab = paste(taxon, Star, sep = " "))
+statssrb <- barssrb %>%
+  left_join(., gen_stats_lab, by = "taxon") %>%
+  mutate(StarLab = ifelse(is.na(StarLab), taxon, StarLab)) %>%
+  mutate(taxon = fct_relevel(taxon, "Other", after = Inf)) %>%
+  mutate(taxon = fct_relevel(taxon, "Unclassified", after = Inf)) %>%
+  mutate(taxon = fct_rev(taxon)) %>%
+  group_by(taxon) %>%
+  slice_head(n = 1)
+stats_lab <- data.frame(taxon = levels(barssrb$taxon)) %>%
+  left_join(., statssrb, by = "taxon")
+
+ggplot(barssrb, aes(group_by, mean_value, fill = taxon)) +
+  geom_bar(stat = "identity", colour = NA, size = 0.25) +
+  labs(x = "Sample", y = "% Abundance", fill = "Genus") +
+  scale_fill_manual(values = c("grey75", "grey90", mycolors),
+                    labels = stats_lab$StarLab) +
+  scale_y_continuous(expand = c(0.01, 0.01)) +  
+  facet_nested(~ Treatment + Depth, space = "free", scales = "free_x") +
+  guides(fill = guide_legend(ncol = 1)) +
+  theme_classic() +
+  theme(axis.title.y = element_text(face = "bold", size = 12),
+        axis.title.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.text.x = element_text(size = 8, angle = 90, vjust = 0.5, hjust = 1),
+        axis.ticks.x = element_blank(),
+        strip.text = element_text(size = 7),
+        strip.background = element_rect(size = 0.2),
+        axis.line.y = element_blank(),
+        legend.position = c(0,1),
+        legend.justification = c(0,1),
+        legend.background = element_blank(),
+        legend.key.size = unit(0.3, "cm"),
+        panel.spacing.x = unit(c(0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25, 0.5, 0.25), "lines"))
+
+
+
+#### _SRA ####
+# Check if any sulfate reducing archaea (Archaeoglobus, Caldivirga)
+nc_sra <- filter_taxa_from_input(nc,
+                                 taxa_to_keep = c("Archaeoglobus", "Caldivirga"),
+                                 at_spec_level = 6)
+# Not found!
 
 #### 6. Indicators ####
 #### _Simper ####

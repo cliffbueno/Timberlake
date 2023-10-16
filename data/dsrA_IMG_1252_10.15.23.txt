@@ -1,0 +1,1253 @@
+Domain	Status	Genome ID	Genome Name	
+Archaea	Finished	641228483	Caldivirga maquilingensis IC-167	
+Archaea	Finished	2511231093	Thermoproteus tenax Kra1	
+Archaea	Permanent Draft	2728369306	Archaeoglobus sp. JdFR-41	
+Archaea	Permanent Draft	2728369307	Archaeoglobus sp. JdFR-39	
+Archaea	Permanent Draft	2728369335	Archaeoglobus sp. JdFR-38	
+Archaea	Permanent Draft	2770939430	unclassified Thaumarchaeota Obs6_genome_101 Obs6_genome_101	
+Archaea	Finished	639633053	Pyrobaculum islandicum DSM 4184	
+Archaea	Finished	641522657	Pyrobaculum neutrophilum V24Sta	
+Archaea	Permanent Draft	2681813011	Vulcanisaeta distributa JCM 11216	
+Archaea	Permanent Draft	2718217643	Unclassified Aigarchaeota JZ bin_15	
+Archaea	Permanent Draft	2728369333	Archaeoglobus sp. JdFR-31	
+Archaea	Permanent Draft	2770939344	unclassified Thaumarchaeota Obs2_genome_015 Obs2_genome_015	
+Archaea	Permanent Draft	2770939356	Caldivirga sp. Obs2_genome_027 Obs2_genome_027	
+Archaea	Permanent Draft	2770939375	unclassified Candidatus Geoarchaeota Obs3_genome_046 Obs3_genome_046	
+Archaea	Permanent Draft	2791354985	Vulcanisaeta thermophila CBA1501	
+Archaea	Finished	638154513	Pyrobaculum aerophilum IM2	
+Archaea	Finished	640427135	Pyrobaculum arsenaticum PZ6, DSM 13514	
+Archaea	Finished	2504136002	Archaeoglobus veneficus SNP6, DSM 11195	
+Archaea	Permanent Draft	2522125038	Thermoproteales-Type-1-TT1-r01	
+Archaea	Permanent Draft	2522125040	Thermoproteales-Type-1-TT1-r03	
+Archaea	Permanent Draft	2681813042	Vulcanisaeta sp. JCM 14467	
+Archaea	Permanent Draft	2728369309	Archaeoglobus sp. JdFR-35	
+Archaea	Permanent Draft	2728369317	Candidatus Hydrothermarchaeota archaeon JdFR-16	
+Archaea	Permanent Draft	2728369320	Candidatus Hydrothermarchaeota archaeon JdFR-18	
+Archaea	Permanent Draft	2728369326	Archaeoglobus sp. JdFR-24	
+Archaea	Permanent Draft	2770939332	unclassified Archaeon Obs2_genome_003 Obs2_genome_003	
+Archaea	Permanent Draft	2770939402	Caldivirga sp. Obs4_genome_073 Obs4_genome_073	
+Archaea	Permanent Draft	2770939429	unclassified Thermoplasmatales Obs6_genome_100 Obs6_genome_100	
+Archaea	Permanent Draft	2504557010	Thermoproteales Type I	
+Archaea	Permanent Draft	2264867229	Aigarchaeota archaeon JGI 0000106-J15 (contamination screened)	
+Archaea	Permanent Draft	2728369310	Archaeoglobus sp. JdFR-22	
+Archaea	Permanent Draft	2728369313	Archaeoglobus sp. JdFR-26	
+Archaea	Permanent Draft	2728369331	Archaeoglobus sp. JdFR-34	
+Archaea	Permanent Draft	2770939342	Archaeoglobus sp. Obs2_genome_013 Obs2_genome_013	
+Archaea	Permanent Draft	2551306702	Pyrobaculum T1 r02	
+Archaea	Permanent Draft	2728369327	Archaeoglobus sp. JdFR-27	
+Archaea	Permanent Draft	2728369329	Archaeoglobus sp. JdFR-23	
+Archaea	Permanent Draft	2728369330	Archaeoglobus sp. JdFR-32	
+Archaea	Finished	640069326	Pyrobaculum calidifontis JCM 11548	
+Archaea	Finished	650377985	Vulcanisaeta moutnovskia 768-28	
+Archaea	Finished	2512047039	Pyrobaculum oguniense TE7, DSM 13380	
+Archaea	Permanent Draft	2505313064	Thermofilum sp.	
+Archaea	Permanent Draft	2528311132	Archaeoglobus fulgidus 7324	
+Archaea	Permanent Draft	2551306700	Pyrobaculum T1 r03	
+Archaea	Permanent Draft	2681813009	Vulcanisaeta distributa JCM 11213	
+Archaea	Permanent Draft	2721755890	Archaeoglobus sp. JZ bin_24	
+Archaea	Permanent Draft	2728369312	Archaeoglobus sp. JdFR-25	
+Archaea	Permanent Draft	2770939350	unclassified Candidatus Geoarchaeota Obs2_genome_021 Obs2_genome_021	
+Archaea	Permanent Draft	2770939391	unclassified Thermoproteaceae Obs4_genome_062 Obs4_genome_062	
+Archaea	Permanent Draft	2829320537	Methanosarcinales archaeon DeMMO5_32	
+Archaea	Permanent Draft	2999999831	Methanodesulfokores washburnensis MDKW	
+Archaea	Finished	638154502	Archaeoglobus fulgidus VC-16, DSM 4304	
+Archaea	Finished	646311906	Archaeoglobus profundus Av18, DSM 5631	
+Archaea	Finished	648028062	Vulcanisaeta distributa DSM 14429	
+Archaea	Permanent Draft	2504557009	Thermoproteales Type I archaeon	
+Archaea	Permanent Draft	2571042356	Thermoplasmata T3F75	
+Archaea	Finished	2588253768	Archaeoglobus fulgidus DSM 8774	
+Archaea	Permanent Draft	2681813013	Vulcanisaeta souniana JCM 11219	
+Archaea	Permanent Draft	2721755428	Unclassfied Crenarchaeota DRTY7 bin_25_26	
+Archaea	Permanent Draft	2770939387	Thermocladium sp. Obs4_genome_058 Obs4_genome_058	
+Archaea	Permanent Draft	2770939438	Thermocladium sp. Obs6_genome_109 Obs6_genome_109	
+Archaea	Permanent Draft	2893491077	Unclassified Euryarchaeota archaeon S19_FULL_No.1_1.2_96	
+Archaea	Finished	2511231117	Pyrobaculum ferrireducens 1860	
+Archaea	Permanent Draft	2504557011	Thermoproteales Type I	
+Archaea	Permanent Draft	2522125039	Thermoproteales-Type-1-TT1-r02	
+Archaea	Finished	2522125074	Archaeoglobus sulfaticallidus PM70-1, DSM 19444	
+Archaea	Permanent Draft	2571042357	Uncultured Thermoplasmata T3M75	
+Archaea	Permanent Draft	2728369322	Candidatus Hydrothermarchaeota archaeon JdFR-17	
+Bacteria	Finished	637000155	Magnetospirillum magneticum AMB-1	
+Bacteria	Finished	639633019	Candidatus Ruthia magnifica Cm	
+Bacteria	Finished	640427130	Chlorobium phaeovibrioides DSM 265	
+Bacteria	Permanent Draft	647000236	Solidesulfovibrio carbinoliphilus oakridgensis FW1012B	
+Bacteria	Finished	2507149019	Desulfitobacterium dichloroeliminans LMG P-21439	
+Bacteria	Finished	2510065050	Marichromatium purpuratum 984	
+Bacteria	Finished	2512564091	Desulfurella acetivorans A63, DSM 5264	
+Bacteria	Permanent Draft	2512875014	Desulfitobacterium sp. PCE1, DSM 10344	
+Bacteria	Permanent Draft	2513237149	Desulfitobacterium hafniense PCP-1	
+Bacteria	Permanent Draft	2511231048	Desulfosporosinus sp. Sv. Desulfo HCS1	
+Bacteria	Permanent Draft	2264867057	Caldiserica bacterium JGI 0000059-M03 (contamination screened)	
+Bacteria	Permanent Draft	2522125115	Thioalkalivibrio sp. ALE19	
+Bacteria	Permanent Draft	2522572153	Thioalkalivibrio sp. AKL19	
+Bacteria	Permanent Draft	2523231030	Fundidesulfovibrio putealis DSM 16056	
+Bacteria	Permanent Draft	2524614548	Desulfovibrio desulfuricans desulfuricans DSM 642	
+Bacteria	Permanent Draft	2524614762	Desulfogranum japonicum DSM 18378	
+Bacteria	Permanent Draft	2526164528	Desulfotignum balticum DSM 7044	
+Bacteria	Permanent Draft	2527291663	Candidatus Thioglobus sp. AB-750C14AB-904 (unscreened)	
+Bacteria	Finished	2540341170	Pseudodesulfovibrio piezophilus C1TLV30	
+Bacteria	Permanent Draft	2558860350	Candidatus Magnetoglobus multicellularis Araruama	
+Bacteria	Permanent Draft	2563367222	Imhoffiella purpurea AK35	
+Bacteria	Permanent Draft	2571042920	Thermodesulfomicrobium thermophilum DSM 16697	
+Bacteria	Draft	2582580651	Composite genome from Trout Bog Hypolimnion pan-assembly TBhypo.metabat.111	
+Bacteria	Draft	2582580684	Composite genome from Trout Bog Hypolimnion pan-assembly TBhypo.metabat.433	
+Bacteria	Permanent Draft	2582580730	Desulfovibrio litoralis DSM 11393	
+Bacteria	Permanent Draft	2582580732	Desulfitobacterium chlororespirans DSM 11544	
+Bacteria	Permanent Draft	2585427832	Candidatus Magnetobacterium casensis MYR-1	
+Bacteria	Permanent Draft	2593339127	Desulfonatronovibrio magnus AHT22	
+Bacteria	Permanent Draft	2596583676	Moorella thermoacetica DSM 12993	
+Bacteria	Permanent Draft	2599185175	Desulfallas thermosapovorans DSM 6562	
+Bacteria	Draft	2615840505	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies SD S127	
+Bacteria	Permanent Draft	2616645011	Isolated Sinkhole 2014 Bin 2	
+Bacteria	Permanent Draft	2617270708	Alpena fountain Bin 6	
+Bacteria	Permanent Draft	2619619282	Desulfobulbus sp. Tol-SR	
+Bacteria	Finished	2627853541	Moorella thermoacetica DSM 521	
+Bacteria	Permanent Draft	2627853564	LKpool_bin5_Desulfovibrio	
+Bacteria	Finished	2627853728	Magnetospira sp. QH-2	
+Bacteria	Permanent Draft	2634166223	Rhodocyclaceae-127 (UID3972)	
+Bacteria	Permanent Draft	2636416127	Desulfobacula sp. TS	
+Bacteria	Finished	2645727616	Ferriphaselus amnicola OYT1 GCA_000974685.1	
+Bacteria	Permanent Draft	2648501254	Peptococcaceae bacterium CEB3	
+Bacteria	Draft	2651870287	Unclassified gammaproteobacterium REDSEA-S15_B12	
+Bacteria	Draft	2654587903	Unclassified gammaproteobacterium REDSEA-S27_B14	
+Bacteria	Permanent Draft	2654587913	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies FW BZ15	
+Bacteria	Permanent Draft	2654587918	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies MB BZ198	
+Bacteria	Permanent Draft	2654587932	Acidithiobacillales bacterium SM23_46	
+Bacteria	Permanent Draft	2654588096	Acidithiobacillales bacterium SG8_45	
+Bacteria	Permanent Draft	2663762655	Deltaproteobacteria bacterium SCGC AC-312_F05 - v2 (contamination screened)	
+Bacteria	Permanent Draft	2675903705	Deltaproteobacterium sp. OalgD4	
+Bacteria	Finished	2687453294	Pseudodesulfovibrio indicus J2	
+Bacteria	Permanent Draft	2687453647	Desulfovibrio sp. DF1	
+Bacteria	Permanent Draft	2693429974	Oceanospirillales bacterium SCGC AD-305-P06 - v2 (unscreened)	
+Bacteria	Permanent Draft	2698536888	Betaproteobacteria bacterium JGI CrystG Apr3-1-J20 (unscreened)	
+Bacteria	Permanent Draft	2698536959	Betaproteobacteria bacterium JGI CrystG Apr3-1-K10 (contamination screened)	
+Bacteria	Permanent Draft	2700988633	Oceanospirillales bacterium SCGC AD-311-B11v3 (contamination screened)	
+Bacteria	Finished	2700988708	Desulfovibrio sp. G11	
+Bacteria	Permanent Draft	2708742705	Betaproteobacteria bacterium RBG_16_64_18	
+Bacteria	Permanent Draft	2710264737	Gallionellales bacterium RIFCSPHIGHO2_02_FULL_57_16	
+Bacteria	Permanent Draft	2710264767	Unclassified Chloroflexi sp. SA_20	
+Bacteria	Permanent Draft	2711768229	Betaproteobacteria bacterium RIFCSPLOWO2_02_FULL_68_150	
+Bacteria	Permanent Draft	2711768320	Betaproteobacteria bacterium RIFCSPLOWO2_12_FULL_64_23	
+Bacteria	Permanent Draft	2711768366	Betaproteobacteria bacterium RIFCSPLOWO2_12_FULL_65_110	
+Bacteria	Permanent Draft	2711768532	Deltaproteobacteria bacterium RIFOXYA12_FULL_58_15	
+Bacteria	Permanent Draft	2711768782	Deltaproteobacteria bacterium RIFOXYD12_FULL_56_24	
+Bacteria	Permanent Draft	2711768790	Deltaproteobacteria bacterium RIFOXYD12_FULL_57_12	
+Bacteria	Permanent Draft	2716884132	Ignavibacteria bacterium RIFOXYC2_FULL_35_21	
+Bacteria	Permanent Draft	2716884171	Hydrogenophilales bacterium RIFOXYD1_FULL_62_11	
+Bacteria	Finished	2718218000	Moorella thermoacetica DSM 103132	
+Bacteria	Permanent Draft	2721755181	Nitrospirae bacterium GWC1_57_7	
+Bacteria	Permanent Draft	2721755199	Nitrospirae bacterium GWC2_57_13	
+Bacteria	Permanent Draft	2721755321	Deltaproteobacteria bacterium RBG_13_43_22	
+Bacteria	Permanent Draft	2721755368	Deltaproteobacteria bacterium RBG_13_53_10	
+Bacteria	Permanent Draft	2721755382	Gallionellales bacterium RBG_16_57_15	
+Bacteria	Permanent Draft	2724679721	Desulfovibrio sp. Bin 1	
+Bacteria	Permanent Draft	2728369423	Nitrospirae bacterium JdFR-81	
+Bacteria	Permanent Draft	2728369691	Desulfothermus okinawensis JCM 13304	
+Bacteria	Permanent Draft	2731639136	Candidatus Thioglobus sp. SCGC AG-487_M10 (contamination screened)	
+Bacteria	Permanent Draft	2734482380	SAR324 cluster deltaproteobacterium SCGC AD-615_C15 (contamination screened)	
+Bacteria	Permanent Draft	2734482818	Candidatus Thioglobus sp. SCGC AG-487_B03 (contamination screened)	
+Bacteria	Permanent Draft	2770939422	unclassified Thermodesulfobacteriaceae Obs5_genome_093 Obs5_genome_093	
+Bacteria	Permanent Draft	2770939499	Thioalbus denitrificans DSM 26407	
+Bacteria	Permanent Draft	2772190877	unclassified Gammaproteobacteria Bin E5_24	
+Bacteria	Finished	2775506817	Sulfuricaulis limicola HA5	
+Bacteria	Permanent Draft	2784746782	Varunaivibrio sulfuroxidans DSM 101688	
+Bacteria	Permanent Draft	2786546544	Aquicultor secundus CG2_30_50_142	
+Bacteria	Permanent Draft	2786546654	Deltaproteobacteria bacterium CG_4_8_14_3_um_filter_51_11	
+Bacteria	Permanent Draft	2786546700	Hydrogenophilales bacterium CG17_big_fil_post_rev_8_21_14_2_50_63_12	
+Bacteria	Permanent Draft	2786546748	Desulfobacterales bacterium CG07_land_8_20_14_0_80_52_14	
+Bacteria	Permanent Draft	2788499801	Candidatus Thiomargarita nelsonii Bin E3_30	
+Bacteria	Permanent Draft	2788499809	Deltaproteobacteria bacterium CG_4_9_14_3_um_filter_51_14	
+Bacteria	Permanent Draft	2788500216	Acidiferrobacter sp. IN47	
+Bacteria	Finished	2791354755	Desulfovibrio sp. 86-1	
+Bacteria	Permanent Draft	2802429373	Acidiferrobacteraceae bacterium SAT1331	
+Bacteria	Permanent Draft	2802429394	Acidiferrobacteraceae bacterium ARS46	
+Bacteria	Permanent Draft	2802429402	Magnetovibrio sp. SP358	
+Bacteria	Permanent Draft	2808606428	Chromatiales bacterium SP5GCR1	
+Bacteria	Permanent Draft	2814122907	unclassified Desulfobacteraceae BinDmb149	
+Bacteria	Finished	2814122939	Desulfobacteraceae bacterium bin 81	
+Bacteria	Permanent Draft	2820155744	Unclassified Proteobacteria Cu122P5bin24	
+Bacteria	Permanent Draft	2820823448	Unclassified Actinobacteria Nt197P3bin113	
+Bacteria	Permanent Draft	2820831444	Unclassified Actinobacteria Nc150P4bin21	
+Bacteria	Permanent Draft	2828971843	Desulfobacterales bacterium DeMMO2_32	
+Bacteria	Permanent Draft	2828993248	Sulfuritalea sp. DeMMO2_46	
+Bacteria	Permanent Draft	2829076929	Sideroxydans sp. DeMMO3_12	
+Bacteria	Permanent Draft	2829146308	Anaerolineales bacterium DeMMO3_51	
+Bacteria	Permanent Draft	2829153837	Thiobacillus sp. DeMMO3_55	
+Bacteria	Permanent Draft	2829300981	Hydrogenophilaceae bacterium DeMMO5_24	
+Bacteria	Permanent Draft	2829436569	Desulfobulbaceae bacterium DeMMO6_32	
+Bacteria	Permanent Draft	2829472912	Desulfarculaceae bacterium DeMMO6_84	
+Bacteria	Permanent Draft	2829480038	Desulfarculaceae bacterium DeMMO6_79	
+Bacteria	Permanent Draft	2829737207	Desulfobaculum xiamenense DSM 24233	
+Bacteria	Permanent Draft	2830757525	Anaerolineales bacterium DeMMO6_56	
+Bacteria	Permanent Draft	2831524987	Ammonifex thiophilus SR	
+Bacteria	Permanent Draft	2831634132	Ideonella sp. A 288	
+Bacteria	Finished	2834890540	Moorella thermoacetica DSM 521	
+Bacteria	Permanent Draft	2835554630	Thiotricheae bacterium A1423	
+Bacteria	Permanent Draft	2835893937	Oceanospirillales bacterium SCGC AD-305-J20 - v2 (contamination screened) decontaminated	
+Bacteria	Permanent Draft	2837014545	Sulfurisoma sediminicola BSN1	
+Bacteria	Permanent Draft	2838801710	Moorella thermoacetica DSM 7417	
+Bacteria	Draft	2840071692	Thiobacillus sp. BP01	
+Bacteria	Permanent Draft	2881105536	Thiosymbion oneisti CBC2018	
+Bacteria	Permanent Draft	2882762944	Chlorobaculum sp. 24CR	
+Bacteria	Finished	2883868929	Pseudodesulfovibrio sp. zrk46	
+Bacteria	Permanent Draft	2890616370	Thiothrix sp. AH-287-I11	
+Bacteria	Permanent Draft	2890690344	Desulfobacter hydrogenophilus DSM 3380	
+Bacteria	Permanent Draft	2890968334	Thermodesulfovibrio sp. Kuro-1	
+Bacteria	Permanent Draft	2893511870	Prosthecomicrobium sp. DeMMO3_2	
+Bacteria	Permanent Draft	2894041767	Thiothrix sp. AG-917-F21	
+Bacteria	Permanent Draft	2894471438	Magnetospirillum sp. UT-4	
+Bacteria	Permanent Draft	2894696004	Moorella humiferrea DSM 23265	
+Bacteria	Permanent Draft	2894708747	Moorella sp. E308F	
+Bacteria	Finished	2909993848	Dissulfurispira thermophila T55J	
+Bacteria	Permanent Draft	2947463882	Desulfofustis sp. PB-SRB1-LS01-2011a	
+Bacteria	Finished	2964078231	Caldichromatium japonicum No.7	
+Bacteria	Permanent Draft	2964137202	Calidifontimicrobium sediminis YIM 73032	
+Bacteria	Finished	2987086343	Desulfobacter hydrogenophilus AcRS1	
+Bacteria	Permanent Draft	2994672015	Thiocystis violacea DSM 207	
+Bacteria	Permanent Draft	2999104608	sulfur-oxidizing endosymbiont of Gigantopelta aegis Gae_SOB	
+Bacteria	Finished	3000191421	Desulfolutivibrio sulfoxidireducens DSM 107105	
+Bacteria	Finished	3000419316	Sterolibacteriaceae bacterium M52	
+Bacteria	Permanent Draft	3000822697	Desulforhopalus vacuolatus DSM 9700	
+Bacteria	Permanent Draft	3000826274	Desulfallas sp. Bu1-1	
+Bacteria	Permanent Draft	8001063419	Pinisolibacter aquiterrae B13	
+Bacteria	Permanent Draft	8001071466	Candidatus Magnetobacterium casensis MYR-1_YQ	
+Bacteria	Permanent Draft	8001701898	Rhodobium orientis DSM 11290	
+Bacteria	Permanent Draft	8001743494	Marichromatium gracile DSM 203	
+Bacteria	Permanent Draft	8046375992	Aliiroseovarius subalbicans N1Y82	
+Bacteria	Permanent Draft	8048531934	Desulforamulus aquiferis DSA	
+Bacteria	Finished	637000093	Desulfitobacterium hafniense Y51	
+Bacteria	Finished	637000094	Desulfotalea psychrophila LSv54	
+Bacteria	Finished	639633026	Halorhodospira halophila SL1	
+Bacteria	Finished	640427107	Candidatus Vesicomyosocius okutanii HA	
+Bacteria	Finished	642555120	Chlorobaculum parvum DSM 263	
+Bacteria	Finished	642555146	Pelodictyon phaeoclathratiforme BU-1	
+Bacteria	Finished	643348539	Desulfovibrio vulgaris Miyazaki F	
+Bacteria	Finished	643348585	Thioalkalivibrio sulfidophilus HL-EbGR7	
+Bacteria	Finished	644736349	Desulfohalobium retbaense HR100, DSM 5692	
+Bacteria	Finished	646564569	Sideroxydans lithotrophicus ES-1	
+Bacteria	Finished	650716033	Desulfotomaculum ruminis DL, DSM 2154	
+Bacteria	Permanent Draft	2508501021	Burkholderiales sp. JOSHI_001	
+Bacteria	Finished	643348538	Desulfovibrio desulfuricans desulfuricans ATCC 27774	
+Bacteria	Permanent Draft	2515154174	Desulfobacter curvatus DSM 3379	
+Bacteria	Finished	2503754016	Desulfocurvibacter africanus Walvis Bay	
+Bacteria	Finished	2506520012	Thermodesulfobacterium geofontis OPF15	
+Bacteria	Permanent Draft	2512047085	Desulfococcus biacutus KMRActS	
+Bacteria	Permanent Draft	2502790011	Beggiatoa sp. Orange Guaymas	
+Bacteria	Permanent Draft	2516493017	Desulfitobacterium sp. LBE	
+Bacteria	Finished	2521172692	Thioalkalivibrio nitratireducens DSM 14787	
+Bacteria	Permanent Draft	2523533539	Desulfovibrio hydrothermalis AM13, DSM 14728	
+Bacteria	Permanent Draft	2523533580	Thermodesulfatator atlanticus DSM 21156	
+Bacteria	Permanent Draft	2524023145	Desulfatirhabdium butyrativorans DSM 18734	
+Bacteria	Permanent Draft	2527291545	Candidatus Thioglobus sp. AB-755_D23C11 (unscreened)	
+Bacteria	Permanent Draft	2527291676	Candidatus Thioglobus sp. AB-750I15AB-904 (unscreened)	
+Bacteria	Finished	2561511218	Megalodesulfovibrio gigas DSM 1382	
+Bacteria	Permanent Draft	2562617176	Bilophila wadsworthia 3_1_6	
+Bacteria	Permanent Draft	2574180452	Humidesulfovibrio idahonensis DSM 15450	
+Bacteria	Draft	2582580674	Composite genome from Trout Bog Hypolimnion pan-assembly TBhypo.metabat.3415	
+Bacteria	Permanent Draft	2585428067	Desulfosporosinus lacus DSM 15449	
+Bacteria	Permanent Draft	2585428156	Desulfatibacillum alkenivorans DSM 16219	
+Bacteria	Permanent Draft	2593339148	Desulfovibrio desulfuricans DSM 7057	
+Bacteria	Draft	2593339184	Composite genome from Trout Bog Hypolimnion pan-assembly TBhypo.metabat.3520.v2	
+Bacteria	Permanent Draft	2596583525	Desulforhopalus singaporensis DSM 12130	
+Bacteria	Permanent Draft	2596583698	Moorella thermoacetica ATCC 39073	
+Bacteria	Permanent Draft	2597490343	Magnetospirillum fulvum DSM 13234	
+Bacteria	Draft	2615840511	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies LFY M6	
+Bacteria	Draft	2615840518	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies UNK BY19	
+Bacteria	Permanent Draft	2617270703	Alpena fountain Bin 2	
+Bacteria	Permanent Draft	2617270884	Ruegeria marina CGMCC 1.9108	
+Bacteria	Permanent Draft	2619619068	Desulfovibrio alkalitolerans DSM 16529	
+Bacteria	Permanent Draft	2619619091	Desulfococcus multivorans DSM 2059	
+Bacteria	Permanent Draft	2622736540	Humidesulfovibrio mexicanus DSM 13116	
+Bacteria	Permanent Draft	2622736590	Desulfomicrobium apsheronum DSM 5918	
+Bacteria	Permanent Draft	2622736598	Aliiruegeria lutimaris DSM 25294	
+Bacteria	Permanent Draft	2627853875	Dethiosulfatarculus sandiegensis SPR	
+Bacteria	Permanent Draft	2627853997	Clostridiales bacterium PH28_bin88	
+Bacteria	Permanent Draft	2636416023	Deltaproteobacteria bacterium JGI B07061-L11 (contamination screened)	
+Bacteria	Permanent Draft	2648501133	Desulfosporosinus sp. I2	
+Bacteria	Finished	2651869878	Pseudodesulfovibrio indicus J2	
+Bacteria	Draft	2651870286	Unclassified gammaproteobacterium REDSEA-S14_B7	
+Bacteria	Permanent Draft	2654587567	Desulfocarbo indianensis SCBM	
+Bacteria	Permanent Draft	2654587912	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies G BZ181	
+Bacteria	Permanent Draft	2654587915	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies FW BZ131	
+Bacteria	Permanent Draft	2654587956	Gammaproteobacteria bacterium SG8_11	
+Bacteria	Permanent Draft	2654587964	Nitrospira bacterium SG8_3	
+Bacteria	Permanent Draft	2654588094	Deltaproteobacteria bacterium SG8_13	
+Bacteria	Permanent Draft	2654588100	Desulfobacterales bacterium SG8_35_2	
+Bacteria	Permanent Draft	2675903225	Desulfosporosinus hippei DSM 8344	
+Bacteria	Finished	2675903406	Burkholderiales bacterium GJ-E10	
+Bacteria	Permanent Draft	2675903702	Gammaproteobacterium sp. OalgG3	
+Bacteria	Finished	2684623112	Desulfovibrio fairfieldensis CCUG 45958	
+Bacteria	Draft	2690315631	TsSOB	
+Bacteria	Permanent Draft	2698537036	Syntrophaceae bacterium JGI CrystG Apr3-3-I16 (unscreened)	
+Bacteria	Permanent Draft	2700988651	Oceanospirillales bacterium SCGC AD-308-C23v3 (contamination screened)	
+Bacteria	Permanent Draft	2708742599	Gallionellales bacterium GWA2_59_43	
+Bacteria	Permanent Draft	2708742704	Anaeromyxobacter sp. RBG_16_69_14	
+Bacteria	Permanent Draft	2710264506	Burkholderiales bacterium RIFCSPHIGHO2_02_FULL_66_10	
+Bacteria	Permanent Draft	2710264765	Unclassified Chloroflexi sp. SA_15	
+Bacteria	Permanent Draft	2710723541	Burkholderiales bacterium RIFCSPHIGHO2_12_FULL_69_20	
+Bacteria	Permanent Draft	2711768364	Betaproteobacteria bacterium RIFCSPLOWO2_12_FULL_62_13	
+Bacteria	Permanent Draft	2711768738	Candidatus Lambdaproteobacteria bacterium RIFOXYC1_FULL_56_13	
+Bacteria	Permanent Draft	2711768778	Candidatus Lambdaproteobacteria bacterium RIFOXYD12_FULL_49_8	
+Bacteria	Permanent Draft	2713897430	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies DK DK161	
+Bacteria	Permanent Draft	2721755233	Nitrospirae bacterium GWD2_57_9	
+Bacteria	Permanent Draft	2721755290	Deltaproteobacteria bacterium RBG_13_49_15	
+Bacteria	Permanent Draft	2721755292	Deltaproteobacteria bacterium RBG_13_61_14	
+Bacteria	Permanent Draft	2721755301	Chloroflexi bacterium RBG_13_52_14	
+Bacteria	Permanent Draft	2721755303	Chloroflexi bacterium RBG_13_60_13	
+Bacteria	Permanent Draft	2721755339	Nitrospirae bacterium RBG_13_39_12	
+Bacteria	Permanent Draft	2721755359	Candidatus Schekmanbacteria bacterium RBG_13_48_7	
+Bacteria	Permanent Draft	2724679120	Ruegeria marisrubri ZGT118	
+Bacteria	Permanent Draft	2724679642	Thermosulfurimonas dismutans S95	
+Bacteria	Permanent Draft	2728369438	Nitrospirae bacterium JdFR-85	
+Bacteria	Permanent Draft	2728369708	Thermodesulfovibrio aggregans JCM 13213	
+Bacteria	Permanent Draft	2731639146	Candidatus Thioglobus sp. SCGC AG-487_O15 (contamination screened)	
+Bacteria	Permanent Draft	2751185423	Unclassified Burkholderiales HKU-PRO3	
+Bacteria	Permanent Draft	2751185424	Unclassified Burkholderiales HKU-PRO4	
+Bacteria	Permanent Draft	2751185570	Chlorobiales bacterium Clorobi_01	
+Bacteria	Permanent Draft	2751185578	Syntrophobacterales bacterium Delta_01	
+Bacteria	Finished	2751185674	Chromatiaceae bacterium 2141T.STBD.0c.01a	
+Bacteria	Finished	2751185712	Prosthecochloris sp. HL-GSB HL-130-GSB	
+Bacteria	Permanent Draft	2757320503	Unclassified Desulfobacterales bin111	
+Bacteria	Permanent Draft	2770939412	unclassified Ignavibacteriae Obs5_genome_083 Obs5_genome_083	
+Bacteria	Permanent Draft	2770939413	unclassified Thermodesulfobacteriaceae Obs5_genome_084 Obs5_genome_084	
+Bacteria	Permanent Draft	2786546142	Thiohalophilus thiocyanatoxydans DSM 16326	
+Bacteria	Permanent Draft	2786546212	Armatimonadetes bacterium CG_4_10_14_3_um_filter_66_18	
+Bacteria	Permanent Draft	2786546390	Nitrospirae bacterium CG02_land_8_20_14_3_00_41_53	
+Bacteria	Permanent Draft	2786546643	Deltaproteobacteria bacterium CG06_land_8_20_14_3_00_44_19	
+Bacteria	Permanent Draft	2786546649	Deltaproteobacteria bacterium CG12_big_fil_rev_8_21_14_0_65_43_10	
+Bacteria	Permanent Draft	2786546729	Syntrophobacterales bacterium CG_4_8_14_3_um_filter_58_8	
+Bacteria	Permanent Draft	2786546933	Syntrophobacteraceae bacterium CG07_land_8_20_14_0_80_61_8	
+Bacteria	Permanent Draft	2788499826	Sulfurirhabdus autotrophica DSM 100309	
+Bacteria	Permanent Draft	2788499957	Desulfobacteraceae bacterium CG2_30_51_40	
+Bacteria	Permanent Draft	2788500325	Desulfobacter sp. ARS36	
+Bacteria	Permanent Draft	2811994909	unclassified Deltaproteobacteria BinDmb239	
+Bacteria	Permanent Draft	2811995097	Desulfovibrio sp. SP109	
+Bacteria	Permanent Draft	2823931327	Desulfovibrio ferrophilus IS5	
+Bacteria	Permanent Draft	2828909032	Nitrospira bacterium DeMMO2_3	
+Bacteria	Permanent Draft	2828928571	Desulfobacteraceae bacterium DeMMO2_10	
+Bacteria	Permanent Draft	2829086156	Desulfobacteraceae bacterium DeMMO3_16	
+Bacteria	Permanent Draft	2829097930	Zixibacteria bacterium DeMMO3_21	
+Bacteria	Permanent Draft	2829201948	Desantisbacteria bacterium DeMMO4_10	
+Bacteria	Permanent Draft	2829238571	Nitrospiraceae bacterium DeMMO4_33	
+Bacteria	Permanent Draft	2829256892	Eubacteriales bacterium DeMMO5_3	
+Bacteria	Permanent Draft	2829297275	Rhodocyclaceae bacterium DeMMO5_23	
+Bacteria	Permanent Draft	2829383823	Syntrophobacterales bacterium DeMMO6_13	
+Bacteria	Permanent Draft	2829507080	Deltaproteobacteria bacterium DeMMO6_64	
+Bacteria	Permanent Draft	2831563503	Desulfamplus magnetovallimortis ERS1571938	
+Bacteria	Permanent Draft	2834727745	Desulfovibrio sp. DV	
+Bacteria	Permanent Draft	2835562463	Thiotricheae bacterium A1422	
+Bacteria	Permanent Draft	2835905314	Oceanospirillales bacterium SCGC AD-308-C23v3 (contamination screened) decontaminated	
+Bacteria	Permanent Draft	2861203348	Desulfoprunum benzoelyticum DSM 28570	
+Bacteria	Permanent Draft	2867970272	Thiohalocapsa sp. PB-PSB1	
+Bacteria	Finished	2883713342	Desulfosarcina widdelii PP31	
+Bacteria	Finished	2887959607	Salidesulfovibrio onnuriiensis IOR2	
+Bacteria	Permanent Draft	2889727904	Leucothrix pacifica JCM 18388	
+Bacteria	Permanent Draft	2889842500	Pelotomaculum propionicicum MGP	
+Bacteria	Permanent Draft	2890541225	Thiothrix sp. AG-390-O20	
+Bacteria	Permanent Draft	2890630416	Thiothrix sp. AG-917-N04	
+Bacteria	Permanent Draft	2895591741	Ruegeria sp. PrR005	
+Bacteria	Finished	2898025466	Sulfurimicrobium lacus skT11	
+Bacteria	Permanent Draft	2899427287	Pseudodesulfovibrio senegalensis DSM 101509	
+Bacteria	Permanent Draft	2899430520	Desulfovibrio porci PG-178-WT-4	
+Bacteria	Permanent Draft	2899433461	Cupidesulfovibrio liaohensis XJ01	
+Bacteria	Permanent Draft	2911102092	Hydrogenophaga aromaticivorans D2P1	
+Bacteria	Finished	2952831780	Desulfovibrio sp. FT415	
+Bacteria	Finished	2974486711	Bathymodiolus thermophilus thioautotrophic gill symbiont EPR9N	
+Bacteria	Permanent Draft	2987073127	Desulfotomaculum copahuensis CINDEFI1	
+Bacteria	Finished	2989024789	Thiolapillus brandeum Hiromi1	
+Bacteria	Permanent Draft	2989247633	Marichromatium bheemlicum DSM 18632	
+Bacteria	Permanent Draft	2993864872	Halochromatium salexigens DSM 4395	
+Bacteria	Permanent Draft	2995146770	Maritimibacter lacisalsi CGMCC 1.12922	
+Bacteria	Permanent Draft	3000620260	Desulfoluna butyratoxydans ERS3173180	
+Bacteria	Permanent Draft	3000687053	Desulfobulbus marinus DSM 2058	
+Bacteria	Permanent Draft	3001157005	Thiocapsa imhoffii DSM 21303	
+Bacteria	Permanent Draft	8001118248	Sedimenticola selenatireducens BK-1	
+Bacteria	Permanent Draft	8001424189	Chromatium weissei DSM 5161	
+Bacteria	Permanent Draft	8001850917	Desulfobacter hydrogenophilus DSM 3380	
+Bacteria	Finished	637000096	Desulfovibrio vulgaris vulgaris Hildenborough	
+Bacteria	Finished	637000167	Moorella thermoacetica ATCC 39073	
+Bacteria	Finished	639633022	Desulfovibrio vulgaris vulgaris DP4	
+Bacteria	Finished	643348537	Desulfitobacterium hafniense DCB-2	
+Bacteria	Permanent Draft	648276759	delta proteobacterium NaphS2	
+Bacteria	Permanent Draft	2507262026	Desulfotomaculum nigrificans DSM 574	
+Bacteria	Permanent Draft	2508501043	Desulfovibrio termitidis HI1	
+Bacteria	Permanent Draft	2510065088	Carboxydothermus ferrireducens DSM 11255	
+Bacteria	Finished	2508501136	Desulfosporosinus orientis Singapore I, DSM 765	
+Bacteria	Finished	643348581	Thermodesulfovibrio yellowstonii DSM 11347	
+Bacteria	Finished	2506783061	Desulfosporosinus acidiphilus SJ4, DSM 22704	
+Bacteria	Permanent Draft	2513020008	Desulfitobacterium hafniense TCE-1	
+Bacteria	Permanent Draft	2513237157	Desulfosarcina sp. BuS5	
+Bacteria	Permanent Draft	2515154157	Desulfovibrio oxyclinae DSM 11498	
+Bacteria	Finished	2503754015	Pseudodesulfovibrio mercurii ND132	
+Bacteria	Permanent Draft	2515154092	Desulfurispora thermophila DSM 16022	
+Bacteria	Permanent Draft	2502171186	Solemya velum gill symbiont WH	
+Bacteria	Permanent Draft	2523231027	Desulfovibrio gigas DSM 1382, ATCC 19364	
+Bacteria	Finished	2523231053	Desulfotignum phosphitoxidans FiPS-3, DSM 13687	
+Bacteria	Permanent Draft	2523533605	Desulfogranum mediterraneum DSM 13871	
+Bacteria	Permanent Draft	2523533628	Maridesulfovibrio zosterae DSM 11974	
+Bacteria	Finished	2524023220	Desulfobacula toluolica Tol2	
+Bacteria	Permanent Draft	2524614816	Halodesulfovibrio aestuarii DSM 10141	
+Bacteria	Permanent Draft	2527291547	Candidatus Thioglobus sp. AB-755_E20F12 (unscreened)	
+Bacteria	Permanent Draft	2527291635	Candidatus Thioglobus sp. AB-751_C09AB-904 (unscreened)	
+Bacteria	Permanent Draft	2527291722	Candidatus Thioglobus sp. AB-747_M09AB-903 (unscreened)	
+Bacteria	Permanent Draft	2534681903	Magnetospirillum caucaseum SO-1	
+Bacteria	Permanent Draft	8046432116	Fundidesulfovibrio agrisoli SG106	
+Bacteria	Permanent Draft	2568526001	Desulfococcus multivorans DSM 2059	
+Bacteria	Permanent Draft	2571042346	Megalodesulfovibrio paquesii DSM 16681	
+Bacteria	Permanent Draft	2574179721	Alteromonadaceae bacterium 2719K.STB50.0a.01 (v2 assembly)	
+Bacteria	Permanent Draft	2582581262	Desulfopila aestuarii DSM 18488	
+Bacteria	Permanent Draft	2585428086	Desulfofundulus thermosubterraneus DSM 16057	
+Bacteria	Draft	2593339183	Composite genome from Trout Bog Hypolimnion pan-assembly TBhypo.metabat.2922.v2	
+Bacteria	Permanent Draft	2599185149	Thermodesulforhabdus norvegica DSM 9990	
+Bacteria	Permanent Draft	2599185268	Thiothrix caldifontis DSM 21228	
+Bacteria	Permanent Draft	2600254953	endosymbiont of Tevnia jerichonana (vent Tica)	
+Bacteria	Finished	2609459601	Sedimenticola thiotaurini SIP-G1	
+Bacteria	Finished	2627853542	Moorella thermoacetica DSM 2955	
+Bacteria	Permanent Draft	2627853565	Desulfovibrio bin6 BLZ4	
+Bacteria	Permanent Draft	2642422599	Achromatium bin 6_2	
+Bacteria	Permanent Draft	2651869844	Desulfosporosinus acididurans M1	
+Bacteria	Draft	2651870289	Unclassified gammaproteobacterium REDSEA-S26_B10	
+Bacteria	Permanent Draft	2654587931	Acidithiobacillales bacterium SM1_46	
+Bacteria	Permanent Draft	2654587958	Gemmatimonas sp. SG8_38_2	
+Bacteria	Permanent Draft	2654588086	Syntrophobacter sp. DG_60	
+Bacteria	Permanent Draft	2657245242	Oceanospirillales bacterium SCGC AD-305-G18v2 (unscreened)	
+Bacteria	Permanent Draft	2675903030	Allochromatium warmingii DSM 173	
+Bacteria	Permanent Draft	2675903163	Desulfomicrobium norvegicum DSM 1741	
+Bacteria	Permanent Draft	2675903701	Candidatus Thiosymbion algarvensis (OalgG1)	
+Bacteria	Permanent Draft	2681812860	Alteromonadaceae bacterium 2141T.STBD.0c.01a	
+Bacteria	Finished	2687453524	delta proteobacterium HotSeep1	
+Bacteria	Permanent Draft	2687453694	Desulfovibrio sp. BMSR re-assembly	
+Bacteria	Permanent Draft	2698537043	Desulfococcus sp. JGI CrystG Apr3-3-J14 (unscreened)	
+Bacteria	Permanent Draft	2706794915	Desulfonatronum zhilinae Al915-01	
+Bacteria	Permanent Draft	2708742625	Syntrophus sp. GWC2_56_31	
+Bacteria	Permanent Draft	2708742658	Burkholderiales bacterium GWF1_66_17	
+Bacteria	Permanent Draft	2708742689	Candidatus Rokubacteria bacterium GWF2_70_14	
+Bacteria	Permanent Draft	2708742837	Betaproteobacteria bacterium RBG_19FT_COMBO_58_11	
+Bacteria	Permanent Draft	2708742840	Thermodesulfovibrio sp. RBG_19FT_COMBO_42_12	
+Bacteria	Permanent Draft	2710723890	Candidatus Muproteobacteria bacterium RIFCSPLOWO2_01_FULL_60_18	
+Bacteria	Permanent Draft	2710723983	Nitrospinae bacterium RIFCSPLOWO2_02_39_17	
+Bacteria	Permanent Draft	2711768319	Betaproteobacteria bacterium RIFCSPLOWO2_12_FULL_62_58	
+Bacteria	Permanent Draft	2711768470	Candidatus Rokubacteria bacterium RIFCSPLOWO2_12_FULL_71_19	
+Bacteria	Permanent Draft	2711768529	Gammaproteobacteria bacterium RIFOXYA12_FULL_61_12	
+Bacteria	Finished	2711768589	Desulfobulbus oralis 041	
+Bacteria	Permanent Draft	2713896717	Unclassified Burkholderiales PNA_bin5	
+Bacteria	Permanent Draft	2716884145	Syntrophus sp. RIFOXYC2_FULL_54_9	
+Bacteria	Permanent Draft	2716884191	Candidatus Lambdaproteobacteria bacterium RIFOXYD1_FULL_56_27	
+Bacteria	Draft	2716884322	SAR324 cluster deltaproteobacterium AG-319-J22	
+Bacteria	Permanent Draft	2721755114	Nitrospirae bacterium GWA2_46_11	
+Bacteria	Permanent Draft	2721755239	Burkholderiales bacterium GWE1_65_30	
+Bacteria	Permanent Draft	2721755278	Desulfobacula sp. GWF2_41_7	
+Bacteria	Permanent Draft	2724679548	Thiobacillus denitrificans RG	
+Bacteria	Permanent Draft	2728369428	Desulfarculaceae bacterium JdFR-95	
+Bacteria	Permanent Draft	2734482344	Candidatus Thioglobus sp. SCGC AG-485_A21 (contamination screened)	
+Bacteria	Permanent Draft	2734482356	Candidatus Thioglobus sp. SCGC AG-487_D19 (contamination screened)	
+Bacteria	Permanent Draft	2734482814	Candidatus Thioglobus sp. SCGC AG-485_P20 (contamination screened)	
+Bacteria	Permanent Draft	2740891818	Desulfofaba hansenii DSM 12642	
+Bacteria	Permanent Draft	2751185577	Syntrophobacterales bacterium Delta_03	
+Bacteria	Permanent Draft	2751185847	Desulfovibrio sp. Dsv1	
+Bacteria	Draft	2765235799	Rhodoferax sp. Bin1	
+Bacteria	Permanent Draft	2767802425	unclassified Thiotrichaceae bin E1_76	
+Bacteria	Finished	2772190670	Desulfovibrio piger ERS1426881	
+Bacteria	Permanent Draft	2773858096	Uncultured Gammaproteobacteria Gam6 ca_ll13	
+Bacteria	Finished	2775506818	Sulfurifustis variabilis skN76	
+Bacteria	Permanent Draft	2778261102	Magnetovibrio sp. ARS8	
+Bacteria	Permanent Draft	2778261480	Gammaproteobacteria bacterium SP4236	
+Bacteria	Permanent Draft	2786546166	Thermodesulfitimonas autotrophica DSM 102936	
+Bacteria	Permanent Draft	2786546208	Armatimonadetes bacterium CG06_land_8_20_14_3_00_66_21	
+Bacteria	Permanent Draft	2786546391	Nitrospirae bacterium CG_4_9_14_3_um_filter_41_27	
+Bacteria	Permanent Draft	2786546394	Nitrospirae bacterium CG_4_9_14_3_um_filter_44_28	
+Bacteria	Permanent Draft	2786546397	Nitrospirae bacterium CG22_combo_CG10-13_8_21_14_all_44_11	
+Bacteria	Permanent Draft	2786546399	Nitrospirae bacterium CG_4_10_14_3_um_filter_53_41	
+Bacteria	Permanent Draft	2786546402	Nitrospirae bacterium CG_4_10_14_0_8_um_filter_41_23	
+Bacteria	Permanent Draft	2786546542	Aquicultor secundus CG_4_9_14_3_um_filter_50_75	
+Bacteria	Permanent Draft	2786546663	Deltaproteobacteria bacterium CG_4_10_14_3_um_filter_51_14	
+Bacteria	Permanent Draft	2786546671	Betaproteobacteria bacterium CG2_30_68_42	
+Bacteria	Permanent Draft	2786546703	Hydrogenophilales bacterium CG_4_10_14_0_8_um_filter_62_70	
+Bacteria	Permanent Draft	2786546728	Syntrophobacterales bacterium CG_4_9_14_3_um_filter_49_8	
+Bacteria	Permanent Draft	2786546811	Rhodobacterales bacterium CG2_30_65_12	
+Bacteria	Permanent Draft	2786546855	Magnetofaba australis IT-1	
+Bacteria	Permanent Draft	2786546859	Hydrogenophilaceae bacterium CG1_02_62_390	
+Bacteria	Permanent Draft	2786546932	Syntrophobacteraceae bacterium CG2_30_61_12	
+Bacteria	Permanent Draft	2788500235	Mailhella massiliensis Marseille-P3199	
+Bacteria	Permanent Draft	2795385393	unclassified Deltaproteobacterium ORM2_a	
+Bacteria	Draft	2802428847	Woeseia sp. stnAC-2	
+Bacteria	Permanent Draft	2802429371	Acidiferrobacteraceae bacterium RS826	
+Bacteria	Permanent Draft	2802429395	Acidiferrobacteraceae bacterium EAC671	
+Bacteria	Permanent Draft	2802429666	Desulforamulus profundi Bs107	
+Bacteria	Permanent Draft	2811994937	unclassified Spirochaetales BinDG78mb16	
+Bacteria	Finished	2811995133	Magnetospirillum gryphiswaldense MSR-1	
+Bacteria	Finished	2814122938	Desulfobacteraceae bacterium bin 40	
+Bacteria	Permanent Draft	2828819034	Desantibacteria bacterium DeMMO1_14	
+Bacteria	Permanent Draft	2828901765	Thiothrix sp. DeMMO2_1	
+Bacteria	Permanent Draft	2828943725	Desulfovibrionaceae bacterium DeMMO2_17	
+Bacteria	Permanent Draft	2829074811	Thermoleophilia bacterium DeMMO3_11	
+Bacteria	Permanent Draft	2829081820	Desulfobacterales bacterium DeMMO3_14	
+Bacteria	Permanent Draft	2829182026	Hydrogenophilaceae bacterium DeMMO4_3	
+Bacteria	Permanent Draft	2829216586	Syntrophaceae bacterium DeMMO4_18	
+Bacteria	Permanent Draft	2829268622	Thermoanaerobacteraceae bacterium DeMMO5_7	
+Bacteria	Permanent Draft	2829494215	Anaerolineales bacterium DeMMO6_70	
+Bacteria	Permanent Draft	2832225228	Marichromatium sp. AB31	
+Bacteria	Permanent Draft	2832511869	Desulfofundulus salinum 435	
+Bacteria	Permanent Draft	2833419001	Prosthecochloris sp. ZM	
+Bacteria	Permanent Draft	2833560874	Desulfonatronum sp. SC1	
+Bacteria	Permanent Draft	2835919489	Oceanospirillales bacterium SCGC AD-311-B11v3 (contamination screened) decontaminated	
+Bacteria	Finished	2836985240	Sulfuritortus calidifontis J1A	
+Bacteria	Permanent Draft	2837050608	Sulfuriferula multivorans TTN	
+Bacteria	Finished	2841463281	Solidesulfovibrio carbinolicus DSM 3852	
+Bacteria	Permanent Draft	2842055653	Desulfobacterales bacterium S7142MS3	
+Bacteria	Finished	2848597346	Desulfovibrio desulfuricans IC1	
+Bacteria	Permanent Draft	2866206833	Eggerthella sinensis DSM 16107	
+Bacteria	Permanent Draft	2898087533	Pseudodesulfovibrio alkaliphilus sp. nov. F-1	
+Bacteria	Permanent Draft	2899100019	Thioalkalivibrio denitrificans ALJD	
+Bacteria	Permanent Draft	2899440089	Desulfovibrio sp. ZJ369	
+Bacteria	Permanent Draft	2901951644	Desulfovibrio sp. ZJ746	
+Bacteria	Finished	2910070277	Candidatus Reidiella endopervernicosa Santa_Monica_outfall	
+Bacteria	Permanent Draft	2914811602	Allochromatium humboldtianum DSM 21881	
+Bacteria	Permanent Draft	2993919616	Halochromatium glycolicum DSM 11080	
+Bacteria	Permanent Draft	2994938916	Halorhodospira abdelmalekii DSM 2110	
+Bacteria	Permanent Draft	2994947087	Halorhodospira neutriphila DSM 15116	
+Bacteria	Finished	2999873078	Rhizobacter sp. AJA081-3	
+Bacteria	Permanent Draft	3000567567	Thermanaeromonas sp. C210	
+Bacteria	Finished	3001022876	Desulfosarcina ovata ovata oXyS1	
+Bacteria	Permanent Draft	3001227852	Desulfofundulus thermobenzoicus DSM 14055	
+Bacteria	Finished	3001417656	Allochromatium tepidum NZ	
+Bacteria	Finished	3002035920	Desulfobulbus oligotrophicus Prop6	
+Bacteria	Permanent Draft	8001531165	Thiocystis violacea DSM 208	
+Bacteria	Permanent Draft	8001706708	Halorhodospira halochloris DSM 1059	
+Bacteria	Finished	637000072	Chlorobium chlorochromatii CaD3	
+Bacteria	Finished	637000095	Oleidesulfovibrio alaskensis G20	
+Bacteria	Finished	639633036	Magnetococcus marinus MC-1	
+Bacteria	Finished	641522610	Candidatus Desulforudis audaxviator MP104C	
+Bacteria	Finished	643692021	Desulforapulum autotrophicum HRM2	
+Bacteria	Finished	644736351	Desulfofarcimen acetoxidans DSM 771	
+Bacteria	Finished	646564502	Allochromatium vinosum DSM 180	
+Bacteria	Permanent Draft	648276636	Solidesulfovibrio fructosivorans JJ	
+Bacteria	Finished	650377943	Gordonibacter pamelaeae 7-10-1-bT, DSM 19378	
+Bacteria	Permanent Draft	2508501038	Desulfovibrio sp. U5L	
+Bacteria	Permanent Draft	651324002	Acetonema longum APO-1, DSM 6540	
+Bacteria	Finished	2509601019	Desulfomonile tiedjei DCB-1, DSM 6799	
+Bacteria	Permanent Draft	2513237322	Bilophila sp. 4_1_30	
+Bacteria	Permanent Draft	2506520025	Moorella perchloratireducens An10	
+Bacteria	Permanent Draft	2522572064	Desulfitobacterium hafniense DP7	
+Bacteria	Permanent Draft	2524023160	Desulfovirgula thermocuniculi DSM 16036	
+Bacteria	Permanent Draft	2527291541	Candidatus Thioglobus sp. AB-755_C13G09 (unscreened)	
+Bacteria	Permanent Draft	2527291552	Candidatus Thioglobus sp. AB-755_L03D05 (unscreened)	
+Bacteria	Permanent Draft	2527291557	Candidatus Thioglobus sp. AB-754_B15AB-905 (unscreened)	
+Bacteria	Permanent Draft	2527291583	Candidatus Thioglobus sp. AB-754_L23AB-906 (unscreened)	
+Bacteria	Permanent Draft	2527291659	Candidatus Thioglobus sp. AB-750A03AB-903 (unscreened)	
+Bacteria	Permanent Draft	8048651991	Pseudodesulfovibrio hydrargyri BerOC1	
+Bacteria	Permanent Draft	2556921618	Desulfovermiculus halophilus DSM 18834	
+Bacteria	Permanent Draft	2561511128	Bilophila wadsworthia ATCC 49260	
+Bacteria	Finished	2561511172	Desulfocapsa sulfexigens DSM 10523	
+Bacteria	Permanent Draft	2571042011	Desulfobacter vibrioformis DSM 8776	
+Bacteria	Permanent Draft	2571042912	Desulfohalovibrio alkalitolerans DSM 16529	
+Bacteria	Permanent Draft	2585428063	Desulforamulus hydrothermalis Lam5	
+Bacteria	Permanent Draft	2585428080	Desulfofustis glycolicus DSM 9705	
+Bacteria	Permanent Draft	2585428154	Desulfovibrio desulfuricans aestuarii DSM 17919	
+Bacteria	Permanent Draft	2596583601	Desulfonatronum thiosulfatophilum ASO4-2	
+Bacteria	Permanent Draft	2599185335	Maridesulfovibrio ferrireducens DSM 16995	
+Bacteria	Permanent Draft	2602042027	Desulfoscipio geothermicus DSM 3669	
+Bacteria	Draft	2615840506	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies SD S1320	
+Bacteria	Draft	2615840514	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies TUN BY1	
+Bacteria	Permanent Draft	2627853545	Thiobacillus sp. Bin4_E1B	
+Bacteria	Permanent Draft	2630968297	Deltaproteobacteria bacterium JGI H07049-N18 (contamination screened)	
+Bacteria	Finished	2639762798	Magnetospirillum gryphiswaldense MSR-1 v2	
+Bacteria	Permanent Draft	2648501899	Maridesulfovibrio hydrothermalis AM13	
+Bacteria	Permanent Draft	2651870045	unclassified Chromatiales Bin 61-2	
+Bacteria	Draft	2651870284	Unclassified gammaproteobacterium REDSEA-S09_B13	
+Bacteria	Permanent Draft	2651870316	Desulfovibrio legallii KHC7	
+Bacteria	Permanent Draft	2651870354	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies FM BZ163	
+Bacteria	Permanent Draft	2651870355	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies FM BZ164	
+Bacteria	Permanent Draft	2651870356	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies FM BZ165	
+Bacteria	Permanent Draft	2654587916	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies TC BZ123	
+Bacteria	Permanent Draft	2654587917	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies MB BZ197	
+Bacteria	Permanent Draft	2654587937	Deltaproteobacteria bacterium SM23_61	
+Bacteria	Permanent Draft	2654587952	Gammaproteobacteria bacterium SG8_47	
+Bacteria	Finished	2654588029	Sedimenticola thiotaurini SIP-G1	
+Bacteria	Permanent Draft	2660238816	Oceanospirillales bacterium SCGC AD-305-J20 - v2 (contamination screened)	
+Bacteria	Permanent Draft	2675903703	Deltaproteobacterium sp. OalgD1b	
+Bacteria	Permanent Draft	2675903704	Deltaproteobacterium sp. OalgD3	
+Bacteria	Permanent Draft	2681812803	Deltaproteobacterium sp. OalgD1a	
+Bacteria	Permanent Draft	2681813565	Desulfocicer vacuolatum DSM 3385	
+Bacteria	Permanent Draft	2684622843	Thiocapsa roseopersicina DSM 217	
+Bacteria	Permanent Draft	2690315754	Desulfatitalea tepidiphila S28bF	
+Bacteria	Permanent Draft	2693429826	Desulfurella amilsii TR1 Re-analysis	
+Bacteria	Permanent Draft	2703718901	Desulfosarcina cetonica JCM 12296	
+Bacteria	Permanent Draft	2703719209	Moorella thermoacetica ATCC 49707	
+Bacteria	Permanent Draft	2703719302	uncultured Deltaproteobacterium SAG8	
+Bacteria	Permanent Draft	2706794949	Syntrophomonas sp. JGI 000170CP_G06 (contamination screened)	
+Bacteria	Permanent Draft	2708742706	Betaproteobacteria bacterium RBG_16_56_24	
+Bacteria	Permanent Draft	2708742768	Betaproteobacteria bacterium RBG_16_58_11	
+Bacteria	Permanent Draft	2708742776	Nitrospirae bacterium RBG_16_43_8	
+Bacteria	Permanent Draft	2710264671	Candidatus Muproteobacteria bacterium RIFCSPHIGHO2_02_FULL_60_13	
+Bacteria	Permanent Draft	2710723695	Nitrospinae bacterium RIFCSPLOWO2_01_FULL_39_10	
+Bacteria	Permanent Draft	2710724079	Burkholderiales bacterium RIFCSPLOWO2_02_FULL_66_35	
+Bacteria	Permanent Draft	2711768544	Nitrospirae bacterium RIFOXYA2_FULL_44_9	
+Bacteria	Permanent Draft	2713897356	Deltaproteobacteria bacterium RIFOXYB12_FULL_58_9	
+Bacteria	Permanent Draft	2713897415	Desulfobacula sp. RIFOXYB2_FULL_45_6	
+Bacteria	Permanent Draft	2713897431	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies DK DK47	
+Bacteria	Permanent Draft	2721755198	Candidatus Rokubacteria bacterium GWC2_70_16	
+Bacteria	Permanent Draft	2721755201	Candidatus Aquicultor primus GWC2_53_9	
+Bacteria	Permanent Draft	2721755204	Nitrospirae bacterium GWC2_46_6	
+Bacteria	Permanent Draft	2721755234	Nitrospirae bacterium GWD2_44_7	
+Bacteria	Permanent Draft	2721755238	Thiobacillus sp. GWE1_62_9	
+Bacteria	Permanent Draft	2721755413	Hydrogenophilales bacterium RIFOXYA1_FULL_63_33	
+Bacteria	Permanent Draft	2721755414	Desulfobacula sp. RIFOXYA12_FULL_46_16	
+Bacteria	Finished	2721755577	Prosthecochloris sp. CIB 2401	
+Bacteria	Permanent Draft	2721755857	Deltaproteobacterium SAR324 bacterium JGI 02_D19 (contamination screened)	
+Bacteria	Permanent Draft	2731639142	Candidatus Thioglobus sp. SCGC AG-487_O04 (contamination screened)	
+Bacteria	Permanent Draft	2731639243	SUP05 cluster gammaproteobacterium SCGC AG-487_M02 (contamination screened)	
+Bacteria	Permanent Draft	2734482346	Candidatus Thioglobus sp. SCGC AG-485_C22 (contamination screened)	
+Bacteria	Permanent Draft	2734482382	SAR324 cluster deltaproteobacterium SCGC AD-604_K18 (contamination screened)	
+Bacteria	Permanent Draft	2734482831	Candidatus Thioglobus sp. SCGC AG-485_M02 (contamination screened)	
+Bacteria	Permanent Draft	2740892241	Moorella glycerini NMP	
+Bacteria	Permanent Draft	2751185421	Unclassified Betaproteobacteria HKU-PRO1	
+Bacteria	Permanent Draft	2751185762	Desulfosporosinus sp. BG	
+Bacteria	Permanent Draft	2767802434	unclassified Thiotrichaceae bin E4_27	
+Bacteria	Permanent Draft	2770939616	Sulfurisoma sediminicola DSM 26916	
+Bacteria	Permanent Draft	2770939630	unclassified Myxococcales BinDmb72	
+Bacteria	Draft	2772190789	Rhodoferax sp. Bin2	
+Bacteria	Permanent Draft	2773858078	Uncultured Gammaproteobacteria Gam2 st_ll5	
+Bacteria	Finished	2775506810	Thiohalobacter thiocyanaticus FOKN1	
+Bacteria	Finished	2775506998	Candidatus Desulfovibrio trichonymphae Rs-N31	
+Bacteria	Permanent Draft	2778260901	Ramlibacter lithotrophicus RBP-1	
+Bacteria	Permanent Draft	2785510884	Candidatus Desantisbacteria bacterium CG23_combo_of_CG06-09_8_20_14_all_40_23	
+Bacteria	Permanent Draft	2786546383	Nitrospirae bacterium CG1_02_44_142	
+Bacteria	Permanent Draft	2786546385	Nitrospirae bacterium CG2_30_53_67	
+Bacteria	Permanent Draft	2786546396	Nitrospirae bacterium CG08_land_8_20_14_0_20_52_24	
+Bacteria	Permanent Draft	2786546408	Nitrospirae bacterium CG17_big_fil_post_rev_8_21_14_2_50_50_9	
+Bacteria	Permanent Draft	2786546541	Aquicultor secundus CG08_land_8_20_14_0_20_50_39	
+Bacteria	Permanent Draft	2786546543	Aquicultor secundus CG_4_10_14_3_um_filter_50_156	
+Bacteria	Permanent Draft	2786546701	Hydrogenophilales bacterium CG_4_9_14_3_um_filter_59_35	
+Bacteria	Permanent Draft	2786546747	Desulfobacterales bacterium CG2_30_60_27	
+Bacteria	Permanent Draft	2788499958	Calderihabitans maritimus KKC1	
+Bacteria	Draft	2802428846	Woeseia sp. stnF	
+Bacteria	Permanent Draft	2802429372	Acidiferrobacteraceae bacterium NP97	
+Bacteria	Permanent Draft	2802429447	Gordonibacter urolithinfaciens An234A	
+Bacteria	Permanent Draft	2808606435	Acidulodesulfobacterales sp. AP4	
+Bacteria	Permanent Draft	2808606436	Acidulodesulfobacterales sp. AP3	
+Bacteria	Permanent Draft	2811994912	unclassified Ignavibacteria BinDmb26	
+Bacteria	Permanent Draft	2820058318	Unclassified Proteobacteria Nt197P4bin33	
+Bacteria	Finished	2828519975	Proteobacteria bacterium bin 45v	
+Bacteria	Permanent Draft	2828802463	Desantibacteria bacterium DeMMO1_6	
+Bacteria	Permanent Draft	2829048197	Zixibacteria bacterium DeMMO3_3	
+Bacteria	Permanent Draft	2829242972	Rhodocyclaceae bacterium DeMMO4_38	
+Bacteria	Permanent Draft	2829248920	Nitrospiraceae bacterium DeMMO5_1	
+Bacteria	Permanent Draft	2829291762	Deltaproteobacteria bacterium DeMMO5_19	
+Bacteria	Permanent Draft	2829402558	Thermoanaerobacteraceae bacterium DeMMO6_19	
+Bacteria	Permanent Draft	2830658815	Betaproteobacteria bacterium Service_water_63	
+Bacteria	Permanent Draft	2830761193	Gallionellaceae bacterium DeMMO6_53	
+Bacteria	Permanent Draft	2832181228	Carboxydothermus pertinax Ug1	
+Bacteria	Permanent Draft	2834443690	Desulfosporosinus sp. FKB	
+Bacteria	Permanent Draft	2835558653	Thiotricheae bacterium A1462	
+Bacteria	Permanent Draft	2835845861	Deltaproteobacteria bacterium SCGC AC-312_F05 - v2 (contamination screened) decontaminated	
+Bacteria	Finished	2837265499	Sulfuriflexus mobilis aks1	
+Bacteria	Permanent Draft	2842058651	Desulfobacterales bacterium S7142MS4	
+Bacteria	Finished	2844977580	Desulfovibrio sp. SB8	
+Bacteria	Finished	2845936959	Desulfosediminicola flagellatus IMCC35005	
+Bacteria	Permanent Draft	2861192947	Desulfosalsimonas propionicica DSM 17721	
+Bacteria	Permanent Draft	2866203500	Gordonibacter sp. 28C	
+Bacteria	Permanent Draft	2883124827	Piscinibacter caeni MQ-18	
+Bacteria	Permanent Draft	2887616557	Rhodobium orientis DSM 11290	
+Bacteria	Permanent Draft	2889588741	Adlercreutzia sp. ZJ176	
+Bacteria	Permanent Draft	2891071030	Gordonibacter pamelaeae MGYG-HGUT-02487	
+Bacteria	Permanent Draft	2893484187	Unclassified Actinobacteria bacterium S19_FULL_No.1_2.5_94	
+Bacteria	Permanent Draft	2894467664	Magnetospirillum sp. LM-5	
+Bacteria	Permanent Draft	2899414267	Desulfovibrio sp. DS-1	
+Bacteria	Permanent Draft	2899442912	Desulfovibrio sp. JC010	
+Bacteria	Finished	2909959871	Candidatus Ruthia endofausta JDF_Ridge	
+Bacteria	Permanent Draft	2910825348	Eggerthella hominis NSJ-70	
+Bacteria	Permanent Draft	2967499442	Parasulfuritortus cantonensis LSR1	
+Bacteria	Permanent Draft	2993868656	Halochromatium roseum DSM 18859	
+Bacteria	Permanent Draft	2994766765	Desulfobotulus mexicanus PAR22N	
+Bacteria	Permanent Draft	2995184092	Desulfobacter latus AcRS2	
+Bacteria	Permanent Draft	2995457591	Desulfosporosinus fructosivorans 63.6F	
+Bacteria	Finished	3001836915	Thiothrix subterranea Ku-5	
+Bacteria	Permanent Draft	8001031950	Desulfovulcanus ferrireducens Ax17	
+Bacteria	Finished	8046183888	Desulfofustis limnaeus PPLL	
+Bacteria	Finished	8046654717	Dissulfurimicrobium hydrothermale Sh68	
+Bacteria	Finished	637000073	Chlorobaculum tepidum TLS	
+Bacteria	Finished	637000205	Pelodictyon luteolum DSM 273	
+Bacteria	Finished	639633020	Chlorobium phaeobacteroides DSM 266	
+Bacteria	Finished	642555121	Chlorobium limicola DSM 245	
+Bacteria	Finished	644736350	Desulfomicrobium baculatum X, DSM 4028	
+Bacteria	Finished	649633036	Desulfobulbus propionicus 1pr3, DSM 2032	
+Bacteria	Permanent Draft	2506520049	Thiothrix nivea JP2, DSM 5205	
+Bacteria	Permanent Draft	2508501001	Desulfosporosinus youngiae JW/YJL-B18, DSM 17734	
+Bacteria	Finished	2508501002	Desulfoscipio gibsoniae DSM 7213	
+Bacteria	Finished	2506783059	Thioflavicoccus mobilis 8321	
+Bacteria	Permanent Draft	2513237378	Desulfosporosinus sp. OT	
+Bacteria	Finished	2515154209	Desulfofundulus kuznetsovii DSM 6115	
+Bacteria	Permanent Draft	2515075002	Sedimenticola sp. CUZ	
+Bacteria	Permanent Draft	2515154078	Thiobacillus denitrificans DSM 12475	
+Bacteria	Permanent Draft	2516143004	Desulfonatronum lacustre Z-7951, DSM 10312	
+Bacteria	Permanent Draft	2518285537	Thioalkalivibrio sulfidiphilus ALJ17	
+Bacteria	Permanent Draft	2518645510	Bathymodiolus sp. chemoautotrophic symbiont	
+Bacteria	Permanent Draft	2523231026	Desulfovibrio cuneatus DSM 11391	
+Bacteria	Permanent Draft	2523231085	Desulfospira joergensenii DSM 10085	
+Bacteria	Permanent Draft	2524023147	Desulfotruncus alcoholivorax DSM 16058	
+Bacteria	Permanent Draft	2524023157	Desulfomicrobium escambiense DSM 10707	
+Bacteria	Permanent Draft	2527291548	Candidatus Thioglobus sp. AB-755_E23A01 (unscreened)	
+Bacteria	Permanent Draft	2527291578	Candidatus Thioglobus sp. AB-754_I19AB-906 (unscreened)	
+Bacteria	Permanent Draft	2527291643	Candidatus Thioglobus sp. AB-751_J08AB-905 (unscreened)	
+Bacteria	Permanent Draft	2528311093	Desulfovibrio alaskensis DSM 16109	
+Bacteria	Permanent Draft	2529292556	Thermodesulfovibrio islandicus DSM 12570	
+Bacteria	Permanent Draft	2540341244	Desulfovibrio cf. magneticus IFRC170	
+Bacteria	Permanent Draft	2545555844	Maritimibacter sp. HL-12	
+Bacteria	Permanent Draft	2556921601	Desulfobulbus elongatus DSM 2908	
+Bacteria	Permanent Draft	2556921650	Thiothrix lacustris DSM 21227	
+Bacteria	Permanent Draft	2561511137	Solidesulfovibrio alcoholivorans DSM 5433	
+Bacteria	Permanent Draft	2565956520	Maridesulfovibrio frigidus DSM 17176	
+Bacteria	Permanent Draft	2568526055	Candidatus Ruthia magnifica UCD-CM	
+Bacteria	Permanent Draft	2574179746	Thermodesulfovibrio hydrogeniphilus DSM 18151	
+Bacteria	Permanent Draft	2582580625	Composite genome from Trout Bog Epilimnion pan-assembly TBepi.metabat.2493	
+Bacteria	Draft	2582580688	Composite genome from Trout Bog Hypolimnion pan-assembly TBhypo.metabat.4590	
+Bacteria	Permanent Draft	2582580993	Moorella thermoacetica Y72	
+Bacteria	Finished	2588253728	Thermodesulfobacterium commune DSM 2178	
+Bacteria	Permanent Draft	2593339163	Thiohalomonas denitrificans HLD2	
+Bacteria	Permanent Draft	2596583602	Desulfobotulus alkaliphilus ASO4-4	
+Bacteria	Permanent Draft	2599185230	Desulfotruncus arcticus DSM 17038	
+Bacteria	Permanent Draft	2599185233	Sporolituus thermophilus DSM 23256	
+Bacteria	Permanent Draft	2609459607	uncultured Desulfarculaceae bacterium 190_F8 (unscreened)	
+Bacteria	Permanent Draft	2609459665	Gamma proteobacterium SCGC AD-602-N15 (contamination screened)	
+Bacteria	Permanent Draft	2616644807	Desulfobacula phenolica DSM 3384	
+Bacteria	Permanent Draft	2617270711	Alpena fountain Bin 8	
+Bacteria	Permanent Draft	2619618925	Thiothrix sp. EBPR_Bin_364	
+Bacteria	Permanent Draft	2619619038	Desulfonauticus submarinus DSM 15269	
+Bacteria	Permanent Draft	2619619140	Desulfonauticus sp. A7A	
+Bacteria	Permanent Draft	2627853593	Gammaproteobacteria endosymbiont of Lamellibrachia satsuma - 1371	
+Bacteria	Permanent Draft	2630968744	Desulfosporosinus sp. HMP52	
+Bacteria	Permanent Draft	2634166305	Peptococcus niger DSM 20475	
+Bacteria	Permanent Draft	2648501189	Candidatus Magnetomorum sp. HK-1	
+Bacteria	Permanent Draft	2651869945	Moorella mulderi DSM 14980	
+Bacteria	Permanent Draft	2651870079	unclassified Rhodospirillaceae Bin 35	
+Bacteria	Permanent Draft	2654587882	Desulfoluna spongiiphila AA1	
+Bacteria	Permanent Draft	2654587919	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies MB BZ199	
+Bacteria	Permanent Draft	2654587953	Gemmatimonas sp. SG8_17	
+Bacteria	Permanent Draft	2675903070	Magnetospirillum sp. ME-1 re-analysis	
+Bacteria	Permanent Draft	2675903694	Jhaorihella thermophila DSM 23413	
+Bacteria	Permanent Draft	2681812874	Bacterium SAG AG-538-D02	
+Bacteria	Permanent Draft	2687453693	Paradesulfovibrio bizertensis MKS re-assembly	
+Bacteria	Permanent Draft	2703719207	Moorella thermoacetica Inf1	
+Bacteria	Permanent Draft	2708742601	Gallionellales bacterium GWA2_60_142	
+Bacteria	Permanent Draft	2710723988	Betaproteobacteria bacterium RIFCSPLOWO2_02_67_12	
+Bacteria	Permanent Draft	2710724066	Candidatus Rokubacteria bacterium RIFCSPLOWO2_02_FULL_68_19	
+Bacteria	Permanent Draft	2710724216	Achromatium sp. Cell8	
+Bacteria	Permanent Draft	2711768542	Ignavibacteria bacterium RIFOXYA2_FULL_35_10	
+Bacteria	Permanent Draft	2711768588	Achromatium sp. Cell7	
+Bacteria	Permanent Draft	2713897357	Gallionellales bacterium RIFOXYB12_FULL_54_9	
+Bacteria	Permanent Draft	2716884150	Syntrophobacterales bacterium RIFOXYC2_FULL_60_23	
+Bacteria	Permanent Draft	2721755127	Gallionellales bacterium GWA2_60_18	
+Bacteria	Permanent Draft	2721755146	Desulfovibrionales bacterium GWA2_65_9	
+Bacteria	Permanent Draft	2721755161	Ignavibacteria bacterium GWB2_35_12	
+Bacteria	Permanent Draft	2721755226	Nitrospirae bacterium GWD2_57_8	
+Bacteria	Permanent Draft	2731639140	Candidatus Thioglobus sp. SCGC AG-487_I17 (contamination screened)	
+Bacteria	Permanent Draft	2731639162	Roseobacter sp. SCGC AG-485_D03 (contamination screened)	
+Bacteria	Permanent Draft	2731639166	Candidatus Thioglobus sp. SCGC AG-485_C08 (contamination screened)	
+Bacteria	Permanent Draft	2744054635	Thermodesulfatator autotrophicus S606	
+Bacteria	Finished	2751185563	Bathymodiolus septemdierum endosymbiont Myojin knoll A1	
+Bacteria	Finished	2751185799	Desulforamulus ferrireducens GSS09	
+Bacteria	Finished	2757320863	Gordonibacter sp. Marseille-P2775	
+Bacteria	Finished	2757320899	Prosthecochloris sp. GSB1	
+Bacteria	Permanent Draft	2758568002	Unclassified chlorobium sp. NF	
+Bacteria	Permanent Draft	2765235834	Annwoodia aquaesulis DSM 4255	
+Bacteria	Permanent Draft	2765235835	Thiobacillus thiophilus DSM 19892	
+Bacteria	Permanent Draft	2770939419	unclassified Deltaproteobacteria Obs5_genome_090 Obs5_genome_090	
+Bacteria	Permanent Draft	2770939634	unclassified bacterium BinUmb30	
+Bacteria	Permanent Draft	2773858095	Uncultured Gammaproteobacteria Gam6 ca_lh25	
+Bacteria	Permanent Draft	2773858102	Uncultured Gammaproteobacteria Gam8 ca_ll15	
+Bacteria	Finished	2775506867	Pseudodesulfovibrio profundus 500-1	
+Bacteria	Permanent Draft	2784746805	Thiobaca trueperi DSM 13587	
+Bacteria	Permanent Draft	2785510878	Candidatus Desantisbacteria bacterium CG_4_8_14_3_um_filter_40_12	
+Bacteria	Permanent Draft	2786546384	Nitrospirae bacterium CG2_30_41_42	
+Bacteria	Permanent Draft	2786546386	Nitrospirae bacterium CG2_30_70_394	
+Bacteria	Permanent Draft	2786546387	Nitrospirae bacterium CG01_land_8_20_14_3_00_44_22	
+Bacteria	Permanent Draft	2786546401	Nitrospirae bacterium CG_4_8_14_3_um_filter_41_47	
+Bacteria	Permanent Draft	2786546405	Nitrospirae bacterium CG_4_8_14_3_um_filter_50_41	
+Bacteria	Permanent Draft	2786546406	Nitrospirae bacterium CG11_big_fil_rev_8_21_14_0_20_41_14	
+Bacteria	Permanent Draft	2786546545	Aquicultor secundus CG_4_8_14_3_um_filter_50_135	
+Bacteria	Permanent Draft	2786546644	Deltaproteobacteria bacterium CG2_30_43_15	
+Bacteria	Permanent Draft	2786546653	Deltaproteobacteria bacterium CG1_02_45_11	
+Bacteria	Permanent Draft	2786546662	Deltaproteobacteria bacterium CG_4_10_14_3_um_filter_60_8	
+Bacteria	Permanent Draft	2786546665	Deltaproteobacteria bacterium CG_4_8_14_3_um_filter_43_13	
+Bacteria	Permanent Draft	2786546733	Rhodocyclales bacterium CG_4_10_14_3_um_filter_68_10	
+Bacteria	Permanent Draft	2786546903	Desulfoplanes formicivorans Pf12B	
+Bacteria	Permanent Draft	2788499819	Desulfosoma caldarium DSM 22027	
+Bacteria	Permanent Draft	2791354756	Desulfovibrio sp. An276	
+Bacteria	Permanent Draft	2795386059	Unclassified bacterium GBS-CoSAG_18	
+Bacteria	Permanent Draft	2802429407	Acidiferrobacteraceae bacterium NP959	
+Bacteria	Permanent Draft	2802429409	Acidiferrobacteraceae bacterium NP54	
+Bacteria	Permanent Draft	2808606438	Acidulodesulfobacterales sp. AP1	
+Bacteria	Permanent Draft	2811994894	unclassified Myxococcales BinDm32	
+Bacteria	Finished	2811995020	Dehalobacterium formicoaceticum DMC	
+Bacteria	Finished	2811995131	Magnetospirillum gryphiswaldense R3/S1	
+Bacteria	Permanent Draft	2814122922	unclassified Deltaproteobacteria BinDGm209	
+Bacteria	Permanent Draft	2820641689	Unclassified Firmicutes Cu122P5bin5	
+Bacteria	Permanent Draft	2820951912	Unclassified Acidobacteria Emb289P4bin26	
+Bacteria	Permanent Draft	2823547088	Deltaproteobacteria bacterium NP955	
+Bacteria	Permanent Draft	2828749676	unclassified Thiotrichaceae bin E2_68	
+Bacteria	Permanent Draft	2828825751	Desulfovibrio sp. DeMMO1_20	
+Bacteria	Permanent Draft	2828991522	Deltaproteobacteria bacterium DeMMO2_45	
+Bacteria	Permanent Draft	2829170918	Phycisphaerae bacterium DeMMO3_68	
+Bacteria	Permanent Draft	2829274855	Nitrospiraceae bacterium DeMMO5_11	
+Bacteria	Permanent Draft	2829323843	Nitrospiraceae bacterium DeMMO5_34	
+Bacteria	Permanent Draft	2829345940	Omnitrophica bacterium DeMMO6_4	
+Bacteria	Permanent Draft	2829404553	Desulfobacterales bacterium DeMMO6_20	
+Bacteria	Permanent Draft	2829729602	Desulfitispora alkaliphila DSM 22410	
+Bacteria	Permanent Draft	2832172843	Carboxydothermus islandicus SET IS-9	
+Bacteria	Permanent Draft	2833569056	Prosthecochloris sp. ZM_2	
+Bacteria	Permanent Draft	2834457792	Desulfosporosinus sp. FKA	
+Bacteria	Permanent Draft	2834699438	Thioalkalivibrio halophilus HL17	
+Bacteria	Permanent Draft	2835551090	Thiotricheae bacterium A1464	
+Bacteria	Permanent Draft	2837687090	Marimonas lutisalis GH1-19	
+Bacteria	Permanent Draft	2861160354	Thermosulfuriphilus ammonigenes DSM 102941	
+Bacteria	Permanent Draft	2881919988	Magnetaquicoccus inordinatus UR-1	
+Bacteria	Permanent Draft	2883768972	Tropicimonas sp. IMCC6043	
+Bacteria	Finished	2883911043	Pseudodesulfovibrio cashew SRB007	
+Bacteria	Permanent Draft	2883976897	Chlorobium sp. N1	
+Bacteria	Permanent Draft	2887343441	Lucifera butyrica ALE	
+Bacteria	Permanent Draft	2890048950	Marinifilum sp. JC120	
+Bacteria	Permanent Draft	2890571021	Thiothrix sp. AG-390-E05	
+Bacteria	Permanent Draft	2890631485	Thiothrix sp. AG-918-N08	
+Bacteria	Permanent Draft	2890670643	Thiothrix sp. AG-333-O13	
+Bacteria	Permanent Draft	2890683868	Allochromatium palmeri DSM 15591	
+Bacteria	Permanent Draft	2890915291	Halodesulfovibrio sp. MK-HDV	
+Bacteria	Permanent Draft	2893509136	Sulfuricella sp. DeMMO3_1	
+Bacteria	Permanent Draft	2894460714	Magnetospirillum sp. SS-4	
+Bacteria	Permanent Draft	2898010342	Desulforadius tongensis DSM 29799	
+Bacteria	Permanent Draft	2899420637	Desulfovibrio sp. ZJ209	
+Bacteria	Permanent Draft	2899423143	Desulfovibrio sp. JC022	
+Bacteria	Permanent Draft	2899437737	Desulfovibrio legallii H1T	
+Bacteria	Finished	2911194029	Rhodoferax sp. BAB1	
+Bacteria	Permanent Draft	2920405405	Gordonibacter urolithinfaciens BIOML-A1	
+Bacteria	Permanent Draft	2929249989	Rhodobium gokarnense DSM 17935	
+Bacteria	Permanent Draft	2989226667	Solidesulfovibrio aerotolerans DSM 16695	
+Bacteria	Permanent Draft	2993879535	Rhabdochromatium marinum DSM 5261	
+Bacteria	Permanent Draft	2998927360	Solemya elarraichensis gill symbiont Se-Cadez	
+Bacteria	Permanent Draft	2999832196	Thiococcus pfennigii Pfennig 8320	
+Bacteria	Finished	2999841656	Abyssogena phaseoliformis symbiont OG214	
+Bacteria	Finished	3000243389	Isorropodon fossajaponicum endosymbiont JTNG4	
+Bacteria	Finished	3000413198	Sterolibacteriaceae bacterium J5B	
+Bacteria	Permanent Draft	3001943027	Desulfosporosinus sp. Sb-LF	
+Bacteria	Permanent Draft	8000839481	Burkholderiales bacterium BURK1	
+Bacteria	Permanent Draft	8000848517	Burkholderiaceae bacterium BURC	
+Bacteria	Permanent Draft	8000947624	Paradesulfitobacterium ferrireducens PLL0	
+Bacteria	Finished	8001148384	Candidatus Vesicomyosocius sp. SY067_SCS001	
+Bacteria	Permanent Draft	8001361849	Raoultibacter phocaeensis Marseille-P8396	
+Bacteria	Permanent Draft	8001738646	Ideonella aquatica 4Y11	
+Bacteria	Finished	8002131595	Candidatus Thiothrix anitrata A52	
+Bacteria	Permanent Draft	8046428490	Fundidesulfovibrio soli SG60	
+Bacteria	Finished	8047522098	Pseudodesulfovibrio sediminis SF6	
+Bacteria	Finished	637000324	Thiobacillus denitrificans ATCC 25259	
+Bacteria	Permanent Draft	638341245	delta proteobacterium sp. MLMS-1	
+Bacteria	Finished	639633063	Syntrophobacter fumaroxidans MPOB	
+Bacteria	Finished	643886196	Desulfonatronospira thiodismutans ASO3-1	
+Bacteria	Finished	644736352	Solidesulfovibrio magneticus RS-1	
+Bacteria	Finished	646311904	Ammonifex degensii KC4	
+Bacteria	Finished	646564528	Desulfurivibrio alkaliphilus AHT2	
+Bacteria	Finished	2507262031	Desulfitobacterium dehalogenans JW/IU-DC1, ATCC 51507	
+Bacteria	Finished	2504136006	Desulfobacca acetoxidans ASRB2, DSM 11109	
+Bacteria	Finished	2510065044	Desulfosporosinus meridiei S10, DSM 13257	
+Bacteria	Finished	2504756006	Thermodesulfobium narugense Na82, DSM 14796	
+Bacteria	Finished	2503692001	Desulfosudis oleivorans Hxd3	
+Bacteria	Finished	2505119042	Thermodesulfatator indicus CIR29812, DSM 15286	
+Bacteria	Permanent Draft	2513237155	Sedimenticola selenatireducens DSM 17993	
+Bacteria	Permanent Draft	2513237324	Desulfovibrio sp. 6_1_46AFAA	
+Bacteria	Permanent Draft	2515154007	Desulfotignum phosphitoxidans FiPS-3, DSM 13687	
+Bacteria	Permanent Draft	2516143028	Thioalkalivibrio thiocyanodenitrificans ARhD 1	
+Bacteria	Finished	2505679104	Desulfotomaculum carboxydivorans CO-1-SRB, DSM 14880	
+Bacteria	Permanent Draft	2518645586	Halodesulfovibrio aestuarii aestuarii ATCC 29578	
+Bacteria	Permanent Draft	2522572160	Desulfatibacillum aliphaticivorans DSM 15576	
+Bacteria	Permanent Draft	2523231059	Desulforegula conservatrix Mb1Pa	
+Bacteria	Permanent Draft	2524023062	Desulfovibrio aminophilus DSM 12254	
+Bacteria	Permanent Draft	2524023142	Thermodesulfobacterium hveragerdense DSM 12571	
+Bacteria	Permanent Draft	2524023158	Maridesulfovibrio bastinii DSM 16055	
+Bacteria	Permanent Draft	2524614631	Desulfovibrio inopinatus DSM 10711	
+Bacteria	Permanent Draft	2526164711	Desulfovibrio africanus DSM 2603	
+Bacteria	Permanent Draft	2526164742	Desulfatiglans anilini DSM 4660	
+Bacteria	Permanent Draft	2527291542	Candidatus Thioglobus sp. AB-755_C14H09 (unscreened)	
+Bacteria	Permanent Draft	2527291718	Candidatus Thioglobus sp. AB-747_F14AB-903 (unscreened)	
+Bacteria	Finished	2531839478	Sulfuricella denitrificans skB26	
+Bacteria	Permanent Draft	2541046937	Desulfocurvus vexinensis DSM 17965	
+Bacteria	Permanent Draft	2551306517	endosymbiont of Bathymodiolus sp.	
+Bacteria	Permanent Draft	2556921039	Desulfitibacter alkalitolerans DSM 16504	
+Bacteria	Permanent Draft	2562617147	Desulfovibrio sp. 3_1_syn3	
+Bacteria	Permanent Draft	2563366724	Desulfofundulus thermocisternus DSM 10259	
+Bacteria	Permanent Draft	2571042916	Pseudodesulfovibrio halophilus DSM 5663	
+Bacteria	Permanent Draft	2574179772	Thermodesulfobacterium commune DSM 2178	
+Bacteria	Permanent Draft	2574180436	Ferriphaselus sp. R-1	
+Bacteria	Permanent Draft	2576861659	Rhodomicrobium udaipurense JA643	
+Bacteria	Permanent Draft	2579779159	Thermodesulfobacterium hydrogeniphilum DSM 14290	
+Bacteria	Permanent Draft	2582580749	Desulfofundulus australicus DSM 11792	
+Bacteria	Permanent Draft	2582580750	Desulfacinum infernum DSM 9756	
+Bacteria	Permanent Draft	2602042099	Codakia orbicularis gill symbiont	
+Bacteria	Permanent Draft	2608642245	Oceanospirillales bacterium SCGC AD-311-K21 (contamination screened)	
+Bacteria	Draft	2615840503	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies H SA2B20	
+Bacteria	Draft	2615840504	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies H SA2B12	
+Bacteria	Draft	2615840507	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies SD S1321	
+Bacteria	Draft	2615840509	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies LPFa S313	
+Bacteria	Permanent Draft	2615840622	Candidatus Desulfopertinax cowenii modA32	
+Bacteria	Permanent Draft	2616644868	Deltaproteobacteria SCGC AC-213-K20 (unscreened)	
+Bacteria	Permanent Draft	2630969019	Deltaproteobacteria bacterium JGI A06048-F13 (contamination screened)	
+Bacteria	Permanent Draft	2634166171	Desulfomonile sp.	
+Bacteria	Permanent Draft	2634166244	Rhodocyclaceae-49 (UID3972)	
+Bacteria	Permanent Draft	2642422597	Achromatium Bin 0	
+Bacteria	Finished	2645727956	Candidatus Thioglobus autotrophicus EF1	
+Bacteria	Finished	2651869860	Curvibacter sp. PAE-UM	
+Bacteria	Permanent Draft	2651870365	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies TC BZ125	
+Bacteria	Permanent Draft	2651870366	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies TC BZ126	
+Bacteria	Permanent Draft	2654587939	Nitrospira bacterium SM23_35	
+Bacteria	Permanent Draft	2663762656	Deltaproteobacteria bacterium SCGC AC-312_F05 - v2 (unscreened)	
+Bacteria	Permanent Draft	2703719268	unclassified Chlorobi bacterium bin2	
+Bacteria	Permanent Draft	2708742645	Gallionellales bacterium GWE2_58_10	
+Bacteria	Permanent Draft	2708742710	Nitrospirae bacterium RBG_16_64_22	
+Bacteria	Permanent Draft	2708742719	Candidatus Muproteobacteria bacterium RBG_16_65_31	
+Bacteria	Permanent Draft	2710264520	Candidatus Muproteobacteria bacterium RIFCSPHIGHO2_02_FULL_65_16	
+Bacteria	Permanent Draft	2710264761	Unclassified Chloroflexi sp. SA_10	
+Bacteria	Permanent Draft	2710264769	Unclassified Chloroflexi sp. SA_18	
+Bacteria	Permanent Draft	2710724212	uncultured Deltaproteobacterium SAG13	
+Bacteria	Permanent Draft	2711768303	Nitrospinae bacterium RIFCSPLOWO2_12_39_16	
+Bacteria	Permanent Draft	2711768318	Gallionellales bacterium RIFCSPLOWO2_12_FULL_59_22	
+Bacteria	Permanent Draft	2711768322	Betaproteobacteria bacterium RIFCSPLOWO2_12_FULL_67_28	
+Bacteria	Permanent Draft	2711768775	Deltaproteobacteria bacterium RIFOXYD12_FULL_55_16	
+Bacteria	Permanent Draft	2713896921	Desulfolucianica intricata NBRC 109411	
+Bacteria	Permanent Draft	2716884121	Deltaproteobacteria bacterium RIFOXYC2_FULL_48_10	
+Bacteria	Permanent Draft	2721755160	Nitrospirae bacterium GWB2_47_37	
+Bacteria	Permanent Draft	2721755205	Nitrospirae bacterium GWC2_57_9	
+Bacteria	Permanent Draft	2721755322	Deltaproteobacteria bacterium RBG_13_58_19	
+Bacteria	Permanent Draft	2721755989	Achromatium sp. Cell26	
+Bacteria	Permanent Draft	2724678913	Candidatus Lambdaproteobacteria bacterium RIFOXYD2_FULL_50_16	
+Bacteria	Permanent Draft	2724678942	Candidatus Lambdaproteobacteria bacterium RIFOXYD2_FULL_56_26	
+Bacteria	Permanent Draft	2724679649	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies DK DK162	
+Bacteria	Permanent Draft	2724679650	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies DK DK163	
+Bacteria	Permanent Draft	2728369050	Candidatus Magnetominusculus xianensis HCH-1	
+Bacteria	Permanent Draft	2728369419	Nitrospirae bacterium JdFR-86	
+Bacteria	Permanent Draft	2728369575	Marichromatium gracile YL28	
+Bacteria	Permanent Draft	2728369698	Salidesulfovibrio brasiliensis JCM 12178	
+Bacteria	Permanent Draft	2734482348	Candidatus Thioglobus sp. SCGC AG-485_B10 (contamination screened)	
+Bacteria	Permanent Draft	2734482388	SAR324 cluster deltaproteobacterium SCGC AD-606_L04 (contamination screened)	
+Bacteria	Permanent Draft	2739367637	Chlorobi bacterium JGI_MCM14TBH044 (contamination screened)	
+Bacteria	Permanent Draft	2739367767	Unclassified Deltaproteobacteria DGG1A bin 11	
+Bacteria	Permanent Draft	2747842448	unknown bacterium SCGC AD-967-D05	
+Bacteria	Permanent Draft	2751185681	Magnetovibrio blakemorei MV-1	
+Bacteria	Permanent Draft	2757320505	Unclassified Desulfovibrionales bin158	
+Bacteria	Permanent Draft	2757320510	Unclassified Desulfobacterales bin5	
+Bacteria	Permanent Draft	2773858093	Uncultured Gammaproteobacteria Gam6 ca_ze12	
+Bacteria	Permanent Draft	2778260931	Thiocapsa rosea DSM 235	
+Bacteria	Permanent Draft	2778261492	Gammaproteobacteria bacterium SP4045	
+Bacteria	Permanent Draft	2785510879	Candidatus Desantisbacteria bacterium CG_4_9_14_3_um_filter_40_11	
+Bacteria	Permanent Draft	2786546400	Nitrospirae bacterium CG_4_8_14_3_um_filter_44_28	
+Bacteria	Permanent Draft	2786546403	Nitrospirae bacterium CG_4_10_14_3_um_filter_44_29	
+Bacteria	Permanent Draft	2786546648	Deltaproteobacteria bacterium CG17_big_fil_post_rev_8_21_14_2_50_51_6	
+Bacteria	Permanent Draft	2786546670	Betaproteobacteria bacterium CG2_30_59_46	
+Bacteria	Permanent Draft	2786546698	Hydrogenophilales bacterium CG18_big_fil_WC_8_21_14_2_50_58_12	
+Bacteria	Permanent Draft	2786546730	Syntrophobacterales bacterium CG03_land_8_20_14_0_80_58_14	
+Bacteria	Permanent Draft	2786546773	Thioflexithrix psekupsensis D3	
+Bacteria	Permanent Draft	2788499858	Inmirania thermothiophila DSM 100275	
+Bacteria	Permanent Draft	2788500330	Gordonibacter sp. An230	
+Bacteria	Permanent Draft	2802429393	Acidiferrobacteraceae bacterium ARS29	
+Bacteria	Permanent Draft	2802429399	Magnetovibrio sp. SP26	
+Bacteria	Permanent Draft	2802429669	Desulfovibrio sp. RUG514	
+Bacteria	Permanent Draft	2824026448	Betaproteobacteria bacterium B_8	
+Bacteria	Permanent Draft	2829107764	Nitrospiraceae bacterium DeMMO3_26	
+Bacteria	Permanent Draft	2829322463	Desantisbacteria bacterium DeMMO5_33	
+Bacteria	Permanent Draft	2829355439	Desulfobacterales bacterium DeMMO6_6	
+Bacteria	Finished	2834887756	Moorella thermoacetica DSM 2955	
+Bacteria	Permanent Draft	2837010701	Sulfurirhabdus autotrophica BiS0	
+Bacteria	Permanent Draft	2838797410	Magnetospirillum kuznetsovii LBB-42	
+Bacteria	Finished	2841188743	Desulfobulbus oralis ORNL	
+Bacteria	Permanent Draft	2885120869	Desulfovibrio sp. OH1209_COT-279	
+Bacteria	Permanent Draft	2889733918	Adlercreutzia sp. ZJ242	
+Bacteria	Permanent Draft	2889866877	Adlercreutzia sp. ZJ305	
+Bacteria	Permanent Draft	2890411560	Desulfopila sp. IMCC35006	
+Bacteria	Permanent Draft	2890655637	Desulfofundulus sp. TPOSR	
+Bacteria	Permanent Draft	2891314991	Eggerthella guodeyinii HF-4214	
+Bacteria	Permanent Draft	2910492695	Prosthecochloris ethylica DSM 1685	
+Bacteria	Permanent Draft	2915737767	Fundidesulfovibrio magnetotacticus FSS-1	
+Bacteria	Permanent Draft	2988938690	Sporotomaculum syntrophicum FB	
+Bacteria	Permanent Draft	2989112956	Thiorhodococcus mannitoliphagus DSM 18266	
+Bacteria	Permanent Draft	2989118926	Thiorhodococcus minor DSM 11518	
+Bacteria	Permanent Draft	2993901670	Thiohalocapsa halophila DSM 6210	
+Bacteria	Permanent Draft	2994666797	Thiocystis minor DSM 178	
+Bacteria	Permanent Draft	2995994360	Desulfovibrio psychrotolerans JS1	
+Bacteria	Permanent Draft	2999316474	Desulfovibrionaceae bacterium A70_62_DF_DSS	
+Bacteria	Finished	3000422122	Ectothiorhodospiraceae bacterium BW-2	
+Bacteria	Permanent Draft	8000855373	Thiohalobacter thiocyanaticus HRh1	
+Bacteria	Finished	8002135289	Thiothrix lacustris AS	
+Bacteria	Finished	637000060	Carboxydothermus hydrogenoformans Z-2901	
+Bacteria	Finished	642555122	Chlorobium phaeobacteroides BS1	
+Bacteria	Permanent Draft	2508501023	Desulfobacter postgatei 2ac9	
+Bacteria	Finished	2508501051	Thiocystis violascens 611, DSM 198	
+Bacteria	Permanent Draft	2508501048	Thiorhodovibrio sp. 970	
+Bacteria	Permanent Draft	2510065015	Thiorhodococcus drewsii AZ1	
+Bacteria	Permanent Draft	2513237295	Desulfovibrio sp. A2	
+Bacteria	Permanent Draft	2515154021	Thiolinea disciformis DSM 14473	
+Bacteria	Permanent Draft	2502422305	Desulfonema limicola Jadebusen, DSM 2076	
+Bacteria	Permanent Draft	2511231051	Chlorobaculum limnaeum RK-j-1	
+Bacteria	Permanent Draft	2515154111	Thiofilum flexile DSM 14609	
+Bacteria	Permanent Draft	2514752027	Thiothrix sp. AAV1	
+Bacteria	Permanent Draft	2514885009	Desulfocapsa thiozymogenes DSM 7269	
+Bacteria	Permanent Draft	2515154076	Thiobacillus thioparus DSM 505	
+Bacteria	Permanent Draft	2519899530	Desulfocurvibacter africanus PCS	
+Bacteria	Permanent Draft	2522572158	Azospirillum halopraeferens DSM 3675	
+Bacteria	Permanent Draft	2523533522	Paucidesulfovibrio longus DSM 6739	
+Bacteria	Permanent Draft	2523533618	Thermodesulfobacterium thermophilum DSM 1276	
+Bacteria	Permanent Draft	2527291674	Candidatus Thioglobus sp. AB-750G16AB-904 (unscreened)	
+Bacteria	Permanent Draft	2531839442	Desulforamulus hydrothermalis Lam5	
+Bacteria	Permanent Draft	2563366506	Desulfonatronovibrio hydrogenovorans DSM 9292	
+Bacteria	Permanent Draft	2574179788	Desulfobaculum senezii DSM 8436	
+Bacteria	Permanent Draft	2574180434	Desulfobotulus sapovorans DSM 2055	
+Bacteria	Permanent Draft	2576861818	Desulfovibrio sp. DMSS-1	
+Bacteria	Permanent Draft	2582580748	Desulforamulus putei DSM 12395	
+Bacteria	Permanent Draft	2585428147	Thiothrix eikelboomii ATCC 49788	
+Bacteria	Permanent Draft	2585428189	Desulfotomaculum aeronauticum DSM 10349	
+Bacteria	Permanent Draft	2593339128	Desulfonatronum thioautotrophicum ASO4-1	
+Bacteria	Permanent Draft	2597489948	Desulfovibrio sp. X2	
+Bacteria	Permanent Draft	2609460260	Desulfonatronum thiodismutans MLF-1	
+Bacteria	Draft	2615840510	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies LPFa S426	
+Bacteria	Draft	2615840515	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies TUN BY2	
+Bacteria	Permanent Draft	2616644837	Gamma proteobacterium SCGC AD-606-J22 (contamination screened)	
+Bacteria	Finished	2619619276	Thioploca ingrica Lake Okotanpe	
+Bacteria	Permanent Draft	2630968296	Deltaproteobacteria bacterium JGI C04028-K04 (contamination screened)	
+Bacteria	Finished	2634166451	Berryella intestinalis 68-1-3	
+Bacteria	Permanent Draft	2636415935	Desulfovibrio sp. TomC	
+Bacteria	Permanent Draft	2654587910	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies G BZ157	
+Bacteria	Permanent Draft	2654588059	Desulfobacterales bacterium SG8_35	
+Bacteria	Permanent Draft	2660238815	Oceanospirillales bacterium SCGC AD-305-J20 - v2 (unscreened)	
+Bacteria	Permanent Draft	2693430055	Gallionella sp. JGI CrystG Aug3-1-F11 (unscreened)	
+Bacteria	Permanent Draft	2698536958	Betaproteobacteria bacterium JGI CrystG Apr3-1-K10 (unscreened)	
+Bacteria	Permanent Draft	2700988602	unclassified Chromatiaceae bacterium bin1	
+Bacteria	Permanent Draft	2703719212	Moorella thermoacetica DSM 12993	
+Bacteria	Permanent Draft	2703719213	Moorella thermoacetica DSM 11768	
+Bacteria	Permanent Draft	2708742538	Desulfovibrio gilichinskyi K3S	
+Bacteria	Permanent Draft	2708742591	Candidatus Rokubacteria bacterium GWA2_70_23	
+Bacteria	Permanent Draft	2708742690	Nitrospirae bacterium GWF2_44_13	
+Bacteria	Permanent Draft	2708742843	Nitrospirae bacterium RBG_19FT_COMBO_42_15	
+Bacteria	Permanent Draft	2708743047	Candidatus Muproteobacteria bacterium RIFCSPHIGHO2_01_FULL_61_200	
+Bacteria	Permanent Draft	2710264502	Unclassified Chloroflexi sp. SA_11	
+Bacteria	Permanent Draft	2711768520	Desulfobacterales bacterium RIFOXYA12_FULL_46_15	
+Bacteria	Permanent Draft	2711768765	Burkholderiales bacterium RIFOXYC12_FULL_60_6	
+Bacteria	Permanent Draft	2711768784	Gammaproteobacteria bacterium RIFOXYD12_FULL_61_37	
+Bacteria	Finished	2718217731	Moorella thermoacetica DSM 103284	
+Bacteria	Permanent Draft	2721755197	Candidatus Rokubacteria bacterium GWC2_70_24	
+Bacteria	Permanent Draft	2721755295	Planctomycetes bacterium RBG_13_63_9	
+Bacteria	Permanent Draft	2721755323	Nitrospirae bacterium RBG_13_43_8	
+Bacteria	Permanent Draft	2721755396	Deltaproteobacteria bacterium RBG_16_47_11	
+Bacteria	Permanent Draft	2728368987	Chlorobium limicola Frasassi	
+Bacteria	Permanent Draft	2728369422	Peptococcaceae bacterium JdFR-69	
+Bacteria	Permanent Draft	2728369439	Nitrospirae bacterium JdFR-87	
+Bacteria	Permanent Draft	2739367544	Chlorobi bacterium JGI_MCM14TBH012 (contamination screened)	
+Bacteria	Permanent Draft	2740891954	SAR324 cluster deltaproteobacterium SCGC AD-604_D22 (contamination screened)	
+Bacteria	Permanent Draft	2751185428	Unclassified Burkholderiales HKU-PRO8	
+Bacteria	Permanent Draft	2751185429	Unclassified Burkholderiales HKU-PRO9	
+Bacteria	Permanent Draft	2757320504	Unclassified Desulfobacterales bin47	
+Bacteria	Permanent Draft	2767802433	unclassified Thiotrichaceae bin E4_68	
+Bacteria	Permanent Draft	2772190878	unclassified Gammaproteobacteria Bin E5_28	
+Bacteria	Finished	2773857920	Candidatus Thiodictyon syntrophicum Cad16	
+Bacteria	Permanent Draft	2773858077	Uncultured Gammaproteobacteria Gam2 st_ze5	
+Bacteria	Finished	2775506860	Gordonibacter urolithinfaciens DSM 27213T	
+Bacteria	Permanent Draft	2778261626	Verrucomicrobiales bacterium NAT181	
+Bacteria	Permanent Draft	2784746771	Marichromatium gracile DSM 203	
+Bacteria	Permanent Draft	2784746784	Sulfuritortus calidifontis DSM 103923	
+Bacteria	Permanent Draft	2785510900	Candidatus Desantisbacteria bacterium CG2_30_40_21	
+Bacteria	Permanent Draft	2786546211	Armatimonadetes bacterium CG2_30_66_41	
+Bacteria	Permanent Draft	2786546539	Aquicultor secundus CG_4_10_14_0_8_um_filter_50_43	
+Bacteria	Permanent Draft	2786546659	Deltaproteobacteria bacterium CG03_land_8_20_14_0_80_45_14	
+Bacteria	Permanent Draft	2786546666	Deltaproteobacteria bacterium CG23_combo_of_CG06-09_8_20_14_all_60_8	
+Bacteria	Permanent Draft	2786546694	Hydrogenophilales bacterium CG03_land_8_20_14_0_80_62_28	
+Bacteria	Permanent Draft	2786546697	Hydrogenophilales bacterium CG_4_9_14_3_um_filter_63_34	
+Bacteria	Permanent Draft	2786546699	Hydrogenophilales bacterium CG15_BIG_FIL_POST_REV_8_21_14_020_62_31	
+Bacteria	Permanent Draft	2786546734	Rhodocyclales bacterium CG_4_9_14_3_um_filter_68_10	
+Bacteria	Permanent Draft	2786546735	Rhodocyclales bacterium CG17_big_fil_post_rev_8_21_14_2_50_68_7	
+Bacteria	Permanent Draft	2786546750	Desulfobacterales bacterium CG23_combo_of_CG06-09_8_20_14_all_52_9	
+Bacteria	Permanent Draft	2786546769	Thiotrichales bacterium RS615	
+Bacteria	Permanent Draft	2786546941	Syntrophaceae bacterium CG2_30_49_12	
+Bacteria	Permanent Draft	2788500037	Desulfocucumis palustris NAW-5	
+Bacteria	Permanent Draft	2791355008	Magnetospirillum moscoviense BB-1	
+Bacteria	Permanent Draft	2799112278	Anaerospora hongkongensis DSM 15969	
+Bacteria	Permanent Draft	2802428810	Cocleimonas flava DSM 24830	
+Bacteria	Finished	2806310698	Candidatus Marithrix sp. Canyon 246 segment 3	
+Bacteria	Permanent Draft	2820101058	Unclassified Proteobacteria Emb289P4bin76	
+Bacteria	Permanent Draft	2820127165	Unclassified Proteobacteria Emb289P3bin90	
+Bacteria	Permanent Draft	2828918058	Zixibacteria bacterium DeMMO2_6	
+Bacteria	Permanent Draft	2828940981	Thiobacillus sp. DeMMO2_16	
+Bacteria	Permanent Draft	2829064950	Nitrospirae bacterium DeMMO3_8	
+Bacteria	Permanent Draft	2829120143	Syntrophaceae bacterium DeMMO3_32	
+Bacteria	Permanent Draft	2829487320	Phycisphaerae bacterium DeMMO6_73	
+Bacteria	Permanent Draft	2830749085	Myxococcales bacterium DeMMO6_52	
+Bacteria	Permanent Draft	2832246241	Marichromatium sp. AB32	
+Bacteria	Finished	2833647300	Acidiferrobacter sp. SPIII_3	
+Bacteria	Finished	2834899978	Ferriphaselus amnicola OYT1	
+Bacteria	Permanent Draft	2837637149	Moorella thermoacetica DSM 6867	
+Bacteria	Permanent Draft	2838812021	Moorella sp. Hama-1	
+Bacteria	Draft	2840090052	Betaproteobacteria bacterium BP07	
+Bacteria	Permanent Draft	2861449170	Desulfovibrio intestinalis DSM 11275	
+Bacteria	Permanent Draft	2866341438	Eggerthella sinensis DSM 16107	
+Bacteria	Permanent Draft	2880805847	WPS-2 bacterium DeMMO6_30	
+Bacteria	Permanent Draft	2881658920	Piscinibacter defluvii SH-1	
+Bacteria	Permanent Draft	2887492712	Desulfonema ishimotonii Tokyo 01	
+Bacteria	Permanent Draft	2887557445	Muriiphilus fusiformis HY14	
+Bacteria	Permanent Draft	2887599246	Desulforhopalus sp. IMCC35007	
+Bacteria	Finished	2887773926	Blastochloris tepida GI	
+Bacteria	Permanent Draft	2893496078	Thermodesulfovibrio sp. S19_FULL_No.1_1.8_94	
+Bacteria	Permanent Draft	2894733683	Moorella sp. E306M	
+Bacteria	Finished	2898017394	Profundibacter amoris BAR1	
+Bacteria	Permanent Draft	2915753235	Cupidesulfovibrio sp. HK-II	
+Bacteria	Permanent Draft	2988990092	Thiospirillum jenense DSM 216	
+Bacteria	Finished	2989015322	Thermochromatium tepidum ATCC 43061	
+Bacteria	Permanent Draft	2995990613	Desulfovibrio sp. HN2	
+Bacteria	Permanent Draft	2998924590	Solemya velesiana gill symbiont Sveles-Q1	
+Bacteria	Permanent Draft	2999954272	Rhodospirillaceae bacterium LM-1	
+Bacteria	Permanent Draft	3000496893	Chromatium okenii DSM 169	
+Bacteria	Permanent Draft	3002038831	Desulfobulbus alkaliphilus DSM 24258	
+Bacteria	Permanent Draft	8001265873	Thiorhodovibrio winogradskyi 6511	
+Bacteria	Finished	8001465417	Acidiferrobacter thiooxydans ZJ	
+Bacteria	Permanent Draft	8001628250	Rhodomicrobium sp. Az07	
+Bacteria	Finished	8002144933	Eggerthella guodeyinii HF-1101	
+Bacteria	Permanent Draft	8047510719	Pinisolibacter aquiterrae MA2-2	
+Bacteria	Finished	637000005	Alkalilimnicola ehrlichii MLHE-1	
+Bacteria	Finished	640069310	Desulfotomaculum reducens MI-1	
+Bacteria	Finished	642555149	Prosthecochloris aestuarii SK413, DSM 271	
+Bacteria	Finished	644736353	Maridesulfovibrio salexigens DSM 2638	
+Bacteria	Finished	648028023	Desulfarculus baarsii 2st14, DSM 2075	
+Bacteria	Finished	649633037	Pseudodesulfovibrio aespoeensis Aspo-2, DSM 10631	
+Bacteria	Finished	649633090	Rhodomicrobium vannielii ATCC 17100	
+Bacteria	Permanent Draft	2501915963	Desulfonispora thiosulfatigenes GKNTAUT , DSM 11270	
+Bacteria	Finished	2506520043	Thioalkalivibrio paradoxus ARh 1	
+Bacteria	Finished	2503538017	Thermanaeromonas toyohensis ToBE, DSM 14490	
+Bacteria	Permanent Draft	2508501107	Thiocapsa marina 5811, DSM 5653	
+Bacteria	Permanent Draft	2512875033	Thioalkalivibrio paradoxus ARh 1 version 2	
+Bacteria	Finished	2502957028	Desulfatibacillum aliphaticivorans AK-01	
+Bacteria	Permanent Draft	2515154118	Lamprocystis purpurea DSM 4197	
+Bacteria	Permanent Draft	2516653041	Desulfitobacterium hafniense TCP-A	
+Bacteria	Permanent Draft	2523533630	Thermodesulfovibrio thiophilus DSM 17215	
+Bacteria	Permanent Draft	2527291633	Candidatus Thioglobus sp. AB-751_B23AB-904 (unscreened)	
+Bacteria	Permanent Draft	2565956519	Desulfofalx alkaliphila DSM 12257	
+Bacteria	Permanent Draft	2565957142	Thermosinus carboxydivorans Nor1	
+Bacteria	Permanent Draft	2568526004	Paradesulfovibrio bizertensis DSM 18034	
+Bacteria	Permanent Draft	2568526008	Paucidesulfovibrio gracilis DSM 16080	
+Bacteria	Permanent Draft	2571042914	Desulfohalovibrio reitneri L21-Syr-AB	
+Bacteria	Permanent Draft	2574179706	Oleidesulfovibrio vietnamensis DSM 10520	
+Bacteria	Permanent Draft	2574179745	Thermanaerosceptrum fracticalcis DRI-13	
+Bacteria	Permanent Draft	2582580622	Composite genome from Trout Bog Epilimnion pan-assembly TBepi.metabat.211	
+Bacteria	Permanent Draft	2582581242	Thermopetrobacter sp. TC1	
+Bacteria	Permanent Draft	2585428071	Halodesulfovibrio marinisediminis DSM 17456	
+Bacteria	Permanent Draft	2585428172	Desulfacinum hydrothermale DSM 13146	
+Bacteria	Permanent Draft	2596583675	Moorella thermoacetica DSM 521	
+Bacteria	Permanent Draft	2600254952	endosymbiont of Riftia pachyptila (vent Ph05)	
+Bacteria	Draft	2609459750	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies H SA2B15	
+Bacteria	Draft	2615840508	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies LPFa S312	
+Bacteria	Draft	2615840512	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies LFY M7	
+Bacteria	Draft	2615840513	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies LFY BY7	
+Bacteria	Draft	2615840516	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies TUN BY3	
+Bacteria	Draft	2615840517	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies UNK BY8	
+Bacteria	Permanent Draft	2616645012	Isolated Sinkhole 2014 Bin 3	
+Bacteria	Permanent Draft	2617270890	pelotomaculum	
+Bacteria	Permanent Draft	2617270892	desulfomonile	
+Bacteria	Permanent Draft	2619619230	Thioalkalivibrio sp. HK1	
+Bacteria	Permanent Draft	2627853591	Gammaproteobacteria endosymbiont of Lamellibrachia satsuma - 1368	
+Bacteria	Permanent Draft	2634166607	Bacterium SCGC AD-253-K10 (unscreened)	
+Bacteria	Permanent Draft	2636416042	Desulfoglaeba alkanexedens ALDC	
+Bacteria	Permanent Draft	2642422596	Achromatium bin 8	
+Bacteria	Finished	2645727629	Desulfovibrio vulgaris RCH1	
+Bacteria	Permanent Draft	2645727833	Magnetospirillum magnetotacticum MS-1	
+Bacteria	Permanent Draft	2651870076	unclassified Rhodobacteraceae Bin 23	
+Bacteria	Draft	2651870288	Unclassified gammaproteobacterium REDSEA-S21_B8	
+Bacteria	Permanent Draft	2654587914	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies FW BZ106	
+Bacteria	Permanent Draft	2675903017	Roseospirillum parvum 930I	
+Bacteria	Permanent Draft	2675903293	Syntrophomonas zehnderi OL-4	
+Bacteria	Finished	2684623057	Desulfomicrobium orale DSM 12838	
+Bacteria	Finished	2684623093	Magnetospirillum sp. XM-1	
+Bacteria	Permanent Draft	2698536889	Betaproteobacteria bacterium JGI CrystG Apr3-1-J20 (contamination screened)	
+Bacteria	Permanent Draft	2703719206	Moorella thermoacetica JW701/3	
+Bacteria	Permanent Draft	2703719210	Moorella thermoacetica DSM 12797	
+Bacteria	Permanent Draft	2703719334	uncultured Deltaproteobacterium SAG3	
+Bacteria	Permanent Draft	2708742857	Candidatus Muproteobacteria bacterium RIFCSPHIGHO2_01_60_12	
+Bacteria	Permanent Draft	2708742875	Candidatus Muproteobacteria bacterium RIFCSPHIGHO2_01_FULL_65_16	
+Bacteria	Permanent Draft	2710723573	Candidatus Muproteobacteria bacterium RIFCSPHIGHO2_12_FULL_60_33	
+Bacteria	Permanent Draft	2710723989	Gallionellales bacterium RIFCSPLOWO2_02_58_13	
+Bacteria	Permanent Draft	2710723994	Gallionellales bacterium RIFCSPLOWO2_02_FULL_57_47	
+Bacteria	Permanent Draft	2710724056	Rhodocyclales bacterium RIFCSPLOWO2_02_FULL_63_24	
+Bacteria	Permanent Draft	2710724172	Candidatus Thiosymbion algarvensis Type A ELBA JGI 014 (contamination screened)	
+Bacteria	Permanent Draft	2710724217	Achromatium sp. Cell12	
+Bacteria	Permanent Draft	2711768527	Deltaproteobacteria bacterium RIFOXYA12_FULL_61_11	
+Bacteria	Permanent Draft	2711768587	Achromatium sp. Cell3	
+Bacteria	Permanent Draft	2711768781	Deltaproteobacteria bacterium RIFOXYD12_FULL_50_9	
+Bacteria	Permanent Draft	2711768789	Deltaproteobacteria bacterium RIFOXYD12_FULL_53_23	
+Bacteria	Finished	2718217647	Candidatus Formimonas warabiya DCMF	
+Bacteria	Permanent Draft	2721755164	Desulfobacterales bacterium GWB2_56_26	
+Bacteria	Permanent Draft	2721755379	Candidatus Muproteobacteria bacterium RBG_16_62_13	
+Bacteria	Permanent Draft	2724679055	Dehalococcoidia bacterium SCGC AB-540-C11	
+Bacteria	Permanent Draft	2724679060	Desulfitobacterium hafniense DH	
+Bacteria	Permanent Draft	2724679641	Dissulfuribacter thermophilus S69	
+Bacteria	Permanent Draft	2724679651	Bacterial ectosymbiont of Kentrophoros (Beck) morphospecies DK DK165	
+Bacteria	Permanent Draft	2724679720	Unclassified Rhodospirillales Bin 1	
+Bacteria	Permanent Draft	2728369415	Desulfarculaceae bacterium JdFR-97	
+Bacteria	Permanent Draft	2728369416	Nitrospirae bacterium JdFR-88	
+Bacteria	Permanent Draft	2728369418	Nitrospirae bacterium JdFR-82	
+Bacteria	Permanent Draft	2734482358	Candidatus Thioglobus sp. SCGC AG-487_I11 (contamination screened)	
+Bacteria	Permanent Draft	2734482360	Candidatus Thioglobus sp. SCGC AG-487_E22 (contamination screened)	
+Bacteria	Permanent Draft	2734482824	Candidatus Thioglobus sp. SCGC AG-485_J04 (contamination screened)	
+Bacteria	Permanent Draft	2737471659	Chlorobi bacterium JGI_MCM14TBH085 (contamination screened)	
+Bacteria	Finished	2751185666	Caldimicrobium thiodismutans TF1	
+Bacteria	Permanent Draft	2751185719	Halodesulfovibrio spirochaetisodalis JC271	
+Bacteria	Permanent Draft	2751185747	Thermodesulfovibrio sp. N1	
+Bacteria	Permanent Draft	2770939547	Thiogranum longum DSM 19610	
+Bacteria	Permanent Draft	2770939656	Dehalococcoides sp. BinDmb192	
+Bacteria	Permanent Draft	2772190729	Candidatus Marithrix sp. Canyon 246	
+Bacteria	Permanent Draft	2772190875	Candidatus Thiomargarita nelsonii Bin E5_22_5	
+Bacteria	Permanent Draft	2778261653	Acidiferrobacteraceae bacterium NP24	
+Bacteria	Permanent Draft	2784746795	Pseudodesulfovibrio indicus DSM 101483	
+Bacteria	Permanent Draft	2785510876	Candidatus Desantisbacteria bacterium CG_4_10_14_3_um_filter_40_18	
+Bacteria	Permanent Draft	2786546388	Nitrospirae bacterium CG_4_9_14_3_um_filter_53_35	
+Bacteria	Permanent Draft	2786546389	Nitrospirae bacterium CG02_land_8_20_14_3_00_44_33	
+Bacteria	Permanent Draft	2786546538	Candidatus Aquicultor secundus CG17_big_fil_post_rev_8_21_14_2_50_50_24	
+Bacteria	Permanent Draft	2786546570	Anaerolineae bacterium CG2_30_64_16	
+Bacteria	Permanent Draft	2786546656	Deltaproteobacteria bacterium CG_4_9_14_3_um_filter_44_9	
+Bacteria	Permanent Draft	2786546660	Deltaproteobacteria bacterium CG_4_10_14_0_8_um_filter_43_12	
+Bacteria	Permanent Draft	2786546695	Hydrogenophilales bacterium CG_4_10_14_3_um_filter_63_21	
+Bacteria	Permanent Draft	2786546696	Hydrogenophilales bacterium CG_4_8_14_3_um_filter_62_83	
+Bacteria	Permanent Draft	2786546702	Hydrogenophilales bacterium CG_4_10_14_3_um_filter_58_23	
+Bacteria	Permanent Draft	2786546704	Hydrogenophilales bacterium CG12_big_fil_rev_8_21_14_0_65_61_21	
+Bacteria	Permanent Draft	2786546731	Syntrophobacterales bacterium CG_4_8_14_3_um_filter_49_14	
+Bacteria	Permanent Draft	2788500052	Desulfovibrionaceae bacterium CG1_02_65_16	
+Bacteria	Permanent Draft	2791355011	Magnetospirillum marisnigri SP-1	
+Bacteria	Permanent Draft	2791355013	Moorella stamsii DSM 26217	
+Bacteria	Permanent Draft	2802429396	Acidiferrobacteraceae bacterium NP122	
+Bacteria	Permanent Draft	2802429406	Acidiferrobacteraceae bacterium NP79	
+Bacteria	Permanent Draft	2820080004	Unclassified Proteobacteria Lab288P4bin34	
+Bacteria	Finished	2828541481	Chromatiales bacterium bin 11	
+Bacteria	Permanent Draft	2829044589	Calditrichaeota bacterium DeMMO3_2	
+Bacteria	Permanent Draft	2829218897	Rhodocyclaceae bacterium DeMMO4_19	
+Bacteria	Permanent Draft	2829305341	Desulfobacteraceae bacterium DeMMO5_26	
+Bacteria	Permanent Draft	2829331681	Rhodocyclaceae bacterium DeMMO5_40	
+Bacteria	Permanent Draft	2829377517	Desulfobacterales bacterium DeMMO6_12	
+Bacteria	Permanent Draft	2829408314	Desulfobacterales bacterium DeMMO6_21	
+Bacteria	Permanent Draft	2829453649	Desulfobacterales bacterium DeMMO6_40	
+Bacteria	Permanent Draft	2834732323	Desulfovibrio sp. AM18-2	
+Bacteria	Permanent Draft	2835925742	Oceanospirillales bacterium SCGC AD-311-K21 (contamination screened) decontaminated	
+Bacteria	Finished	2837194640	Sulfurivermis fontis JG42	
+Bacteria	Permanent Draft	2838101865	Rhodobium orientis DSM 11290	
+Bacteria	Permanent Draft	2839410141	Prosthecochloris marina V1	
+Bacteria	Finished	2842667859	Thermanaerosceptrum fracticalcis DRI-13	
+Bacteria	Permanent Draft	2844895905	Carboxydothermus ferrireducens DSM 11255 Genome sequencing	
+Bacteria	Finished	2845833426	Desulfosediminicola ganghwensis IMCC35004	
+Bacteria	Permanent Draft	2875778839	Desulfomicrobium macestii DSM 4194	
+Bacteria	Permanent Draft	2885123479	Desulfovibrio sp. OH1186_COT-070	
+Bacteria	Permanent Draft	2890947945	Pseudodesulfovibrio sp. JC047	
+Bacteria	Permanent Draft	2891037776	Gordonibacter pamelaeae BIOML-A2	
+Bacteria	Permanent Draft	2894040609	Thiothrix sp. AG-447-N20	
+Bacteria	Permanent Draft	2901948472	Desulfovibrio sp. ZJ200	
+Bacteria	Permanent Draft	2901954164	Desulfovibrio sulfodismutans DSM 3696	
+Bacteria	Permanent Draft	2926666083	Desulfofundulus luciae DSM 12396	
+Bacteria	Permanent Draft	2929245759	Rhodoblastus acidophilus DSM 142	
+Bacteria	Permanent Draft	2964164153	Calidifontimicrobium sediminis SYSU G00088	
+Bacteria	Permanent Draft	2988976332	Thiohalocapsa marina DSM 19078	
+Bacteria	Permanent Draft	2995109201	Blastochloris sulfoviridis DSM 729	
+Bacteria	Permanent Draft	2999836021	Lamprobacter modestohalophilus DSM 25653	
+Bacteria	Permanent Draft	3002043017	Desulfobulbus rhabdoformis DSM 8777	
+Bacteria	Permanent Draft	8001653307	Halorhodospira halophila IM9626	
+Bacteria	Permanent Draft	8002023216	Pseudodesulfovibrio sp. S3	
+Bacteria	Permanent Draft	8046442102	Fundidesulfovibrio terrae SG127	
+Bacteria	Finished	8048255048	Desulfosarcina alkanivorans PL12	
+Viruses	Permanent Draft	2974550682	Podovirus Lau218 Abe	

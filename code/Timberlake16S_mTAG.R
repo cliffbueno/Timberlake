@@ -1299,6 +1299,13 @@ dev.off()
 
 
 #### _Methanogens ####
+# Need to fix SILVA typo: Halobacterota -> Halobacteriota
+for (i in 1:nrow(nc$taxonomy_loaded)) {
+  if (nc$taxonomy_loaded$taxonomy2[i] == "Halobacterota") {
+    nc$taxonomy_loaded$taxonomy2[i] <- "Halobacteriota"
+  }
+}
+
 nc$map_loaded$sampleID <- rownames(nc$map_loaded)
 nc$map_loaded$sampleID <- gsub("SO4", "+SO4", nc$map_loaded$sampleID)
 nc$map_loaded$sampleID <- gsub("ASW", "+ASW", nc$map_loaded$sampleID)
