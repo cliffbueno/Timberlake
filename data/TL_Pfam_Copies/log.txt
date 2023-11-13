@@ -1,0 +1,85 @@
+2023/11/07 23:10:01 [INFO] (messageSystem/Util.pm: 69) Logging started.
+2023/11/07 23:10:01 [INFO] (messageSystem/AnalysisStats.pm: 164) Logging started
+2023/11/07 23:10:01 [INFO] (messageSystem/MessageQueryUtil.pm: 76) 
+        select t.taxon_oid
+        from taxon t 
+        where t.in_file = 'Yes'
+        and t.taxon_oid in (3300017993,3300017994,3300017930,3300017936,3300017927,3300017822,3300017821,3300017937,3300018001,3300018006,3300017823,3300017995,3300017932,3300017926,3300017928,3300017942,3300018007,3300017924,3300017934,3300017933,3300017943,3300018012,3300017955)
+        
+        
+    
+2023/11/07 23:10:01 [INFO] (messageSystem/Util.pm: 1122) 
+select EXT_ACCESSION, DESCRIPTION from pfam_family
+        
+2023/11/07 23:10:01 [INFO] (messageSystem/MessageOracleUtil.pm: 476) Query exec done
+2023/11/07 23:10:01 [INFO] (messageSystem/Util.pm: 1122) 
+select name, email from contact where contact_oid = ?
+	
+2023/11/07 23:10:01 [INFO] (messageSystem/Util.pm: 1122) arg[0] '123426'
+2023/11/07 23:10:01 [INFO] (messageSystem/MessageOracleUtil.pm: 476) Query exec done
+2023/11/07 23:10:01 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017928/assembled/pfam_genes.sdb
+2023/11/07 23:10:01 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017928/assembled/gene_copy.sdb
+2023/11/07 23:10:04 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017955/assembled/pfam_genes.sdb
+2023/11/07 23:10:04 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017955/assembled/gene_copy.sdb
+2023/11/07 23:10:10 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017927/assembled/pfam_genes.sdb
+2023/11/07 23:10:11 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017927/assembled/gene_copy.sdb
+2023/11/07 23:10:13 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017933/assembled/pfam_genes.sdb
+2023/11/07 23:10:13 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017933/assembled/gene_copy.sdb
+2023/11/07 23:10:17 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017930/assembled/pfam_genes.sdb
+2023/11/07 23:10:17 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017930/assembled/gene_copy.sdb
+2023/11/07 23:10:19 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300018007/assembled/pfam_genes.sdb
+2023/11/07 23:10:20 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300018007/assembled/gene_copy.sdb
+2023/11/07 23:10:23 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017943/assembled/pfam_genes.sdb
+2023/11/07 23:10:23 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017943/assembled/gene_copy.sdb
+2023/11/07 23:10:28 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017942/assembled/pfam_genes.sdb
+2023/11/07 23:10:28 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017942/assembled/gene_copy.sdb
+2023/11/07 23:10:32 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300018006/assembled/pfam_genes.sdb
+2023/11/07 23:10:32 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300018006/assembled/gene_copy.sdb
+2023/11/07 23:10:36 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017932/assembled/pfam_genes.sdb
+2023/11/07 23:10:36 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017932/assembled/gene_copy.sdb
+2023/11/07 23:10:38 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017994/assembled/pfam_genes.sdb
+2023/11/07 23:10:39 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017994/assembled/gene_copy.sdb
+2023/11/07 23:10:41 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017924/assembled/pfam_genes.sdb
+2023/11/07 23:10:41 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017924/assembled/gene_copy.sdb
+2023/11/07 23:10:44 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017926/assembled/pfam_genes.sdb
+2023/11/07 23:10:44 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017926/assembled/gene_copy.sdb
+2023/11/07 23:10:46 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017936/assembled/pfam_genes.sdb
+2023/11/07 23:10:46 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017936/assembled/gene_copy.sdb
+2023/11/07 23:10:49 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017823/assembled/pfam_genes.sdb
+2023/11/07 23:10:50 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017823/assembled/gene_copy.sdb
+2023/11/07 23:10:53 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017934/assembled/pfam_genes.sdb
+2023/11/07 23:10:53 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017934/assembled/gene_copy.sdb
+2023/11/07 23:10:56 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300018001/assembled/pfam_genes.sdb
+2023/11/07 23:10:56 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300018001/assembled/gene_copy.sdb
+2023/11/07 23:10:59 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017821/assembled/pfam_genes.sdb
+2023/11/07 23:10:59 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017821/assembled/gene_copy.sdb
+2023/11/07 23:11:01 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300018012/assembled/pfam_genes.sdb
+2023/11/07 23:11:01 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300018012/assembled/gene_copy.sdb
+2023/11/07 23:11:05 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017993/assembled/pfam_genes.sdb
+2023/11/07 23:11:05 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017993/assembled/gene_copy.sdb
+2023/11/07 23:11:08 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017937/assembled/pfam_genes.sdb
+2023/11/07 23:11:08 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017937/assembled/gene_copy.sdb
+2023/11/07 23:11:11 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017822/assembled/pfam_genes.sdb
+2023/11/07 23:11:11 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017822/assembled/gene_copy.sdb
+2023/11/07 23:11:13 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017995/assembled/pfam_genes.sdb
+2023/11/07 23:11:14 [INFO] (messageSystem/MessageOracleUtil.pm: 55) sqldb /projectdirs/img_web_data_merfs/3300017995/assembled/gene_copy.sdb
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 588) Running /usr/bin/perl /app/code/Services/bin/stats/prototype.v5.0.pl -i /webfs/web_data/workspace/123426/job/Timberlake_Pfam_Copies/stats_input -t absolute  -o /webfs/web_data/workspace/123426/job/Timberlake_Pfam_Copies/tmp
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) 
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) prototype ENV
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) LIB: /app/Oracle
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) PATH: /usr/bin:/bin
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) Checking parameters...
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) Checking input file /webfs/web_data/workspace/123426/job/Timberlake_Pfam_Copies/stats_input...
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) Categories:
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) Timberlake_Field	5
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) Timberlake_Lab	18
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) Minimum group size: 5
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) Maximum group size: 18
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) 
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) Calling R to run statistical analysis...
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) 
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) 
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) runCmd:
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) /usr/bin/R CMD BATCH /webfs/web_data/workspace/123426/job/Timberlake_Pfam_Copies/tmp/data.methodology2.Rin /webfs/web_data/workspace/123426/job/Timberlake_Pfam_Copies/tmp/data.methodology2.Rout
+2023/11/07 23:11:17 [INFO] (messageSystem/AnalysisStats.pm: 599) 
+2023/11/07 23:11:28 [INFO] (messageSystem/AnalysisStats.pm: 599) Complete.

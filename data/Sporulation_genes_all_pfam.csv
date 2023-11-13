@@ -1,0 +1,87 @@
+Pfam,Shortname,Name,Source Database,Type,Integrated Into,Type
+PF00269,SASP,"Small, acid-soluble spore proteins, alpha/beta type",pfam,family,IPR001448,Endospore
+PF01944,SpoIIM,Stage II sporulation protein M,pfam,family,IPR002798,Endospore
+PF02467,Whib,Transcription factor WhiB,pfam,family,IPR034768,Exospore
+PF02650,HTH_WhiA,WhiA C-terminal HTH domain,pfam,domain,IPR023054,Exospore
+PF03323,GerA,Bacillus/Clostridium GerA spore germination protein,pfam,family,IPR004995,Endospore
+PF03419,Peptidase_U4,Sporulation factor SpoIIGA,pfam,family,IPR005081,Endospore
+PF03777,ChpA-C,ChpA-C,pfam,domain,IPR005528,Exospore
+PF03845,Spore_permease,Spore germination protein,pfam,family,IPR004761,Endospore
+PF03862,SpoVAC_SpoVAEB,SpoVAC/SpoVAEB sporulation membrane protein,pfam,family,IPR005562,Endospore
+PF04232,SpoVS,Stage V sporulation protein S (SpoVS),pfam,family,IPR007347,Endospore
+PF04259,SASP_gamma,"Small, acid-soluble spore protein, gamma-type",pfam,family,IPR006341,Endospore
+PF04562,Dicty_spore_N,"Dictyostelium spore coat protein, N terminus",pfam,family,IPR007643,Endospore
+PF04686,SsgA,"Streptomyces sporulation and cell division protein, SsgA",pfam,family,IPR006776,Exospore
+PF05229,SCPU,Spore Coat Protein U domain,pfam,domain,IPR007893,Endospore
+PF05504,Spore_GerAC,"Spore germination B3/ GerAC like, C-terminal",pfam,family,IPR046953,Endospore
+PF06686,SpoIIIAC,Stage III sporulation protein AC/AD protein family,pfam,family,IPR025664,Endospore
+PF06898,YqfD,Putative stage IV sporulation protein YqfD,pfam,family,IPR010690,Endospore
+PF07228,SpoIIE,Stage II sporulation protein E (SpoIIE),pfam,family,IPR001932,Endospore
+PF07451,SpoVAD,Stage V sporulation protein AD (SpoVAD),pfam,domain,IPR010894,Endospore
+PF07454,SpoIIP,Stage II sporulation protein P (SpoIIP),pfam,family,IPR010897,Endospore
+PF07552,Coat_X,Spore Coat Protein X and V domain,pfam,domain,IPR011428,Endospore
+PF08141,SspH,Small acid-soluble spore protein H family,pfam,family,IPR012610,Endospore
+PF08175,SspO,Small acid-soluble spore protein O family,pfam,family,NA,Endospore
+PF08176,SspK,Small acid-soluble spore protein K family,pfam,family,IPR012611,Endospore
+PF08177,SspN,Small acid-soluble spore protein N family,pfam,family,IPR012612,Endospore
+PF08179,SspP,Small acid-soluble spore protein P family,pfam,family,IPR012614,Endospore
+PF08183,SpoV,Stage V sporulation protein family,pfam,family,IPR012609,Endospore
+PF08486,SpoIID,Stage II sporulation protein,pfam,family,IPR013693,Endospore
+PF08769,Spo0A_C,Sporulation initiation factor Spo0A C terminal,pfam,domain,IPR014879,Endospore
+PF08970,Sda,Sporulation inhibitor A,pfam,domain,IPR015064,Endospore
+PF08977,BOFC_N,"Bypass of Forespore C, N terminal",pfam,domain,IPR015071,Endospore
+PF09388,SpoOE-like,Spo0E like sporulation regulatory protein,pfam,family,IPR018540,Endospore
+PF09501,Bac_small_YrzI,Probable sporulation protein (Bac_small_yrzI),pfam,family,IPR012655,Endospore
+PF09546,Spore_III_AE,Stage III sporulation protein AE (spore_III_AE),pfam,family,IPR014194,Endospore
+PF09547,SpoIVA_ATPase,"Stage IV sporulation protein A, ATPase domain",pfam,domain,IPR046842,Endospore
+PF09548,Spore_III_AB,Stage III sporulation protein AB (spore_III_AB),pfam,family,IPR014198,Endospore
+PF09551,Spore_II_R,Stage II sporulation protein R (spore_II_R),pfam,family,IPR014202,Endospore
+PF09560,Spore_YunB,Sporulation protein YunB (Spo_YunB),pfam,family,IPR014197,Endospore
+PF09575,Spore_SspJ,Small spore protein J (Spore_SspJ),pfam,family,IPR014220,Endospore
+PF09577,Spore_YpjB,Sporulation protein YpjB (SpoYpjB),pfam,family,IPR014231,Endospore
+PF09578,Spore_YabQ,Spore cortex protein YabQ (Spore_YabQ),pfam,family,IPR019074,Endospore
+PF09579,Spore_YtfJ,Sporulation protein YtfJ (Spore_YtfJ),pfam,family,IPR014229,Endospore
+PF09580,Spore_YhcN_YlaJ,Sporulation lipoprotein YhcN/YlaJ (Spore_YhcN_YlaJ),pfam,family,IPR019076,Endospore
+PF09581,Spore_III_AF,Stage III sporulation protein AF (Spore_III_AF),pfam,family,IPR014245,Endospore
+PF09671,Spore_GerQ,Spore coat protein (Spore_GerQ),pfam,family,IPR014099,Endospore
+PF10298,WhiA_N,WhiA N-terminal LAGLIDADG-like domain,pfam,domain,IPR018478,Exospore
+PF10612,Spore-coat_CotZ,Spore coat protein Z,pfam,family,IPR019593,Endospore
+PF10628,CotE,Outer spore coat protein E (CotE),pfam,family,IPR018901,Endospore
+PF10646,Germane,Sporulation and spore germination,pfam,domain,IPR019606,Endospore
+PF10648,Gmad2,Immunoglobulin-like domain of bacterial spore germination,pfam,domain,IPR018911,Endospore
+PF10676,gerPA,Spore germination protein gerPA/gerPF,pfam,family,IPR019618,Endospore
+PF10737,GerPC,Spore germination protein GerPC,pfam,family,IPR019673,Endospore
+PF10747,SirA,Sporulation inhibitor of replication protein SirA,pfam,family,IPR019683,Endospore
+PF10803,GerPB,Spore germination GerPB,pfam,family,IPR024255,Endospore
+PF10957,Spore_Cse60,Sporulation protein Cse60,pfam,family,IPR020296,Endospore
+PF10970,GerPE,Spore germination protein GerPE,pfam,family,IPR024496,Endospore
+PF11007,CotJA,Spore coat associated protein JA (CotJA),pfam,family,IPR020256,Endospore
+PF11122,Spore-coat_CotD,Inner spore coat protein D,pfam,family,IPR020108,Endospore
+PF12116,SpoIIID,Stage III sporulation protein D,pfam,family,IPR014208,Endospore
+PF12164,SporV_AA,Stage V sporulation protein AA,pfam,domain,IPR021997,Endospore
+PF13157,Enas,Endospore appendages,pfam,domain,IPR025055,Endospore
+PF13782,SpoVAB,Stage V sporulation protein AB,pfam,family,IPR020144,Endospore
+PF14034,Spore_YtrH,Sporulation protein YtrH,pfam,family,IPR025689,Endospore
+PF14069,SpoVIF,Stage VI sporulation protein F,pfam,family,IPR025942,Endospore
+PF14089,KbaA,KinB-signalling pathway activation in sporulation,pfam,family,IPR024164,Endospore
+PF14097,SpoVAE,Stage V sporulation protein AE1,pfam,family,IPR025914,Endospore
+PF14098,SSPI,"Small, acid-soluble spore protein I",pfam,family,IPR017525,Endospore
+PF14147,Spore_YhaL,Sporulation protein YhaL,pfam,family,IPR025428,Endospore
+PF14153,Spore_coat_CotO,Spore coat protein CotO,pfam,family,IPR025439,Endospore
+PF14527,LAGLIDADG_WhiA,WhiA LAGLIDADG-like domain,pfam,domain,IPR039518,Exospore
+PF14620,YPEB_PepSY1-2,"YpeB sporulation, PepSY1 and PepSY2 domains",pfam,domain,IPR014239,Endospore
+PF14682,SPOB_ab,"Sporulation initiation phospho-transferase B, C-terminal",pfam,domain,IPR016122,Endospore
+PF15407,Spo7_2_N,Sporulation protein family 7,pfam,domain,IPR029217,Endospore
+PF15714,SpoVT_C,"Stage V sporulation protein T C-terminal, transcription factor",pfam,domain,NA,Endospore
+PF17018,MICSWaP,Spore wall protein,pfam,family,IPR031513,Endospore
+PF17062,Osw5,Outer spore wall 5,pfam,family,IPR031430,Endospore
+PF17368,YwcE,Spore morphogenesis and germination YwcE,pfam,family,IPR020185,Endospore
+PF17418,SdpA,Sporulation delaying protein SdpA,pfam,family,IPR023902,Endospore
+PF17898,GerD,Spore germination GerD central core domain,pfam,domain,IPR041262,Endospore
+PF18927,CrtO,"Glycosyl-4,4'-diaponeurosporenoate acyltransferase",pfam,domain,IPR044021,Endospore
+PF19568,Spore_III_AA,"Sporulation stage III, protein AA",pfam,family,IPR045735,Endospore
+PF19732,SpoIIE_N,Stage II sporulation protein E N-terminal,pfam,domain,IPR045768,Endospore
+PF19824,Tlp,"Small, acid-soluble spore protein Tlp",pfam,family,IPR017524,Endospore
+PF20438,SpoIVA_middle,"Stage IV sporulation protein A, middle domain",pfam,domain,IPR046841,Endospore
+PF20439,SpoIVA_C,"Sporulation stage IV protein A, C-terminal",pfam,domain,IPR046840,Endospore
+PF21179,BldD-like_C,"DNA-binding protein BldD-like, C-terminal domain",pfam,domain,IPR037664,Exospore

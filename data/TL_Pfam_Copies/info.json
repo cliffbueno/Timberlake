@@ -1,0 +1,19 @@
+{
+   "function" : "pfam",
+   "currDateTime" : "2023/11/07 23:08:46",
+   "files" : [
+      "Timberlake_Field",
+      "Timberlake_Lab"
+   ],
+   "files3" : "",
+   "contact_oid" : "123426",
+   "program" : "analysisStats",
+   "jobname" : "Timberlake_Pfam_Copies",
+   "comment" : "",
+   "method" : "default",
+   "measurement" : "estGeneCopy",
+   "comparison" : "absolute",
+   "analysis_selected_job_name" : "Timberlake_Pfam_Copies",
+   "display" : "all",
+   "analysis_save_mode" : "save"
+}
