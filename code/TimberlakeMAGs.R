@@ -26,7 +26,7 @@ setwd("~/Documents/GitHub/Timberlake/")
 
 #### 2. Tree ####
 # Tree from KBase made with 49 COGs
-TL_tree <- read.tree("~/Documents/GitHub/Timberlake/dRep_Tree_20-labels.newick")
+TL_tree <- read.tree("data/dRep_Tree_20-labels.newick")
 
 # Prune the one non-MAG
 TL_tree <- drop.tip(TL_tree, tip = "Frateuriasp.Soil773")
@@ -81,11 +81,11 @@ dev.off()
 
 
 #### 3. Abundance ####
-sample_info <- read_excel("MetagenomeFiles.xlsx") %>%
+sample_info <- read_excel("data/MetagenomeFiles.xlsx") %>%
   set_names(c("Sample", "Order", "Assembly", "Metagenome")) %>%
   mutate(Metagenome = gsub("-METAGENOME.fastq.gz", "", Metagenome)) %>%
   mutate(Metagenome = gsub("-", ".", Metagenome))
-mag_info <- read.delim("CheckM_summary_table.tsv") %>%
+mag_info <- read.delim("data/CheckM_summary_table.tsv") %>%
   select(Bin.Name, Rename, Order, Completeness, Contamination) %>%
   mutate(Bin.Name = gsub(".fasta", "", Bin.Name)) %>%
   arrange(Order)
@@ -167,7 +167,7 @@ dev.set(dev.next())
 
 
 #### 4. Comp./Cont. ####
-mag_info_mat <- read.delim("CheckM_summary_table.tsv") %>%
+mag_info_mat <- read.delim("data/CheckM_summary_table.tsv") %>%
   select(Bin.Name, Order, Completeness, Contamination) %>%
   arrange(Order) %>%
   select(-Order) %>%
@@ -202,7 +202,7 @@ dev.set(dev.next())
 #### 5. Correlations ####
 # Correlations between abundance and CH4 flux
 mag_abund_t <- as.data.frame(t(mag_abund_mat_log))
-nc <- readRDS("input_filt_rare_mTAGs.rds")
+nc <- readRDS("data/input_filt_rare_mTAGs.rds")
 CH4 <- nc$map_loaded %>%
   select(CH4_ug_m2_h) %>%
   t() %>%
@@ -431,8 +431,8 @@ mg <- read_excel("~/Desktop/MetabolicModels/MethanogenesisRxn_for_Seed.xlsx",
   mutate(Pathway_General = "")
 
 # Or get Wyatt significant responders - use this!
-ontol <- read.csv("Ontology_KO_CNPSch4_Fm_whh.csv")
-ko_list <- read.csv("SigKOs.csv") %>%
+ontol <- read.csv("data/Ontology_KO_CNPSch4_Fm_whh.csv")
+ko_list <- read.csv("data/SigKOs.csv") %>%
   left_join(., ontol, by = "KO") %>%
   select(KO, sm_name) %>%
   rownames_to_column(var = "rn") %>%
@@ -447,7 +447,7 @@ ko_list <- read.csv("SigKOs.csv") %>%
   filter(rn != "59") %>%
   filter(rn != "61") %>%
   select(-rn)
-ko_meta <- read.csv("SigKOs.csv") %>%
+ko_meta <- read.csv("data/SigKOs.csv") %>%
   left_join(., ontol, by = "KO") %>%
   rownames_to_column(var = "rn") %>%
   filter(rn != "2") %>%
@@ -473,8 +473,8 @@ sig_kos <- ko_list %>%
 sig_kos[is.na(sig_kos)] <- 0
 
 # Gene Ontology and fxn Colors import
-BGC_ont <- read.csv("Ontology_KO_CNPSch4_Fm_whh.csv", header = TRUE)
-BGC_colors <- read.csv("Ontol_KO_L2_Color_KEY_whh.csv")
+BGC_ont <- read.csv("data/Ontology_KO_CNPSch4_Fm_whh.csv", header = TRUE)
+BGC_colors <- read.csv("data/Ontol_KO_L2_Color_KEY_whh.csv")
 BGC_ont_col <- merge(BGC_ont, BGC_colors, by = "L2", all.x =TRUE)
 BGC_ont_col <-BGC_ont_col[order(BGC_ont_col$Index.x),]
 
@@ -521,11 +521,16 @@ dev.set(dev.next())
 #### _KO ####
 sig_kos_formelt <- sig_kos %>%
   rownames_to_column(var = "MAG")
+colnames(sig_kos_formelt) <- gsub(",", "", colnames(sig_kos_formelt))
 ko_long <- melt(sig_kos_formelt, id.vars = "MAG") %>%
   mutate(MAG = gsub(".fasta", "", MAG)) %>%
   mutate(MAG = factor(MAG,
                       levels = mag_info$Bin.Name),
          value = as.factor(value))
+
+# %>%
+#   mutate(variable = gsub("K01624 C_sug_sucr FBA,", "K01624 C_sug_sucr FBA", variable)) %>%
+#   mutate(variable = gsub("K01624 Fm_Bif_shnt FBA,", "K01624 Fm_Bif_shnt FBA", variable))
 
 ann_colors <- data.frame(L1 = c("Carbon", "Nitrogen", "Phosphorus", "Sulfur", 
                                 "CH4_cycling", "Fermentation"),
@@ -560,6 +565,7 @@ p1 <- ggplot(ko_long, aes(variable, MAG, fill = value)) +
         plot.margin = margin(0,0,0,0))
 l1 <- get_legend(p1)
 p1 <- p1 + theme(legend.position = "none")
+p1
 p2 <- ggplot(ko_meta_gg, aes(x = sm_name, y = "Type", fill = L1)) +
   geom_bar(stat='identity',  width = 1) + 
   scale_fill_manual(values = c("#b8302a", "#93ce81", "#4e96c8", "#e975a8",
@@ -628,6 +634,7 @@ p3 <- ggplot(abund_long, aes(variable, MAG, fill = value)) +
         plot.margin = margin(0,0,0,0))
 l3 <- get_legend(p3)
 p3 <- p3 + theme(legend.position = "none")
+p3
 p4 <- ggplot(abund_meta, aes(x = sampleID, y = "Type", fill = Treatment)) +
   geom_bar(stat='identity',  width = 1) + 
   scale_fill_manual(values = viridis_pal()(5)) +
@@ -663,7 +670,7 @@ cm_long <- melt(mag_info_mat_formelt, id.vars = "MAG") %>%
                       levels = mag_info$Bin.Name))
 p5 <- ggplot(cm_long, aes(variable, MAG, fill = value)) +
   geom_tile(color = "grey90") +
-  geom_text(aes(label = round(value, 2)), size = 3) +
+  geom_text(aes(label = round(value, 1)), size = 2.5) +
   scale_fill_distiller(palette = "RdYlBu",
                        limits = c(0, 100),
                        breaks = c(0, 25, 50, 75, 95),
@@ -704,7 +711,7 @@ ann_rows <- data.frame(row.names = rownames(cor_df_mat),
                       levels = mag_info$Bin.Name))
 p6 <- ggplot(cor_long, aes(variable, MAG, fill = value)) +
   geom_tile(color = "grey90") +
-  geom_text(aes(label = round(value, 2)), size = 3) +
+  geom_text(aes(label = round(value, 2)), size = 2.5) +
   scale_fill_distiller(palette = "RdGy",
                        breaks = c(-0.3, 0, 0.3, 0.6),
                        labels = c("-0.3", "0", "0.3", "0.6")) +
@@ -718,12 +725,13 @@ p6 <- ggplot(cor_long, aes(variable, MAG, fill = value)) +
         axis.title = element_blank(),
         axis.ticks = element_blank(),
         axis.line = element_blank(),
-        axis.text.x = element_text(size = 8, angle = 90, hjust = 1, 
+        axis.text.x = element_text(size = 6, angle = 90, hjust = 1, 
                                    vjust = 0.5, margin = margin(-2, 0, 0, 0)),
         axis.text.y = element_blank(),
         plot.margin = margin(0,0,0,0))
 l6 <- get_legend(p6)
 p6 <- p6 + theme(legend.position = "none")
+p6
 p7 <- ggplot(ann_rows, aes(x = "Blah", y = MAG, fill = CH4_sig)) +
   geom_tile(stat='identity',  width = 1, color = "grey90") + 
   scale_fill_manual(values = c("black", "white"),
@@ -740,7 +748,7 @@ p7 <- ggplot(ann_rows, aes(x = "Blah", y = MAG, fill = CH4_sig)) +
         legend.direction = "vertical",
         axis.title = element_blank(),                         
         axis.text.y = element_blank(),
-        axis.text.x = element_text(size = 8, angle = 90, hjust = 1, 
+        axis.text.x = element_text(size = 6, angle = 90, hjust = 1, 
                                    vjust = 0.5, margin = margin(-2, 0, 0, 0)),
         axis.ticks = element_blank(),
         panel.background = element_blank(),
@@ -748,10 +756,12 @@ p7 <- ggplot(ann_rows, aes(x = "Blah", y = MAG, fill = CH4_sig)) +
         panel.grid.minor = element_blank())
 l7 <- get_legend(p7)
 p7 <- p7 + theme(legend.position = "none")
+p7
 l67 <- plot_grid(l7, l6)
 panel4 <- plot_grid(p7, p6, l7, l6, ncol = 2, align = "h", axis = "b",
                     rel_heights = c(0.8, 0.2))
 panel4
+
 
 
 #### _Combine ####
@@ -761,22 +771,25 @@ panel4
 # Bars
 b <- plot_grid(p2, p4, NULL, NULL, NULL, 
           ncol = 5,
-          rel_widths = c(0.45, 0.3, 0.15, 0.05, 0.05))
+          rel_widths = c(0.54, 0.29, 0.09, 0.04, 0.04))
+b
 
 # Plots
 p <- plot_grid(p1, p3, p5, p7, p6, 
           ncol = 5, align = "h", 
-          rel_widths = c(0.45, 0.3, 0.15, 0.05, 0.05))
+          rel_widths = c(0.54, 0.29, 0.09, 0.04, 0.04))
+p
 
 # Legends
-l <- plot_grid(l12, l34, l5, l7, l6,
-          ncol = 5,
-          rel_widths = c(0.46, 0.28, 0.09, 0.10, 0.07))
+l <- plot_grid(l1, l2, l3, l4, l5, l7, l6,
+          ncol = 7,
+          rel_widths = c(0.2, 0.2, 0.15, 0.15, 0.1, 0.15, 0.15))
+l
 
 # BPL
 bpl <- plot_grid(b, p, l,
                  ncol = 1,
-                 rel_heights = c(0.04, 0.71, 0.25))
+                 rel_heights = c(0.01, 0.73, 0.26))
 bpl
 
 # Add tree from base graphics?
@@ -795,7 +808,7 @@ plot.phylo(TL_tree,
            node.pos = 1,
            label.offset = 0.08,
            adj = 1,
-           x.lim = 1.8,
+           x.lim = c(0.04, 1.35),
            edge.color = c("#A6CEE3", "black", "#1F78B4",
                           "black", "black", "#B2DF8A",
                           "#B2DF8A", "#B2DF8A", "#B2DF8A",
@@ -829,10 +842,47 @@ t_leg <- get_legend(ggplot(t_df, aes(Phylum, y, fill = Phylum)) +
 
 t_multi <- plot_grid(NULL, t, t_leg,
                      ncol = 1,
-                     rel_heights = c(0.05, 0.54, 0.42))
+                     rel_heights = c(0.03, 0.55, 0.42))
 
-png("Figures/MAG_multipanel.png", width = 12, height = 7, units = "in", res = 300)
-plot_grid(t_multi, bpl, rel_widths = c(0.2, 0.8))
+# ggtree?
+brewer_pal(palette = "Paired")(8)
+t <- ggtree(tr = TL_tree,
+       mapping = NULL,
+       layout = "rectangular",
+       ladderize = FALSE,
+       color = c("#A6CEE3", "#1F78B4", "#B2DF8A",
+                 "#B2DF8A", "#B2DF8A", "#B2DF8A",
+                 "#B2DF8A", "#B2DF8A", "#B2DF8A",
+                 "#B2DF8A", "#B2DF8A", "#33A02C",
+                 "#FB9A99", "#FB9A99", "#FB9A99",
+                 "#FB9A99", "#E31A1C", "#FDBF6F",
+                 "#FF7F00", "#B2DF8A", "black",
+                 "black", "#B2DF8A", "#B2DF8A",
+                 "#B2DF8A", "#B2DF8A", "#B2DF8A",
+                 "#B2DF8A", "#B2DF8A", "#B2DF8A",
+                 "black", "black", "#FB9A99",
+                 "#FB9A99", "#FB9A99", "black", "black")) +
+  geom_tiplab(align = T, size = 1.9) +
+  geom_nodelab(size = 2.5, nudge_x = 0.04) +
+  geom_treescale(fontsize = 3, x = 0.1, y = 15) +
+  xlim(0, 1.65) +
+  theme_void()
+t
+
+t_multi <- plot_grid(NULL, t, t_leg,
+                     ncol = 1,
+                     rel_heights = c(0.02, 0.57, 0.44))
+
+png("InitialFigs/MAG_multipanel.png", width = 12, height = 7, units = "in", res = 300)
+plot_grid(t_multi, bpl, rel_widths = c(0.25, 0.75))
+dev.off()
+
+png("FinalFigs/Figure7.png", width = 12, height = 7, units = "in", res = 300)
+plot_grid(t_multi, bpl, rel_widths = c(0.25, 0.75))
+dev.off()
+
+pdf("FinalFigs/Figure7.pdf", width = 12, height = 7)
+plot_grid(t_multi, bpl, rel_widths = c(0.25, 0.75))
 dev.off()
 
 # With not legend rel_heights = c(0.05, 0.54, 0.42)

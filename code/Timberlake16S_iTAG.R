@@ -81,6 +81,8 @@ library(mobr) # rarefaction curves
 library(plotly) # interactive graphs
 library(pairwiseAdonis) # pairwise permanova
 library(patchwork) # insets
+library(janitor) # data cleaning
+library(ggrepel) # text
 
 # Functions
 find_hull <- function(df) df[chull(df$Axis01, df$Axis02),]
@@ -223,6 +225,8 @@ nc$map_loaded <- nc$map_loaded %>%
 
 # Save
 #saveRDS(nc, "data/nc.rds")
+
+
 
 #### _Start here ####
 nc <- readRDS("data/nc.rds")
@@ -391,7 +395,11 @@ eta_sq_m1 <- eta_sq(m1) %>%
 g2 <- ggplot(eta_sq_m1, aes(x = "", y = value, fill = group)) +
   geom_bar(stat = "identity", width = 1, color = NA) +
   coord_polar("y", start = 0) +
-  geom_text(aes(y = ypos, label = group), color = "white", size = 1.25, check_overlap = T) +
+  geom_text(data = subset(eta_sq_m1, group == "SO4"),
+            aes(y = ypos, label = group), color = "white", size = 2, check_overlap = F,
+            nudge_x = 0.1) +
+  geom_text(data = subset(eta_sq_m1, group != "SO4"),
+            aes(y = ypos, label = group), color = "white", size = 2, check_overlap = F) +
   scale_fill_manual(values = c("#5DC863FF", "grey30", "grey70", "#21908CFF")) +
   theme_void() + 
   theme(legend.position = "none")
@@ -410,11 +418,14 @@ eta_sq_m2 <- eta_sq(m2) %>%
 g3 <- ggplot(eta_sq_m2, aes(x = "", y = value, fill = group)) +
   geom_bar(stat = "identity", width = 1, color = NA) +
   coord_polar("y", start = 0) +
-  geom_text(aes(y = ypos, label = group), color = "white", size = 1.25, check_overlap = T) +
+  geom_text(data = subset(eta_sq_m2, group == "SO4"),
+            aes(y = ypos, label = group), color = "white", size = 2, check_overlap = F,
+            nudge_x = 0.1) +
+  geom_text(data = subset(eta_sq_m2, group != "SO4"),
+            aes(y = ypos, label = group), color = "white", size = 2, check_overlap = F) +
   scale_fill_manual(values = c("#5DC863FF", "grey30", "grey70", "#21908CFF")) +
   theme_void() + 
   theme(legend.position = "none")
-
 
 # Add as inset, save as Figure 2.
 plot.with.inset <-
@@ -483,7 +494,11 @@ eta_sq_m3 <- eta_sq_adonis(m3) %>%
 g4 <- ggplot(eta_sq_m3, aes(x = "", y = value, fill = group)) +
   geom_bar(stat = "identity", width = 1, color = NA) +
   coord_polar("y", start = 0) +
-  geom_text(aes(y = ypos, label = group), color = "white", size = 1.5, check_overlap = T) +
+  geom_text(data = subset(eta_sq_m3, group == "SO4"),
+            aes(y = ypos, label = group), color = "white", size = 2.5, check_overlap = F,
+            nudge_x = 0.1) +
+  geom_text(data = subset(eta_sq_m3, group != "SO4"),
+            aes(y = ypos, label = group), color = "white", size = 2.5, check_overlap = F) +
   scale_fill_manual(values = c("#5DC863FF", "grey30", "grey70", "#21908CFF")) +
   theme_void() + 
   theme(legend.position = "none")
@@ -498,7 +513,7 @@ ef_nc
 biplot(d.pcx)
 ordiplot(d.pcx)
 plot(ef_nc, p.max = 0.075, cex = 0.5)
-manual_factor_nc <- 0.23
+manual_factor_nc <- 0.28
 vec.df_nc <- as.data.frame(ef_nc$vectors$arrows*sqrt(ef_nc$vectors$r)) %>%
   mutate(PC1 = PC1 * manual_factor_nc,
          PC2 = PC2 * manual_factor_nc) %>%
@@ -512,18 +527,18 @@ PC2 <- paste("PC2: ", round((sum(d.pcx$sdev[2]^2)/d.mvar)*100, 1), "%")
 nc$map_loaded$Axis01 <- d.pcx$rotation[,1]
 nc$map_loaded$Axis02 <- d.pcx$rotation[,2]
 micro.hulls <- ddply(nc$map_loaded, c("Treatment"), find_hull)
-g5 <- ggplot(nc$map_loaded, aes(-Axis01, Axis02)) +
+g5 <- ggplot(nc$map_loaded, aes(-Axis01, -Axis02)) +
   geom_polygon(data = micro.hulls, 
                aes(colour = Treatment, fill = Treatment),
                alpha = 0.1, show.legend = F) +
   geom_point(size = 3, alpha = 1, aes(colour = Treatment, shape = Depth)) +
   geom_segment(data = vec.df_nc,
-               aes(x = 0, xend = PC1, y = 0, yend = -PC2),
+               aes(x = 0, xend = PC1, y = 0, yend = PC2),
                arrow = arrow(length = unit(0.35, "cm")),
                colour = "gray", alpha = 0.6,
                inherit.aes = FALSE) + 
   geom_text(data = vec.df_nc,
-            aes(x = PC1, y = -PC2, label = shortnames),
+            aes(x = PC1, y = PC2, label = shortnames),
             size = 3, color = "black") +
   labs(x = PC1, 
        y = PC2,
@@ -1053,6 +1068,14 @@ cliffplot_taxa_bars(input = nc, level = 4, variable = "Treatment")
 cliffplot_taxa_bars(input = nc, level = 5, variable = "Treatment")
 cliffplot_taxa_bars(input = nc, level = 6, variable = "Treatment")
 cliffplot_taxa_bars(input = nc, level = 9, variable = "Treatment")
+
+# Field SRB
+tax_sum_guilds <- summarize_taxonomy(input = field, level = 9, report_higher_tax = F) %>%
+  t() %>%
+  as.data.frame() %>%
+  mutate(SRB_tot = SRB + SRB_syn)
+mean(tax_sum_guilds$SRB_tot)
+se(tax_sum_guilds$SRB_tot)
 
 # Phyla, all samples
 tax_sum_phyla <- summarize_taxonomy(input = nc, level = 2, report_higher_tax = F)
@@ -1800,8 +1823,9 @@ dev.off()
 
 #### 7. BGC ####
 # Plot BGC variable by treatment, just for this time point
-# Correlations with 
 
+#### _Correlations ####
+# Correlations with methane
 # Corrplot
 env_nona <- env_nona_nc %>%
   dplyr::select(-Cl_mgL)
@@ -1814,6 +1838,9 @@ png("InitialFigs/BGC_CH4_cors.png", width = 6, height = 6, units = "in", res = 3
 meth_corr_by_bgc(env_nona = env_nona)
 dev.off()
 
+
+
+#### _Fluxes ####
 # Boxplots by treatment - Fluxes
 # Remove Field
 nc_lab <- filter_data(nc,
@@ -1836,7 +1863,7 @@ t1 <- emmeans(object = m, specs = "Treatment") %>%
 
 g1 <- ggplot(flux_data, aes(Treatment, CH4_ug_m2_h)) +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
-  geom_jitter(size = 4, width = 0.1, aes(colour = Treatment)) + 
+  geom_jitter(size = 3, width = 0.1, aes(colour = Treatment)) + 
   geom_text(data = t1, aes(Treatment, y, label = str_trim(.group)), 
             size = 4, color = "black") +
   labs(x = "Treatment",
@@ -1866,7 +1893,7 @@ t2 <- emmeans(object = m, specs = "Treatment") %>%
 
 g2 <- ggplot(flux_data, aes(Treatment, CO2_ug_m2_h)) +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
-  geom_jitter(size = 4, width = 0.1, aes(colour = Treatment)) + 
+  geom_jitter(size = 3, width = 0.1, aes(colour = Treatment)) + 
   geom_text(data = t2, aes(Treatment, y, label = str_trim(.group)), 
             size = 4, color = "black") +
   labs(x = "Treatment",
@@ -1896,7 +1923,7 @@ t3 <- emmeans(object = m, specs = "Treatment") %>%
 
 g3 <- ggplot(flux_data, aes(Treatment, N2O_ug_m2_h)) +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
-  geom_jitter(size = 4, width = 0.1, aes(colour = Treatment)) + 
+  geom_jitter(size = 3, width = 0.1, aes(colour = Treatment)) + 
   geom_text(data = t3, aes(Treatment, y, label = str_trim(.group)), 
             size = 4, color = "black") +
   labs(x = "Treatment",
@@ -1923,7 +1950,7 @@ facet_labels <- c("CH4_ug_m2_h" = "CH[4]",
                   "N2O_ug_m2_h" = "N[2]*O")
 fw <- ggplot(flux_data_long, aes(Treatment, value)) +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
-  geom_jitter(size = 4, width = 0.1, aes(colour = Treatment)) + 
+  geom_jitter(size = 3, width = 0.1, aes(colour = Treatment)) + 
   geom_text(data = t_comb, aes(Treatment, y, label = str_trim(.group)), 
             size = 4, color = "black") +
   labs(x = "Treatment",
@@ -1955,7 +1982,7 @@ eta_sq_m1 <- eta_sq(m1) %>%
 p1 <- ggplot(eta_sq_m1, aes(x = "", y = value, fill = group)) +
   geom_bar(stat = "identity", width = 1, color = NA) +
   coord_polar("y", start = 0) +
-  geom_text(aes(y = ypos, label = group), color = "white", size = 2.5, check_overlap = T) +
+  geom_text(aes(y = ypos, label = group), color = "white", size = 3, check_overlap = T) +
   scale_fill_manual(values = c("#5DC863FF", "grey70", "#21908CFF")) +
   theme_void() + 
   theme(legend.position = "none")
@@ -1974,7 +2001,7 @@ eta_sq_m2 <- eta_sq(m2) %>%
 p2 <- ggplot(eta_sq_m2, aes(x = "", y = value, fill = group)) +
   geom_bar(stat = "identity", width = 1, color = NA) +
   coord_polar("y", start = 0) +
-  geom_text(aes(y = ypos, label = group), color = "white", size = 2.5, check_overlap = T) +
+  geom_text(aes(y = ypos, label = group), color = "white", size = 3, check_overlap = T) +
   scale_fill_manual(values = c("#5DC863FF", "grey70", "#21908CFF")) +
   theme_void() + 
   theme(legend.position = "none")
@@ -1993,7 +2020,7 @@ eta_sq_m3 <- eta_sq(m3) %>%
 p3 <- ggplot(eta_sq_m3, aes(x = "", y = value, fill = group)) +
   geom_bar(stat = "identity", width = 1, color = NA) +
   coord_polar("y", start = 0) +
-  geom_text(aes(y = ypos, label = group), color = "white", size = 2.5, check_overlap = T) +
+  geom_text(aes(y = ypos, label = group), color = "white", size = 3, check_overlap = T) +
   scale_fill_manual(values = c("#5DC863FF", "grey70", "#21908CFF")) +
   theme_void() + 
   theme(legend.position = "none")
@@ -2078,6 +2105,7 @@ png("InitialFigs/FluxesScatter.png", width = 4, height = 6, units = "in", res = 
 plot_grid(g4, g5, g6, ncol = 1, align = "v")
 dev.off()
 
+#### _Other BGC ###
 # Other BGC by treatment, with stats
 bgc <- nc_lab$map_loaded %>%
   dplyr::select(Treatment, Depth,
@@ -2117,6 +2145,7 @@ facet_names <- c("Salinity" = "Salinity (ppt)",
                  "sed_per_C" = "% C",
                  "sed_per_N" = "% N",
                  "sed_CN" = "C:N")
+# Figure S1
 png("InitialFigs/BGC.png", width = 8, height = 6, units = "in", res = 300)
 ggplot(bgc_long, aes(Treatment, value)) +
   geom_boxplot(aes(colour = Treatment), outlier.shape = NA) +
@@ -2152,7 +2181,56 @@ dev.off()
 
 
 
-#### 8. NCBI ####
+#### 8. O2/H2S ####
+# Oxygen and Hydrogen sulfide data from Sep 8 (Day 14 of the experiment)
+o_stdev <- read_xls("data/microelectrode data.xls", sheet = 8) %>%
+  clean_names() %>%
+  mutate(depth_cm = depth/1000) %>%
+  dplyr::select(treatment, depth_cm, avg_o2_mg_l, stdev_o2_mg_l, 
+                avg_h2s_mg_l, stdev_h2s_mg_l) %>%
+  pivot_longer(cols = c(stdev_o2_mg_l, stdev_h2s_mg_l)) %>%
+  mutate(name = gsub("stdev", "avg", name)) %>%
+  mutate(treatment = factor(treatment,
+                            levels = c("Control", "+SO4", "+ASW-SO4", "+ASW")))
+
+o <- read_xls("data/microelectrode data.xls", sheet = 8) %>%
+  clean_names() %>%
+  mutate(depth_cm = depth/1000) %>%
+  dplyr::select(treatment, depth_cm, avg_o2_mg_l, stdev_o2_mg_l, 
+                avg_h2s_mg_l, stdev_h2s_mg_l) %>%
+  pivot_longer(cols = c(avg_o2_mg_l, avg_h2s_mg_l)) %>%
+  mutate(stdev = o_stdev$value) %>%
+  mutate(se = stdev/sqrt(5)) %>%
+  mutate(treatment = factor(treatment,
+                            levels = c("Control", "+SO4", "+ASW-SO4", "+ASW")))
+
+
+facet_names <- c("avg_h2s_mg_l" = "(a) Hydrogen sulfide (mg/L)",
+                 "avg_o2_mg_l" = "(b) Oxygen (mg/L)")
+
+png("FinalFigs/FigureS10.png", width = 6, height = 3, units = "in", res = 300)
+ggplot(o, aes(x = value, y = depth_cm, colour = treatment, group = treatment)) +
+  geom_point(position = position_jitter(seed = 1, width = 0, height = 0.03)) +
+  geom_path(position = position_jitter(seed = 1, width = 0, height = 0.03)) +
+  geom_errorbarh(aes(xmin = value - se,
+                     xmax = value + se,
+                     y = depth_cm),
+                 position = position_jitter(seed = 1, width = 0, height = 0.03),
+                 colour = "black", linewidth = 0.1, alpha = 0.5) +
+  scale_y_reverse(limits = c(5, -0.1),
+                  breaks = c(5, 4, 3, 2, 1, 0),
+                  labels = c(5, 4, 3, 2, 1, 0)) +
+  scale_colour_manual(values = viridis_pal()(5)[2:5]) +
+  labs(y = "Depth (cm)",
+       x = NULL,
+       colour = "Treatment") +
+  facet_wrap(~ name, scales = "free_x", labeller = as_labeller(facet_names)) +
+  theme_bw()
+dev.off()
+
+
+
+#### 9. NCBI ####
 #write.csv(nc$map_loaded, "data/metadata_used.csv")
 # Repset is in EastCoast folder, then filter to these samples.
 # Also make sample-sequence map file
