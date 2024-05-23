@@ -16,3 +16,12 @@ eta_sq_adonis <- function(aov_in){
   names(output) <- rownames(aovtab)
   return(output)
 }
+
+eta_sq_glm <- function(glm_in){
+  aovtab <- Anova(glm_in, test.statistic = "F")
+  n_terms <- length(aovtab[["Sum Sq"]])
+  SSt <- sum(aovtab[["Sum Sq"]])
+  output <- aovtab[["Sum Sq"]] / SSt
+  names(output) <- rownames(aovtab)
+  return(output)
+}
